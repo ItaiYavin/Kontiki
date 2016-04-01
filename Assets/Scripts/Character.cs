@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Kontiki
 {
@@ -24,7 +25,7 @@ namespace Kontiki
 
         void FixedUpdate()
         {
-            _selectedEdibleItem = CheckForEdibleInRange();
+            _selectedEdibleItem = CheckForClosetEdibleInRange();
 
             if (_selectedEdibleItem != null)
             {
@@ -34,19 +35,48 @@ namespace Kontiki
             }
         }
 
-        EdibleItem CheckForEdibleInRange()
+        EdibleItem CheckForClosetEdibleInRange()
         {
+            // Find every Objects within scanningRange area
             Collider[] colliders = Physics.OverlapSphere(transform.position, scanningRange);
 
+            // Look through all colliders and Look for EdibleItem and put them in a list
+            List<EdibleItem> edibleItemsInRange = new List<EdibleItem>();
             foreach (Collider c in colliders) {
-                EdibleItem n = c.GetComponent<EdibleItem>();
-				if(n != null) {
-                    return n;
+                EdibleItem foundEdibleItem = c.GetComponent<EdibleItem>();
+                if (foundEdibleItem != null)
+                {
+                    edibleItemsInRange.Add(foundEdibleItem);
                 }
+            }
+
+            // If we found edibleItems then find the closet one to the player
+            if(edibleItemsInRange.Count > 0) {
+                EdibleItem closetEdibleItem = edibleItemsInRange[0];
+                float x = (edibleItemsInRange[0].transform.position.x - transform.position.x);
+                float y = (edibleItemsInRange[0].transform.position.y - transform.position.y);
+                float z = (edibleItemsInRange[0].transform.position.z - transform.position.z);
+                float currentShortestDistance =  (x * x) + (y * y) + (z * z);
+
+                for(int i = 1; i < edibleItemsInRange.Count; i++) {
+                    float cx = (edibleItemsInRange[i].transform.position.x - transform.position.x);
+                    float cy = (edibleItemsInRange[i].transform.position.y - transform.position.y);
+                    float cz = (edibleItemsInRange[i].transform.position.z - transform.position.z);
+                    float distance =  (cx * cx) + (cy * cy) + (cz * cz);
+
+                    if(Mathf.Abs(distance) < Mathf.Abs(currentShortestDistance)) {
+                        closetEdibleItem = edibleItemsInRange[i];
+                        currentShortestDistance = distance;
+                    }
+                }
+
+                return closetEdibleItem;
             }
 
             return null;
         }
+
+
 
         void ConsumeEdibleItem(EdibleItem edibleItem)
         {
