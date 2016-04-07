@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11451272}
   - 114: {fileID: 11432188}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Inventory Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
