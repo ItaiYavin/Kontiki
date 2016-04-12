@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   buttonPrefab: {fileID: 144036, guid: b05fa2119eea5c2439b77ccf2b20f523, type: 2}
+  marginBetweenIcons: 1
+  sizeOfIcons: 15
 --- !u!114 &11407548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,6 +136,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

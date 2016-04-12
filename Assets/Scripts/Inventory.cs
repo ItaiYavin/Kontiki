@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-namespace Kontiki { 
+namespace Kontiki {
     public class Inventory : MonoBehaviour {
         [Range(4, 9)]
         public int inventorySize = 4;
@@ -17,7 +17,7 @@ namespace Kontiki {
             _inventoryItems = new EdibleItem[inventorySize];
             _character = GetComponent<Character>();
         }
-	
+
 	    void Update () {
             CheckIfInventoryItemIsPressed();
 
@@ -35,12 +35,20 @@ namespace Kontiki {
             }
         }
 
-        void UseInventoryItem(int i)
+        public void UseInventoryItem(int i)
         {
             if (_inventoryItems[i] == null) return;
 
             _character.ConsumeEdibleItem(_inventoryItems[i]);
             _inventoryItems[i] = null;
+        }
+
+        public EdibleItem GetInventoryItem(int i) {
+            return _inventoryItems[i];
+        }
+
+        public EdibleItem[] GetInventoryItems() {
+            return _inventoryItems;
         }
     }
 }
