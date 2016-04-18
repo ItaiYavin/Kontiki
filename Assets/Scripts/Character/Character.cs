@@ -132,7 +132,7 @@ namespace Kontiki
 
             // If we found edibleItems then find the closet one to the player
             if(itemsInRange.Count > 0) {
-                Item closetItem = itemsInRange[0];
+                Item closestItem = itemsInRange[0];
                 float x = (itemsInRange[0].transform.position.x - transform.position.x);
                 float y = (itemsInRange[0].transform.position.y - transform.position.y);
                 float z = (itemsInRange[0].transform.position.z - transform.position.z);
@@ -145,12 +145,12 @@ namespace Kontiki
                     float distance =  (cx * cx) + (cy * cy) + (cz * cz);
 
                     if(Mathf.Abs(distance) < Mathf.Abs(currentShortestDistance)) {
-                        closetItem = itemsInRange[i];
+                        closestItem = itemsInRange[i];
                         currentShortestDistance = distance;
                     }
                 }
 
-                return closetItem;
+                return closestItem;
             }
 
             return null;
@@ -192,6 +192,7 @@ namespace Kontiki
         
         public void GoToDestination(){
             agent.destination = target.transform.position;
+            Debug.Log("Moving to target");
         }
 
         public void StopMoving(){
