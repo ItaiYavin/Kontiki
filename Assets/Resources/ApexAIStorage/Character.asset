@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: Character
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16777216
+  aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":f6d4e48195c34963920b715a3b97a0b8,"_id":5249e0f6619d4f73afac10ba51a67d6d,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":f6d4e48195c34963920b715a3b97a0b8,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.SelectClosestEdibleInRange, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HungerScorer,
+    Assembly-CSharp","debug":true,"threshold":0.25,"score":100},{"@type":"Kontiki.AI.HasEdibleResource,
+    Assembly-CSharp","debug":false,"not":true,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.ConsumeSelectedItem, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HasEdibleResource,
+    Assembly-CSharp","debug":false,"not":false,"score":10},{"@type":"Kontiki.AI.HungerScorer,
+    Assembly-CSharp","debug":false,"threshold":0.75,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":300,"@height":220},"QualifierView":{"Name":"Has
+    no Edible Resource and is hungry","ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}}}'
