@@ -21,7 +21,7 @@ public class Buoyancy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		inWater = checkWater();
-		Debug.Log(currentForce);
+//		Debug.Log(currentForce);
 		
 		if(currentForce <= buoyancy)
 			currentForce = buoyancy*Mathf.Pow((Time.time-timeStamp),2);
