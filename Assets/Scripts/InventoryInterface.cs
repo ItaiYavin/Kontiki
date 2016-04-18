@@ -10,21 +10,23 @@ namespace Kontiki {
         public GameObject buttonPrefab;
 
         [Header("Inventory Bar Look")]
-        [Range(0,30)]
+        [Range(0, 30)]
         public float marginBetweenButtons = 1;
-        [Range(15,60)]
+        [Range(15, 60)]
         public float sizeOfButtons = 15;
 
-        private GameObject[] _inventoryItemButtons;
+        public GameObject[] _inventoryItemButtons;
 
 
         // Use this for initialization
-        void Start () {
+        void Start()
+        {
             GenerateButtonsForInventoryBar();
         }
 
         // Update is called once per frame
-        void FixedUpdate () {
+        void FixedUpdate()
+        {
             RefreshInventory();
         }
 
@@ -32,7 +34,7 @@ namespace Kontiki {
         {
             for (int i = 0; i < _inventoryItemButtons.Length; i++)
             {
-                if(inventory.GetInventoryItem(i) != null)
+                if (inventory.GetInventoryItem(i) != null)
                     _inventoryItemButtons[i].GetComponentInChildren<Text>().text = inventory.GetInventoryItem(i).name;
             }
         }
@@ -53,6 +55,11 @@ namespace Kontiki {
                 Vector3 currentPosition = _inventoryItemButtons[i].GetComponent<RectTransform>().position;
                 currentPosition.x += marginBetweenButtons + (sizeOfButtons * i);
                 _inventoryItemButtons[i].GetComponent<RectTransform>().position = currentPosition;
+
+
+                // Set OnClick function
+                int k = i; // Doing weird magic in the name of Itai Yavin
+                _inventoryItemButtons[i].GetComponent<Button>().onClick.AddListener(delegate { inventory.UseInventoryItem(k); });
             }
         }
     }

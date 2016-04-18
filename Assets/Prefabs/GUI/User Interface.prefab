@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   buttonPrefab: {fileID: 144036, guid: b05fa2119eea5c2439b77ccf2b20f523, type: 2}
-  marginBetweenIcons: 1
-  sizeOfIcons: 15
+  marginBetweenButtons: 0
+  sizeOfButtons: 30
 --- !u!114 &11407548
 MonoBehaviour:
   m_ObjectHideFlags: 1
