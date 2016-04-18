@@ -78,7 +78,7 @@ namespace Kontiki
 
 
 
-        void ConsumeEdibleItem(EdibleItem edibleItem)
+        public void ConsumeEdibleItem(EdibleItem edibleItem)
         {
             if (hunger > 0)
             {
