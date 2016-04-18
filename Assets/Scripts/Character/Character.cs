@@ -1,4 +1,4 @@
-using Apex.AI;
+﻿using Apex.AI;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -35,6 +35,7 @@ namespace Kontiki
         **/
         public EdibleItem selectedEdibleItem;
         private CharacterAIContext _context;
+        private Item objectInVicinity;
 
         /**
         ** Static Variables & Objects
@@ -66,13 +67,15 @@ namespace Kontiki
 
         void FixedUpdate()
         {
+            objectInVicinity = CheckForClosestItemInRange();
+
             if(hunger < hungerMax){
                 hunger += hungerIncrementPerSec * Time.deltaTime;
             }else{
                 hunger = hungerMax;
             }
             
-            selectedEdibleItem = CheckForClosetEdibleInRange();
+            //selectedEdibleItem = CheckForClosestItemInRange();
 
             if(Input.GetKeyDown(KeyCode.D)){
                 GoToDestination();
@@ -84,68 +87,70 @@ namespace Kontiki
 
             if (selectedEdibleItem != null)
             {
-				if(Input.GetKeyDown(KeyCode.Q)) {
-					ConsumeEdibleItem(selectedEdibleItem);
-				}
+                if(Input.GetKeyDown(KeyCode.Q)) {
+                    ConsumeEdibleItem(selectedEdibleItem);
+                }
             }
 
-            if(memory.Count > memoryCapacity){ //Remove last in memory list. Looks retarded but should work like this.
+            if(objectInVicinity != null){
+                memory.Add(objectInVicinity.transform);
+            }
+
+            if(memory.Count > memoryCapacity){ //Remove last in memory list.
                 memory.RemoveAt(0);
             }
-        }
-        
-        public void ScanSorroundings(){
-            // Find every Objects within scanningRange area
-            Collider[] colliders = Physics.OverlapSphere(transform.position, scanningRange);
         }
 
         /**
         * Actions
         * 
         **/
-        
         public bool HasSelectedEdibleResource(){
             return selectedEdibleItem != null;
         }
         
         public void SelectClosestEdibleInRange(){
             if(selectedEdibleItem != null){
-                selectedEdibleItem = CheckForClosetEdibleInRange();
+                //selectedEdibleItem = CheckForClosestItemInRange();
             }
         }
 
-        EdibleItem CheckForClosetEdibleInRange()
+        Item CheckForClosestItemInRange()
         {
             // Find every Objects within scanningRange area
             Collider[] colliders = Physics.OverlapSphere(transform.position, scanningRange);
 
             // Look through all colliders and Look for EdibleItem and put them in a list
-            List<EdibleItem> edibleItemsInRange = new List<EdibleItem>();
+            List<Item> itemsInRange = new List<Item>();
             foreach (Collider c in colliders) {
-                EdibleItem foundEdibleItem = c.GetComponent<EdibleItem>();
-                if (foundEdibleItem != null)
+                Item foundItem = c.GetComponent<Item>();
+                if (foundItem != null)
                 {
-                    edibleItemsInRange.Add(foundEdibleItem);
+                    itemsInRange.Add(foundItem);
                 }
             }
 
             // If we found edibleItems then find the closet one to the player
-            if(edibleItemsInRange.Count > 0) {
-                EdibleItem closestEdibleItem = edibleItemsInRange[0];
-                Vector3 v = (edibleItemsInRange[0].transform.position - transform.position);
-                float currentShortestDistance =  v.sqrMagnitude;
+            if(itemsInRange.Count > 0) {
+                Item closetItem = itemsInRange[0];
+                float x = (itemsInRange[0].transform.position.x - transform.position.x);
+                float y = (itemsInRange[0].transform.position.y - transform.position.y);
+                float z = (itemsInRange[0].transform.position.z - transform.position.z);
+                float currentShortestDistance =  (x * x) + (y * y) + (z * z);
 
-                for(int i = 1; i < edibleItemsInRange.Count; i++) {
-                    Vector3 cv = (edibleItemsInRange[i].transform.position - transform.position);
-                    float distance =  cv.sqrMagnitude;
+                for(int i = 1; i < itemsInRange.Count; i++) {
+                    float cx = (itemsInRange[i].transform.position.x - transform.position.x);
+                    float cy = (itemsInRange[i].transform.position.y - transform.position.y);
+                    float cz = (itemsInRange[i].transform.position.z - transform.position.z);
+                    float distance =  (cx * cx) + (cy * cy) + (cz * cz);
 
                     if(Mathf.Abs(distance) < Mathf.Abs(currentShortestDistance)) {
-                        closestEdibleItem = edibleItemsInRange[i];
+                        closetItem = itemsInRange[i];
                         currentShortestDistance = distance;
                     }
                 }
-                //memory.Add(closestEdibleItem); //possibly shouldnt happen here but somewhere else
-                return closestEdibleItem;
+
+                return closetItem;
             }
 
             return null;

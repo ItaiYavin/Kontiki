@@ -118,12 +118,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gender: 0
-  scanningRange: 1
+  scanningRange: 5.7
   energy: 1
   hunger: 0
   memoryCapacity: 5
   hungerIncrementPerSec: 5
   selectedEdibleItem: {fileID: 0}
+  memory: []
   agent: {fileID: 0}
   target: {fileID: 810892516}
 --- !u!114 &366430496
@@ -515,7 +516,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487712, guid: 9b3710083f4514a0bb14564f73658571, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -12.65
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 487712, guid: 9b3710083f4514a0bb14564f73658571, type: 2}
       propertyPath: m_LocalRotation.x
