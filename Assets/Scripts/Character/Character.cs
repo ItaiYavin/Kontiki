@@ -15,18 +15,18 @@ namespace Kontiki
         ** Inspector Items and Configuration
         **/
         public Gender gender;
-        [Range(0, 1)]
         
         
+        [Range(0, 100)]
         public float scanningRange = 1;
         
         //Stats
-        public float energy = 1;
         [Range(0, 1)]
-        public float hunger = 0;
+        public float energy = 1;
         [Range(0,100)]
+        public float hunger = 0;
         
-        
+        public int memoryCapacity = 5; //how many items can this AI store in its memory?
         //Stat affectors
         public float hungerIncrementPerSec = 0.001f;
 
@@ -35,17 +35,26 @@ namespace Kontiki
         **/
         public EdibleItem selectedEdibleItem;
         private CharacterAIContext _context;
+        private List<Transform> memory;
 
         /**
         ** Static Variables & Objects
         **/
+
+        /**
+        ** Navigation variables and objects
+        **/
+        public NavMeshAgent agent;
+        public Transform target;
         
         //Stat Min & Max
         public static float hungerMax = 100f;
         public static float hungerMin = 0f;
         
         private void Awake(){
+            memory = new List<Transform>();
             _context = new CharacterAIContext(this);
+            agent = GetComponent<NavMeshAgent>();
         }
         
 
@@ -65,11 +74,25 @@ namespace Kontiki
             
             selectedEdibleItem = CheckForClosetEdibleInRange();
 
+            if(Input.GetKeyDown(KeyCode.D)){
+                GoToDestination();
+            }
+
+            if(Input.GetKeyDown(KeyCode.R)){
+                StopMoving();
+            }
+
             if (selectedEdibleItem != null)
             {
 				if(Input.GetKeyDown(KeyCode.Q)) {
 					ConsumeEdibleItem(selectedEdibleItem);
 				}
+            }
+
+            if(memory.Count > memoryCapacity){ //Remove last in memory list. Looks retarded but should work like this.
+                memory.Reverse();
+                memory.RemoveAt(0);
+                memory.Reverse();
             }
         }
         
@@ -87,6 +110,7 @@ namespace Kontiki
                 selectedEdibleItem = CheckForClosetEdibleInRange();
             }
         }
+
         EdibleItem CheckForClosetEdibleInRange()
         {
             // Find every Objects within scanningRange area
@@ -104,7 +128,7 @@ namespace Kontiki
 
             // If we found edibleItems then find the closet one to the player
             if(edibleItemsInRange.Count > 0) {
-                EdibleItem closetEdibleItem = edibleItemsInRange[0];
+                EdibleItem closestEdibleItem = edibleItemsInRange[0];
                 Vector3 v = (edibleItemsInRange[0].transform.position - transform.position);
                 float currentShortestDistance =  v.sqrMagnitude;
 
@@ -113,17 +137,21 @@ namespace Kontiki
                     float distance =  cv.sqrMagnitude;
 
                     if(Mathf.Abs(distance) < Mathf.Abs(currentShortestDistance)) {
-                        closetEdibleItem = edibleItemsInRange[i];
+                        closestEdibleItem = edibleItemsInRange[i];
                         currentShortestDistance = distance;
                     }
                 }
-
-                return closetEdibleItem;
+                //memory.Add(closestEdibleItem); //possibly shouldnt happen here but somewhere else
+                return closestEdibleItem;
             }
 
             return null;
         }
 
+        //TODO: make function to check through memory for food, add functionality such as "search for nearest/most saturating" so on
+        public void CheckForFoodInMemory(){
+
+        }
 
         public void ConsumeSelectedEdibleItem(){
             if(selectedEdibleItem != null){
@@ -148,6 +176,7 @@ namespace Kontiki
 
         private void OnDrawGizmosSelected()
         {
+            Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, scanningRange);
 
             if (selectedEdibleItem != null)
@@ -158,5 +187,13 @@ namespace Kontiki
             }
         }
         
+        public void GoToDestination(){
+            agent.destination = target.transform.position;
+        }
+
+        public void StopMoving(){
+            agent.destination = transform.position;
+        }
+
     }
 }

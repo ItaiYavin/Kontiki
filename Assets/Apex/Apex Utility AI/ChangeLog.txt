@@ -1,0 +1,5 @@
+﻿v 1.0.1
+	Bug Fixes:
+	- Fixed an issue with Quick Starts not showing properly.
+
+v. 1.0 Initial Release

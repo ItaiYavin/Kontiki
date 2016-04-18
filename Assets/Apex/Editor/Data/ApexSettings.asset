@@ -11,12 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: -319765701, guid: 732187d5054116b468af9049bfdf479c, type: 3}
   m_Name: ApexSettings
   m_EditorClassIdentifier: 
-  _allowAutomaticUpdateCheck: 1
+  _allowAutomaticUpdateCheck: 0
   _updateCheckIntervalHours: 12
-  _lastUpdateCheck: 04/07/2016 07:57:18
+  _lastUpdateCheck: 
   _updateCheckBaseUrl: http://apexgametoolsproductservice.azurewebsites.net
-  _knownPendingUpdates:
-  - Apex Path
-  - Apex Mecanim Tutorial Project
-  - Advanced Dynamic Obstacles
-  - Apex Steer
+  _knownPendingUpdates: []
