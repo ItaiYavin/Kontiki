@@ -6,7 +6,7 @@ using Kontiki;
 namespace Kontiki.AI
 {
     /// <summary>
-    /// Scorer for evaluating hunger, linear score between 0-1, 0 being the threshold
+    /// Scorer for whether character has an edible resource selected
     /// </summary>
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
     public sealed class HasEdibleResource : ContextualScorerBase

@@ -16,6 +16,6 @@ MonoBehaviour:
   aiId: a5080e50-4de2-4837-8261-e602aadd1717
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":b40a55bb49704b0e8cdb8b3926200ab6,"_id":a5080e504de248378261e602aadd1717,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":b40a55bb49704b0e8cdb8b3926200ab6,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.ConsumeSelectedItem, Assembly-CSharp"},"_scorers":[]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.SetEdibleInMemoryAsTarget, Assembly-CSharp","debug":true,"findNearest":true,"findMostSaturating":true,"priorityThreshold":20},"_scorers":[]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
   editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":160},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}}}'

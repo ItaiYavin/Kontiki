@@ -35,7 +35,6 @@ namespace Kontiki
         **/
         public EdibleItem selectedEdibleItem;
         private CharacterAIContext _context;
-        private List<Transform> memory;
 
         /**
         ** Static Variables & Objects
@@ -44,6 +43,7 @@ namespace Kontiki
         /**
         ** Navigation variables and objects
         **/
+        public List<Transform> memory;
         public NavMeshAgent agent;
         public Transform target;
         
@@ -90,12 +90,15 @@ namespace Kontiki
             }
 
             if(memory.Count > memoryCapacity){ //Remove last in memory list. Looks retarded but should work like this.
-                memory.Reverse();
                 memory.RemoveAt(0);
-                memory.Reverse();
             }
         }
         
+        public void ScanSorroundings(){
+            // Find every Objects within scanningRange area
+            Collider[] colliders = Physics.OverlapSphere(transform.position, scanningRange);
+        }
+
         /**
         * Actions
         * 
@@ -146,11 +149,6 @@ namespace Kontiki
             }
 
             return null;
-        }
-
-        //TODO: make function to check through memory for food, add functionality such as "search for nearest/most saturating" so on
-        public void CheckForFoodInMemory(){
-
         }
 
         public void ConsumeSelectedEdibleItem(){
