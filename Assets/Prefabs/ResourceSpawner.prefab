@@ -8,9 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455564}
-  - 114: {fileID: 11493626}
+  - 114: {fileID: 11486274}
   m_Layer: 0
-  m_Name: ResourceManager
+  m_Name: ResourceSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ Transform:
   - {fileID: 434080}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11493626
+--- !u!114 &11486274
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -64,12 +64,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 137732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f6d8327fcacb3f449b41756efb7da9c, type: 3}
+  m_Script: {fileID: 11500000, guid: c0bb8e1247ca1c1478b56cfc15c5fb6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   prefab: {fileID: 152772, guid: 9b3710083f4514a0bb14564f73658571, type: 2}
-  resourceFolder: {fileID: 175776}
+  resourceContainer: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

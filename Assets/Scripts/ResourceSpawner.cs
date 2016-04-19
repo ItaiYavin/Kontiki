@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace Kontiki
 {
-	public class ResourceManager : MonoBehaviour {
+	public class ResourceSpawner : MonoBehaviour {
 
 		public bool debug; // Will show resource areas as gizmos if on
 		public GameObject prefab;
 
 		public List<ResourceAreaCircle> areaList;
 
-		public GameObject resourceFolder;
+		public GameObject resourceContainer;
 
 		// Use this for initialization
 		void Start () {
@@ -19,11 +19,7 @@ namespace Kontiki
 			PopulateListWithResourceAreas(new Vector3(0,179,0), 1000, 10, 100, 50, 10, 100);
 			FillResourceAreas();
 		}
-		
-		// Update is called once per frame
-		void Update () {
-		
-		}
+	
 
 		public void PopulateListWithResourceAreas(	Vector3 mapCenter, float mapRadius, float minAreaRadius, float maxAreaRadius, 
 													int areaAmount, float minAreaRichness, float maxAreRichness){
@@ -65,7 +61,7 @@ namespace Kontiki
 					randomPos += areaList[i].centerPosition;
 
             		GameObject g = Instantiate(prefab, randomPos, Quaternion.identity) as GameObject;
-            		g.transform.parent = resourceFolder.transform;
+            		g.transform.parent = resourceContainer.transform;
 
             		areaList[i].resourceList.Add(g);
 				}
