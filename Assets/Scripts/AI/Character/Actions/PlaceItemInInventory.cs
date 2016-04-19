@@ -11,6 +11,7 @@ namespace Kontiki.AI{
 	public sealed class PlaceItemInInventory : ActionBase {
 		
 		public override void Execute(IAIContext context){
+            Character character = ((CharacterAIContext)context).character;
 		}
 	}
 }
