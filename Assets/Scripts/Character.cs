@@ -110,10 +110,8 @@ namespace Kontiki
             return selectedItem != null;
         }
 
-        public void SelectClosestItemInRange(){
-            if(selectedItem != null){
-                //selectedEdibleItem = CheckForClosestItemInRange();
-            }
+        public void TargetClosestItemInRange(){
+            target = CheckForClosestItemInRange().transform;
         }
 
         Item CheckForClosestItemInRange()

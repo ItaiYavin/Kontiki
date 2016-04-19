@@ -5,7 +5,7 @@ namespace Kontiki.AI{
 
 
     /// <summary>
-    /// Consumes the selected edible item if a edible is selected otherwise nothing.
+    /// Consumes the selected edible item if an edible is selected otherwise nothing.
     /// </summary>
     /// <seealso cref="Apex.AI.ActionBase" />
 
