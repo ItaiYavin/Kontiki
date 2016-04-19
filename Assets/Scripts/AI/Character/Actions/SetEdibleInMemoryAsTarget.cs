@@ -62,9 +62,6 @@ namespace Kontiki.AI
         		if(debug)
         			Debug.Log("Edible found and added to target!");
         	}
-        	if(debug)
-        		Debug.Log("No edibles found in memory");
-
         }
 	}
 }
