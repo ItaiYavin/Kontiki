@@ -20,12 +20,15 @@ namespace Kontiki
         [Range(0, 100)]
         public float scanningRange = 1;
 
+        [Range(0, 100)]
+        public float pickupRange = 1;
+
         //Stats
         [Range(0, 1)]
         public float energy = 1;
         [Range(0,100)]
         public float hunger = 0;
-
+        [Range(0, 100)]
         public int memoryCapacity = 5; //how many items can this AI store in its memory?
         //Stat affectors
         public float hungerIncrementPerSec = 0.001f;
@@ -106,6 +109,14 @@ namespace Kontiki
         * Actions
         *
         **/
+        public void Explore(){
+
+        }
+
+        public void PlaceItemInInventory(){
+
+        }
+
         public bool HasSelectedResource(){
             return selectedItem != null;
         }
