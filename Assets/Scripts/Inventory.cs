@@ -10,11 +10,11 @@ namespace Kontiki {
         public int inventorySize = 4;
 
         [SerializeField]
-        private EdibleItem[] _inventoryItems;
+        private Item[] _inventoryItems;
         private Character _character;
 
 	    void Start () {
-            _inventoryItems = new EdibleItem[inventorySize];
+            _inventoryItems = new Item[inventorySize];
             _character = GetComponent<Character>();
         }
 
@@ -39,15 +39,15 @@ namespace Kontiki {
         {
             if (_inventoryItems[i] == null) return;
 
-            _character.ConsumeEdibleItem(_inventoryItems[i]);
+            _inventoryItems[i].UseItem(_character);
             _inventoryItems[i] = null;
         }
 
-        public EdibleItem GetInventoryItem(int i) {
+        public Item GetInventoryItem(int i) {
             return _inventoryItems[i];
         }
 
-        public EdibleItem[] GetInventoryItems() {
+        public Item[] GetInventoryItems() {
             return _inventoryItems;
         }
     }

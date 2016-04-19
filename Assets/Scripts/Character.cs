@@ -1,109 +1,190 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Apex.AI;
+using UnityEngine;
+using System;
 using System.Collections.Generic;
+using Apex.AI.Components;
+
+using Kontiki.AI;
 
 namespace Kontiki
 {
-    public class Character : MonoBehaviour
-    {
+    public sealed class Character : MonoBehaviour, IContextProvider{
+
+
         /**
         ** Inspector Items and Configuration
         **/
         public Gender gender;
+
+
+        [Range(0, 100)]
+        public float scanningRange = 1;
+
+        //Stats
         [Range(0, 1)]
         public float energy = 1;
-        [Range(0, 1)]
+        [Range(0,100)]
         public float hunger = 0;
-        [Range(1, 10)]
-        public float scanningRange = 1;
+
+        public int memoryCapacity = 5; //how many items can this AI store in its memory?
+        //Stat affectors
+        public float hungerIncrementPerSec = 0.001f;
 
         /**
         ** Private Variables & Objects
         **/
-        private EdibleItem _selectedEdibleItem;
+        public Item selectedItem;
+        private CharacterAIContext _context;
+        private Item objectInVicinity;
+
+        /**
+        ** Static Variables & Objects
+        **/
+
+        /**
+        ** Navigation variables and objects
+        **/
+        public List<Transform> memory;
+        public NavMeshAgent agent;
+        public Transform target;
+
+        //Stat Min & Max
+        public static float hungerMax = 100f;
+        public static float hungerMin = 0f;
+
+        private void Awake(){
+            memory = new List<Transform>();
+            _context = new CharacterAIContext(this);
+            agent = GetComponent<NavMeshAgent>();
+        }
+
+
+        public IAIContext GetContext(Guid aiId)
+        {
+            return _context;
+        }
 
 
         void FixedUpdate()
         {
-            _selectedEdibleItem = CheckForClosetEdibleInRange();
+            objectInVicinity = CheckForClosestItemInRange();
 
-            if (_selectedEdibleItem != null)
+            if(hunger < hungerMax){
+                hunger += hungerIncrementPerSec * Time.deltaTime;
+            }else{
+                hunger = hungerMax;
+            }
+
+            //selectedEdibleItem = CheckForClosestItemInRange();
+
+            if(Input.GetKeyDown(KeyCode.D)){
+                GoToDestination();
+            }
+
+            if(Input.GetKeyDown(KeyCode.R)){
+                StopMoving();
+            }
+
+            if (selectedItem != null)
             {
-				if(Input.GetKeyDown(KeyCode.Q)) {
-					ConsumeEdibleItem(_selectedEdibleItem);
-				}
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    selectedItem.UseItem(this);
+                }
+            }
+
+            if(objectInVicinity != null){
+                memory.Add(objectInVicinity.transform);
+            }
+
+            if(memory.Count > memoryCapacity){ //Remove last in memory list.
+                memory.RemoveAt(0);
             }
         }
 
-        EdibleItem CheckForClosetEdibleInRange()
+        /**
+        * Actions
+        *
+        **/
+        public bool HasSelectedResource(){
+            return selectedItem != null;
+        }
+
+        public void SelectClosestItemInRange(){
+            if(selectedItem != null){
+                //selectedEdibleItem = CheckForClosestItemInRange();
+            }
+        }
+
+        Item CheckForClosestItemInRange()
         {
             // Find every Objects within scanningRange area
             Collider[] colliders = Physics.OverlapSphere(transform.position, scanningRange);
 
             // Look through all colliders and Look for EdibleItem and put them in a list
-            List<EdibleItem> edibleItemsInRange = new List<EdibleItem>();
+            List<Item> itemsInRange = new List<Item>();
             foreach (Collider c in colliders) {
-                EdibleItem foundEdibleItem = c.GetComponent<EdibleItem>();
-                if (foundEdibleItem != null)
+                Item foundItem = c.GetComponent<Item>();
+                if (foundItem != null)
                 {
-                    edibleItemsInRange.Add(foundEdibleItem);
+                    itemsInRange.Add(foundItem);
                 }
             }
 
             // If we found edibleItems then find the closet one to the player
-            if(edibleItemsInRange.Count > 0) {
-                EdibleItem closetEdibleItem = edibleItemsInRange[0];
-                float x = (edibleItemsInRange[0].transform.position.x - transform.position.x);
-                float y = (edibleItemsInRange[0].transform.position.y - transform.position.y);
-                float z = (edibleItemsInRange[0].transform.position.z - transform.position.z);
+            if(itemsInRange.Count > 0) {
+                Item closestItem = itemsInRange[0];
+                float x = (itemsInRange[0].transform.position.x - transform.position.x);
+                float y = (itemsInRange[0].transform.position.y - transform.position.y);
+                float z = (itemsInRange[0].transform.position.z - transform.position.z);
                 float currentShortestDistance =  (x * x) + (y * y) + (z * z);
 
-                for(int i = 1; i < edibleItemsInRange.Count; i++) {
-                    float cx = (edibleItemsInRange[i].transform.position.x - transform.position.x);
-                    float cy = (edibleItemsInRange[i].transform.position.y - transform.position.y);
-                    float cz = (edibleItemsInRange[i].transform.position.z - transform.position.z);
+                for(int i = 1; i < itemsInRange.Count; i++) {
+                    float cx = (itemsInRange[i].transform.position.x - transform.position.x);
+                    float cy = (itemsInRange[i].transform.position.y - transform.position.y);
+                    float cz = (itemsInRange[i].transform.position.z - transform.position.z);
                     float distance =  (cx * cx) + (cy * cy) + (cz * cz);
 
                     if(Mathf.Abs(distance) < Mathf.Abs(currentShortestDistance)) {
-                        closetEdibleItem = edibleItemsInRange[i];
+                        closestItem = itemsInRange[i];
                         currentShortestDistance = distance;
                     }
                 }
 
-                return closetEdibleItem;
+                return closestItem;
             }
 
             return null;
         }
 
-
-
-        public void ConsumeEdibleItem(EdibleItem edibleItem)
-        {
-            if (hunger > 0)
+        public void UseSelectedItem(){
+            if (selectedItem != null)
             {
-                Debug.Log(name + " have consumed " + edibleItem.name + " and lost " + edibleItem.saturation + " in hunger");
-
-                hunger = Mathf.Max(0f, hunger - edibleItem.saturation);
-
-                Destroy(edibleItem.gameObject);
-            }
-            else
-            {
-                Debug.Log(name + " is not hungry, " + edibleItem.name + " is not consumed");
+                selectedItem.UseItem(this);
             }
         }
 
-        void OnDrawGizmosSelected()
+        private void OnDrawGizmosSelected()
         {
+            Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, scanningRange);
 
-            if (_selectedEdibleItem != null)
+            if (selectedItem != null)
             {
-                Gizmos.DrawLine(transform.position, _selectedEdibleItem.transform.position);
+                Gizmos.DrawLine(transform.position, selectedItem.transform.position);
                 Gizmos.color = Color.red;
-                Gizmos.DrawSphere(_selectedEdibleItem.transform.position, 0.25f);
+                Gizmos.DrawSphere(selectedItem.transform.position, 0.25f);
             }
         }
+
+        public void GoToDestination(){
+            agent.destination = target.transform.position;
+            Debug.Log("Moving to target");
+        }
+
+        public void StopMoving(){
+            agent.destination = transform.position;
+        }
+
     }
 }
