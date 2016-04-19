@@ -10,22 +10,22 @@ namespace Kontiki
 {
     public sealed class Character : MonoBehaviour, IContextProvider{
 
-  
+
         /**
         ** Inspector Items and Configuration
         **/
         public Gender gender;
-        
-        
+
+
         [Range(0, 100)]
         public float scanningRange = 1;
-        
+
         //Stats
         [Range(0, 1)]
         public float energy = 1;
         [Range(0,100)]
         public float hunger = 0;
-        
+
         public int memoryCapacity = 5; //how many items can this AI store in its memory?
         //Stat affectors
         public float hungerIncrementPerSec = 0.001f;
@@ -33,7 +33,7 @@ namespace Kontiki
         /**
         ** Private Variables & Objects
         **/
-        public EdibleItem selectedEdibleItem;
+        public Item selectedItem;
         private CharacterAIContext _context;
         private Item objectInVicinity;
 
@@ -47,17 +47,17 @@ namespace Kontiki
         public List<Transform> memory;
         public NavMeshAgent agent;
         public Transform target;
-        
+
         //Stat Min & Max
         public static float hungerMax = 100f;
         public static float hungerMin = 0f;
-        
+
         private void Awake(){
             memory = new List<Transform>();
             _context = new CharacterAIContext(this);
             agent = GetComponent<NavMeshAgent>();
         }
-        
+
 
         public IAIContext GetContext(Guid aiId)
         {
@@ -74,7 +74,7 @@ namespace Kontiki
             }else{
                 hunger = hungerMax;
             }
-            
+
             //selectedEdibleItem = CheckForClosestItemInRange();
 
             if(Input.GetKeyDown(KeyCode.D)){
@@ -85,10 +85,11 @@ namespace Kontiki
                 StopMoving();
             }
 
-            if (selectedEdibleItem != null)
+            if (selectedItem != null)
             {
-                if(Input.GetKeyDown(KeyCode.Q)) {
-                    ConsumeEdibleItem(selectedEdibleItem);
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    selectedItem.UseItem(this);
                 }
             }
 
@@ -103,14 +104,14 @@ namespace Kontiki
 
         /**
         * Actions
-        * 
+        *
         **/
-        public bool HasSelectedEdibleResource(){
-            return selectedEdibleItem != null;
+        public bool HasSelectedResource(){
+            return selectedItem != null;
         }
-        
-        public void SelectClosestEdibleInRange(){
-            if(selectedEdibleItem != null){
+
+        public void SelectClosestItemInRange(){
+            if(selectedItem != null){
                 //selectedEdibleItem = CheckForClosestItemInRange();
             }
         }
@@ -156,24 +157,10 @@ namespace Kontiki
             return null;
         }
 
-        public void ConsumeSelectedEdibleItem(){
-            if(selectedEdibleItem != null){
-                ConsumeEdibleItem(selectedEdibleItem);
-            }
-        }
-        void ConsumeEdibleItem(EdibleItem edibleItem)
-        {
-            if (hunger > 0)
+        public void UseSelectedItem(){
+            if (selectedItem != null)
             {
-                Debug.Log(name + " have consumed " + edibleItem.name + " and lost " + edibleItem.saturation + " in hunger");
-
-                hunger = Mathf.Max(0f, hunger - edibleItem.saturation);
-
-                Destroy(edibleItem.gameObject);
-            }
-            else
-            {
-                Debug.Log(name + " is not hungry, " + edibleItem.name + " is not consumed");
+                selectedItem.UseItem(this);
             }
         }
 
@@ -182,14 +169,14 @@ namespace Kontiki
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, scanningRange);
 
-            if (selectedEdibleItem != null)
+            if (selectedItem != null)
             {
-                Gizmos.DrawLine(transform.position, selectedEdibleItem.transform.position);
+                Gizmos.DrawLine(transform.position, selectedItem.transform.position);
                 Gizmos.color = Color.red;
-                Gizmos.DrawSphere(selectedEdibleItem.transform.position, 0.25f);
+                Gizmos.DrawSphere(selectedItem.transform.position, 0.25f);
             }
         }
-        
+
         public void GoToDestination(){
             agent.destination = target.transform.position;
             Debug.Log("Moving to target");
