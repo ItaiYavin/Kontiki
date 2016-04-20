@@ -82,7 +82,7 @@ function FixedUpdate () {
 		
 	//CHECK FOR ACTION KEY
 	onAction = false;
-	if (Input.GetKeyUp("f") && enableAction){
+	if (Input.GetKeyUp(actionKey) && enableAction){
 		onAction = true;
 	}
 	
