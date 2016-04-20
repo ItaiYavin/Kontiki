@@ -31,7 +31,7 @@ namespace Kontiki
         [Range(0, 100)]
         public int memoryCapacity = 5; //how many items can this AI store in its memory?
         //Stat affectors
-        public float hungerIncrementPerSec = 0.001f;
+        public float hungerIncrementPerSec = 0.1f;
 
         /**
         ** Private Variables & Objects
