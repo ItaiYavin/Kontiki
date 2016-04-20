@@ -45,6 +45,7 @@ namespace Kontiki
         public Item selectedItem;
         private Inventory inv;
         private Item targetItem;
+        private bool mouseOver;
 
         /**
         ** Static Variables & Objects
@@ -87,10 +88,6 @@ namespace Kontiki
 
             //selectedEdibleItem = CheckForClosestItemInRange();
 
-            if(Input.GetKeyDown(KeyCode.D)){
-                PickUpItem(target.GetComponent<Item>());
-            }
-
             if (selectedItem != null)
             {
                 if (Input.GetKeyDown(KeyCode.Q))
@@ -106,6 +103,45 @@ namespace Kontiki
             if(memory.Count > memoryCapacity){ //Remove last in memory list.
                 memory.RemoveAt(0);
             }
+        
+        	MouseRay();
+            
+            if(Input.GetKeyDown(KeyCode.R)){
+                if(targetItem != null)
+                	PickUpItem(targetItem);
+            }
+        }
+
+        public void MouseRay(){ //TODO: FIND BETTER METHOD (THIS METHOD SETS THE OUTLINE TO 0)
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Item item;
+            Renderer itemRend;
+			if (Physics.Raycast(ray, out hit)){
+				item = hit.transform.GetComponent<Item>();
+				itemRend = hit.transform.GetComponent<Renderer>();
+				if(item != null){
+					if(targetItem == item)
+						return;
+					else if(targetItem == null){					
+						targetItem = item;
+						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0.005f);
+						return;
+					}
+					else if(targetItem != item){
+						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0f);
+
+						itemRend.material.SetFloat("_Outline", 0.005f);
+						targetItem = item;
+					}
+				}
+				else{
+					if(targetItem != null){
+						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0f);
+						targetItem = null;
+					}
+				}
+			}
         }
 
         /**
