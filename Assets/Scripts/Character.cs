@@ -44,6 +44,7 @@ namespace Kontiki
         **/
         public Item selectedItem;
         private Inventory inv;
+        private Item targetItem;
 
         /**
         ** Static Variables & Objects
@@ -126,7 +127,6 @@ namespace Kontiki
         				return;
         			}
     			}
-    			pickup = null;
     			//INVENTORY IS FULL IF CODE EVER GETS HERE
         	}
         }

@@ -34,7 +34,6 @@ namespace Kontiki.AI{
 		        				return;
 		        			}
 		    			}
-		    			pickup = null;
 		    			//INVENTORY IS FULL IF CODE EVER GETS HERE
 		        	}
 			}*/
