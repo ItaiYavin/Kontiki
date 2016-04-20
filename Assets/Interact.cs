@@ -28,6 +28,7 @@ public class Interact : MonoBehaviour {
                 for(int i = 0; i < character.GetInventory().inventorySize; i++){
                 	if(character.GetInventory().GetInventoryItem(i) is EdibleItem){
                 		character.GetInventory().GetInventoryItems()[i] = null;
+                		c.transform.GetComponent<Rigidbody>().AddForce(Vector3.up*300);
                 		Debug.Log("YAY, thanks for the apple!");
                 	}
                 }
