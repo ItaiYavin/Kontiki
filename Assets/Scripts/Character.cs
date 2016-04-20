@@ -36,9 +36,16 @@ namespace Kontiki
         /**
         ** Private Variables & Objects
         **/
-        public Item selectedItem;
         private CharacterAIContext _context;
         private Item objectInVicinity;
+
+		/**
+        ** Inventory stats & Objects
+        **/
+        public Item selectedItem;
+        private Inventory inv;
+        private Item targetItem;
+        private bool mouseOver;
 
         /**
         ** Static Variables & Objects
@@ -56,6 +63,7 @@ namespace Kontiki
         public static float hungerMin = 0f;
 
         private void Awake(){
+        	inv = GetComponent<Inventory>();
             memory = new List<Transform>();
             _context = new CharacterAIContext(this);
             agent = GetComponent<NavMeshAgent>();
@@ -80,14 +88,6 @@ namespace Kontiki
 
             //selectedEdibleItem = CheckForClosestItemInRange();
 
-            if(Input.GetKeyDown(KeyCode.D)){
-                GoToDestination();
-            }
-
-            if(Input.GetKeyDown(KeyCode.R)){
-                StopMoving();
-            }
-
             if (selectedItem != null)
             {
                 if (Input.GetKeyDown(KeyCode.Q))
@@ -103,6 +103,45 @@ namespace Kontiki
             if(memory.Count > memoryCapacity){ //Remove last in memory list.
                 memory.RemoveAt(0);
             }
+        
+        	MouseRay();
+            
+            if(Input.GetKeyDown(KeyCode.R)){
+                if(targetItem != null)
+                	PickUpItem(targetItem);
+            }
+        }
+
+        public void MouseRay(){ //TODO: FIND BETTER METHOD (THIS METHOD SETS THE OUTLINE TO 0)
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Item item;
+            Renderer itemRend;
+			if (Physics.Raycast(ray, out hit)){
+				item = hit.transform.GetComponent<Item>();
+				itemRend = hit.transform.GetComponent<Renderer>();
+				if(item != null){
+					if(targetItem == item)
+						return;
+					else if(targetItem == null){					
+						targetItem = item;
+						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0.005f);
+						return;
+					}
+					else if(targetItem != item){
+						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0f);
+
+						itemRend.material.SetFloat("_Outline", 0.005f);
+						targetItem = item;
+					}
+				}
+				else{
+					if(targetItem != null){
+						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0f);
+						targetItem = null;
+					}
+				}
+			}
         }
 
         /**
@@ -113,8 +152,19 @@ namespace Kontiki
 
         }
 
-        public void PlaceItemInInventory(){
-
+        public void PickUpItem(Item item){
+        	Item pickup;
+        	if(Vector3.Distance(item.transform.position, transform.position) < pickupRange){
+        		pickup = item;
+        		for(int i = 0; i < inv.inventorySize; i++){
+        			if(inv.GetInventoryItem(i) == null){
+        				inv.GetInventoryItems()[i] = pickup;
+        				item.gameObject.SetActive(false);
+        				return;
+        			}
+    			}
+    			//INVENTORY IS FULL IF CODE EVER GETS HERE
+        	}
         }
 
         public bool HasSelectedResource(){
@@ -177,6 +227,9 @@ namespace Kontiki
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, scanningRange);
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, pickupRange);
 
             if (selectedItem != null)
             {
