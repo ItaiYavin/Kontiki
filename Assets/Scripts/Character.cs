@@ -44,7 +44,7 @@ namespace Kontiki
         **/
         public Item selectedItem;
         private Inventory inv;
-        private Item targetItem;
+        private Interactable targetInteractable;
         private bool mouseOver;
 
         /**
@@ -104,44 +104,46 @@ namespace Kontiki
                 memory.RemoveAt(0);
             }
         
-        	MouseRay();
+        	CheckMouseHoveringOverInteractable();
             
-            if(Input.GetKeyDown(KeyCode.R)){
-                if(targetItem != null)
-                	PickUpItem(targetItem);
+            if(targetInteractable != null && Input.GetMouseButtonDown(0)){
+                if(targetInteractable is Item)
+                    PickUpItem((Item)targetInteractable);
+                else
+                    targetInteractable.Interact(this);
             }
+         
         }
 
-        public void MouseRay(){ //TODO: FIND BETTER METHOD (THIS METHOD SETS THE OUTLINE TO 0)
+        public void CheckMouseHoveringOverInteractable(){ //TODO: FIND BETTER METHOD (THIS METHOD SETS THE OUTLINE TO 0)
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Item item;
-            Renderer itemRend;
-			if (Physics.Raycast(ray, out hit)){
-				item = hit.transform.GetComponent<Item>();
-				itemRend = hit.transform.GetComponent<Renderer>();
-				if(item != null){
-					if(targetItem == item)
-						return;
-					else if(targetItem == null){					
-						targetItem = item;
-						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0.005f);
-						return;
-					}
-					else if(targetItem != item){
-						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0f);
+            Interactable interactable;
+            if (Physics.Raycast(ray, out hit)){
+				interactable = hit.transform.GetComponent<Interactable>();
+				if(interactable != null){
+					if(targetInteractable == interactable && Vector3.Distance(targetInteractable.transform.position,transform.position) < pickupRange){
+                        interactable.Highlight(0.007f,new Color(0,1f,0,1f));
 
-						itemRend.material.SetFloat("_Outline", 0.005f);
-						targetItem = item;
+                    }else if(targetInteractable == null){					
+						targetInteractable = interactable;
+                        
+                        interactable.Highlight(0.005f,new Color(0,0,0,1f));
+						return;
+					}else if(targetInteractable != interactable){
+						targetInteractable.RemoveHighlight();
+
+                        interactable.Highlight(0.005f,new Color(0,0,0,1f));
+						targetInteractable = interactable;
 					}
 				}
 				else{
-					if(targetItem != null){
-						targetItem.transform.GetComponent<Renderer>().material.SetFloat("_Outline", 0f);
-						targetItem = null;
+					if(targetInteractable != null){
+						targetInteractable.RemoveHighlight();
+						targetInteractable = null;
 					}
-				}
-			}
+                }
+            }
         }
 
         /**
