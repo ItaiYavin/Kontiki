@@ -50,5 +50,14 @@ namespace Kontiki {
         public Item[] GetInventoryItems() {
             return _inventoryItems;
         }
+
+        public bool IsInventoryEmpty(){
+            for(int i = 0; i < inventorySize; i++){
+                if(_inventoryItems[i] != null){
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
