@@ -24,6 +24,19 @@ namespace Kontiki.AI{
 		public override void Execute(IAIContext context){
 			/*switch(){
 				Case :
+		        	Item pickup;
+		        	if(Vector3.Distance(item.transform.position, transform.position) < pickupRange){
+		        		pickup = item;
+		        		for(int i = 0; i < inv.inventorySize; i++){
+		        			if(inv.GetInventoryItem(i) == null){
+		        				inv.GetInventoryItems()[i] = pickup;
+		        				item.gameObject.SetActive(false);
+		        				return;
+		        			}
+		    			}
+		    			pickup = null;
+		    			//INVENTORY IS FULL IF CODE EVER GETS HERE
+		        	}
 			}*/
 		}
 	}

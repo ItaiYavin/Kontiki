@@ -36,9 +36,14 @@ namespace Kontiki
         /**
         ** Private Variables & Objects
         **/
-        public Item selectedItem;
         private CharacterAIContext _context;
         private Item objectInVicinity;
+
+		/**
+        ** Inventory stats & Objects
+        **/
+        public Item selectedItem;
+        private Inventory inv;
 
         /**
         ** Static Variables & Objects
@@ -56,6 +61,7 @@ namespace Kontiki
         public static float hungerMin = 0f;
 
         private void Awake(){
+        	inv = GetComponent<Inventory>();
             memory = new List<Transform>();
             _context = new CharacterAIContext(this);
             agent = GetComponent<NavMeshAgent>();
@@ -81,11 +87,7 @@ namespace Kontiki
             //selectedEdibleItem = CheckForClosestItemInRange();
 
             if(Input.GetKeyDown(KeyCode.D)){
-                GoToDestination();
-            }
-
-            if(Input.GetKeyDown(KeyCode.R)){
-                StopMoving();
+                PickUpItem(target.GetComponent<Item>());
             }
 
             if (selectedItem != null)
@@ -113,8 +115,20 @@ namespace Kontiki
 
         }
 
-        public void PlaceItemInInventory(){
-
+        public void PickUpItem(Item item){
+        	Item pickup;
+        	if(Vector3.Distance(item.transform.position, transform.position) < pickupRange){
+        		pickup = item;
+        		for(int i = 0; i < inv.inventorySize; i++){
+        			if(inv.GetInventoryItem(i) == null){
+        				inv.GetInventoryItems()[i] = pickup;
+        				item.gameObject.SetActive(false);
+        				return;
+        			}
+    			}
+    			pickup = null;
+    			//INVENTORY IS FULL IF CODE EVER GETS HERE
+        	}
         }
 
         public bool HasSelectedResource(){
@@ -177,6 +191,9 @@ namespace Kontiki
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, scanningRange);
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, pickupRange);
 
             if (selectedItem != null)
             {
