@@ -43,6 +43,9 @@ namespace Kontiki {
             {
                 if (inventory.GetInventoryItem(i) != null)
                     _inventoryItemButtons[i].GetComponentInChildren<Text>().text = inventory.GetInventoryItem(i).name;
+                else if(_inventoryItemButtons[i].GetComponentInChildren<Text>().text != "Button"){
+                    _inventoryItemButtons[i].GetComponentInChildren<Text>().text = "Button";
+                }
             }
         }
 

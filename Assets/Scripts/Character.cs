@@ -167,6 +167,10 @@ namespace Kontiki
         	}
         }
 
+        public Inventory GetInventory(){
+            return inv;
+        }
+
         public bool HasSelectedResource(){
             return selectedItem != null;
         }
