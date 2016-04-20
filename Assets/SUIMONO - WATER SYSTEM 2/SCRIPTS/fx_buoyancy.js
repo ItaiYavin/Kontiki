@@ -19,7 +19,7 @@ private var isUnder : boolean = false;
 private var surfaceLevel : float = 0.0;
 private var underwaterLevel : float = 0.0;
 private var isUnderwater : boolean = false;
-private var physTarget : Transform;
+public var physTarget : Transform;
 private var moduleObject : SuimonoModule;
 private var height : float = -1;
 private var waveHeight : float = 0.0;
@@ -63,7 +63,7 @@ function Start(){
 	}
 
 	//get number of buoyant objects
-	if (applyToParent){
+	if(applyToParent){
 		var buoyancyObjects : Component[];
 		buoyancyObjects = transform.parent.gameObject.GetComponentsInChildren(fx_buoyancy);
 		if (buoyancyObjects != null){
@@ -73,11 +73,13 @@ function Start(){
 
 		//set physics target
 	if (applyToParent){
-		physTarget = this.transform.parent.transform;
+		if(physTarget == null)
+			physTarget = this.transform.parent.transform;
 		if (physTarget != null){
-		if (rigidbodyComponent == null){
-			rigidbodyComponent = physTarget.GetComponent(Rigidbody);
-		}}
+			if (rigidbodyComponent == null){
+				rigidbodyComponent = physTarget.GetComponent(Rigidbody);
+			}
+		}
 	} else {
 		physTarget = this.transform;
 		if (physTarget != null){
