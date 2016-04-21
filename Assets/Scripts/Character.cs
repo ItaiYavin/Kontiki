@@ -106,7 +106,7 @@ namespace Kontiki
         
         	CheckMouseHoveringOverInteractable();
             
-            if(targetInteractable != null && Input.GetMouseButtonDown(0)){
+            if(targetInteractable != null && Vector3.Distance(targetInteractable.transform.position,transform.position) < pickupRange && Input.GetMouseButtonDown(0)){
                 if(targetInteractable is Item)
                     PickUpItem((Item)targetInteractable);
                 else

@@ -271,11 +271,11 @@ Material:
       data:
         first:
           name: _suimono_uvx
-        second: 3.2216
+        second: -6.4432
       data:
         first:
           name: _suimono_uvy
-        second: 3.2216
+        second: -6.4432
       data:
         first:
           name: _foamScale
@@ -352,7 +352,7 @@ Material:
       data:
         first:
           name: _UnderwaterColor
-        second: {r: 0.04325259, g: 0.15207611, b: 0.2352941, a: 0.404}
+        second: {r: 0.034, g: 0.102, b: 0.154, a: 0.404}
       data:
         first:
           name: _shallowColor
