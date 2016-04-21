@@ -21,6 +21,7 @@ var requireReset : boolean = true;
 var trackObject : Transform;
 var fadeSpeed : float = 0.0;
 var checkDistance : float = 200.0;
+var mouseHoverObject : Transform;
 
 private var CM : sui_demo_ControllerMaster;
 private var moduleObject : SuimonoModule;
@@ -35,10 +36,13 @@ private var fadeTimer : float = 0.0;
 private var isInSight : boolean = false;
 private var enableAction : boolean = false;
 private var savedPos : Vector3 = Vector3(0,0,0);
+private var mouseHovering:boolean = false;
+
+private var highlight:Renderer;
 
 
 function Start () {
-
+	highlight = GetComponent.<Renderer>();
 	// Object References
 	if (GameObject.Find("SUIMONO_Module")){
 		moduleObject = GameObject.Find("SUIMONO_Module").GetComponent(SuimonoModule) as SuimonoModule;
@@ -60,10 +64,13 @@ function FixedUpdate () {
 	//set default label
 	useLabel = label;
 
+	
+
+
 	//CHECK LINE OF SIGHT
-	if (GetComponent.<Camera>().main != null){
-		if (savedPos != GetComponent.<Camera>().main.transform.position){
-			savedPos = GetComponent.<Camera>().main.transform.position;
+	if (Camera.main != null){
+		if (savedPos != Camera.main.transform.position){
+			savedPos = Camera.main.transform.position;
 			isInSight = CheckLineOfSight();
 		}
 	}
@@ -72,19 +79,36 @@ function FixedUpdate () {
 	isInRange = false;
 	if (Vector3.Distance(this.transform.position,trackObject.transform.position) <= (checkDistance*0.75)) isInRange = true;
 	
-	//ENABLE ACTION
-	enableAction = false;
-	if (isInRange && !requireLineOfSight){
-		enableAction = true;
-	} else if (isInRange && requireLineOfSight && isInSight){
-		enableAction = true;
+	
+	if(mouseHoverObject != null){
+		var hit:RaycastHit;
+		var ray:Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		mouseHovering = false;
+		if (Physics.Raycast(ray, hit)){
+			if(hit.transform == mouseHoverObject){
+				mouseHovering = true;
+				if(isInRange && Input.GetMouseButtonDown(0)){
+					onAction = true;	
+				}
+			}
+		}
+	}else {
+		//ENABLE ACTION
+		enableAction = false;
+		if (isInRange && !requireLineOfSight){
+			enableAction = true;
+		} else if (isInRange && requireLineOfSight && isInSight){
+			enableAction = true;
+		}
+			
+		//CHECK FOR ACTION KEY
+		onAction = false;
+		if (Input.GetKeyUp(actionKey) && enableAction){
+			onAction = true;
+		}
 	}
-		
-	//CHECK FOR ACTION KEY
-	onAction = false;
-	if (Input.GetKeyUp(actionKey) && enableAction){
-		onAction = true;
-	}
+	
+	
 	
 	
 	//PERFORM TRIGGER ACTIONS
@@ -96,13 +120,17 @@ function FixedUpdate () {
 
 		//switch controller type
 		if (triggerType == Sui_Demo_TriggerType.switchtovehicle){
-		if (CM != null){
-			if (CM.currentControllerType == Sui_Demo_ControllerType.character){
-				CM.currentControllerType = Sui_Demo_ControllerType.boat;
-			} else if (CM.currentControllerType == Sui_Demo_ControllerType.boat){
-				CM.currentControllerType = Sui_Demo_ControllerType.character;
+			if (CM != null){
+				if (CM.currentControllerType == Sui_Demo_ControllerType.character){
+					CM.currentControllerType = Sui_Demo_ControllerType.boat;
+					highlight.material.SetColor("_TintColor",Color(0.0,0,0,0.0));
+					
+					return;
+				} else if (CM.currentControllerType == Sui_Demo_ControllerType.boat){
+					CM.currentControllerType = Sui_Demo_ControllerType.character;
+					CM.resetState();
+				}
 			}
-		}
 		}
 		
 		
@@ -116,12 +144,15 @@ function FixedUpdate () {
 		fadeTimer = Mathf.Lerp(fadeTimer,0.0,Time.deltaTime * fadeSpeed * 1.0);
 	}
 		
-	if (isInRange == true){
-		if (GetComponent.<Renderer>()) GetComponent.<Renderer>().material.SetColor("_TintColor",Color(0,1,0,0.1));
-	} else {
-		if (GetComponent.<Renderer>()) GetComponent.<Renderer>().material.SetColor("_TintColor",Color(0.5,0,0,0.1));
+	if(highlight != null){
+		if (mouseHovering && isInRange){
+			highlight.material.SetColor("_TintColor",Color(0,1,0,0.1));
+		} else if(mouseHovering) {
+			highlight.material.SetColor("_TintColor",Color(0.5,0,0,0.1));
+		}else{
+			highlight.material.SetColor("_TintColor",Color(0.0,0,0,0.0));
+		}
 	}
-
 
 }
 

@@ -20,7 +20,17 @@ function Start () {
 
 
 
-
+function resetState(){
+	if (currentControllerType == Sui_Demo_ControllerType.character){
+		characterController.isInWater 		= false;
+		characterController.isInWaterDeep 	= false;
+		characterController.isUnderWater 	= false;
+		characterController.isAtSurface 	= false;
+		characterController.isFloating 		= false;
+		characterController.isFalling 		= false;
+		characterController.isInBoat 		= false;
+	}
+}
 function LateUpdate () {
 
 	//check for reset

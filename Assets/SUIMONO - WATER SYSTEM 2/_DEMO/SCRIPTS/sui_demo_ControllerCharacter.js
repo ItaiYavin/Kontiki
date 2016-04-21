@@ -43,12 +43,12 @@ private var camHeight = 2.0;
 //var targetingSpeed : float = 5.0;
 //var followTgt : boolean = true;
 
-private var isInWater : boolean = false;
-private var isInWaterDeep : boolean = false;
-private var isUnderWater : boolean = false;
-private var isAtSurface : boolean = false;
-private var isFloating : boolean = false;
-private var isFalling : boolean = false;
+public var isInWater : boolean = false;
+public var isInWaterDeep : boolean = false;
+public var isUnderWater : boolean = false;
+public var isAtSurface : boolean = false;
+public var isFloating : boolean = false;
+public var isFalling : boolean = false;
 public var isInBoat : boolean = false;
 
 //var keepUnderwater : boolean = true;

@@ -123,17 +123,17 @@ namespace Kontiki
 				interactable = hit.transform.GetComponent<Interactable>();
 				if(interactable != null){
 					if(targetInteractable == interactable && Vector3.Distance(targetInteractable.transform.position,transform.position) < pickupRange){
-                        interactable.Highlight(0.007f,new Color(0,1f,0,1f));
+                        interactable.Highlight(new Color(0,1f,0,0.1f));
 
                     }else if(targetInteractable == null){					
 						targetInteractable = interactable;
                         
-                        interactable.Highlight(0.005f,new Color(0,0,0,1f));
+                        interactable.Highlight(new Color(0.5f,0,0,0.1f));
 						return;
 					}else if(targetInteractable != interactable){
 						targetInteractable.RemoveHighlight();
 
-                        interactable.Highlight(0.005f,new Color(0,0,0,1f));
+                        interactable.Highlight(new Color(0.5f,0,0,0.1f));
 						targetInteractable = interactable;
 					}
 				}

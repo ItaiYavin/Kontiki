@@ -6,20 +6,21 @@ namespace Kontiki
         
     public abstract class Interactable : MonoBehaviour {
         
-        public Renderer renderer;
+        public Renderer hightlightRenderer;
         
         void Awake(){
-            if(renderer == null)
-                renderer = GetComponent<Renderer>();
+            if(hightlightRenderer == null)
+                hightlightRenderer = GetComponent<Renderer>();
+            RemoveHighlight();
         }
         
-        public void Highlight(float thickness){Highlight(thickness,new Color(0,0,0,1f));}
-        public void Highlight(float thickness, Color color){
-            renderer.material.SetFloat("_Outline", thickness);
-            renderer.material.SetColor("_OutlineColor", color);
+        public void Highlight(Color color){
+            if(hightlightRenderer != null)
+                hightlightRenderer.material.SetColor("_TintColor",color);
         }
         public void RemoveHighlight(){
-            renderer.material.SetFloat("_Outline", 0f);
+            if(hightlightRenderer != null)
+                hightlightRenderer.material.SetColor("_TintColor",new Color(0,0,0,0));
         }
         
         public abstract void Interact(Character character);
