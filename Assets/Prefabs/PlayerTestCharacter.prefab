@@ -333,6 +333,7 @@ GameObject:
   - 81: {fileID: 8100000}
   - 114: {fileID: 11488120}
   - 114: {fileID: 11477454}
+  - 114: {fileID: 11498462}
   m_Layer: 0
   m_Name: PlayerTestCharacter
   m_TagString: Untagged
@@ -2001,7 +2002,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100050}
-  m_LocalRotation: {x: 0.74449897, y: 0.009206729, z: -0.2808158, w: 0.60562295}
+  m_LocalRotation: {x: 0.7444989, y: 0.009206728, z: -0.28081578, w: 0.6056229}
   m_LocalPosition: {x: -0.06367662, y: 0.036139145, z: 0.027261026}
   m_LocalScale: {x: 0.9999999, y: 0.9999998, z: 0.99999994}
   m_Children:
@@ -2832,7 +2833,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100176}
-  m_LocalRotation: {x: -0.7021131, y: -0.083888516, z: 0.7021797, w: 0.08332939}
+  m_LocalRotation: {x: -0.70211303, y: -0.08388851, z: 0.7021796, w: 0.08332938}
   m_LocalPosition: {x: -0.0007757721, y: -0.00054739375, z: 0.028938008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3390,11 +3391,22 @@ MonoBehaviour:
   energy: 1
   hunger: 0
   memoryCapacity: 5
-  hungerIncrementPerSec: 0.001
+  hungerIncrementPerSec: 0.1
   selectedItem: {fileID: 0}
   memory: []
   agent: {fileID: 0}
   target: {fileID: 0}
+--- !u!114 &11498462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118070d497da90a46aedad05e08d4798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
