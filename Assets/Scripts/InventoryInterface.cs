@@ -43,8 +43,10 @@ namespace Kontiki {
             {
                 if (inventory.GetInventoryItem(i) != null)
                     _inventoryItemButtons[i].GetComponentInChildren<Text>().text = inventory.GetInventoryItem(i).name;
-                else if(_inventoryItemButtons[i].GetComponentInChildren<Text>().text != "Button"){
-                    _inventoryItemButtons[i].GetComponentInChildren<Text>().text = "Button";
+                else if(_inventoryItemButtons[i].GetComponentInChildren<Text>().text != ""){
+                    _inventoryItemButtons[i].GetComponentInChildren<Text>().text = "";
+                    Color col = _inventoryItemButtons[i].GetComponent<Image>().color;
+                    _inventoryItemButtons[i].GetComponent<Image>().color = new Color(col.r, col.b, col.g, 0.3f);
                 }
             }
         }
