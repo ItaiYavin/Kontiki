@@ -17,6 +17,11 @@ namespace Kontiki {
         [Range(5, 60)]
         public float marginBetweenButtonsAndBar = 5;
 
+        [Header("Button Look")]
+        [Range(0, 1)]
+        public float buttonTransparency;
+        public Sprite empty, apple, water;
+
         public GameObject[] _inventoryItemButtons;
 
         private RectTransform _rt;
@@ -39,14 +44,22 @@ namespace Kontiki {
 
         private void RefreshInventory()
         {
+        	Item item;
             for (int i = 0; i < _inventoryItemButtons.Length; i++)
             {
-                if (inventory.GetInventoryItem(i) != null)
-                    _inventoryItemButtons[i].GetComponentInChildren<Text>().text = inventory.GetInventoryItem(i).name;
-                else if(_inventoryItemButtons[i].GetComponentInChildren<Text>().text != ""){
-                    _inventoryItemButtons[i].GetComponentInChildren<Text>().text = "";
+            	item = inventory.GetInventoryItem(i);
+                if (item != null){
+            		if(item is EdibleItem){
+            			Color col = _inventoryItemButtons[i].GetComponent<Image>().color;
+                		_inventoryItemButtons[i].GetComponent<Image>().sprite = apple;		
+                		_inventoryItemButtons[i].GetComponent<Image>().color = new Color(col.r, col.g, col.b, buttonTransparency);			
+            		}
+                }
+                else 
+                {
                     Color col = _inventoryItemButtons[i].GetComponent<Image>().color;
                     _inventoryItemButtons[i].GetComponent<Image>().color = new Color(col.r, col.b, col.g, 0.3f);
+                    _inventoryItemButtons[i].GetComponent<Image>().sprite = empty;
                 }
             }
         }
