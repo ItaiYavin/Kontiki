@@ -271,11 +271,11 @@ Material:
       data:
         first:
           name: _suimono_uvx
-        second: -6.4432
+        second: 3.2216
       data:
         first:
           name: _suimono_uvy
-        second: -6.4432
+        second: 9.664801
       data:
         first:
           name: _foamScale

@@ -17,6 +17,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &163766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 461612}
+  - 114: {fileID: 11407668}
+  m_Layer: 0
+  m_Name: buoyancyObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: b059d98f74e159b44b9718940f8fba10, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &185790
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,6 +45,7 @@ GameObject:
   - 33: {fileID: 3375188}
   - 23: {fileID: 2381120}
   - 135: {fileID: 13539476}
+  - 54: {fileID: 5439878}
   m_Layer: 0
   m_Name: Apple_With_Model
   m_TagString: Untagged
@@ -43,12 +60,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 290.87, y: 17.564, z: 388.93}
+  m_LocalPosition: {x: 296.881, y: 15.136851, z: 389.52322}
   m_LocalScale: {x: 0.2647002, y: 0.3211933, z: 0.2647001}
   m_Children:
   - {fileID: 488254}
+  - {fileID: 461612}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &461612
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.22, z: 0}
+  m_LocalScale: {x: 1.8889294, y: 1.556695, z: 1.8889301}
+  m_Children: []
+  m_Father: {fileID: 448658}
+  m_RootOrder: 1
 --- !u!4 &488254
 Transform:
   m_ObjectHideFlags: 1
@@ -128,6 +158,42 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185790}
   m_Mesh: {fileID: 4300002, guid: 209dbca7d653e9d4b9e464ea0d40353a, type: 3}
+--- !u!54 &5439878
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185790}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 10
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &11407668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253cf03714265b84fa2b5ef6c4f6fdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyToParent: 1
+  engageBuoyancy: 1
+  activationRange: 75
+  inheritForce: 0
+  keepAtSurface: 0
+  buoyancyOffset: 0
+  buoyancyStrength: 2
+  forceAmount: 1
+  forceHeightFactor: 0
+  physTarget: {fileID: 0}
 --- !u!114 &11414606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hightlightRenderer: {fileID: 2397980}
-  saturation: 0.1
+  saturation: 20
 --- !u!135 &13539476
 SphereCollider:
   m_ObjectHideFlags: 1
