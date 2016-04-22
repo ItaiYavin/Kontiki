@@ -23,7 +23,23 @@ namespace UnityStandardAssets.Cameras
         private float m_TurnSpeedVelocityChange; // The change in the turn speed velocity
         private Vector3 m_RollUp = Vector3.up;// The roll of the camera around the z axis ( generally this will always just be up )
 
-
+      	public bool targetIsInWater     = false;
+		public bool targetIsInDeepWater = false;
+        public bool targetIsUnderWater  = false;
+		public bool targetIsFalling     = false;
+        public bool targetIsInBoat      = false;
+        
+        public float targetMovingVertical;
+        
+        
+        public Vector3 targetIsInWaterOffset        = Vector3.zero;
+        public Vector3 targetIsInDeepWaterOffset          = Vector3.zero;
+        public Vector3 targetIsMovingDownwardsInWaterOffset    = Vector3.zero;
+        public Vector3 targetIsUnderWaterOffset     = Vector3.zero;
+        public Vector3 targetIsOnGroundOffset       = Vector3.zero;
+        public Vector3 targetIsInBoatOffset         = Vector3.zero;
+        
+				
         protected override void FollowTarget(float deltaTime)
         {
             // if no target, or no time passed then we quit early, as there is nothing to do
@@ -83,12 +99,43 @@ namespace UnityStandardAssets.Cameras
                 }
                 m_LastFlatAngle = currentFlatAngle;
             }
+            
+           if(targetIsInWater){
+               if(targetIsInDeepWater){
+                   
+                   if(targetMovingVertical < 0){
+                       
+                        targetForward += targetIsMovingDownwardsInWaterOffset;
+                   }else
+                   {
+                       targetForward += targetIsInDeepWaterOffset;
+                   }
+                   
+               }else if(targetIsUnderWater){
+                   
+                   if(targetMovingVertical < 0){
+                       targetForward += -targetIsUnderWaterOffset;
+
+                   }else if(targetMovingVertical > 0){
+                       targetForward += targetIsUnderWaterOffset;
+
+                    }
+                      
+               }else{
+                   targetForward += targetIsInWaterOffset;
+
+               }
+           }else{
+               targetForward += targetIsOnGroundOffset;
+           }
 
             // camera position moves towards target position:
             transform.position = Vector3.Lerp(transform.position, m_Target.position, deltaTime*m_MoveSpeed);
 
             // camera's rotation is split into two parts, which can have independend speed settings:
             // rotating towards the target's forward direction (which encompasses its 'yaw' and 'pitch')
+            
+            //targetForward = (m_Target.position - transform.position);
             if (!m_FollowTilt)
             {
                 targetForward.y = 0;

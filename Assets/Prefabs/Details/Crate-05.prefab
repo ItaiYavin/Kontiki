@@ -1,0 +1,354 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &122768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 497418}
+  - 114: {fileID: 11433606}
+  m_Layer: 0
+  m_Name: buoyancyObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: b059d98f74e159b44b9718940f8fba10, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &131952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 410054}
+  - 114: {fileID: 11495690}
+  m_Layer: 0
+  m_Name: buoyancyObject (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: b059d98f74e159b44b9718940f8fba10, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &140706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 464218}
+  - 114: {fileID: 11491550}
+  m_Layer: 0
+  m_Name: buoyancyObject (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: b059d98f74e159b44b9718940f8fba10, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &141902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 464576}
+  - 33: {fileID: 3361330}
+  - 23: {fileID: 2392114}
+  - 54: {fileID: 5418150}
+  - 65: {fileID: 6577924}
+  m_Layer: 0
+  m_Name: Crate-05
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &156968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 476998}
+  - 114: {fileID: 11408966}
+  m_Layer: 0
+  m_Name: buoyancyObject (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: b059d98f74e159b44b9718940f8fba10, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &167550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474126}
+  - 114: {fileID: 11435026}
+  m_Layer: 0
+  m_Name: buoyancyObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: b059d98f74e159b44b9718940f8fba10, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410054
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131952}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.0003, y: -0.0079, z: 0.0143}
+  m_LocalScale: {x: 0.012468934, y: 0.012468933, z: 0.012468933}
+  m_Children: []
+  m_Father: {fileID: 464576}
+  m_RootOrder: 3
+--- !u!4 &464218
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140706}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.009, y: -0.0005, z: 0.0143}
+  m_LocalScale: {x: 0.012468934, y: 0.012468933, z: 0.012468933}
+  m_Children: []
+  m_Father: {fileID: 464576}
+  m_RootOrder: 4
+--- !u!4 &464576
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141902}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 78.7, y: 0, z: 50.1}
+  m_LocalScale: {x: 40.099655, y: 40.099655, z: 40.099655}
+  m_Children:
+  - {fileID: 497418}
+  - {fileID: 474126}
+  - {fileID: 476998}
+  - {fileID: 410054}
+  - {fileID: 464218}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &474126
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167550}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.008, y: -0, z: 0.0143}
+  m_LocalScale: {x: 0.012468934, y: 0.012468933, z: 0.012468933}
+  m_Children: []
+  m_Father: {fileID: 464576}
+  m_RootOrder: 1
+--- !u!4 &476998
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156968}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.0001, y: 0.0077, z: 0.0143}
+  m_LocalScale: {x: 0.012468934, y: 0.012468933, z: 0.012468933}
+  m_Children: []
+  m_Father: {fileID: 464576}
+  m_RootOrder: 2
+--- !u!4 &497418
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122768}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.012468934, y: 0.012468933, z: 0.012468933}
+  m_Children: []
+  m_Father: {fileID: 464576}
+  m_RootOrder: 0
+--- !u!23 &2392114
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141902}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c97726b66ed34104992e16d6028ba148, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3361330
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141902}
+  m_Mesh: {fileID: 4300000, guid: 9701acf801983314d8bb9f254a04a131, type: 3}
+--- !u!54 &5418150
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141902}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 10
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6577924
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.015, y: 0.015, z: 0.017550005}
+  m_Center: {x: 0, y: -9.313228e-10, z: 0.008730003}
+--- !u!114 &11408966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253cf03714265b84fa2b5ef6c4f6fdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyToParent: 1
+  engageBuoyancy: 1
+  activationRange: 75
+  inheritForce: 0
+  keepAtSurface: 0
+  buoyancyOffset: 0
+  buoyancyStrength: 2
+  forceAmount: 1
+  forceHeightFactor: 0
+  physTarget: {fileID: 0}
+--- !u!114 &11433606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253cf03714265b84fa2b5ef6c4f6fdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyToParent: 1
+  engageBuoyancy: 1
+  activationRange: 75
+  inheritForce: 0
+  keepAtSurface: 0
+  buoyancyOffset: 0
+  buoyancyStrength: 2
+  forceAmount: 1
+  forceHeightFactor: 0
+  physTarget: {fileID: 0}
+--- !u!114 &11435026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253cf03714265b84fa2b5ef6c4f6fdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyToParent: 1
+  engageBuoyancy: 1
+  activationRange: 75
+  inheritForce: 0
+  keepAtSurface: 0
+  buoyancyOffset: 0
+  buoyancyStrength: 2
+  forceAmount: 1
+  forceHeightFactor: 0
+  physTarget: {fileID: 0}
+--- !u!114 &11491550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253cf03714265b84fa2b5ef6c4f6fdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyToParent: 1
+  engageBuoyancy: 1
+  activationRange: 75
+  inheritForce: 0
+  keepAtSurface: 0
+  buoyancyOffset: 0
+  buoyancyStrength: 2
+  forceAmount: 1
+  forceHeightFactor: 0
+  physTarget: {fileID: 0}
+--- !u!114 &11495690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253cf03714265b84fa2b5ef6c4f6fdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyToParent: 1
+  engageBuoyancy: 1
+  activationRange: 75
+  inheritForce: 0
+  keepAtSurface: 0
+  buoyancyOffset: 0
+  buoyancyStrength: 2
+  forceAmount: 1
+  forceHeightFactor: 0
+  physTarget: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 141902}
+  m_IsPrefabParent: 1

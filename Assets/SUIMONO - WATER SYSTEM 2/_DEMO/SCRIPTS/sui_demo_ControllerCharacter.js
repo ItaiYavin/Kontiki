@@ -1,7 +1,9 @@
 #pragma strict
 
 
+
 //PUBLIC VARIABLES
+var autoCam:UnityStandardAssets.Cameras.AutoCam;
 var isActive : boolean = false;
 var isControllable : boolean = true;
 //var isTargeting : boolean = false;
@@ -41,12 +43,12 @@ private var camHeight = 2.0;
 //var targetingSpeed : float = 5.0;
 //var followTgt : boolean = true;
 
-private var isInWater : boolean = false;
-private var isInWaterDeep : boolean = false;
-private var isUnderWater : boolean = false;
-private var isAtSurface : boolean = false;
-private var isFloating : boolean = false;
-private var isFalling : boolean = false;
+public var isInWater : boolean = false;
+public var isInWaterDeep : boolean = false;
+public var isUnderWater : boolean = false;
+public var isAtSurface : boolean = false;
+public var isFloating : boolean = false;
+public var isFalling : boolean = false;
 public var isInBoat : boolean = false;
 
 //var keepUnderwater : boolean = true;
@@ -225,8 +227,13 @@ if (isActive){
 		//if (!IC.inputKeyA && !IC.inputKeyD) moveSideways = Mathf.Lerp(moveSideways,0.0,coolTime);
 		//moveVert = lerp(moveForward,0.0,coolTime);
 
-		if (IC.inputKeyQ) moveVert = -1.0;
-		if (IC.inputKeyE) moveVert = 1.0;
+		if (IC.inputKeyQ){
+			moveVert = -1.0;
+		}
+		else if (IC.inputKeyE){
+			moveVert = 1.0;
+		} 
+		autoCam.targetMovingVertical = moveVert;
 
 
 		//MOUSE BUTTON 0
@@ -287,7 +294,7 @@ if (isActive){
 		if (reverseYAxis) MouseVerticalDistance = -IC.inputMouseY;
 	
 	
-
+/*
 
 	//---------------------------------
 	//  HANDLE CAMERA VIEWS
@@ -313,7 +320,7 @@ if (isActive){
 	//LOCK CURSOR
 	Cursor.lockState = CursorLockMode.None;
 
-	
+	*/
 	
 	//---------------------------------
 	//  SUIMONO SPECIFIC HANDLING
@@ -341,6 +348,14 @@ if (isActive){
 			if (waterLevel >= 1.8) isUnderWater = true;
 			if (waterLevel >= 1.2 && waterLevel < 1.8) isAtSurface = true;
 			if (isInWaterDeep && waterLevel > 2.0) isFloating = true;
+			
+			if(autoCam != null){
+				
+				autoCam.targetIsInWater = 		isInWater;
+				autoCam.targetIsInDeepWater = 	isInWaterDeep;
+				autoCam.targetIsUnderWater = 	isUnderWater;
+				
+			}
 
 		}
 		
@@ -577,7 +592,7 @@ if (isActive){
 		
 		
 		
-
+/*
 		//---------------------------------
 		//  CAMERA POSITIONING
 		//---------------------------------
@@ -635,8 +650,8 @@ if (isActive){
 		//set camera leaning
 		cameraObject.transform.rotation.eulerAngles.z = cameraLean;
 	
+	*/
 	}
-	
 	
 	
 	

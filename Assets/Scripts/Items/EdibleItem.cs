@@ -5,14 +5,13 @@ namespace Kontiki
 {
     public class EdibleItem : Item
     {
-        [Range(0, 1)]
+        [Range(0, 25)]
         public float saturation = 0.1f;
 
         override public bool UseItem(Character person)
         {
             if (person.hunger > 0)
             {
-                Debug.Log(name + " have consumed " + name + " and lost " + saturation + " in hunger");
 
                 person.hunger = Mathf.Max(0f, person.hunger - saturation);
 

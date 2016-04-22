@@ -31,9 +31,12 @@ namespace Kontiki {
         {
             _rt = GetComponent<RectTransform>();
             GenerateButtonsForInventoryBar();
+            float elementSize = marginBetweenButtons + sizeOfButtons;
 
-            _rt.sizeDelta = new Vector2(_rt.rect.x, marginBetweenButtonsAndBar + sizeOfButtons);
-            _rt.position = new Vector2(_rt.position.x, _rt.position.y + (marginBetweenButtonsAndBar + sizeOfButtons)/2);
+            float width = elementSize * inventory.inventorySize + marginBetweenButtonsAndBar * 2;
+
+            _rt.sizeDelta = new Vector2(width, marginBetweenButtonsAndBar + sizeOfButtons);
+            _rt.position = new Vector2(Camera.main.pixelWidth/2, _rt.position.y + (marginBetweenButtonsAndBar + sizeOfButtons)/2);
         }
 
         // Update is called once per frame
@@ -52,7 +55,8 @@ namespace Kontiki {
             		if(item is EdibleItem){
             			Color col = _inventoryItemButtons[i].GetComponent<Image>().color;
                 		_inventoryItemButtons[i].GetComponent<Image>().sprite = apple;		
-                		_inventoryItemButtons[i].GetComponent<Image>().color = new Color(col.r, col.g, col.b, buttonTransparency);			
+                		_inventoryItemButtons[i].GetComponent<Image>().color = new Color(col.r, col.g, col.b, buttonTransparency);	
+                    _inventoryItemButtons[i].GetComponent<InventoryItem>().text.text = "" + (i+1);		
             		}
                 }
                 else 
@@ -60,6 +64,7 @@ namespace Kontiki {
                     Color col = _inventoryItemButtons[i].GetComponent<Image>().color;
                     _inventoryItemButtons[i].GetComponent<Image>().color = new Color(col.r, col.b, col.g, 0.3f);
                     _inventoryItemButtons[i].GetComponent<Image>().sprite = empty;
+                    _inventoryItemButtons[i].GetComponent<InventoryItem>().text.text = "";
                 }
             }
         }
@@ -80,11 +85,7 @@ namespace Kontiki {
                 Vector3 currentPosition = _inventoryItemButtons[i].GetComponent<RectTransform>().position;
                 currentPosition.x += marginBetweenButtons * (i+1) + (sizeOfButtons/2) + (sizeOfButtons * i);
                 _inventoryItemButtons[i].GetComponent<RectTransform>().position = currentPosition;
-
-
-                // Set OnClick function
-                int k = i; // Doing weird magic in the name of Itai Yavin
-                _inventoryItemButtons[i].GetComponent<Button>().onClick.AddListener(delegate { inventory.UseInventoryItem(k); });
+                _inventoryItemButtons[i].GetComponent<InventoryItem>().text.text = "";
             }
         }
     }

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace Kontiki
 {
-	public class ResourceSpawner : MonoBehaviour {
+	public sealed class ResourceSpawner : MonoBehaviour {
 
 		public bool debug; // Will show resource areas as gizmos if on
 		public GameObject prefab;
 
-		public List<ResourceAreaCircle> areaList;
+		private List<ResourceAreaCircle> areaList;
 
 		public GameObject resourceContainer;
 
@@ -21,8 +21,7 @@ namespace Kontiki
 		}
 	
 
-		public void PopulateListWithResourceAreas(	Vector3 mapCenter, float mapRadius, float minAreaRadius, float maxAreaRadius, 
-													int areaAmount, float minAreaRichness, float maxAreRichness){
+		public void PopulateListWithResourceAreas(	Vector3 mapCenter, float mapRadius, float minAreaRadius, float maxAreaRadius, int areaAmount, float minAreaRichness, float maxAreRichness){
 			Vector3 areaPos;
 			float randomRadius;
 			float randomRichness;

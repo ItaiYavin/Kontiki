@@ -4,6 +4,7 @@
 //PUBLIC VARIABLES
 var isActive : boolean = false;
 var isControllable : boolean = true;
+var renderer:Renderer;
 //var isTargeting : boolean = false;
 var isExtraZoom : boolean = false;
 private var cameraObject : Transform;
@@ -360,7 +361,7 @@ if (isActive){
 		}
 		
 		
-		
+	/*	
 		//---------------------------------
 		//  CAMERA POSITIONING
 		//---------------------------------
@@ -418,8 +419,8 @@ if (isActive){
 		//set camera leaning
 		cameraObject.transform.rotation.eulerAngles.z = cameraLean;
 	
+	*/
 	}
-	
 	
 	
 	
