@@ -19,6 +19,8 @@ public class StatImage : MonoBehaviour {
     [Range(0.1f, 1f)]
 	public float maxTransparency;
 
+	public bool invert;
+
 	public Character character;
 	
 	private Image _image;
@@ -67,10 +69,22 @@ public class StatImage : MonoBehaviour {
 			default:
 			break;
 		}
-		float newSize = minSize+percent*(maxSize-minSize);
-		_rt.sizeDelta = new Vector2(newSize*widthRatio, newSize*heightRatio);
-		float newTrans = minTransparency+(percent*(maxTransparency-minTransparency));
-		_image.color = new Color(_imageCol.r, _imageCol.b, _imageCol.g, newTrans);
+
+		float newSize;
+		float newTrans;
+		
+		if(!invert)
+		{
+			newSize = minSize + percent * (maxSize - minSize);
+			newTrans = minTransparency + (percent * (maxTransparency - minTransparency));
+		} 
+		else 
+		{
+			newSize = (minSize + maxSize) - percent * maxSize; 
+			newTrans = (minTransparency + maxTransparency) - percent * (maxTransparency);
+		}
+			_rt.sizeDelta = new Vector2(newSize*widthRatio, newSize*heightRatio);
+			_image.color = new Color(_imageCol.r, _imageCol.b, _imageCol.g, newTrans);
 
 		CalculateImagePosition();
 	}
