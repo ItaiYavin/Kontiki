@@ -19,7 +19,16 @@ namespace Kontiki.AI
 
         public override float Score(IAIContext context){
             Character character = ((CharacterAIContext)context).character;
-            bool b = character.HasSelectedResource();
+            Inventory inventory = character.GetInventory();
+            bool b = false;;
+
+            if(!inventory.IsInventoryEmpty()){
+                for(int i = 0; i < inventory.inventorySize; i++){
+                    if(inventory.GetInventoryItem(i) is EdibleItem)
+                        b = true;
+                }
+            }
+
             if(not) b = !b;
             if(debug)
                 Debug.Log("HasEdibleResource: " + b);
