@@ -52,6 +52,8 @@ namespace Kontiki.AI{
 	            			Debug.Log("No type was chosen");
 	            		break;
 	            }
+
+	            character.selectedItem = bestCandidate;
 	        }
 	        if(debug)
 	        	Debug.Log("Inventory is empty");
