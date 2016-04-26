@@ -446,6 +446,14 @@ Prefab:
       propertyPath: pickupRange
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11408820, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: memoryCapacity
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408820, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: knownAreaSize
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
   m_IsPrefabParent: 0

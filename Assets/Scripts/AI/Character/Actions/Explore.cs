@@ -2,8 +2,10 @@ using Apex.AI;
 using Apex.Serialization;
 using Kontiki;
 using UnityEngine;
+using System.Collections.Generic;
 
-namespace Kontiki.AI{
+namespace Kontiki.AI
+{
     /// <summary>
     /// Goes to a random position.
     /// </summary>
@@ -11,21 +13,22 @@ namespace Kontiki.AI{
     public sealed class Explore : ActionBase{
         [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
         public bool debug = false;
-        
-        [ApexSerialization, FriendlyName("Range", "Range within which point will be randomly chosen")]
-        public float range = 2;
 
         public override void Execute(IAIContext context){
         	Character character = ((CharacterAIContext)context).character;
 			Vector3 point = character.transform.position;
-    		
-    		for (int i = 0; i < 30; i++) {
-				Vector3 randomPoint = character.transform.position + Random.insideUnitSphere * range;
-				NavMeshHit hit;
-				if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) {
-					point = hit.position;
-				}
-			}
+            Vector3 randomPoint = character.transform.position;
+            List<Item> map = character.GetKnownItemList();
+
+            for(int i = 0; i < 30; i++){
+                int r = Random.Range(0, map.Count);
+                randomPoint = map[r].transform.position;
+    			
+                NavMeshHit hit;
+    			if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) {
+    				point = hit.position;
+    			}
+            }
 
 			if(debug) Debug.Log("POSITION: " + point);
 
