@@ -24,7 +24,9 @@ namespace Kontiki.AI
 
             if(not) b = !b;
 
-            return b ? 1f : 0f;
+            if(debug) Debug.Log("Inventory is empty: " + b);
+
+            return b ? 1f * score : 0f * score;
         }
 	}
 }

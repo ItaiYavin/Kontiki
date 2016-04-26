@@ -1,5 +1,7 @@
 ﻿using Apex.AI;
+using Apex.Serialization;
 using Kontiki;
+using UnityEngine;
 
 namespace Kontiki.AI{
     
@@ -10,8 +12,14 @@ namespace Kontiki.AI{
     /// <seealso cref="Apex.AI.ActionBase" />
     
     public sealed class GoToDestination : ActionBase{
+    	[ApexSerialization, FriendlyName("Debug", "Debug Log values")]
+        public bool debug = false;
+
         public override void Execute(IAIContext context){
             ((CharacterAIContext)context).character.GoToDestination();
+
+            if(debug) 
+            Debug.Log("Moving to target");
         }
     }
 }

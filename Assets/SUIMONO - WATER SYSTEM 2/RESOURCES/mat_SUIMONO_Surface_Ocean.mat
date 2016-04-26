@@ -306,16 +306,16 @@ Material:
         second: 25
       data:
         first:
-          name: _InvFade
-        second: 0.24
+          name: _HeightFoamFade
+        second: 0
       data:
         first:
           name: _EmissionScaleUI
         second: 0
       data:
         first:
-          name: _HeightFoamFade
-        second: 0
+          name: _InvFade
+        second: 0.24
     m_Colors:
       data:
         first:
@@ -351,10 +351,6 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _UnderwaterColor
-        second: {r: 0.034, g: 0.102, b: 0.154, a: 0.404}
-      data:
-        first:
           name: _shallowColor
         second: {r: 0.208, g: 0.373, b: 0.441, a: 0.784}
       data:
@@ -371,13 +367,17 @@ Material:
         second: {r: 0.20113036, g: 0.32938808, b: 0.45588827, a: 1}
       data:
         first:
-          name: _EmissionColorUI
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
           name: _TintColor1
         second: {r: 0.15462804, g: 0.3273851, b: 0.38235295, a: 0}
       data:
         first:
           name: _TintColor2
         second: {r: 0.13786764, g: 0.22216217, b: 0.25, a: 0.84313726}
+      data:
+        first:
+          name: _UnderwaterColor
+        second: {r: 0.034, g: 0.102, b: 0.154, a: 0.404}
+      data:
+        first:
+          name: _EmissionColorUI
+        second: {r: 1, g: 1, b: 1, a: 1}

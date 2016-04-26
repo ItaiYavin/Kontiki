@@ -10,19 +10,61 @@ namespace Kontiki.AI
     /// </summary>
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
 	public class HasTarget : ContextualScorerBase {
+		enum ItemType 
+		{
+			anything,
+			edible, 
+			fuel,
+			character
+		};
+
         [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
         public bool debug = false;
 
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
         public bool not = false;
 
+		[ApexSerialization, FriendlyName("Item Types", "Type of item")]
+		ItemType itemType;
+
         public override float Score(IAIContext context){
-        	bool b;
+        	bool b = false;
         	Character character = ((CharacterAIContext)context).character;
-        	if(character.target != null)
-        		b = true;
-        	else 
-        		b = false;
+        	if(character.target != null){
+	        	switch(itemType){
+		        	case ItemType.anything:
+			        	if(character.target != null)
+			        		b = true;
+			        		if(debug) Debug.Log("Has target");
+			        	else 
+			        		b = false;
+			        		if(debug) Debug.Log("Has NO target");
+	        		break;
+
+	        		case ItemType.edible:
+			        	if(character.target.GetComponent<EdibleItem>() != null){
+			        		b = true;
+			        		if(debug) Debug.Log("Has edible target");
+			        	}
+			        	else {
+			        		b = false;
+			        		if(debug) Debug.Log("Has NO edible target");
+			        	}
+	        		break;
+
+	        		case ItemType.fuel:
+	        			if(debug) Debug.Log("Fuel is not implemented!");
+	        		break;
+
+	        		case ItemType.character:
+	        			if(debug) Debug.Log("Characters as targets are not implemented");
+	        		break;
+
+	        		default:
+	        			if(debug) Debug.Log("No target type chosen");
+	        		break;
+	        	}
+	        }
 
         	if(not)
         		b = !b;
@@ -30,7 +72,7 @@ namespace Kontiki.AI
             if(debug)
                 Debug.Log("HasTarget: " + b);
 
-        	return b ? 0f : 1f;
+        	return b ? 1f * score : 0f * score;
         }
 	}
 }

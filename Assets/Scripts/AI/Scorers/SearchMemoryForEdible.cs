@@ -10,13 +10,19 @@ namespace Kontiki.AI
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
     public sealed class SearchMemoryForEdible : ContextualScorerBase
     {
+        [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
+        public bool debug = false;
+
         public override float Score(IAIContext context){
             Character character = ((CharacterAIContext)context).character;
 
             for(int i = 0; i < character.memory.Count; i++)
-                if(character.memory[i].GetComponent<EdibleItem>() != null)
-                    return 1;
+                if(character.memory[i].GetComponent<EdibleItem>() != null){
+                    return 1 * score;
+                    if(debug) Debug.Log("Found edible item in memory");
+                }
 
+            if(debug) Debug.Log("Found NO edible item in memory");
             return 0;
         }
 	}
