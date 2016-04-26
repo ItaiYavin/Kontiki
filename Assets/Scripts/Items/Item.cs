@@ -6,8 +6,8 @@ namespace Kontiki
     {
         public abstract bool UseItem(Character person);
         
-       public override void Interact(Character character){
-           UseItem(character);
+       public override bool Interact(Character character){
+           return UseItem(character);
        }
     }
 }

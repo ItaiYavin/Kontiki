@@ -44,8 +44,6 @@ namespace Kontiki
         **/
         public Item selectedItem;
         private Inventory inv;
-        private Interactable targetInteractable;
-        private bool mouseOver;
 
         /**
         ** Static Variables & Objects
@@ -104,47 +102,9 @@ namespace Kontiki
                 memory.RemoveAt(0);
             }
         
-        	CheckMouseHoveringOverInteractable();
-            
-            if(targetInteractable != null && Vector3.Distance(targetInteractable.transform.position,transform.position) < pickupRange && Input.GetMouseButtonDown(0)){
-                if(targetInteractable is Item)
-                    PickUpItem((Item)targetInteractable);
-                else
-                    targetInteractable.Interact(this);
-            }
          
         }
 
-        public void CheckMouseHoveringOverInteractable(){ //TODO: FIND BETTER METHOD (THIS METHOD SETS THE OUTLINE TO 0)
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Interactable interactable;
-            if (Physics.Raycast(ray, out hit)){
-				interactable = hit.transform.GetComponent<Interactable>();
-				if(interactable != null){
-					if(targetInteractable == interactable && Vector3.Distance(targetInteractable.transform.position,transform.position) < pickupRange){
-                        interactable.Highlight(new Color(0,1f,0,0.1f));
-
-                    }else if(targetInteractable == null){					
-						targetInteractable = interactable;
-                        
-                        interactable.Highlight(new Color(0.5f,0,0,0.1f));
-						return;
-					}else if(targetInteractable != interactable){
-						targetInteractable.RemoveHighlight();
-
-                        interactable.Highlight(new Color(0.5f,0,0,0.1f));
-						targetInteractable = interactable;
-					}
-				}
-				else{
-					if(targetInteractable != null){
-						targetInteractable.RemoveHighlight();
-						targetInteractable = null;
-					}
-                }
-            }
-        }
 
         /**
         * Actions
@@ -154,7 +114,7 @@ namespace Kontiki
 
         }
 
-        public void PickUpItem(Item item){
+        public bool PickUpItem(Item item){
         	Item pickup;
         	if(Vector3.Distance(item.transform.position, transform.position) < pickupRange){
         		pickup = item;
@@ -162,11 +122,11 @@ namespace Kontiki
         			if(inv.GetInventoryItem(i) == null){
         				inv.GetInventoryItems()[i] = pickup;
         				item.gameObject.SetActive(false);
-        				return;
+        				return true;
         			}
     			}
-    			//INVENTORY IS FULL IF CODE EVER GETS HERE
         	}
+            return false;
         }
 
         public Inventory GetInventory(){
