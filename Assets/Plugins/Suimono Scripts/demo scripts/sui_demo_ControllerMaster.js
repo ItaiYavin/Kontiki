@@ -11,6 +11,9 @@ private var orbitController : sui_demo_ControllerOrbit;
 private var resetController : boolean = false;
 private var useController : Sui_Demo_ControllerType = currentControllerType;
 
+
+var interactionButtonDown:boolean = false;
+
 function Start () {
 
 	characterController = this.gameObject.GetComponent("sui_demo_ControllerCharacter") as sui_demo_ControllerCharacter;

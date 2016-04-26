@@ -3,7 +3,7 @@
 
 
 //PUBLIC VARIABLES
-var autoCam:UnityStandardAssets.Cameras.AutoCam;
+
 var isActive : boolean = false;
 var isControllable : boolean = true;
 //var isTargeting : boolean = false;
@@ -117,7 +117,7 @@ private var savePos : Vector3;
 private var oldMouseRotation : float;
 private var oldMouseVRotation : float;
 
-private var MC : sui_demo_ControllerMaster;
+private var CM : sui_demo_ControllerMaster;
 private var IC : sui_demo_InputController;
 
 private var xMove : float = 0.0;
@@ -152,7 +152,7 @@ function Awake() {
 		buoyancyObject = buoyancyTarget.GetComponent("fx_buoyancy") as fx_buoyancy;
 	}
 	
-	MC = this.gameObject.GetComponent("sui_demo_ControllerMaster") as sui_demo_ControllerMaster;
+	CM = this.gameObject.GetComponent("sui_demo_ControllerMaster") as sui_demo_ControllerMaster;
 	IC = this.gameObject.GetComponent("sui_demo_InputController") as sui_demo_InputController;
 
 
@@ -200,7 +200,7 @@ if (isActive){
 	//------------------------------------
 	//  GET DATA FROM MASTER CONTROLLER
 	//------------------------------------
-	cameraObject = MC.cameraObject;
+	cameraObject = CM.cameraObject;
 	
 	
 
@@ -233,7 +233,7 @@ if (isActive){
 		else if (IC.inputKeyE){
 			moveVert = 1.0;
 		} 
-		autoCam.targetMovingVertical = moveVert;
+//		autoCam.targetMovingVertical = moveVert;
 
 
 		//MOUSE BUTTON 0
@@ -293,8 +293,6 @@ if (isActive){
 		if (reverseXAxis) MouseRotationDistance = -IC.inputMouseX;
 		if (reverseYAxis) MouseVerticalDistance = -IC.inputMouseY;
 	
-	
-/*
 
 	//---------------------------------
 	//  HANDLE CAMERA VIEWS
@@ -320,7 +318,6 @@ if (isActive){
 	//LOCK CURSOR
 	Cursor.lockState = CursorLockMode.None;
 
-	*/
 	
 	//---------------------------------
 	//  SUIMONO SPECIFIC HANDLING
@@ -349,14 +346,14 @@ if (isActive){
 			if (waterLevel >= 1.2 && waterLevel < 1.8) isAtSurface = true;
 			if (isInWaterDeep && waterLevel > 2.0) isFloating = true;
 			
-			if(autoCam != null){
+/*			if(autoCam != null){
 				
 				autoCam.targetIsInWater = 		isInWater;
 				autoCam.targetIsInDeepWater = 	isInWaterDeep;
 				autoCam.targetIsUnderWater = 	isUnderWater;
 				
 			}
-
+*/
 		}
 		
 		//turn off buoyancy when underwater (if object exists)
@@ -373,8 +370,7 @@ if (isActive){
 
 
 
-	
-	if (isControllable){
+  	if (isControllable){
 
 
 		//---------------------------------
@@ -408,6 +404,7 @@ if (isActive){
 		
 		//Debug.Log(cameraTarget.eulerAngles.y+"  "+cameraObject.transform.eulerAngles.y);
 			//move forward
+			
 			if (moveForward == 1.0 && moveSideways == 0.0){
 				tgt = cameraObject.transform.eulerAngles.y;
 				if ((cameraTarget.eulerAngles.y-tgt) > 180.0) rotH = -360.0;
@@ -449,7 +446,6 @@ if (isActive){
 			
 				xMove = Mathf.Lerp(xMove,0.0,Time.deltaTime);
 			}
-			
 			
 				//if (moveVert != 0.0){
 				//cameraTarget.eulerAngles.x = Mathf.Lerp(cameraTarget.eulerAngles.x,90.0*moveVert,Time.deltaTime);
@@ -555,13 +551,8 @@ if (isActive){
 		}
 
 
-
-
-
-
-
 		//---------------------------------
-		//  CHARACTER MOVEMENT
+		//  Camera MOVEMENT
 		//---------------------------------
 	
 		if (cameraTarget.GetComponent.<Rigidbody>()){
@@ -590,9 +581,7 @@ if (isActive){
 			cameraTarget.GetComponent.<Rigidbody>().MovePosition(cameraTarget.GetComponent.<Rigidbody>().position + (setNewPos + setNewSidePos + setNewVertPos));
 		}
 		
-		
-		
-/*
+
 		//---------------------------------
 		//  CAMERA POSITIONING
 		//---------------------------------
@@ -603,14 +592,21 @@ if (isActive){
 		followDistance = Mathf.Clamp(followDistance,minZoomAmount,maxZoomAmount);
 		followTgtDistance = Mathf.Lerp(followTgtDistance,followDistance,Time.deltaTime*followLerpSpeed);
 		
-		// Calculate Rotation
-		camRotation = Mathf.Lerp(oldMouseRotation,MouseRotationDistance*axisSensitivity.x,Time.deltaTime);
-		targetRotation.eulerAngles.y += camRotation;
+		if(!CM.interactionButtonDown){
+			// Calculate Rotation
+			camRotation = Mathf.Lerp(oldMouseRotation,MouseRotationDistance*axisSensitivity.x,Time.deltaTime);
+		
+			targetRotation.eulerAngles.y += camRotation;
+		}
+		
+
 		cameraObject.transform.eulerAngles.x = targetRotation.eulerAngles.x;
 		cameraObject.transform.eulerAngles.y = targetRotation.eulerAngles.y;
 		
-		camHeight = Mathf.Lerp(camHeight,camHeight+MouseVerticalDistance*axisSensitivity.y,Time.deltaTime);
-		camHeight = Mathf.Clamp(camHeight,-1.0,12.0);
+		if(!CM.interactionButtonDown){
+			camHeight = Mathf.Lerp(camHeight,camHeight+MouseVerticalDistance*axisSensitivity.y,Time.deltaTime);
+			camHeight = Mathf.Clamp(camHeight,-1.0,12.0);
+		}
 		
 		// SET CAMERA POSITION and ROTATIONS
 		cameraObject.transform.position = cameraTarget.transform.position+(-cameraObject.transform.forward*followTgtDistance);
@@ -622,8 +618,8 @@ if (isActive){
 		var testPos : Vector3 = cameraTarget.transform.position;
 		testPos.y += followHeight;
 		var hit : RaycastHit;
-	    if(Physics.Linecast(testPos,cameraObject.transform.position, hit)) {
-		    if (hit.transform.gameObject.layer != suimonoModuleObject.layerWaterNum){
+		if(Physics.Linecast(testPos,cameraObject.transform.position, hit)) {
+			if (hit.transform.gameObject.layer != suimonoModuleObject.layerWaterNum){
 				if (hit.transform == transform || hit.transform == cameraTarget){
 					//do nothing
 				} else {
@@ -634,14 +630,14 @@ if (isActive){
 					}
 					
 					if (!trigCheck){
-		           	//calculate ray
-		            var dirRay = new Ray(testPos, testPos - cameraObject.transform.position);
-		           	 //move camera
-		            cameraObject.transform.position = hit.point;
-		            }
-		        }
-	        }
-	    }
+					//calculate ray
+					var dirRay = new Ray(testPos, testPos - cameraObject.transform.position);
+					//move camera
+					cameraObject.transform.position = hit.point;
+					}
+				}
+			}
+		}
 
 		//set camera offset
 		//cameraObject.transform.position.x += (cameraOffset.x);
@@ -650,11 +646,8 @@ if (isActive){
 		//set camera leaning
 		cameraObject.transform.rotation.eulerAngles.z = cameraLean;
 	
-	*/
+	
 	}
-	
-	
-	
 	//---------------------------------
 	//  SET CAMERA SETTINGS and FX
 	//---------------------------------

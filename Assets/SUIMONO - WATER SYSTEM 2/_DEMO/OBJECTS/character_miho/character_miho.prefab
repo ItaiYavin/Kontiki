@@ -333,6 +333,7 @@ GameObject:
   - 81: {fileID: 8100000}
   - 114: {fileID: 11438650}
   - 114: {fileID: 11489698}
+  - 114: {fileID: 11438866}
   m_Layer: 0
   m_Name: character_miho
   m_TagString: Player
@@ -3430,6 +3431,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySize: 9
   _inventoryItems: []
+--- !u!114 &11438866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce1a70be13626749aaab171deebca4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDown: 0
+  _key: 32
+  _scanRange: 100
+  _minIndicatorSize: 0.25
+  _maxIndicatorSize: 0.75
+  _indicatorMaxSizeRange: 2
+  _indicatorMinSizeRange: 3
+  _minIndicatorAlpha: 0
+  _maxIndicatorAlpha: 0.75
+  _indicatorTranparentRange: 10
+  _indicatorOpaqueRange: 1
+  _interactableLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  controller: {fileID: 0}
+  prefab_interactableIndicator: {fileID: 185104, guid: dd66e7cd0e29a0242801f98508dd1414,
+    type: 2}
+  container: {fileID: 0}
+  _occupiedIndicators: []
+  _freeIndicators: []
 --- !u!114 &11489698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3443,11 +3475,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gender: 0
   scanningRange: 5
-  pickupRange: 2
+  pickupRange: 3
   energy: 1
   hunger: 0
   memoryCapacity: 5
-  hungerIncrementPerSec: 0.5
+  hungerIncrementPerSec: 10
   selectedItem: {fileID: 0}
   memory: []
   agent: {fileID: 0}

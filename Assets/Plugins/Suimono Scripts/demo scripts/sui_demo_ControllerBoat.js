@@ -104,7 +104,7 @@ private var oldMouseVRotation : float;
 private var xMove : float;
 private var zMove : float;
 
-private var MC : sui_demo_ControllerMaster;
+private var CM : sui_demo_ControllerMaster;
 private var IC : sui_demo_InputController;
 
 
@@ -127,7 +127,7 @@ function Awake() {
 	//	vehicle_engine_object = vehicleTarget.gameObject.GetComponent(sui_demo_boatAnim) as sui_demo_boatAnim;
 	//}
 	
-	MC = this.gameObject.GetComponent("sui_demo_ControllerMaster") as sui_demo_ControllerMaster;
+	CM = this.gameObject.GetComponent("sui_demo_ControllerMaster") as sui_demo_ControllerMaster;
 	IC = this.gameObject.GetComponent("sui_demo_InputController") as sui_demo_InputController;
 
 
@@ -175,7 +175,7 @@ if (isActive){
 	//------------------------------------
 	//  GET DATA FROM MASTER CONTROLLER
 	//------------------------------------
-	cameraObject = MC.cameraObject;
+	cameraObject = CM.cameraObject;
 	
 	
 	//---------------------------------
@@ -361,7 +361,6 @@ if (isActive){
 		}
 		
 		
-	/*	
 		//---------------------------------
 		//  CAMERA POSITIONING
 		//---------------------------------
@@ -373,13 +372,21 @@ if (isActive){
 		followTgtDistance = Mathf.Lerp(followTgtDistance,followDistance,Time.deltaTime*followLerpSpeed);
 		
 		// Calculate Rotation
-		camRotation = Mathf.Lerp(oldMouseRotation,MouseRotationDistance*axisSensitivity.x,Time.deltaTime);
-		targetRotation.eulerAngles.y += camRotation;
+		if(!CM.interactionButtonDown){
+			// Calculate Rotation
+			camRotation = Mathf.Lerp(oldMouseRotation,MouseRotationDistance*axisSensitivity.x,Time.deltaTime);
+		
+			targetRotation.eulerAngles.y += camRotation;
+		}
+		
+
 		cameraObject.transform.eulerAngles.x = targetRotation.eulerAngles.x;
 		cameraObject.transform.eulerAngles.y = targetRotation.eulerAngles.y;
 		
-		camHeight = Mathf.Lerp(camHeight,camHeight+MouseVerticalDistance*axisSensitivity.y,Time.deltaTime);
-		camHeight = Mathf.Clamp(camHeight,-1.0,12.0);
+		if(!CM.interactionButtonDown){
+			camHeight = Mathf.Lerp(camHeight,camHeight+MouseVerticalDistance*axisSensitivity.y,Time.deltaTime);
+			camHeight = Mathf.Clamp(camHeight,0.5,12.0);
+		}
 		
 		// SET CAMERA POSITION and ROTATIONS
 		cameraObject.transform.position = cameraTarget.transform.position+(-cameraObject.transform.forward*followTgtDistance);
@@ -419,7 +426,6 @@ if (isActive){
 		//set camera leaning
 		cameraObject.transform.rotation.eulerAngles.z = cameraLean;
 	
-	*/
 	}
 	
 	

@@ -52,7 +52,7 @@ function Update () {
 	
 	//EXTRA KEYS
 	inputKeySHIFTL = Input.GetKey("left shift");
-	inputKeySPACE = Input.GetKey("space");
+	//inputKeySPACE = Input.GetKey("space");
 	inputKeyF = Input.GetKey("f");
 	inputKeyESC = Input.GetKey("escape");
 
