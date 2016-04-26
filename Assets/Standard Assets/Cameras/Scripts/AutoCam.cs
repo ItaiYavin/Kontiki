@@ -32,12 +32,24 @@ namespace UnityStandardAssets.Cameras
         public float targetMovingVertical;
         
         
-        public Vector3 targetIsInWaterOffset        = Vector3.zero;
-        public Vector3 targetIsInDeepWaterOffset          = Vector3.zero;
-        public Vector3 targetIsMovingDownwardsInWaterOffset    = Vector3.zero;
-        public Vector3 targetIsUnderWaterOffset     = Vector3.zero;
-        public Vector3 targetIsOnGroundOffset       = Vector3.zero;
-        public Vector3 targetIsInBoatOffset         = Vector3.zero;
+        public bool followMouse = false;
+        public float horizontalMouseSpeed = 10f;
+        public float verticalMouseSpeed = 10f;
+        
+        private Vector3 lastMousePosition;
+        
+        public float offsetAngleX;
+        public float offsetAngleY;
+        
+        public Quaternion offsetRotation;
+        
+        
+        public Vector3 targetIsInWaterOffset                = Vector3.zero;
+        public Vector3 targetIsInDeepWaterOffset            = Vector3.zero;
+        public Vector3 targetIsMovingDownwardsInWaterOffset = Vector3.zero;
+        public Vector3 targetIsUnderWaterOffset             = Vector3.zero;
+        public Vector3 targetIsOnGroundOffset               = Vector3.zero;
+        public Vector3 targetIsInBoatOffset                 = Vector3.zero;
         
 				
         protected override void FollowTarget(float deltaTime)
@@ -47,6 +59,20 @@ namespace UnityStandardAssets.Cameras
             {
                 return;
             }
+            
+            
+            if(followMouse){
+                Vector3 screen = new Vector3(Camera.main.pixelWidth/2,Camera.main.pixelHeight/2,0);
+                Vector3 mousePosition = Input.mousePosition;
+                Vector3 deltaMouse = (mousePosition - screen);
+                
+                deltaMouse.x *= horizontalMouseSpeed / screen.x;
+                deltaMouse.y *= verticalMouseSpeed / screen.y;
+                
+                offsetRotation = Quaternion.AngleAxis(deltaMouse.x,Vector3.up);
+                offsetRotation *= Quaternion.AngleAxis(deltaMouse.y,Vector3.right);
+            }
+            
 
             // initialise some vars, we'll be modifying these in a moment
             var targetForward = m_Target.forward;
@@ -100,6 +126,7 @@ namespace UnityStandardAssets.Cameras
                 m_LastFlatAngle = currentFlatAngle;
             }
             
+            
            if(targetIsInWater){
                if(targetIsInDeepWater){
                    
@@ -148,7 +175,7 @@ namespace UnityStandardAssets.Cameras
 
             // and aligning with the target object's up direction (i.e. its 'roll')
             m_RollUp = m_RollSpeed > 0 ? Vector3.Slerp(m_RollUp, targetUp, m_RollSpeed*deltaTime) : Vector3.up;
-            transform.rotation = Quaternion.Lerp(transform.rotation, rollRotation, m_TurnSpeed*m_CurrentTurnAmount*deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, offsetRotation, m_TurnSpeed*m_CurrentTurnAmount*deltaTime);
         }
     }
 }

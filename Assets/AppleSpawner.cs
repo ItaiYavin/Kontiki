@@ -14,12 +14,8 @@ public sealed class AppleSpawner : MonoBehaviour {
 	
 	[SerializeField] private int initNumApples = 1;
 	
-	[SerializeField] private int maxNumApples = 3;
-
-	
 	[SerializeField] private float appleSpawnDelay = 0.5f;
 	private float nextSpawn = 0;
-	private int curNumApples = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +26,8 @@ public sealed class AppleSpawner : MonoBehaviour {
 	}
 	
 	void FixedUpdate(){
-		if(curNumApples < maxNumApples && Time.time > nextSpawn){
+		if(Time.time > nextSpawn){
+			
 			spawnApple();
 			nextSpawn = Time.time + appleSpawnDelay;
 		}
@@ -39,6 +36,5 @@ public sealed class AppleSpawner : MonoBehaviour {
 	private void spawnApple(){
 		GameObject g = (GameObject)Instantiate(prefab_apple,transform.position + new Vector3( (minSpawnRadius + (maxSpawnRadius - minSpawnRadius)) * Mathf.Sin(Random.Range(-1f,1f)),0,(minSpawnRadius + (maxSpawnRadius - minSpawnRadius)) * Mathf.Cos(Random.Range(-1f,1f))), Random.rotation);		
 		g.transform.parent = transform;
-		curNumApples++;
 	}
 }

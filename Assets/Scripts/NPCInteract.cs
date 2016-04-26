@@ -24,22 +24,24 @@ namespace Kontiki
 			}
 		}
 		
-        public override void Interact(Character character){
+        public override bool Interact(Character character){
 			int inventorySize = character.GetInventory().inventorySize;
 			if(inventorySize == 0){
 				Debug.Log("You have no items!");
-				return;
+				return false;
 			}
 			for(int i = 0; i < inventorySize; i++){
 				if(character.GetInventory().GetInventoryItem(i) is EdibleItem){
 					character.GetInventory().GetInventoryItems()[i] = null;
 					Debug.Log("YAY, thanks for the apple!");
 					jumping = true;
-					return;
+					return true;
 				}
 			}
 			
+			
 			Debug.Log("You have no edible items!");
-	    }
+	    	return false;
+		}
 	}
 }

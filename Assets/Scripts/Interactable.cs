@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 namespace Kontiki
 {
         
     public abstract class Interactable : MonoBehaviour {
-        
+                
         public Renderer hightlightRenderer;
+        
+        public InteractableIndicator indicator;
+        public Sprite sprite;
         
         void Awake(){
             if(hightlightRenderer == null)
@@ -23,6 +27,6 @@ namespace Kontiki
                 hightlightRenderer.material.SetColor("_TintColor",new Color(0,0,0,0));
         }
         
-        public abstract void Interact(Character character);
+        public abstract bool Interact(Character character);
     }
 }

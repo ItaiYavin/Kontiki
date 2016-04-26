@@ -207,18 +207,6 @@ Material:
     m_Floats:
       data:
         first:
-          name: _WaveScale
-        second: 0.605
-      data:
-        first:
-          name: _ReflDist
-        second: 200
-      data:
-        first:
-          name: _ReflBlend
-        second: 0.015
-      data:
-        first:
           name: _NormalStrength
         second: 1
       data:
@@ -305,6 +293,26 @@ Material:
         first:
           name: _ShallowFade
         second: 128.084
+      data:
+        first:
+          name: _FoamFade
+        second: 1
+      data:
+        first:
+          name: _HeightFoamFade
+        second: 1
+      data:
+        first:
+          name: _WaveScale
+        second: 0.605
+      data:
+        first:
+          name: _ReflDist
+        second: 200
+      data:
+        first:
+          name: _ReflBlend
+        second: 0.015
       data:
         first:
           name: _RimPower
@@ -527,25 +535,13 @@ Material:
         second: -0.054
       data:
         first:
-          name: _FoamFade
-        second: 1
-      data:
-        first:
           name: normalShore
-        second: 1
-      data:
-        first:
-          name: _HeightFoamFade
         second: 1
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _DynReflColor
-        second: {r: 1, g: 1, b: 1, a: 0.5}
       data:
         first:
           name: _BlendColor
@@ -572,10 +568,6 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _DepthColor
-        second: {r: 0, g: 0, b: 0, a: 0}
-      data:
-        first:
           name: _shallowColor
         second: {r: 0.407, g: 0.412, b: 0.309, a: 0.894}
       data:
@@ -590,6 +582,26 @@ Material:
         first:
           name: _TintColor
         second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+      data:
+        first:
+          name: _TintColor1
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+      data:
+        first:
+          name: _TintColor2
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _UnderwaterColor
+        second: {r: 0.037, g: 0.035, b: 0.015, a: 0.427}
+      data:
+        first:
+          name: _DynReflColor
+        second: {r: 1, g: 1, b: 1, a: 0.5}
+      data:
+        first:
+          name: _DepthColor
+        second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
           name: _HighColor
@@ -634,15 +646,3 @@ Material:
         first:
           name: _castshadowColor
         second: {r: 0, g: 1, b: 0.79, a: 0.18}
-      data:
-        first:
-          name: _TintColor1
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-      data:
-        first:
-          name: _TintColor2
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      data:
-        first:
-          name: _UnderwaterColor
-        second: {r: 0.037, g: 0.035, b: 0.015, a: 0.427}
