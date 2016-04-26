@@ -16,7 +16,6 @@ namespace Kontiki
         **/
         public Gender gender;
 
-
         [Range(0, 100)]
         public float scanningRange = 1;
 
@@ -28,8 +27,8 @@ namespace Kontiki
         public float energy = 1;
         [Range(0,100)]
         public float hunger = 0;
-        [Range(0, 100)]
-        public int memoryCapacity = 5; //how many items can this AI store in its memory?
+        [Range(0, 200)]
+        public int memoryCapacity = 200; //how many items can this AI store in its memory?
         //Stat affectors
         public float hungerIncrementPerSec = 0.1f;
 
@@ -58,15 +57,22 @@ namespace Kontiki
         public NavMeshAgent agent;
         public Transform target;
 
+        [Range(0, 1000)]
+        public int knownAreaSize;
+        private List<Item> _knownItems;
+
         //Stat Min & Max
         public static float hungerMax = 100f;
         public static float hungerMin = 0f;
 
         private void Awake(){
+            _knownItems = new List<Item>();
         	inv = GetComponent<Inventory>();
             memory = new List<Item>();
             _context = new CharacterAIContext(this);
             agent = GetComponent<NavMeshAgent>();
+
+            FillKnownItemList();
         }
 
 
@@ -155,6 +161,29 @@ namespace Kontiki
         * Actions
         *
         **/
+        public List<Item> GetKnownItemList(){
+            return _knownItems;
+        }
+
+        public void FillKnownItemList(){
+            if(_knownItems.Count > 0)
+                _knownItems.Clear();
+            // Find all Objects within scanningRange area
+            Collider[] colliders = Physics.OverlapSphere(transform.position, knownAreaSize/2);
+
+            // Look through all colliders and Look for EdibleItem and put them in a list
+            List<Item> itemsInRange = new List<Item>();
+            foreach (Collider c in colliders) {
+                Item foundItem = c.GetComponent<Item>();
+                if (foundItem != null)
+                {
+                    if(foundItem is EdibleItem){
+                        _knownItems.Add(foundItem);
+                    }
+                }
+            }
+        }
+
         public void CleanMemory(){
             for(int i = 0; i < memory.Count; i++)
                 if(memory[i] == null)
@@ -190,7 +219,7 @@ namespace Kontiki
 
         Item CheckForClosestItemInRange()
         {
-            // Find every Objects within scanningRange area
+            // Find all Objects within scanningRange area
             Collider[] colliders = Physics.OverlapSphere(transform.position, scanningRange);
 
             // Look through all colliders and Look for EdibleItem and put them in a list
