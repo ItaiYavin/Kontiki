@@ -1,31 +1,26 @@
 fileFormatVersion: 2
-guid: 209dbca7d653e9d4b9e464ea0d40353a
-timeCreated: 1461156961
+guid: f6d2110723e4143b4a1872d8a17efddc
+timeCreated: 1461665782
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Direct001
-    100004: Direct001.Target
-    100006: elma
-    100008: Line001
-    100010: Plane001
-    400000: //RootNode
-    400002: Direct001
-    400004: Direct001.Target
-    400006: elma
-    400008: Line001
-    400010: Plane001
-    2300000: Line001
-    2300002: Plane001
-    3300000: Line001
-    3300002: Plane001
-    4300000: Plane001
-    4300002: Line001
+    100000: building
+    100002: //RootNode
+    100004: scale
+    400000: building
+    400002: //RootNode
+    400004: scale
+    2300000: building
+    2300002: scale
+    3300000: building
+    3300002: scale
+    4300000: building
+    4300002: scale
+    7400000: Default Take
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -48,12 +43,12 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.26
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

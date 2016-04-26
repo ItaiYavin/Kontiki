@@ -34,7 +34,7 @@ namespace Kontiki.AI
 
         	for(int i = 0; i < character.memory.Count; i++){
         		if(character.memory[i].GetComponent<EdibleItem>() != null)
-        			edibleList.Add(character.memory[i]);
+        			edibleList.Add(character.memory[i].transform);
         	}
 
         	if(edibleList.Count != 0){
