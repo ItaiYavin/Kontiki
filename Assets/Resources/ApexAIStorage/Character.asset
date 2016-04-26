@@ -16,16 +16,17 @@ MonoBehaviour:
   aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":f6d4e48195c34963920b715a3b97a0b8,"_id":5249e0f6619d4f73afac10ba51a67d6d,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":f6d4e48195c34963920b715a3b97a0b8,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":cc5c06d190444359b68de3ed61e0571c},"_scorers":[{"@type":"Kontiki.AI.HungerScorer,
-    Assembly-CSharp","debug":true,"threshold":0.25,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.ConsumeSelectedItem, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HasEdibleResource,
-    Assembly-CSharp","debug":false,"not":false,"score":10},{"@type":"Kontiki.AI.HungerScorer,
-    Assembly-CSharp","debug":false,"threshold":0.75,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.GoToDestination, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HasTarget,
-    Assembly-CSharp","debug":false,"not":false,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":cc5c06d190444359b68de3ed61e0571c,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","_scorers":[{"@type":"Kontiki.AI.HasEdibleResource, Assembly-CSharp","debug":false,"not":true}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":b2da87091bf04c908ab36750e3a045ad},"_scorers":[{"@type":"Kontiki.AI.IsInventoryEmpty,
+    Assembly-CSharp","debug":true,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":b2da87091bf04c908ab36750e3a045ad,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":c0953de659c84adaa0dcaf40ddc38b3b},"_scorers":[{"@type":"Kontiki.AI.SearchMemoryForEdible,
+    Assembly-CSharp","score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":c0953de659c84adaa0dcaf40ddc38b3b,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.SetEdibleInMemoryAsTarget, Assembly-CSharp","debug":false,"findNearest":true,"findMostSaturating":false,"priorityThreshold":0},"_scorers":[{"@type":"Kontiki.AI.HasTarget,
+    Assembly-CSharp","debug":false,"not":true,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","_scorers":[]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":196,"@y":-46},"zoom":0.85000002,"SelectorView":{"ViewArea":{"@left":26,"@top":39,"@width":255,"@height":238},"QualifierView":{"Name":"If
-    hungry","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":315,"@top":39,"@width":170,"@height":136},"QualifierView":{"Name":"Has
-    Edible Resource"},"DefaultQualifier":{}}}'
+  editorConfiguration: '{"offset":{"@x":-5,"@y":160},"zoom":0.89999998,"SelectorView":{"ViewArea":{"@left":-275,"@top":214,"@width":270,"@height":144},"QualifierView":{"Name":"Inventory
+    Check","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":31,"@top":214,"@width":180,"@height":144},"QualifierView":{"Name":"Has
+    Edible in Memory","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":265,"@top":214,"@width":180,"@height":198},"QualifierView":{"Name":"No
+    target","ActionView":{}},"QualifierView":{},"DefaultQualifier":{}}}'
