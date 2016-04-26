@@ -54,7 +54,7 @@ namespace Kontiki
         /**
         ** Navigation variables and objects
         **/
-        public List<Transform> memory;
+        public List<Item> memory;
         public NavMeshAgent agent;
         public Transform target;
 
@@ -64,7 +64,7 @@ namespace Kontiki
 
         private void Awake(){
         	inv = GetComponent<Inventory>();
-            memory = new List<Transform>();
+            memory = new List<Item>();
             _context = new CharacterAIContext(this);
             agent = GetComponent<NavMeshAgent>();
         }
@@ -97,7 +97,12 @@ namespace Kontiki
             }
 
             if(objectInVicinity != null){
-                memory.Add(objectInVicinity.transform);
+                bool b = true;
+                for(int i = 0; i < memory.Count; i++){
+                    if(objectInVicinity == memory[i])
+                        b = false;
+                }
+                if(b) memory.Add(objectInVicinity);
             }
 
             if(memory.Count > memoryCapacity){ //Remove last in memory list.
@@ -150,8 +155,10 @@ namespace Kontiki
         * Actions
         *
         **/
-        public void Explore(){
-
+        public void CleanMemory(){
+            for(int i = 0; i < memory.Count; i++)
+                if(memory[i] == null)
+                    memory.RemoveAt(i);
         }
 
         public void PickUpItem(Item item){

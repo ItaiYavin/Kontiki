@@ -23,6 +23,14 @@ namespace Kontiki {
 
         }
 
+        public void Clean(){
+            for(int i = 0; i < _inventoryItems.Length; i++){
+                if(_inventoryItems[i] == null){
+                    _inventoryItems[i] = null;
+                }
+            }
+        }
+
         //TODO Find better name
         void CheckIfInventoryItemIsPressed()
         {
