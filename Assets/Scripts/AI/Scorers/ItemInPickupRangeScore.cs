@@ -23,9 +23,6 @@ namespace Kontiki.AI
         [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
         public bool debug = false;
 
-        [ApexSerialization, FriendlyName("Target", "Checks whether target is in pick up range")]
-        public bool target = false;
-
         [ApexSerialization, FriendlyName("Not", "Inverts value")]
         public bool not = false;
 
