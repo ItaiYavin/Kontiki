@@ -16,23 +16,30 @@ MonoBehaviour:
   aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":f6d4e48195c34963920b715a3b97a0b8,"_id":5249e0f6619d4f73afac10ba51a67d6d,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":f6d4e48195c34963920b715a3b97a0b8,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":b2da87091bf04c908ab36750e3a045ad},"_scorers":[{"@type":"Kontiki.AI.IsInventoryEmpty,
-    Assembly-CSharp","debug":true,"not":false,"score":9}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.GoToDestination, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HasTarget,
-    Assembly-CSharp","debug":false,"not":false,"itemType":anything,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":b2da87091bf04c908ab36750e3a045ad,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":c0953de659c84adaa0dcaf40ddc38b3b},"_scorers":[{"@type":"Kontiki.AI.SearchMemoryForEdible,
-    Assembly-CSharp","score":9}]},{"@type":"Apex.AI.CompositeScoreQualifier, ApexAI","action":{"@type":"Kontiki.AI.PickUpItem,
-    Assembly-CSharp","debug":false,"itemType":edible},"_scorers":[{"@type":"Kontiki.AI.ItemInPickupRangeScore,
-    Assembly-CSharp","debug":false,"target":true,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":c0953de659c84adaa0dcaf40ddc38b3b,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.SetEdibleInMemoryAsTarget, Assembly-CSharp","debug":false,"findNearest":true,"findMostSaturating":false,"priorityThreshold":0},"_scorers":[{"@type":"Kontiki.AI.HasTarget,
-    Assembly-CSharp","debug":false,"not":true,"itemType":edible,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","_scorers":[]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":321,"@y":53},"zoom":0.89999998,"SelectorView":{"ViewArea":{"@left":51,"@top":107,"@width":270,"@height":198},"QualifierView":{"Name":"Inventory
-    Check","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Has
-    Target","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":357,"@top":107,"@width":180,"@height":198},"QualifierView":{"Name":"Has
-    Edible in Memory","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    in Range of Pickup","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":591,"@top":107,"@width":180,"@height":198},"QualifierView":{"Name":"No
-    edible target","ActionView":{}},"QualifierView":{},"DefaultQualifier":{}}}'
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":de37a6bdc0024dfb8096f019539c3a57},"_scorers":[{"@type":"Kontiki.AI.IsInventoryEmpty,
+    Assembly-CSharp","debug":false,"not":false,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":f5b0c95400434e61a1a731a3d469870a},"_scorers":[{"@type":"Kontiki.AI.HungerScorer,
+    Assembly-CSharp","debug":true,"threshold":0,"score":9}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}},{"@type":"Apex.AI.ScoreSelector, ApexAI","_id":de37a6bdc0024dfb8096f019539c3a57,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":61869a9658b24f63a7372aef3109ed56},"_scorers":[{"@type":"Kontiki.AI.HasTarget,
+    Assembly-CSharp","debug":false,"not":false,"itemType":edible,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":bc97abf5acce43f9af157d0963987ae3}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":61869a9658b24f63a7372aef3109ed56,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.PickUpItem, Assembly-CSharp","debug":true,"itemType":target},"_scorers":[{"@type":"Kontiki.AI.ItemInPickupRangeScore,
+    Assembly-CSharp","itemType":target,"debug":true,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.GoToDestination, Assembly-CSharp","debug":false}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":bc97abf5acce43f9af157d0963987ae3,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.SetEdibleInMemoryAsTarget, Assembly-CSharp","debug":false,"findNearest":true,"findMostSaturating":false,"priorityThreshold":0},"_scorers":[{"@type":"Kontiki.AI.SearchMemoryForEdible,
+    Assembly-CSharp","debug":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.Explore, Assembly-CSharp","debug":false,"range":2}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":f5b0c95400434e61a1a731a3d469870a,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.ConsumeSelectedItem, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HasEdibleResource,
+    Assembly-CSharp","debug":true,"inInventory":false,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.SelectItemOfTypeInInventory, Assembly-CSharp","debug":true,"itemType":edible}}}]}'
+  editorConfiguration: '{"offset":{"@x":489,"@y":130},"zoom":1,"SelectorView":{"ViewArea":{"@left":49,"@top":170,"@width":300,"@height":220},"QualifierView":{"Name":"Inventory
+    Check","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
+    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":409,"@top":70,"@width":200,"@height":160},"QualifierView":{"Name":"Has
+    Edible Target","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":649,"@top":70,"@width":200,"@height":160},"QualifierView":{"Name":"In
+    Pickup Range of target","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":649,"@top":250,"@width":220,"@height":160},"QualifierView":{"Name":"Search
+    memory for edible","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":409,"@top":270,"@width":200,"@height":160},"QualifierView":{"Name":"Has
+    selected edible?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'

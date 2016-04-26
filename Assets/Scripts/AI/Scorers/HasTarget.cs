@@ -30,34 +30,41 @@ namespace Kontiki.AI
         public override float Score(IAIContext context){
         	bool b = false;
         	Character character = ((CharacterAIContext)context).character;
-        	
-        	switch(itemType){
-	        	case ItemType.anything:
-		        	if(character.target != null)
-		        		b = true;
-		        	else 
-		        		b = false;
-        		break;
+        	if(character.target != null){
+	        	switch(itemType){
+		        	case ItemType.anything:
+			        	if(character.target != null)
+			        		b = true;
+			        		if(debug) Debug.Log("Has target");
+			        	else 
+			        		b = false;
+			        		if(debug) Debug.Log("Has NO target");
+	        		break;
 
-        		case ItemType.edible:
-		        	if(character.target is EdibleItem)
-		        		b = true;
-		        	else 
-		        		b = false;
-        		break;
+	        		case ItemType.edible:
+			        	if(character.target.GetComponent<EdibleItem>() != null){
+			        		b = true;
+			        		if(debug) Debug.Log("Has edible target");
+			        	}
+			        	else {
+			        		b = false;
+			        		if(debug) Debug.Log("Has NO edible target");
+			        	}
+	        		break;
 
-        		case ItemType.fuel:
-        			if(debug) Debug.Log("Fuel is not implemented!");
-        		break;
+	        		case ItemType.fuel:
+	        			if(debug) Debug.Log("Fuel is not implemented!");
+	        		break;
 
-        		case ItemType.character:
-        			if(debug) Debug.Log("Characters as targets are not implemented");
-        		break;
+	        		case ItemType.character:
+	        			if(debug) Debug.Log("Characters as targets are not implemented");
+	        		break;
 
-        		default:
-        			if(debug) Debug.Log("No target type chosen");
-        		break;
-        	}
+	        		default:
+	        			if(debug) Debug.Log("No target type chosen");
+	        		break;
+	        	}
+	        }
 
         	if(not)
         		b = !b;
@@ -65,7 +72,7 @@ namespace Kontiki.AI
             if(debug)
                 Debug.Log("HasTarget: " + b);
 
-        	return b ? 1f : 0f;
+        	return b ? 1f * score : 0f * score;
         }
 	}
 }

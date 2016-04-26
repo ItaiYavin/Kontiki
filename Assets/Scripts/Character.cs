@@ -247,7 +247,6 @@ namespace Kontiki
 
         public void GoToDestination(){
             agent.destination = target.transform.position;
-            Debug.Log("Moving to target");
         }
 
         public void StopMoving(){
