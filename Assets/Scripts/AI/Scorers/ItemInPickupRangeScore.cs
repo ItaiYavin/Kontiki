@@ -46,7 +46,7 @@ namespace Kontiki.AI
                 
                 case ItemType.edible:
                     // Find all Objects within scanningRange area
-                    Collider[] colliders = Physics.OverlapSphere(character.transform.position, character.pickUpRange);
+                    Collider[] colliders = Physics.OverlapSphere(character.transform.position, pickUpRange);
 
                     foreach (Collider c in colliders) {
                         Item foundItem = c.GetComponent<Item>();
@@ -67,10 +67,10 @@ namespace Kontiki.AI
                 default:
                     if(debug) Debug.Log("No target type chosen");
                 break;
-
-                if(not) b = !b;
-                return b ? 1f : 0f;
             }
+
+            if(not) b = !b;
+            return b ? 1f : 0f;
         }
     }
 }
