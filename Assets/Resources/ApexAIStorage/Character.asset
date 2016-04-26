@@ -19,8 +19,8 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":de37a6bdc0024dfb8096f019539c3a57},"_scorers":[{"@type":"Kontiki.AI.IsInventoryEmpty,
     Assembly-CSharp","debug":false,"not":false,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":f5b0c95400434e61a1a731a3d469870a},"_scorers":[{"@type":"Kontiki.AI.HungerScorer,
-    Assembly-CSharp","debug":true,"threshold":0,"score":9}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.Explore, Assembly-CSharp","debug":false,"range":2}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","debug":false,"threshold":0,"score":9}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":234dc1c37da6403b825f923b68892725}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":de37a6bdc0024dfb8096f019539c3a57,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":61869a9658b24f63a7372aef3109ed56},"_scorers":[{"@type":"Kontiki.AI.HasTarget,
     Assembly-CSharp","debug":false,"not":false,"itemType":edible,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
@@ -32,15 +32,23 @@ MonoBehaviour:
     ApexAI","_id":bc97abf5acce43f9af157d0963987ae3,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.SetEdibleInMemoryAsTarget, Assembly-CSharp","debug":false,"findNearest":true,"findMostSaturating":false,"priorityThreshold":0},"_scorers":[{"@type":"Kontiki.AI.SearchMemoryForEdible,
     Assembly-CSharp","debug":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.Explore, Assembly-CSharp","debug":false,"range":2}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":189e10d9ee70483eb5063e868c38a690}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":f5b0c95400434e61a1a731a3d469870a,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.ConsumeSelectedItem, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HasEdibleResource,
     Assembly-CSharp","debug":true,"inInventory":false,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.SelectItemOfTypeInInventory, Assembly-CSharp","debug":true,"itemType":edible}}}]}'
-  editorConfiguration: '{"offset":{"@x":493,"@y":128},"zoom":0.94999999,"SelectorView":{"ViewArea":{"@left":75,"@top":166,"@width":285,"@height":209},"QualifierView":{"Name":"Inventory
+    ApexAI","action":{"@type":"Kontiki.AI.SelectItemOfTypeInInventory, Assembly-CSharp","debug":true,"itemType":edible}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":234dc1c37da6403b825f923b68892725,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","_scorers":[{"@type":"Kontiki.AI.IsMoving, Assembly-CSharp","debug":true,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.Explore, Assembly-CSharp","debug":false}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":189e10d9ee70483eb5063e868c38a690,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","_scorers":[{"@type":"Kontiki.AI.IsMoving, Assembly-CSharp","debug":true,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.Explore, Assembly-CSharp","debug":false}}}]}'
+  editorConfiguration: '{"offset":{"@x":207,"@y":63},"zoom":0.69999999,"SelectorView":{"ViewArea":{"@left":-101,"@top":91,"@width":210,"@height":154},"QualifierView":{"Name":"Inventory
     Check","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":417,"@top":71,"@width":190,"@height":152},"QualifierView":{"Name":"Has
-    Edible Target","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":645,"@top":71,"@width":190,"@height":152},"QualifierView":{"Name":"In
-    Pickup Range of target","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":645,"@top":242,"@width":209,"@height":152},"QualifierView":{"Name":"Search
-    memory for edible","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":417,"@top":261,"@width":209,"@height":152},"QualifierView":{"Name":"Has
-    selected edible?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
+    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":151,"@top":21,"@width":140,"@height":112},"QualifierView":{"Name":"Has
+    Edible Target","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":319,"@top":21,"@width":140,"@height":112},"QualifierView":{"Name":"In
+    Pickup Range of target","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":319,"@top":147,"@width":154,"@height":112},"QualifierView":{"Name":"Search
+    memory for edible","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":151,"@top":161,"@width":154,"@height":112},"QualifierView":{"Name":"Has
+    selected edible?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":151,"@top":287,"@width":140,"@height":112},"QualifierView":{"Name":"Is
+    Moving?"},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":501,"@top":287,"@width":140,"@height":112},"QualifierView":{"Name":"Is
+    Moving?"},"DefaultQualifier":{"ActionView":{}}}}'
