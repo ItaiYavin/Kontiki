@@ -14,18 +14,27 @@ namespace Kontiki.AI
         [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
         public bool debug = false;
 
+        [ApexSerialization, FriendlyName("In Inventory", "if false will check character selected item")]
+        public bool inInventory = false;
+
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
         public bool not = false;
 
         public override float Score(IAIContext context){
             Character character = ((CharacterAIContext)context).character;
             Inventory inventory = character.GetInventory();
-            bool b = false;;
+            bool b = false;
 
-            if(!inventory.IsInventoryEmpty()){
-                for(int i = 0; i < inventory.inventorySize; i++){
-                    if(inventory.GetInventoryItem(i) is EdibleItem)
-                        b = true;
+            if(inInventory){
+                if(!inventory.IsInventoryEmpty()){
+                    for(int i = 0; i < inventory.inventorySize; i++){
+                        if(inventory.GetInventoryItem(i) is EdibleItem)
+                            b = true;
+                    }
+                }
+            } else {
+                if(character.selectedItem != null && character.selectedItem is EdibleItem){
+                    b = true;
                 }
             }
 
@@ -33,7 +42,7 @@ namespace Kontiki.AI
             if(debug)
                 Debug.Log("HasEdibleResource: " + b);
 
-            return b ? 1f : 0f;
+            return b ? 1f * score : 0f * score;
         }
     }
 }
