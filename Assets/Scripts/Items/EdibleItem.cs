@@ -29,7 +29,7 @@ namespace Kontiki
                 person.CleanMemory();
                 if(target) person.target = null;
                 if(selected) person.selectedItem = null;
-
+                person.FillKnownItemList();
                 return true;
             }
             else
