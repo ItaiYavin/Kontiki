@@ -52,19 +52,19 @@ namespace Kontiki {
             for (int i = 0; i < _inventoryItemButtons.Length; i++)
             {
             	item = inventory.GetInventoryItem(i);
+                
+                Image invImage = _inventoryItemButtons[i].GetComponent<Image>();
                 if (item != null){
-            		if(item is EdibleItem){
-            			Color col = _inventoryItemButtons[i].GetComponent<Image>().color;
-                		_inventoryItemButtons[i].GetComponent<Image>().sprite = item.sprite;		
-                		_inventoryItemButtons[i].GetComponent<Image>().color = new Color(col.r, col.g, col.b, buttonTransparency);	
+                    Color col = invImage.color;
+                    invImage.sprite = item.sprite;		
+                    invImage.color = new Color(col.r, col.g, col.b, buttonTransparency);	
                     _inventoryItemButtons[i].GetComponent<InventoryItem>().text.text = "" + (i+1);		
-            		}
                 }
                 else 
                 {
-                    Color col = _inventoryItemButtons[i].GetComponent<Image>().color;
-                    _inventoryItemButtons[i].GetComponent<Image>().color = new Color(col.r, col.b, col.g, 0.3f);
-                    _inventoryItemButtons[i].GetComponent<Image>().sprite = empty;
+                    Color col = invImage.color;
+                    invImage.color = new Color(col.r, col.b, col.g, 0.3f);
+                    invImage.sprite = empty;
                     _inventoryItemButtons[i].GetComponent<InventoryItem>().text.text = "";
                 }
             }

@@ -156,7 +156,7 @@ MonoBehaviour:
   marginBetweenButtons: 7.7
   sizeOfButtons: 30
   marginBetweenButtonsAndBar: 5
-  buttonTransparency: 0
+  buttonTransparency: 0.75
   _inventoryItemButtons: []
   empty: {fileID: 0}
 --- !u!114 &11407548
