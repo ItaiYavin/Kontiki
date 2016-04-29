@@ -9,21 +9,21 @@ namespace Kontiki.AI
     /// <summary>
     /// Goes to a random position.
     /// </summary>
-    /// <seealso cref="Apex.AI.ActionBase" />   
+    /// <seealso cref="Apex.AI.ActionBase" />
     public sealed class Explore : ActionBase{
         [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
         public bool debug = false;
 
         public override void Execute(IAIContext context){
-        	Character character = ((CharacterAIContext)context).character;
-			Vector3 point = character.transform.position;
-            Vector3 randomPoint = character.transform.position;
-            List<Item> map = character.GetKnownItemList();
+        	AIContext ai = ((AIContext)context);
+			Vector3 point = ai.pathfinder.transform.position;
+            Vector3 randomPoint = ai.pathfinder.transform.position;
+            List<Item> map = ai.memory.GetKnownItemList();
 
             for(int i = 0; i < 30; i++){
                 int r = Random.Range(0, map.Count);
                 randomPoint = map[r].transform.position;
-    			
+
                 NavMeshHit hit;
     			if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) {
     				point = hit.position;
@@ -32,7 +32,7 @@ namespace Kontiki.AI
 
 			if(debug) Debug.Log("POSITION: " + point);
 
-			character.agent.destination = point;
+            ai.pathfinder.agent.destination = point;
 		}
     }
 }

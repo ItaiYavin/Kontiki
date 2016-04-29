@@ -16,8 +16,7 @@ namespace Kontiki.AI
         public bool not = false;
 
         public override float Score(IAIContext context){
-        	Character character = ((CharacterAIContext)context).character;
-        	NavMeshAgent agent = character.agent;
+        	NavMeshAgent agent = ((AIContext)context).pathfinder.agent;
         	bool b = false;
 
         	if(agent.remainingDistance > 0){

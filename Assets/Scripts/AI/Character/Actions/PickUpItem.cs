@@ -24,17 +24,16 @@ namespace Kontiki.AI{
 		ItemType itemType;
 
 		public override void Execute(IAIContext context){
-			Character character = ((CharacterAIContext)context).character;
-            Inventory inventory = character.GetInventory();
-            float pickUpRange = character.pickupRange;
-            Vector3 target = character.target.position;
+			AIComponentContainer ai = ((AIContext)context).self;
+            float pickUpRange = SettingsSingleton.Instance.pickupRange;
+            Vector3 target = ai.pathfinder.target.position;
             Vector3 itemPos;
 
             Item closestItem;
 
-			if(!inventory.IsInventoryFull()){
+			if(!ai.inventory.IsInventoryFull()){
 				// Find every Objects within scanningRange area
-	            Collider[] colliders = Physics.OverlapSphere(character.transform.position, pickUpRange);
+	            Collider[] colliders = Physics.OverlapSphere(ai.transform.position, pickUpRange);
 
 	            // Look through all colliders and Look for EdibleItem and put them in a list
 	            List<Item> itemsInRange = new List<Item>();
@@ -49,9 +48,9 @@ namespace Kontiki.AI{
             	closestItem = itemsInRange[0];
             	float closestDistance;
             	
-            	float x = closestItem.transform.position.x - character.transform.position.x;
-            	float y = closestItem.transform.position.y - character.transform.position.y;
-            	float z = closestItem.transform.position.z - character.transform.position.z;
+            	float x = closestItem.transform.position.x - ai.transform.position.x;
+            	float y = closestItem.transform.position.y - ai.transform.position.y;
+            	float z = closestItem.transform.position.z - ai.transform.position.z;
             	closestDistance = (x * x) + (y * y) + (z * z);
             	
 				switch(itemType){
@@ -69,9 +68,9 @@ namespace Kontiki.AI{
 
 				            	float itemDistance;
 				            	
-				            	x = itemsInRange[i].transform.position.x - character.transform.position.x;
-				            	y = itemsInRange[i].transform.position.y - character.transform.position.y;
-				            	z = itemsInRange[i].transform.position.z - character.transform.position.z;
+				            	x = itemsInRange[i].transform.position.x - ai.transform.position.x;
+				            	y = itemsInRange[i].transform.position.y - ai.transform.position.y;
+				            	z = itemsInRange[i].transform.position.z - ai.transform.position.z;
 				            	itemDistance = (x * x) + (y * y) + (z * z);
 
 			            		if(itemDistance < closestDistance){
@@ -96,7 +95,7 @@ namespace Kontiki.AI{
 					break;
 				}
 
-				character.PickUpItem(closestItem);
+				ai.inventory.PutItemIntoInventory(closestItem);
 			}
 			else 
 				if(debug) Debug.Log("Inventory is full");

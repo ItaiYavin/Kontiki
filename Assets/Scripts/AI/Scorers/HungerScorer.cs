@@ -17,10 +17,10 @@ namespace Kontiki.AI
         public float threshold = 0;
         
         public override float Score(IAIContext context){
-            Character character = ((CharacterAIContext)context).character;
-            float v = Mathf.Max((character.hunger/Character.hungerMax - threshold),0)/(1-threshold);
+            AIContext ai = ((AIContext)context);
+            float v = Mathf.Max((ai.character.hunger/SettingsSingleton.Instance.hungerRange.max - threshold),0)/(1-threshold);
             if(debug)
-                Debug.Log("Hunger Score " + v + " character hunger: " + character.hunger);
+                Debug.Log("Hunger Score " + v + " character hunger: " + ai.character.hunger);
             return v * score;
         }
     }

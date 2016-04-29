@@ -60,7 +60,7 @@ public class StatImage : MonoBehaviour {
 
 		switch(statType){
 			case Type.Hunger:
-			percent = character.hunger / Character.hungerMax;
+			percent = character.hunger / SettingsSingleton.Instance.hungerRange.max;
 			break;
 
 			case Type.Thirst:

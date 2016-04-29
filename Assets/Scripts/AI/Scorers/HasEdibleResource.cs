@@ -21,8 +21,8 @@ namespace Kontiki.AI
         public bool not = false;
 
         public override float Score(IAIContext context){
-            Character character = ((CharacterAIContext)context).character;
-            Inventory inventory = character.GetInventory();
+            Character character = ((AIContext)context).character;
+            Inventory inventory = ((AIContext)context).inventory;
             bool b = false;
 
             if(inInventory){

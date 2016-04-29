@@ -11,7 +11,7 @@ namespace Kontiki.AI{
     
     public sealed class GoToTarget : ActionBase{
         public override void Execute(IAIContext context){
-             ((CharacterAIContext)context).GoToTarget();
+             ((AIContext)context).pathfinder.GoToTarget();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Kontiki.AI{
         public bool debug = false;
 
         public override void Execute(IAIContext context){
-            ((CharacterAIContext)context).character.GoToDestination();
+            ((AIContext)context).pathfinder.GoToTarget();
 
             if(debug) 
             Debug.Log("Moving to target");

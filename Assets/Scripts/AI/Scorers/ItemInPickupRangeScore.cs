@@ -28,8 +28,8 @@ namespace Kontiki.AI
 
 
         public override float Score(IAIContext context){
-            Character character = ((CharacterAIContext)context).character;
-            float pickUpRange = character.pickupRange;
+            Pathfinder character = ((AIContext)context).pathfinder;
+            float pickUpRange = SettingsSingleton.Instance.pickupRange;
 
             Vector3 targetPos = character.target.transform.position;
             bool b = false;

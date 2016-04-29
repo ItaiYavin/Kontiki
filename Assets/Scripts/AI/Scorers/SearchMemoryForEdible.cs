@@ -14,12 +14,13 @@ namespace Kontiki.AI
         public bool debug = false;
 
         public override float Score(IAIContext context){
-            Character character = ((CharacterAIContext)context).character;
+            Memory character = ((AIContext)context).memory;
 
             for(int i = 0; i < character.memory.Count; i++)
-                if(character.memory[i].GetComponent<EdibleItem>() != null){
+                if(character.memory[i].GetComponent<EdibleItem>() != null)
+                {
+                    if (debug) Debug.Log("Found edible item in memory");
                     return 1 * score;
-                    if(debug) Debug.Log("Found edible item in memory");
                 }
 
             if(debug) Debug.Log("Found NO edible item in memory");

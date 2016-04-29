@@ -25,8 +25,8 @@ namespace Kontiki.AI{
 
 
         public override void Execute(IAIContext context){
-            Character character = ((CharacterAIContext)context).character;
-            Inventory inv = character.GetComponent<Inventory>();
+            Character character = ((AIContext)context).character;
+            Inventory inv = ((AIContext)context).inventory;
             
             if(!inv.IsInventoryEmpty()){
 	            Item bestCandidate = inv.GetInventoryItem(0);

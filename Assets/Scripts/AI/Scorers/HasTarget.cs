@@ -10,14 +10,6 @@ namespace Kontiki.AI
     /// </summary>
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
 	public class HasTarget : ContextualScorerBase {
-		enum ItemType 
-		{
-			anything,
-			edible, 
-			fuel,
-			character
-		};
-
         [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
         public bool debug = false;
 
@@ -29,11 +21,11 @@ namespace Kontiki.AI
 
         public override float Score(IAIContext context){
         	bool b = false;
-        	Character character = ((CharacterAIContext)context).character;
-        	if(character.target != null){
+        	Pathfinder pathfinder = ((AIContext)context).pathfinder;
+        	if(pathfinder.target != null){
 	        	switch(itemType){
 		        	case ItemType.anything:
-			        	if(character.target != null)
+			        	if(pathfinder.target != null)
 			        		b = true;
 			        		if(debug) Debug.Log("Has target");
 			        	else 
@@ -42,7 +34,7 @@ namespace Kontiki.AI
 	        		break;
 
 	        		case ItemType.edible:
-			        	if(character.target.GetComponent<EdibleItem>() != null){
+			        	if(pathfinder.target.GetComponent<EdibleItem>() != null){
 			        		b = true;
 			        		if(debug) Debug.Log("Has edible target");
 			        	}

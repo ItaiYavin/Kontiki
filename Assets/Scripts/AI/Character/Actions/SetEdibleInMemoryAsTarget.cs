@@ -27,24 +27,25 @@ namespace Kontiki.AI
 
         public override void Execute(IAIContext context)
         {
-            Character character = ((CharacterAIContext)context).character;
+            AIContext ai = ((AIContext)context);
+            Memory memory = ai.memory;
             Transform mostFitting;
         	
         	List<Transform> edibleList = new List<Transform>();
 
-        	for(int i = 0; i < character.memory.Count; i++){
-        		if(character.memory[i].GetComponent<EdibleItem>() != null)
-        			edibleList.Add(character.memory[i].transform);
+        	for(int i = 0; i < memory.memory.Count; i++){
+        		if(memory.memory[i].GetComponent<EdibleItem>() != null)
+        			edibleList.Add(memory.memory[i].transform);
         	}
 
         	if(edibleList.Count != 0){
         		mostFitting = edibleList[0];
 
-	            for(int i = 1; i < character.memory.Count; i++)
+	            for(int i = 1; i < memory.memory.Count; i++)
 	            {
             		if(findNearest && !findMostSaturating)
-            			if(Vector3.Distance(edibleList[i].position, character.transform.position) < 
-            					Vector3.Distance(mostFitting.position, character.transform.position))
+            			if(Vector3.Distance(edibleList[i].position, memory.transform.position) < 
+            					Vector3.Distance(mostFitting.position, memory.transform.position))
             				mostFitting = edibleList[i];
 
             		if(!findNearest && findMostSaturating)
@@ -52,13 +53,13 @@ namespace Kontiki.AI
             				mostFitting = edibleList[i];
 
             		if(findNearest && findMostSaturating){
-            			float dif = Vector3.Distance(edibleList[i].position, character.transform.position) - Vector3.Distance(mostFitting.position, character.transform.position);
-            			if(dif/Vector3.Distance(mostFitting.position, character.transform.position) < priorityThreshold)
+            			float dif = Vector3.Distance(edibleList[i].position, memory.transform.position) - Vector3.Distance(mostFitting.position, memory.transform.position);
+            			if(dif/Vector3.Distance(mostFitting.position, memory.transform.position) < priorityThreshold)
             				if(mostFitting.GetComponent<EdibleItem>().saturation < edibleList[i].GetComponent<EdibleItem>().saturation)
             					mostFitting = edibleList[i];
             		}
 	            }
-        		character.target = mostFitting;
+        		ai.pathfinder.target = mostFitting;
         		if(debug)
         			Debug.Log("Edible found and added to target!");
         	}

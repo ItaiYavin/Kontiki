@@ -7,4 +7,12 @@ namespace Kontiki {
         Male,
         Female
     }
+
+    public enum ItemType
+    {
+        anything,
+        edible,
+        fuel,
+        character
+    };
 }

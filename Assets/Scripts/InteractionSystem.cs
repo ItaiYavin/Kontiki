@@ -13,6 +13,7 @@ namespace Kontiki{
 		[SerializeField] private KeyCode _key = KeyCode.Space;
 		
 		private Character _character;
+        private Inventory _inventory;
         private Interactable _lastTarget;
 		
 		[SerializeField] private float _scanRange = 100;
@@ -47,6 +48,7 @@ namespace Kontiki{
 
 		void Start () {
 			_character = GetComponent<Character>();
+            _inventory = GetComponent<Inventory>();
 			_freeIndicators = new List<InteractableIndicator>();
 			_occupiedIndicators = new List<InteractableIndicator>();
 		}
@@ -63,13 +65,13 @@ namespace Kontiki{
 				CheckMouseHoveringOverInteractable();
 				if(_lastTarget != null){
 					float distance = Vector3.Distance(_lastTarget.transform.position,transform.position);
-					if(distance < _character.pickupRange && Input.GetMouseButtonDown(0)){
+					if(distance < SettingsSingleton.Instance.pickupRange && Input.GetMouseButtonDown(0)){
 						
 						
 						bool successful = false;
 						
 						if(_lastTarget is Item)
-							successful = _character.PickUpItem((Item)_lastTarget);
+							successful = _inventory.PutItemIntoInventory((Item)_lastTarget);
 						else
 							successful = _lastTarget.Interact(_character);
 							
@@ -172,7 +174,7 @@ namespace Kontiki{
 					}else if(_lastTarget == interactable){
 						float distance = Vector3.Distance(_lastTarget.transform.position , transform.position);
 						
-						if(distance < _character.pickupRange){
+						if(distance < SettingsSingleton.Instance.pickupRange){
                        		interactable.Highlight(new Color(0,1f,0,0.3f));
 						}
 

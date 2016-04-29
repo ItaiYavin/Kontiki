@@ -31,6 +31,25 @@ namespace Kontiki {
             }
         }
 
+        public bool PutItemIntoInventory(Item item)
+        {
+            Item pickup;
+            if (Vector3.Distance(item.transform.position, transform.position) < SettingsSingleton.Instance.pickupRange)
+            {
+                pickup = item;
+                for (int i = 0; i < inventorySize; i++)
+                {
+                    if (_inventoryItems == null)
+                    {
+                        _inventoryItems[i] = pickup;
+                        item.gameObject.SetActive(false);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         //TODO Find better name
         void CheckIfInventoryItemIsPressed()
         {
