@@ -6,6 +6,15 @@ using System.Collections.Generic;
 namespace Kontiki {
 	public class IconSystem : MonoBehaviour 
 	{
+		public enum IconTypes{
+			Food = 0,
+			Eat = 1,
+			Trade = 2,
+			Quest = 3,
+			QuestItem = 4,
+			Person = 5,
+			Question = 6
+		}
 
 		public struct Icon 
 		{	
@@ -61,7 +70,24 @@ namespace Kontiki {
 
 		private Rect 		_canvasRect;
 
-		public Transform tempTrans;
+        // Static singleton property
+        public static IconSystem Instance { get; private set; }
+
+        void Awake()
+        {
+            // First we check if there are any other instances conflicting
+            if (Instance != null && Instance != this)
+            {
+                // If that is the case, we destroy other instances
+                Destroy(gameObject);
+            }
+
+            // Here we save our singleton instance
+            Instance = this;
+
+            // Furthermore we make sure that we don't destroy between scenes (this is optional)
+            DontDestroyOnLoad(gameObject);
+        }
 
 		void Start()
 		{
@@ -74,10 +100,6 @@ namespace Kontiki {
 			if(_iconList.Count > 0)
 				UpdateIcons();
 
-			if(Input.GetKeyDown(KeyCode.Space))
-			{
-				CreateIconSeries(iconSprites, tempTrans);
-			}
 		}
 
 		public void UpdateIcons()
@@ -94,9 +116,7 @@ namespace Kontiki {
 						_iconList.RemoveAt(i);
 
 						Destroy(tempIcon.image.gameObject);
-						
-						if(tempCanvas.childCount == 0)
-							Destroy(tempCanvas.gameObject);
+						Destroy(tempCanvas.gameObject);
 					}
 				}
 				else 
@@ -119,15 +139,16 @@ namespace Kontiki {
 			return can;
 		}
 
-		private void CreateIcon(Sprite iconSprite, Transform trans, Vector2 offset, Canvas parent)
+		private void CreateIcon(Sprite iconSprite, Transform trans, Vector2 offset, Canvas parent, Color col)
 		{
 			Icon icon = new Icon(imagePrefab, iconSprite, trans.position, iconDuration);
+			icon.image.color = col;
 			icon.image.transform.SetParent(parent.transform, false);
 			icon.SetOffset(offset);
 			_iconList.Add(icon);
 		}
 
-		private void CreateIconSeries(Sprite[] icons, Transform trans)
+		private void CreateIconSeries(Sprite[] icons, Transform trans, Color[] col)
 		{
 			Vector2 temp = Vector2.zero;
 			Canvas parent = CreateCanvas(trans);
@@ -135,18 +156,56 @@ namespace Kontiki {
 			{
 				float count = icons.Length;
 				temp.x = (i - (count - 1) / 2) * (icons[i].rect.width / 2 + seriesOffset);
-				CreateIcon(icons[i], trans, temp, parent);
+				CreateIcon(icons[i], trans, temp, parent, col[i]);
 			}
 		}
 
-		public void CreateIcon_Eat(Transform trans)
-		{
+		public void RequestIcons(Transform trans, Color col, params IconTypes[] icons){ RequestIcons(trans, col, new Color(1,1,1), icons); }
 
+		public void RequestIcons(Transform trans, Color col, Color col2, params IconTypes[] icons) { 
+			Color[] cols = new Color[icons.Length];
+			
+			bool firstSymbol = true;
+
+			for(int i = 0; i < icons.Length; i++){
+				switch(icons[i]){
+					case IconTypes.QuestItem:
+						if(firstSymbol){
+							cols[i] = col;
+							firstSymbol = false;
+						}
+						else 
+							cols[i] = col2;
+					break;
+
+					case IconTypes.Person:
+						if(firstSymbol){
+							cols[i] = col;
+							firstSymbol = false;
+						}
+						else 
+							cols[i] = col2;
+					break;
+
+					default:
+						cols[i] = new Color(1f,1f,1f);
+					break;
+				}
+			}
+
+			RequestIcons(trans, cols, icons); 
 		}
 
-		public void CreateIcon_Food(Transform trans)
+		public void RequestIcons(Transform trans, Color[] col, params IconTypes[] icons)
 		{
+			Sprite[] sprites = new Sprite[icons.Length];
 
+			for(int i = 0; i < icons.Length; i++){
+				int type = (int)icons[i];
+				sprites[i] = iconSprites[type];
+			}
+
+			CreateIconSeries(sprites, trans, col);
 		}
 
 	}
