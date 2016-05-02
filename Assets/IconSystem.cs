@@ -33,18 +33,27 @@ namespace Kontiki {
 			}
 		}
 
-		// ICONS //
-		[Header("Icon sprites")]
-		private List<Icon> 	iconList;
-		public Sprite[]		iconSprites;
+		// References //
+		[Header("References")]
+		[Tooltip("Prefab for icon images")]
 		public Image		imagePrefab;
+		[Tooltip("Reference to the Canvas that renders the icons")]
+		public Canvas 		canvas;
 		
-		public float 		seriesOffset;
+		// ICONS //
+		private List<Icon> 	iconList;
+		[Header("Icon sprites")]
+		[Tooltip("Array of icon sprites")]
+		public Sprite[]		iconSprites;
 
 		// Display variables //
-		public Vector3 		offset;
-		public Canvas 		canvas;
+		[Header("Display Variables")]
+		[Tooltip("Duration icons stay on screen")]
 		public float 		iconDuration;
+		[Tooltip("Position offset between icons in series")]
+		public float 		seriesOffset;
+		[Tooltip("Position offset of icon in world space")]
+		public Vector3 		offset;
 		private Rect 		canvasRect;
 
 		void Start()
@@ -60,7 +69,7 @@ namespace Kontiki {
 
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
-				CreateIconSeries(iconSprites, new Vector3(0,1,0));
+				CreateIconSeries(iconSprites, new Vector3(-3.5f,1,2));
 			}
 		}
 
@@ -95,7 +104,7 @@ namespace Kontiki {
 			for(int i = 0; i < icons.Length; i++)
 			{
 				float count = icons.Length;
-				temp.x = (i - (count - 1) / 2) * (icons[i].rect.width / 2 - seriesOffset);
+				temp.x = (i - (count - 1) / 2) * (icons[i].rect.width / 2 + seriesOffset);
 				CreateIcon(icons[i], pos, temp);
 			}
 		}
