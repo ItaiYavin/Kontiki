@@ -24,12 +24,16 @@ namespace Kontiki {
 			}
 
 			public void SetOffset(Vector3 offset){
-				iconOffset = offset;
+				iconOffset 		= offset;
 			}
 
 			public void SetImagePosition(Vector2 pos)
 			{
 				image.GetComponent<RectTransform>().anchoredPosition = pos + iconOffset;
+			}
+
+			public void SetImageSize(float size){
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
 			}
 		}
 
@@ -37,11 +41,11 @@ namespace Kontiki {
 		[Header("References")]
 		[Tooltip("Prefab for icon images")]
 		public Image		imagePrefab;
-		[Tooltip("Reference to the Canvas that renders the icons")]
-		public Canvas 		canvas;
+		[Tooltip("Prefab for icon canvas")]
+		public Canvas 		canvasPrefab;
 		
 		// ICONS //
-		private List<Icon> 	iconList;
+		private List<Icon> 	_iconList;
 		[Header("Icon sprites")]
 		[Tooltip("Array of icon sprites")]
 		public Sprite[]		iconSprites;
@@ -54,67 +58,93 @@ namespace Kontiki {
 		public float 		seriesOffset;
 		[Tooltip("Position offset of icon in world space")]
 		public Vector3 		offset;
-		private Rect 		canvasRect;
+
+		private Rect 		_canvasRect;
+
+		public Transform tempTrans;
 
 		void Start()
 		{
-			iconList = new List<Icon>();
-			canvasRect = canvas.GetComponent<RectTransform>().rect;
+			_iconList 		= new List<Icon>();
+			_canvasRect 	= canvasPrefab.GetComponent<RectTransform>().rect;
 		}
 
 		void FixedUpdate()
 		{
-			if(iconList.Count > 0)
+			if(_iconList.Count > 0)
 				UpdateIcons();
 
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
-				CreateIconSeries(iconSprites, new Vector3(-3.5f,1,2));
+				CreateIconSeries(iconSprites, tempTrans);
 			}
 		}
 
 		public void UpdateIcons()
 		{
-			for(int i = 0; i < iconList.Count; i++)
+			for(int i = 0; i < _iconList.Count; i++)
 			{
-				Vector3 screenPoint = Camera.main.WorldToScreenPoint(iconList[i].inWorldPosition + offset);
-				iconList[i].SetImagePosition(new Vector2(screenPoint.x - canvasRect.width/2, screenPoint.y - canvasRect.height/2));
+				if(_iconList[i].image != null){
+					_iconList[i].SetImagePosition(offset);
 
-				if(iconList[i].timeAtInit - Time.time < 0)
-				{
-					Icon temp = iconList[i];
-					iconList.RemoveAt(i);
-					Destroy(temp.image.gameObject);
+					if(_iconList[i].timeAtInit - Time.time < 0)
+					{
+						Icon tempIcon = _iconList[i];
+						Transform tempCanvas = tempIcon.image.transform.parent;
+						_iconList.RemoveAt(i);
+
+						Destroy(tempIcon.image.gameObject);
+						
+						if(tempCanvas.childCount == 0)
+							Destroy(tempCanvas.gameObject);
+					}
 				}
+				else 
+					_iconList.RemoveAt(i);
 			}
 
 		}
 
-		private void CreateIcon(Sprite iconSprite, Vector3 pos, Vector2 offset)
-		{
-			Icon icon = new Icon(imagePrefab, iconSprite, pos, iconDuration);
-			icon.image.transform.parent = canvas.transform;
-			icon.SetOffset(offset);
-			iconList.Add(icon);
+		public Canvas CreateCanvas(Transform parent){
+			Canvas can;
+			can	= Object.Instantiate<Canvas>(canvasPrefab);
+			can.renderMode = RenderMode.WorldSpace;
+			can.transform.SetParent(parent, false);
+			
+			RectTransform canRect = can.GetComponent<RectTransform>();
+			canRect.localScale = new Vector3(1,1,1);
+			canRect.sizeDelta = new Vector2(20, 20);
+			canRect.position = new Vector2(-10, -10);
+
+			return can;
 		}
 
-		private void CreateIconSeries(Sprite[] icons, Vector3 pos)
+		private void CreateIcon(Sprite iconSprite, Transform trans, Vector2 offset, Canvas parent)
+		{
+			Icon icon = new Icon(imagePrefab, iconSprite, trans.position, iconDuration);
+			icon.image.transform.SetParent(parent.transform, false);
+			icon.SetOffset(offset);
+			_iconList.Add(icon);
+		}
+
+		private void CreateIconSeries(Sprite[] icons, Transform trans)
 		{
 			Vector2 temp = Vector2.zero;
+			Canvas parent = CreateCanvas(trans);
 			for(int i = 0; i < icons.Length; i++)
 			{
 				float count = icons.Length;
 				temp.x = (i - (count - 1) / 2) * (icons[i].rect.width / 2 + seriesOffset);
-				CreateIcon(icons[i], pos, temp);
+				CreateIcon(icons[i], trans, temp, parent);
 			}
 		}
 
-		public void CreateIcon_Eat(Vector3 pos)
+		public void CreateIcon_Eat(Transform trans)
 		{
 
 		}
 
-		public void CreateIcon_Food(Vector3 pos)
+		public void CreateIcon_Food(Transform trans)
 		{
 
 		}
