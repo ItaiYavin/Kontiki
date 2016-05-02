@@ -11,7 +11,9 @@ namespace Kontiki.AI{
 
     public sealed class ConsumeSelectedItem : ActionBase{
         public override void Execute(IAIContext context){
-            ((AIContext)context).character.UseSelectedItem();
+            AIContext ai = (AIContext) context;
+            if(ai.character.selectedInteractable is EdibleItem)
+                ai.character.InteractWithSelected();
         }
     }
 }

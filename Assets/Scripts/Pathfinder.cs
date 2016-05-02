@@ -8,6 +8,7 @@ namespace Kontiki {
         /**
 		** Navigation variables and objects
 		**/
+        [HideInInspector]
         public NavMeshAgent agent;
 		public Transform target;
 
@@ -21,7 +22,6 @@ namespace Kontiki {
 
 		// Update is called once per frame
 		void Update () {
-
         }
 
         public void TargetClosestItemInRange(){
@@ -30,6 +30,7 @@ namespace Kontiki {
 
 		public void GoToTarget(){
 			agent.destination = target.transform.position;
+            agent.Resume();
 		}
 
 		public void StopMoving(){

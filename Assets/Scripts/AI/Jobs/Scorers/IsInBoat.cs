@@ -6,7 +6,7 @@ using Kontiki;
 namespace Kontiki.AI
 {
     /// <summary>
-    /// Scorer for whether character has an empty inventory
+    /// Scorer for whether character is in the boat
     /// </summary>
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
 	public class IsInBoat : ContextualScorerBase {
@@ -18,9 +18,9 @@ namespace Kontiki.AI
         public override float Score(IAIContext context){
             AIContext ai = (AIContext)context;
             
-            bool b = ai.character.boat != null;
+            bool b = ai.job.boat.characterInBoat == ai.character; 
             
-            if(not) b = !b;
+            if(not)b = !b;
             
             return b ? score : 0f;
         }

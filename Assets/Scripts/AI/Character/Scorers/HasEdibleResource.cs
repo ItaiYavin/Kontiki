@@ -32,7 +32,7 @@ namespace Kontiki.AI
                     }
                 }
             } else {
-                if(character.selectedItem != null && character.selectedItem is EdibleItem){
+                if(character.HasSelected() != null && character.selectedInteractable is EdibleItem){
                     b = true;
                 }
             }

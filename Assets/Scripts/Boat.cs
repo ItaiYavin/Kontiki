@@ -8,8 +8,12 @@ namespace Kontiki
 		
 		public sui_demo_ControllerMaster CM;
 		
+		public Character characterInBoat;
+		
+		public NavMeshAgent agent;
+		
 		public override bool Interact(Character character){
-			if (CM != null){
+			if (character.isPlayer && CM != null){
 				if (CM.currentControllerType == Sui_Demo_ControllerType.character){
 					CM.currentControllerType = Sui_Demo_ControllerType.boat;
 					RemoveHighlight();
@@ -18,12 +22,22 @@ namespace Kontiki
 					CM.currentControllerType = Sui_Demo_ControllerType.character;
 					CM.resetState();
 				}
-				return true;
 			}
 			
-			return false;
+			if(characterInBoat == character){
+				characterInBoat = null;
+			}else if(characterInBoat == null){
+				characterInBoat = character;
+				
+				character.transform.position = transform.position + Vector3.up;
+			}
+				
+			return true;
 		}
 		
+		public void GoTo(Transform target){
+			agent.SetDestination(target.position);
+		}
 		
 		
 			

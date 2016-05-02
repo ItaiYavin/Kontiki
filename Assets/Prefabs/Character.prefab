@@ -13,8 +13,12 @@ GameObject:
   - 23: {fileID: 2308594}
   - 114: {fileID: 11408820}
   - 195: {fileID: 19529516}
-  - 114: {fileID: 11463776}
   - 114: {fileID: 11402606}
+  - 114: {fileID: 11445602}
+  - 114: {fileID: 11450520}
+  - 114: {fileID: 11469806}
+  - 114: {fileID: 11485014}
+  - 114: {fileID: 11412288}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -44,7 +48,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 760bf26430d6b29449299a7a8669775f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -103,18 +107,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   gender: 0
-  scanningRange: 8.9
-  pickupRange: 4.2
   energy: 1
   hunger: 0
-  memoryCapacity: 5
-  hungerIncrementPerSec: 5
-  selectedItem: {fileID: 0}
-  memory: []
-  agent: {fileID: 0}
-  target: {fileID: 0}
---- !u!114 &11463776
+  inventory: {fileID: 0}
+  selectedInteractable: {fileID: 0}
+--- !u!114 &11412288
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -126,12 +125,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiConfigs:
-  - aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
+  - aiId: d2213d02-f316-47c0-9c25-761303e1b758
     intervalMin: 1
     intervalMax: 1
     startDelayMin: 0
     startDelayMax: 0
     isActive: 1
+--- !u!114 &11445602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788341a3fc7195d4bb0bbb0bc8a5b05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInBoat: 0
+  boat: {fileID: 0}
+--- !u!114 &11450520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugAI: 1
+--- !u!114 &11469806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c421f9565e9164fb40cdab725b6e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  memory: []
+--- !u!114 &11485014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2599267c68e5e4daee665bdb154bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  target: {fileID: 0}
 --- !u!195 &19529516
 NavMeshAgent:
   m_ObjectHideFlags: 1

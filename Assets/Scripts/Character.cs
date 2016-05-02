@@ -4,6 +4,8 @@ using UnityEngine;
 namespace Kontiki {
     public class Character : MonoBehaviour
     {
+        
+        public bool isPlayer = false;
         public Gender gender;
 
         [Range(0f, 1f)]
@@ -17,10 +19,9 @@ namespace Kontiki {
         /**
         ** Inventory stats & Objects
         **/
-        public Item selectedItem;
+        public Interactable selectedInteractable;
         
-        public Boat boat;
-
+        
         void Start()
         {
             inventory = GetComponent<Inventory>();
@@ -38,36 +39,32 @@ namespace Kontiki {
             {
                 hunger = SettingsSingleton.Instance.hungerRange.max;
             }
-
-            if (selectedItem != null)
-            {
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    selectedItem.UseItem(this);
-                }
-            }
         }
 
-        public bool HasSelectedResource()
+        public bool HasSelected()
         {
-            return selectedItem != null;
+            return selectedInteractable != null;
         }
-
-        public void UseSelectedItem()
+        
+        public void SetSelected(Interactable interactable){
+            selectedInteractable = interactable;
+        }
+        
+        public void InteractWithSelected()
         {
-            if (selectedItem != null)
+            if (selectedInteractable != null)
             {
-                selectedItem.UseItem(this);
+                selectedInteractable.Interact(this);
             }
         }
 
         private void OnDrawGizmosSelected()
         {
-            if (selectedItem != null)
+            if (selectedInteractable != null)
             {
-                Gizmos.DrawLine(transform.position, selectedItem.transform.position);
+                Gizmos.DrawLine(transform.position, selectedInteractable.transform.position);
                 Gizmos.color = Color.red;
-                Gizmos.DrawSphere(selectedItem.transform.position, 0.25f);
+                Gizmos.DrawSphere(selectedInteractable.transform.position, 0.25f);
             }
         }
     }

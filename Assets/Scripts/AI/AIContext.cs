@@ -1,10 +1,13 @@
 using Apex.AI;
 using UnityEngine;
+using Kontiki.AI;
 
 namespace Kontiki {
 	public class AIContext : IAIContext {
 
-		public bool debugAI = false;
+		public bool debugAI{
+			get{ return self.debugAI;}
+		}
 
         public AIComponentContainer self
 		{
@@ -26,9 +29,15 @@ namespace Kontiki {
             get { return self.inventory;}
         }
 		
+		public Job job
+		{
+			get { return self.job;}		
+		}
+		
 		public Transform transform
 		{
-			get { return self.transform;}		}
+			get { return self.transform;}		
+		}
 
 		public AIContext(AIComponentContainer self)
 		{

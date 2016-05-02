@@ -51,7 +51,7 @@ namespace Kontiki.AI{
 	            		break;
 	            }
 
-	            character.selectedItem = bestCandidate;
+	            character.SetSelected(bestCandidate);
 	        }
 	        if(ai.debugAI)
 	        	Debug.Log("Inventory is empty");

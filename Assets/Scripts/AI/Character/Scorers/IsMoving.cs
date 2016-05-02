@@ -20,12 +20,14 @@ namespace Kontiki.AI
         	bool b = false;
 
         	if(agent.remainingDistance > 0){
-        		if(ai.debugAI) Debug.Log(agent.remainingDistance);
+        		if(ai.debugAI) 
         		b = true;
         	}
 
-    		if(ai.debugAI) Debug.Log("Is Moving: " + b);
-        	if(not) b = !b;
+    		if(ai.debugAI){ 
+				Debug.Log("Is Moving: " + b  + ", distance to target = " + agent.remainingDistance);
+			}
+			if(not) b = !b;
 
         	return b ? 1f * score : 0f * score;
         }
