@@ -36,14 +36,17 @@ namespace Kontiki {
 		public void StopMoving(){
 			agent.destination = transform.position;
 		}
-
-        private void OnDrawGizmosSelected()
+        
+        
+/*        private void OnDrawGizmosSelected()
         {
+            
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, SettingsSingleton.Instance.scanningRange);
 
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, SettingsSingleton.Instance.pickupRange);
         }
+*/       
     }
 }

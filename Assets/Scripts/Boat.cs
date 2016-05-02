@@ -12,6 +12,10 @@ namespace Kontiki
 		
 		public NavMeshAgent agent;
 		
+		void Start(){
+			agent = GetComponent<NavMeshAgent>();
+		}
+		
 		public override bool Interact(Character character){
 			if (character.isPlayer && CM != null){
 				if (CM.currentControllerType == Sui_Demo_ControllerType.character){
@@ -37,6 +41,7 @@ namespace Kontiki
 		
 		public void GoTo(Transform target){
 			agent.SetDestination(target.position);
+			agent.Resume();
 		}
 		
 		

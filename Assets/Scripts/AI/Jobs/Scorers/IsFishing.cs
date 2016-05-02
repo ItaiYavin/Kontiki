@@ -1,4 +1,4 @@
-﻿using Apex.AI;
+using Apex.AI;
 using Apex.Serialization;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ namespace Kontiki.AI
     /// Scorer for whether character has edible in memory list
     /// </summary>
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
-	public class IsMoving : ContextualScorerBase {
+	public class IsFishing : ContextualScorerBase {
 		
 
 		[ApexSerialization, FriendlyName("Not", "Invert return value")]
@@ -16,19 +16,14 @@ namespace Kontiki.AI
 
         public override float Score(IAIContext context){
 			AIContext ai = (AIContext)context;
-        	NavMeshAgent agent = ai.pathfinder.agent;
-        	bool b = false;
+            if(ai.job.type ==  Job.Type.Fisher){
+                bool b = ai.job.isFishing;
+                
+                if(not) b = !b;
 
-        	if(agent.remainingDistance > 0){
-        		b = true;
-        	}
-
-    		if(ai.debugAI){ 
-				Debug.Log("Is Moving: " + b  + ", distance to target = " + agent.remainingDistance);
-			}
-			if(not) b = !b;
-
-        	return b ? score : 0f;
+                return b ? score : 0f;
+            }
+        	return 0f;
         }
 	}
 }
