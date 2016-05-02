@@ -28,7 +28,13 @@ namespace Kontiki {
 		
 		public Transform transform
 		{
-			get { return self.transform;}		}
+			get { return self.transform;}
+        }
+
+        public BaseRoutine baseroutine
+        {
+            get { return self.baseroutine; }
+        }
 
 		public AIContext(AIComponentContainer self)
 		{

@@ -9,6 +9,7 @@ namespace Kontiki {
     [RequireComponent(typeof(Pathfinder))]
 	[RequireComponent(typeof(Memory))]
     [RequireComponent(typeof(Inventory))]
+    [RequireComponent(typeof(BaseRoutine))]
 	public sealed class AIComponentContainer : MonoBehaviour, IContextProvider {
         /**
          * Components that is required for AI
@@ -33,6 +34,11 @@ namespace Kontiki {
             get;
             private set;
         }
+        public BaseRoutine baseroutine
+        {
+            get;
+            private set;
+        }
 
         /**
          * Apex specific
@@ -47,7 +53,7 @@ namespace Kontiki {
             this.pathfinder = GetComponent<Pathfinder>();
 			this.memory = GetComponent<Memory>();
             this.inventory = GetComponent<Inventory>();
-		}
+            this.baseroutine = GetComponent<BaseRoutine>();		}
 
 		void Awake () {
 			_context = new AIContext(this);

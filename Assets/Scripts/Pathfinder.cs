@@ -32,6 +32,11 @@ namespace Kontiki {
 			agent.destination = target.transform.position;
 		}
 
+        public void GoTo(Transform destination)
+        {
+            agent.destination = transform.position;
+        }
+
 		public void StopMoving(){
 			agent.destination = transform.position;
 		}

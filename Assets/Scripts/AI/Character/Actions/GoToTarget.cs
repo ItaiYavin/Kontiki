@@ -5,13 +5,14 @@ namespace Kontiki.AI{
     
     
     /// <summary>
-    /// Consumes the selected edible item if a edible is selected otherwise nothing.
+    /// Goes to the specified destination
     /// </summary>
     /// <seealso cref="Apex.AI.ActionBase" />
     
-    public sealed class GoToTarget : ActionBase{
+    public sealed class GoToHome : ActionBase{
         public override void Execute(IAIContext context){
-             ((AIContext)context).pathfinder.GoToTarget();
+            AIContext ai = ((AIContext)context);
+            ((AIContext)context).pathfinder.GoTo(ai.baseroutine.home);
         }
     }
 }
