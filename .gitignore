@@ -5,6 +5,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
+/Assets/Apex*
 
 .vscode/
 /Assets/VSCode*
