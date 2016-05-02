@@ -17,14 +17,11 @@ namespace Kontiki.AI{
 			fuel
 		};
 
-		[ApexSerialization, FriendlyName("Debug", "if on, writes debug messages to console")]
-		bool debug;
-
 		[ApexSerialization, FriendlyName("Item Types", "Type of item")]
 		ItemType itemType;
 
 		public override void Execute(IAIContext context){
-			AIComponentContainer ai = ((AIContext)context).self;
+			AIContext ai = (AIContext)context;
             float pickUpRange = SettingsSingleton.Instance.pickupRange;
             Vector3 target = ai.pathfinder.target.position;
             Vector3 itemPos;
@@ -80,25 +77,25 @@ namespace Kontiki.AI{
 			            	}
 			            }
 			            if(!(closestItem is EdibleItem)){
-			            	if(debug) Debug.Log("No Edible Item found");
+			            	if(ai.debugAI) Debug.Log("No Edible Item found");
 			            	return;
 			            }
 
 		        	break;
 					
 					case ItemType.fuel:
-						if(debug) Debug.Log("FUEL NOT IMPLEMENTED YET");
+						if(ai.debugAI) Debug.Log("FUEL NOT IMPLEMENTED YET");
 					break;
 
 					default:
-						if(debug) Debug.Log("No pickup type chosen");
+						if(ai.debugAI) Debug.Log("No pickup type chosen");
 					break;
 				}
 
 				ai.inventory.PutItemIntoInventory(closestItem);
 			}
 			else 
-				if(debug) Debug.Log("Inventory is full");
+				if(ai.debugAI) Debug.Log("Inventory is full");
 		}
 	}
 }

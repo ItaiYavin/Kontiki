@@ -10,20 +10,20 @@ namespace Kontiki.AI
     /// </summary>
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
 	public class IsInventoryEmpty : ContextualScorerBase {
-        [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
-        public bool debug = false;
+     
 
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
         public bool not = false;
 
         public override float Score(IAIContext context){
-            Inventory inventory = ((AIContext)context).inventory;
+            AIContext ai = (AIContext)context;
+            Inventory inventory = ai.inventory;
 
             bool b = inventory.IsInventoryEmpty();
 
             if(not) b = !b;
 
-            if(debug) Debug.Log("Inventory is empty: " + b);
+            if(ai.debugAI) Debug.Log("Inventory is empty: " + b);
 
             return b ? 1f * score : 0f * score;
         }

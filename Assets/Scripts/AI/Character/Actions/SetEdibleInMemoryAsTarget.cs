@@ -12,8 +12,6 @@ namespace Kontiki.AI
     /// <seealso cref="Apex.AI.ActionBase" />
 	public class SetEdibleInMemoryAsTarget : ActionBase 
 	{
-        [ApexSerialization, FriendlyName("Debug", "if on, writes debug messages to console")]
-        bool debug;
 
         [ApexSerialization, FriendlyName("Find Nearest", "if on, the nearest edible in memory will be chosen as target (this is prioritised)")]
         bool findNearest;
@@ -27,7 +25,7 @@ namespace Kontiki.AI
 
         public override void Execute(IAIContext context)
         {
-            AIContext ai = ((AIContext)context);
+            AIContext ai = (AIContext)context;
             Memory memory = ai.memory;
             Transform mostFitting;
         	
@@ -60,7 +58,7 @@ namespace Kontiki.AI
             		}
 	            }
         		ai.pathfinder.target = mostFitting;
-        		if(debug)
+        		if(ai.debugAI)
         			Debug.Log("Edible found and added to target!");
         	}
         }

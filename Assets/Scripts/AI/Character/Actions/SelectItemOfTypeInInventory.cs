@@ -17,16 +17,14 @@ namespace Kontiki.AI{
 			fuel
 		};
 
-		[ApexSerialization, FriendlyName("Debug", "if on, writes debug messages to console")]
-		bool debug;
-
 		[ApexSerialization, FriendlyName("Item Types", "Type of item")]
 		ItemType itemType;
 
 
         public override void Execute(IAIContext context){
-            Character character = ((AIContext)context).character;
-            Inventory inv = ((AIContext)context).inventory;
+			AIContext ai = (AIContext)context;
+            Character character = ai.character;
+            Inventory inv = ai.inventory;
             
             if(!inv.IsInventoryEmpty()){
 	            Item bestCandidate = inv.GetInventoryItem(0);
@@ -43,19 +41,19 @@ namespace Kontiki.AI{
 	            		break;
 
 	            	case ItemType.fuel:
-	            		if(debug)
+	            		if(ai.debugAI)
 	            			Debug.Log("THIS OPTION IS NOT IMPLEMENTED YET");
 	            		break;
 
 	            	default:
-	            		if(debug)
+	            		if(ai.debugAI)
 	            			Debug.Log("No type was chosen");
 	            		break;
 	            }
 
 	            character.selectedItem = bestCandidate;
 	        }
-	        if(debug)
+	        if(ai.debugAI)
 	        	Debug.Log("Inventory is empty");
         }
 	}

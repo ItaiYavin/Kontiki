@@ -50,7 +50,7 @@ namespace Kontiki {
 		}
 
 		void Awake () {
-			_context = new AIContext(this, this.character, this.pathfinder, this.memory, this.inventory);
+			_context = new AIContext(this);
 		}
 
 		public IAIContext GetContext(Guid aiId)

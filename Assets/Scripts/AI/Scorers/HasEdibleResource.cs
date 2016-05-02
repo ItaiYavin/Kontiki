@@ -11,9 +11,7 @@ namespace Kontiki.AI
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
     public sealed class HasEdibleResource : ContextualScorerBase
     {
-        [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
-        public bool debug = false;
-
+      
         [ApexSerialization, FriendlyName("In Inventory", "if false will check character selected item")]
         public bool inInventory = false;
 
@@ -21,8 +19,9 @@ namespace Kontiki.AI
         public bool not = false;
 
         public override float Score(IAIContext context){
-            Character character = ((AIContext)context).character;
-            Inventory inventory = ((AIContext)context).inventory;
+            AIContext ai = (AIContext)context;
+            Character character = ai.character;
+            Inventory inventory = ai.inventory;
             bool b = false;
 
             if(inInventory){
@@ -39,7 +38,7 @@ namespace Kontiki.AI
             }
 
             if(not) b = !b;
-            if(debug)
+            if(ai.debugAI)
                 Debug.Log("HasEdibleResource: " + b);
 
             return b ? 1f * score : 0f * score;

@@ -20,15 +20,13 @@ namespace Kontiki.AI
         [ApexSerialization, FriendlyName("Item Types", "Type of item")]
         ItemType itemType;
 
-        [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
-        public bool debug = false;
-
         [ApexSerialization, FriendlyName("Not", "Inverts value")]
         public bool not = false;
 
 
         public override float Score(IAIContext context){
-            Pathfinder character = ((AIContext)context).pathfinder;
+            AIContext ai = (AIContext) context;
+            Pathfinder character = ai.pathfinder;
             float pickUpRange = SettingsSingleton.Instance.pickupRange;
 
             Vector3 targetPos = character.target.transform.position;
@@ -49,7 +47,7 @@ namespace Kontiki.AI
                         Item foundItem = c.GetComponent<Item>();
                         if (foundItem is EdibleItem)
                         {
-                            if(debug)
+                            if(ai.debugAI)
                                 Debug.Log("Found edible item in pickup range");
                             b = true;
                             continue;
@@ -58,11 +56,11 @@ namespace Kontiki.AI
                 break;
 
                 case ItemType.fuel:
-                    if(debug) Debug.Log("Fuel is not implemented!");
+                    if(ai.debugAI) Debug.Log("Fuel is not implemented!");
                 break;
 
                 default:
-                    if(debug) Debug.Log("No target type chosen");
+                    if(ai.debugAI) Debug.Log("No target type chosen");
                 break;
             }
 

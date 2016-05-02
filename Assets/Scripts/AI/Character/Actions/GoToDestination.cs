@@ -12,14 +12,13 @@ namespace Kontiki.AI{
     /// <seealso cref="Apex.AI.ActionBase" />
     
     public sealed class GoToDestination : ActionBase{
-    	[ApexSerialization, FriendlyName("Debug", "Debug Log values")]
-        public bool debug = false;
-
+        
         public override void Execute(IAIContext context){
-            ((AIContext)context).pathfinder.GoToTarget();
+            AIContext ai = (AIContext)context;
+            ai.pathfinder.GoToTarget();
 
-            if(debug) 
-            Debug.Log("Moving to target");
+            if(ai.debugAI) 
+                Debug.Log("Moving to target");
         }
     }
 }

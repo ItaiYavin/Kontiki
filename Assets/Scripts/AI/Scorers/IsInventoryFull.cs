@@ -10,8 +10,7 @@ namespace Kontiki.AI
     /// </summary>
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
 	public class IsInventoryFull : ContextualScorerBase {
-        [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
-        public bool debug = false;
+       
 
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
         public bool not = false;

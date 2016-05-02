@@ -11,8 +11,6 @@ namespace Kontiki.AI
     /// </summary>
     /// <seealso cref="Apex.AI.ActionBase" />
     public sealed class Explore : ActionBase{
-        [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
-        public bool debug = false;
 
         public override void Execute(IAIContext context){
         	AIContext ai = ((AIContext)context);
@@ -30,7 +28,7 @@ namespace Kontiki.AI
     			}
             }
 
-			if(debug) Debug.Log("POSITION: " + point);
+			if(ai.debugAI) Debug.Log("POSITION: " + point);
 
             ai.pathfinder.agent.destination = point;
 		}

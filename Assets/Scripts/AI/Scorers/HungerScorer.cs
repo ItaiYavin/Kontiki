@@ -10,8 +10,6 @@ namespace Kontiki.AI
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
     public sealed class HungerScorer : ContextualScorerBase
     {
-        [ApexSerialization, FriendlyName("Debug", "Debug Log values")]
-        public bool debug = false;
         
         [ApexSerialization, FriendlyName("Threshold", "Threshold(0-1) for hunger(0-1) where the score will be 0")]
         public float threshold = 0;
@@ -19,7 +17,7 @@ namespace Kontiki.AI
         public override float Score(IAIContext context){
             AIContext ai = ((AIContext)context);
             float v = Mathf.Max((ai.character.hunger/SettingsSingleton.Instance.hungerRange.max - threshold),0)/(1-threshold);
-            if(debug)
+            if(ai.debugAI)
                 Debug.Log("Hunger Score " + v + " character hunger: " + ai.character.hunger);
             return v * score;
         }

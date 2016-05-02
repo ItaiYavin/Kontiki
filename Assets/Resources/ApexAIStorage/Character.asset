@@ -43,12 +43,12 @@ MonoBehaviour:
     ApexAI","_id":189e10d9ee70483eb5063e868c38a690,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","_scorers":[{"@type":"Kontiki.AI.IsMoving, Assembly-CSharp","debug":true,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.Explore, Assembly-CSharp","debug":false}}}]}'
-  editorConfiguration: '{"offset":{"@x":207,"@y":63},"zoom":0.69999999,"SelectorView":{"ViewArea":{"@left":-101,"@top":91,"@width":210,"@height":154},"QualifierView":{"Name":"Inventory
-    Check","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":151,"@top":21,"@width":140,"@height":112},"QualifierView":{"Name":"Has
-    Edible Target","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":319,"@top":21,"@width":140,"@height":112},"QualifierView":{"Name":"In
-    Pickup Range of target","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":319,"@top":147,"@width":154,"@height":112},"QualifierView":{"Name":"Search
-    memory for edible","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":151,"@top":161,"@width":154,"@height":112},"QualifierView":{"Name":"Has
-    selected edible?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":151,"@top":287,"@width":140,"@height":112},"QualifierView":{"Name":"Is
-    Moving?"},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":501,"@top":287,"@width":140,"@height":112},"QualifierView":{"Name":"Is
+  editorConfiguration: '{"offset":{"@x":478,"@y":105},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":126,"@top":137,"@width":240,"@height":176},"QualifierView":{"Name":"Is
+    Inventory Empty?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
+    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":414,"@top":57,"@width":160,"@height":128},"QualifierView":{"Name":"Has
+    Edible Target","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":606,"@top":57,"@width":160,"@height":128},"QualifierView":{"Name":"In
+    Pickup Range of target","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":606,"@top":201,"@width":176,"@height":128},"QualifierView":{"Name":"Search
+    memory for edible","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":414,"@top":217,"@width":176,"@height":128},"QualifierView":{"Name":"Has
+    selected edible?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":414,"@top":361,"@width":160,"@height":128},"QualifierView":{"Name":"Is
+    Moving?"},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":814,"@top":361,"@width":160,"@height":128},"QualifierView":{"Name":"Is
     Moving?"},"DefaultQualifier":{"ActionView":{}}}}'

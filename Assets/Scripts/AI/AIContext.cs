@@ -4,6 +4,8 @@ using UnityEngine;
 namespace Kontiki {
 	public class AIContext : IAIContext {
 
+		public bool debugAI = false;
+
         public AIComponentContainer self
 		{
 			get;
@@ -11,30 +13,26 @@ namespace Kontiki {
         }
         public Character character
         {
-            get;
-            private set;
+            get { return self.character;}
         }
         public Pathfinder pathfinder {
-			get;
-			private set;
+			get { return self.pathfinder;}
 		}
 		public Memory memory {
-			get;
-			private set;
+			get { return self.memory; }
 		}
         public Inventory inventory
         {
-            get;
-            private set;
+            get { return self.inventory;}
         }
+		
+		public Transform transform
+		{
+			get { return self.transform;}		}
 
-		public AIContext(AIComponentContainer self, Character character, Pathfinder pathfinder, Memory memory, Inventory inventory)
+		public AIContext(AIComponentContainer self)
 		{
 			this.self = self;
-            this.character = character;
-			this.pathfinder = pathfinder;
-			this.memory = memory;
-            this.inventory = inventory;
 		}
 	}
 }
