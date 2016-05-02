@@ -2,6 +2,17 @@
 using System.Collections;
 
 namespace Kontiki {
+    public enum IconTypes
+    {
+        Food,
+        Eat,
+        Trade,
+        Quest,
+        QuestItem,
+        Person,
+        Question
+    }
+
 	public enum Gender
     {
         Male,
@@ -14,5 +25,5 @@ namespace Kontiki {
         edible,
         fuel,
         character
-    };
+    }
 }
