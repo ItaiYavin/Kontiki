@@ -1,8 +1,5 @@
 
 using UnityEngine;
-using System;
-using Apex.AI.Components;
-using System.Collections.Generic;
 
 namespace Kontiki {
     public class Character : MonoBehaviour
@@ -14,12 +11,15 @@ namespace Kontiki {
         [Range(0, 100)]
         public float hunger = 0;
 
+        [HideInInspector]
         public Inventory inventory;
 
         /**
         ** Inventory stats & Objects
         **/
         public Item selectedItem;
+        
+        public Boat boat;
 
         void Start()
         {

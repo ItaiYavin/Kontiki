@@ -19,7 +19,7 @@ namespace Kontiki {
 			get { return self.pathfinder;}
 		}
 		public Memory memory {
-			get { return self.memory; }
+			get { return self.memory;}
 		}
         public Inventory inventory
         {

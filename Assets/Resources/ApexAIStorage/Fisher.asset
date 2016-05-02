@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: Fisher
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16777472
+  aiId: d2213d02-f316-47c0-9c25-761303e1b758
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":179f030771764e4d877bd227248e77e2,"_id":d2213d02f31647c09c25761303e1b758,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":179f030771764e4d877bd227248e77e2,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.GoToBoat, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.IsInBoat,
+    Assembly-CSharp","not":true,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}}]}'
+  editorConfiguration: '{"offset":{"@x":0,"@y":0},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":100,"@width":200,"@height":160},"QualifierView":{"Name":"is
+    not in the boat","ActionView":{}},"DefaultQualifier":{}}}'

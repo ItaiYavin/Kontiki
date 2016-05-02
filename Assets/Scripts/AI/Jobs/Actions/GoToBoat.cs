@@ -1,5 +1,4 @@
-﻿using Apex.AI;
-using Apex.Serialization;
+using Apex.AI;
 using Kontiki;
 using UnityEngine;
 
@@ -11,14 +10,16 @@ namespace Kontiki.AI{
     /// </summary>
     /// <seealso cref="Apex.AI.ActionBase" />
     
-    public sealed class GoToDestination : ActionBase{
-        
+    public sealed class GoToBoat : ActionBase{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext)context;
-            ai.pathfinder.GoToTarget();
-
-            if(ai.debugAI) 
-                Debug.Log("Moving to target");
+            if(ai.character.boat != null){
+                ai.pathfinder.target = ai.character.boat.transform;
+                ai.pathfinder.GoToTarget();
+            }else{
+                Debug.LogError("AI - Does not own a boat");
+            }
+                
         }
     }
 }
