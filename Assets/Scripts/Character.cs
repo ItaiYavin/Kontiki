@@ -18,7 +18,8 @@ namespace Kontiki {
         public Item selectedItem;
         
         public Boat boat;
-
+        
+        [HideInInspector]
         public bool isSleeping;
 
         void Start()

@@ -15,6 +15,9 @@ namespace Kontiki.AI
         [ApexSerialization, FriendlyName("Minimum Range", "Range AI needs to be within to be considered being at position")]
         public float minimumRange = 2;
 
+        [ApexSerialization, FriendlyName("Destination", "Position AI is checked in relation to")]
+        public PlaceType place;
+
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
         public bool not = false;
 
@@ -24,7 +27,19 @@ namespace Kontiki.AI
             Character character = ai.character;
             bool b = false;
 
-            b = ai.pathfinder.IsAtPosition(character.transform.position, minimumRange);
+            switch(place){
+                case PlaceType.Home:
+                {
+                    b = ai.pathfinder.IsAtPosition(ai.baseroutine.home.position, minimumRange);
+                }
+                break;
+
+                case PlaceType.FoodQuench:
+                {
+                    b = ai.pathfinder.IsAtPosition(ai.baseroutine.foodQuench.position, minimumRange);
+                }
+                break;
+            }
 
             if (not) b = !b;
             if (ai.debugAI)

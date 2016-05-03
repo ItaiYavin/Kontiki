@@ -22,16 +22,7 @@ namespace Kontiki {
 
 		// Update is called once per frame
 		void Update () {
-            //TODO Maybe this shouldn't happen here (this is here temporarily for testing)
-            if (!ai.character.isSleeping && Vector3.Distance(transform.position, ai.baseroutine.home.position) < 3f)
-		    {
-		        ai.character.isSleeping = true;
-		    }
 
-		    if (ai.character.isSleeping && ai.character.energy > 0.9f)
-		    {
-		        ai.character.isSleeping = false;
-		    }
         }
 
         public void TargetClosestItemInRange(){
