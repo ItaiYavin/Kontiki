@@ -81,14 +81,22 @@ namespace Kontiki {
             }
         }
 
-        public bool HasSelectedResource()
+        public bool HasSelected(ItemType type)
         {
-            return selectedItem != null;
-        }
-
-        public bool HasSelected()
-        {
-            return selectedInteractable != null;
+            if(selectedInteractable == null)return false;
+            switch (type)
+            {
+                case ItemType.Interactable:
+                    return selectedInteractable is Interactable;
+                
+                case ItemType.Edible:
+                    return selectedInteractable is EdibleItem;
+                
+                case ItemType.Item:
+                    return selectedInteractable is Item;
+                
+            }
+            return false;
         }
         
         public void SetSelected(Interactable interactable){

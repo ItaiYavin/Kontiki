@@ -1,6 +1,7 @@
 using Apex.AI;
 using Apex.Serialization;
 using UnityEngine;
+using System;
 using Kontiki;
 
 namespace Kontiki.AI
@@ -17,6 +18,9 @@ namespace Kontiki.AI
         
         [ApexSerialization, FriendlyName("in Hand", "will check character selected item")]
         public bool inHand = false;
+        
+        [ApexSerialization, FriendlyName("Type", "item type")]
+        public ItemType itemType;
 
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
         public bool not = false;
@@ -26,14 +30,25 @@ namespace Kontiki.AI
             Character character = ai.character;
             Inventory inventory = ai.inventory;
             bool b = false;
+            
+            Type type;
+            
+            switch (itemType)
+            {
+                case ItemType.Interactable: type = typeof(Interactable); break;
+                case ItemType.Item: type = typeof(Item); break;
+                case ItemType.Edible: type = typeof(EdibleItem); break;
+                
+            }
+            
 
             if(inInventory && !inventory.IsInventoryEmpty()){
                 for(int i = 0; i < inventory.inventorySize; i++){
-                    if(inventory.GetInventoryItem(i) is EdibleItem)
+                    if(inventory.IsInventoryItemOfType(i,itemType))
                         b = true;
                 }
             }
-            if(inHand && character.HasSelected<EdibleItem>()){
+            if(inHand && character.HasSelected(itemType)){
                 b = true;
             }
 

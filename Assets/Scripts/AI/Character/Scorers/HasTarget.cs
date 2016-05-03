@@ -14,48 +14,11 @@ namespace Kontiki.AI
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
         public bool not = false;
 
-		[ApexSerialization, FriendlyName("Item Types", "Type of item")]
-		ItemType itemType;
-
         public override float Score(IAIContext context){
         	bool b = false;
 			AIContext ai = (AIContext) context;
         	Pathfinder pathfinder = ((AIContext)context).pathfinder;
-        	if(pathfinder.target != null){
-	        	switch(itemType){
-		        	case ItemType.anything:
-			        	if(pathfinder.target != null)
-			        		b = true;
-			        		if(ai.debugAI) Debug.Log("Has target");
-			        	else 
-			        		b = false;
-			        		if(ai.debugAI) Debug.Log("Has NO target");
-	        		break;
-
-	        		case ItemType.edible:
-			        	if(pathfinder.target.GetComponent<EdibleItem>() != null){
-			        		b = true;
-			        		if(ai.debugAI) Debug.Log("Has edible target");
-			        	}
-			        	else {
-			        		b = false;
-			        		if(ai.debugAI) Debug.Log("Has NO edible target");
-			        	}
-	        		break;
-
-	        		case ItemType.fuel:
-	        			if(ai.debugAI) Debug.Log("Fuel is not implemented!");
-	        		break;
-
-	        		case ItemType.character:
-	        			if(ai.debugAI) Debug.Log("Characters as targets are not implemented");
-	        		break;
-
-	        		default:
-	        			if(ai.debugAI) Debug.Log("No target type chosen");
-	        		break;
-	        	}
-	        }
+        	b = pathfinder.target != null;
 
         	if(not)
         		b = !b;

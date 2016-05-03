@@ -24,16 +24,10 @@ namespace Kontiki.AI
             Inventory inventory = ai.inventory;
 
             switch(gainedItem){
-            	case ItemType.edible:
+            	case ItemType.Edible:
             	{
             		ai.inventory.GetItemFromTrade(gainedItem);
             	}
-            	break;
-
-            	case ItemType.fuel:
-            	break;
-
-            	case ItemType.character:
             	break;
             }
 

@@ -27,10 +27,9 @@ namespace Kontiki {
 
     public enum ItemType
     {
-        anything,
-        edible,
-        fuel,
-        character
+        Interactable,
+        Edible,
+        Item
     };
     
    

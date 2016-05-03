@@ -88,6 +88,22 @@ namespace Kontiki {
         public Item[] GetInventoryItems() {
             return _inventoryItems;
         }
+        
+        public bool IsInventoryItemOfType(int index, ItemType type){
+            switch (type)
+            {
+                case ItemType.Interactable:
+                    return _inventoryItems[index] is Interactable;
+                
+                case ItemType.Edible:
+                    return _inventoryItems[index] is EdibleItem;
+                
+                case ItemType.Item:
+                    return _inventoryItems[index] is Item;
+                
+            }
+            return false;
+        }
 
         public bool IsInventoryFull(){
             for(int i = 0; i < inventorySize; i++){
