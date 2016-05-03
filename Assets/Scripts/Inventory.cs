@@ -52,6 +52,16 @@ namespace Kontiki {
             return false;
         }
 
+        public bool CheckInventoryForSpecificItem(Item item){
+            for(int i = 0; i < inventorySize; i++){
+                if(_inventoryItems[i] == item){
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
         public void GetItemFromTrade(ItemType itemType){
             //TODO when more items are in the game, a switch case has to be made with the enum
             EdibleItem item = (EdibleItem)Instantiate(applePrefab, transform.position, transform.rotation);

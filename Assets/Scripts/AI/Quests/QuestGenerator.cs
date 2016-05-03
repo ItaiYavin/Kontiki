@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.Generic;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Kontiki
 {
-	public class QuestGenerator : MonoBehaviour {
-		private List<Character> characters;
+	public class QuestGenerator : MonoBehaviour {		
+		public GameObject questPrefab;
+
+		private List<Character> charactersWithoutQuestObjects;
 
 		// Use this for initialization
 		void Start () {
-			characters = new List<Characters>();
+			charactersWithoutQuestObjects = new List<Character>();
 		}
 		
 		// Update is called once per frame
@@ -17,14 +19,32 @@ namespace Kontiki
 		
 		}
 
-		public override void GenerateQuest(Character character, GameObject player){
-			if(!character.inventory.IsInventoryFull()){
-				character.inventory.PutItemIntoInventory(objective);
+		public void GenerateQuest(Character questGiver, GameObject player, Item reward){
+			GameObject g = Instantiate(questPrefab, transform.position, transform.rotation) as GameObject;
+			
+			Item objective = g.GetComponent<Item>();
+			int i = Random.Range(0, charactersWithoutQuestObjects.Count);
+
+			player.AddComponent<Fetch>(); // TODO make general so it works with multiple quest types
+
+			Fetch fetch = player.GetComponent<Fetch>();
+
+			fetch.objective = objective;
+
+			if(!charactersWithoutQuestObjects[i].inventory.IsInventoryFull()){
+				charactersWithoutQuestObjects[i].inventory.PutItemIntoInventory(objective);
 			} else {
-				character.inventory.GetInventoryItem(0);
+				charactersWithoutQuestObjects[i].inventory.GetInventoryItems()[0] = null;
+				charactersWithoutQuestObjects[i].inventory.PutItemIntoInventory(objective);
 			}
 
-			player.AddComponent("Fetch") as Fetch; // TODO make general so it works with multiple quest types
+			fetch.objectiveHolder = charactersWithoutQuestObjects[i];
+
+			fetch.reward = reward;
+
+			fetch.origin = questGiver;
+
+			charactersWithoutQuestObjects.RemoveAt(i);
 		}
 	}
 }

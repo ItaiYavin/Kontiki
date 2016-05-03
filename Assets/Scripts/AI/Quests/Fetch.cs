@@ -4,23 +4,19 @@ using System.Collections;
 namespace Kontiki
 {
 	public class Fetch : Quest {
-		private Character origin;
-		private Item objective;
+		public Character origin;
+		public Character objectiveHolder;
+		public Item objective;
+		public Item reward;
 
-		public Item questPrefab;
+		public bool hasObjective;
+
+		private Character player;
 
 		// Use this for initialization
-		void Start () {
-		
-		}
-		
-		// Update is called once per frame
-		void Update () {
-		
-		}
-
-		public override void GiveQuest(){
-
+		void Awake () {
+			player = GetComponent<Character>();
+			hasObjective = false;
 		}
 
 		public override void FinishQuest(Inventory characterInventory){ //take quest item
@@ -33,6 +29,16 @@ namespace Kontiki
 
 			// if not
 				//inform player
+		}
+
+		public override void CheckQuestState(){
+			if(!hasObjective){
+				if(player.inventory.CheckInventoryForSpecificItem(objective))
+					hasObjective = true;
+			}
+
+			if(hasObjective && objective == null)
+				FinishQuest(player.inventory);
 		}
 	}
 }
