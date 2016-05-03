@@ -11,7 +11,7 @@ namespace Kontiki.AI
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
     public sealed class IsTired : ContextualScorerBase
     {
-        [ApexSerialization, FriendlyName("Threshold", "Threshold(0-1) for hunger(0-1) where the score will be 0")]
+        [ApexSerialization, FriendlyName("Threshold", "Threshold(0-1) for energy(0-1) where the score will be 0")]
         public float threshold = 0;
 
         public override float Score(IAIContext context)
@@ -19,11 +19,11 @@ namespace Kontiki.AI
             AIContext ai = ((AIContext)context);
             /*
             float v = Mathf.Max((ai.character.energy / 1 - threshold), 0) / (1 - threshold);
+            */
+            float v = Mathf.Max(((1-ai.character.energy) - (1 - threshold)), 0) / (1 - threshold);
+
             if (ai.debugAI)
                 Debug.Log("Energy Score " + v + " character energy: " + ai.character.energy);
-            */
-            float v = Mathf.Max(((1-ai.character.energy) - threshold), 0);
-
             //TODO Make this more flexible
             return v * score;
         }

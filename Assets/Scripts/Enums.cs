@@ -13,6 +13,12 @@ namespace Kontiki {
         Question
     }
 
+    public enum PlaceType
+    {
+        Home,
+        FoodQuench,
+    }
+
 	public enum Gender
     {
         Male,

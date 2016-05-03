@@ -16,18 +16,36 @@ MonoBehaviour:
   aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":f6d4e48195c34963920b715a3b97a0b8,"_id":5249e0f6619d4f73afac10ba51a67d6d,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":f6d4e48195c34963920b715a3b97a0b8,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":f5b0c95400434e61a1a731a3d469870a},"_scorers":[{"@type":"Kontiki.AI.HungerScorer,
-    Assembly-CSharp","threshold":0,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.GoToHome, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.IsTired,
-    Assembly-CSharp","threshold":0.5,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.GoToBoat, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":379541efe0754ac3b69518a2bdb53ba9},"_scorers":[{"@type":"Kontiki.AI.IsSleeping,
+    Assembly-CSharp","not":true,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":60b3f94e6c2846b5868182929d6050a3}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":f5b0c95400434e61a1a731a3d469870a,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.ConsumeSelectedItem, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HasEdibleResource,
     Assembly-CSharp","inInventory":false,"not":false,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.SelectItemOfTypeInInventory, Assembly-CSharp","itemType":edible},"_scorers":[{"@type":"Kontiki.AI.HasEdibleResource,
     Assembly-CSharp","inInventory":true,"not":false,"score":9}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":2658260d16c6491b9645afc96e2f5feb}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":379541efe0754ac3b69518a2bdb53ba9,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":f5b0c95400434e61a1a731a3d469870a},"_scorers":[{"@type":"Kontiki.AI.HungerScorer,
+    Assembly-CSharp","threshold":0,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":894892a4fc024e758135749291650f86},"_scorers":[{"@type":"Kontiki.AI.IsTired,
+    Assembly-CSharp","threshold":0.40000001,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.GoToBoat, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":894892a4fc024e758135749291650f86,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.Sleep, Assembly-CSharp","stop":false},"_scorers":[{"@type":"Kontiki.AI.IsAtPosition,
+    Assembly-CSharp","minimumRange":3,"place":Home,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.GoToHome, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","_id":60b3f94e6c2846b5868182929d6050a3,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.Sleep, Assembly-CSharp","stop":true},"_scorers":[{"@type":"Kontiki.AI.IsEnergized,
+    Assembly-CSharp","threshold":0.85000002,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI"}},{"@type":"Apex.AI.ScoreSelector, ApexAI","_id":2658260d16c6491b9645afc96e2f5feb,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.Trade, Assembly-CSharp","tradeItem":anything,"gainedItem":edible},"_scorers":[{"@type":"Kontiki.AI.IsAtPosition,
+    Assembly-CSharp","minimumRange":2,"place":FoodQuench,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToFoodQuench, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":680,"@y":191},"zoom":1,"SelectorView":{"ViewArea":{"@left":100,"@top":311,"@width":300,"@height":220},"QualifierView":{"Name":"Is
+  editorConfiguration: '{"offset":{"@x":499,"@y":232},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":-125,"@top":328,"@width":240,"@height":128},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":355,"@top":104,"@width":176,"@height":176},"QualifierView":{"Name":"Has
+    selected edible?","ActionView":{}},"QualifierView":{"Name":"Has food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":147,"@top":328,"@width":160,"@height":176},"QualifierView":{"Name":"Is
     hungry?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    Tired?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":460,"@top":51,"@width":220,"@height":220},"QualifierView":{"Name":"Has
-    selected edible?","ActionView":{}},"QualifierView":{"Name":"Has food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
+    Tired?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":355,"@top":392,"@width":160,"@height":128},"QualifierView":{"Name":"Is
+    Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":147,"@top":520,"@width":160,"@height":128},"QualifierView":{"Name":"Not
+    Tired?","ActionView":{"Name":"Awake"}},"DefaultQualifier":{"Name":"Keep Sleeping"}},"SelectorView":{"ViewArea":{"@left":563,"@top":120,"@width":160,"@height":128},"QualifierView":{"Name":"Is
+    At Food Quench","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
