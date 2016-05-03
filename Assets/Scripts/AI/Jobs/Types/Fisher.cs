@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 namespace Kontiki.AI{
-    public class Fisher : Job{
+    public class Fisher : JobWithBoat{
         
         [Header("Fishing Variables")]
         public Transform[] fishingSpots;
@@ -15,6 +15,7 @@ namespace Kontiki.AI{
         
         public float minFishingTime = 3f; //Move into Settings
         public float maxFishingTime = 6f; //Move into Settings
+		
         
         public void GoToRandomFishingSpot(){
             if(fishingSpots.Length != 0){
@@ -34,6 +35,7 @@ namespace Kontiki.AI{
                 )));
             }
         }
+        
         
         IEnumerator Routine_StopFishing(float length){
             yield return new WaitForSeconds(length);

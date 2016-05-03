@@ -16,7 +16,8 @@ namespace Kontiki.AI
 
         public override float Score(IAIContext context){
 			AIContext ai = (AIContext)context;
-        	NavMeshAgent agent = ai.job.boat.agent;
+            JobWithBoat job = (JobWithBoat) ai.job;
+        	NavMeshAgent agent = job.boat.agent;
         	bool b = agent.remainingDistance > 0;
 
     		if(ai.debugAI){ 

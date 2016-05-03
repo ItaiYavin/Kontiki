@@ -13,15 +13,13 @@ namespace Kontiki.AI{
     public sealed class SailToRandomFishSpot : ActionBase{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext)context;
-            if(ai.job.boat != null){
-                if(ai.job is Fisher){
-                    Fisher fisher = (Fisher)ai.job;
-                    if(fisher.selectedFishingSpot == null)
-                        fisher.GoToRandomFishingSpot();
-                }else
-                    Debug.LogError("AI - Only a Fisher can SailToRandomFishSpot");
+            if(ai.job is Fisher){
+                Fisher fisher = (Fisher)ai.job;
+                if(fisher.selectedFishingSpot == null)
+                    fisher.GoToRandomFishingSpot();
             }else
-                Debug.LogError("AI - Does not own a boat");
+                Debug.LogError("AI - Only a Fisher can SailToRandomFishSpot");
+          
         }
     }
 }

@@ -277,8 +277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d517bcf4e425643b1301041f4f39dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInBoat: 0
   boat: {fileID: 0}
+  port: {fileID: 0}
+  dockingRange: 0
+  isReturningToPort: 0
   fishingSpots: []
   selectedFishingSpot: {fileID: 0}
   isFishing: 0
@@ -371,6 +373,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!1 &952196868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 952196872}
+  - 33: {fileID: 952196871}
+  - 135: {fileID: 952196870}
+  - 23: {fileID: 952196869}
+  m_Layer: 0
+  m_Name: Port
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &952196869
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952196868}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 94e9e6f9c763448e1b5d134b9a036e72, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!135 &952196870
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952196868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &952196871
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952196868}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &952196872
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952196868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2, y: 2, z: 49.706}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &1054955736
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,9 +650,6 @@ MonoBehaviour:
   characterInBoat: {fileID: 0}
   agent: {fileID: 0}
   isDocked: 1
-  isReturningToPort: 0
-  port: {fileID: 1946378827}
-  dockingRange: 5
 --- !u!4 &1671539114
 Transform:
   m_ObjectHideFlags: 0
@@ -855,8 +929,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d517bcf4e425643b1301041f4f39dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInBoat: 0
   boat: {fileID: 1671539113}
+  port: {fileID: 952196872}
+  dockingRange: 2
+  isReturningToPort: 0
   fishingSpots:
   - {fileID: 1816344621}
   - {fileID: 2127681243}

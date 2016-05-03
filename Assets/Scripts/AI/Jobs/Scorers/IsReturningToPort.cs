@@ -16,7 +16,8 @@ namespace Kontiki.AI{
         
         public override float Score(IAIContext context){
             AIContext ai = (AIContext)context;
-            bool b = ai.job.boat.isReturningToPort;
+            JobWithBoat job = (JobWithBoat) ai.job;
+            bool b = job.isReturningToPort;
             
             if(not) b = !b;
             

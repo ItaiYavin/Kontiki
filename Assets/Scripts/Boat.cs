@@ -13,34 +13,47 @@ namespace Kontiki
 		public NavMeshAgent agent;
 		
 		public bool isDocked = true;
-		public bool isReturningToPort = false;
-		
-        public Transform port;
-        public float dockingRange;
 		
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
 		}
 		
 		public override bool Interact(Character character){
-			if (character.isPlayer && CM != null){
-				if (CM.currentControllerType == Sui_Demo_ControllerType.character){
-					CM.currentControllerType = Sui_Demo_ControllerType.boat;
-					RemoveHighlight();
-					
-				} else if (CM.currentControllerType == Sui_Demo_ControllerType.boat){
-					CM.currentControllerType = Sui_Demo_ControllerType.character;
-					CM.resetState();
+			if (character.isPlayer){
+				if(CM != null){
+					if (CM.currentControllerType == Sui_Demo_ControllerType.character){
+						CM.currentControllerType = Sui_Demo_ControllerType.boat;
+						RemoveHighlight();
+						
+					} else if (CM.currentControllerType == Sui_Demo_ControllerType.boat){
+						CM.currentControllerType = Sui_Demo_ControllerType.character;
+						CM.resetState();
+					}
 				}
 			}
 			
 			if(characterInBoat == character){
 				characterInBoat = null;
+				character.transform.SetParent(null,true);
+				
+				if(!character.isPlayer){
+					character.GetComponent<Pathfinder>().enabled = true;
+					character.GetComponent<Pathfinder>().agent.enabled = true;
+				}
 			}else if(characterInBoat == null){
 				characterInBoat = character;
 				
-				character.transform.position = transform.position + Vector3.up;
+				character.transform.SetParent(transform,true);
+				character.transform.localPosition = Vector3.up * transform.localScale.y/2;
+				character.transform.localRotation = transform.rotation;
+				
+				if(!character.isPlayer){
+					character.GetComponent<Pathfinder>().enabled = false;
+					character.GetComponent<Pathfinder>().agent.enabled = false;
+				}
 			}
+			
+			
 				
 			return true;
 		}
@@ -54,16 +67,10 @@ namespace Kontiki
 		
 		public void Dock(Transform target){
 			isDocked = true;
-			isReturningToPort = false;
 		}
 		
         
         
-        
-        public void GoToPort(){
-			isReturningToPort = true;
-			GoTo(port);
-        }
 			
 	}
 }

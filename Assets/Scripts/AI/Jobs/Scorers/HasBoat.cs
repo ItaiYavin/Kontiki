@@ -18,7 +18,7 @@ namespace Kontiki.AI
         public override float Score(IAIContext context){
             AIContext ai = (AIContext)context;
             
-            bool b = ai.job.boat != null;
+            bool b = ai.job is JobWithBoat && ((JobWithBoat)ai.job).boat != null;
             
             if(not) b = !b;
             

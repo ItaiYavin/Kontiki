@@ -13,8 +13,9 @@ namespace Kontiki.AI{
     public sealed class GoToBoat : ActionBase{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext)context;
-            if(ai.job.boat != null){
-                ai.pathfinder.target = ai.job.boat.transform;
+            if(ai.job is JobWithBoat){
+                JobWithBoat job = (JobWithBoat) ai.job;
+                ai.pathfinder.target = job.boat.transform;
                 ai.pathfinder.GoToTarget();
             }else{
                 Debug.LogError("AI - Does not own a boat");

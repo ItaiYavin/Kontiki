@@ -17,7 +17,8 @@ namespace Kontiki.AI
         public override float Score(IAIContext context){
             AIContext ai = (AIContext)context;
             
-            float distance = Vector3.Distance(ai.transform.position, ai.job.boat.transform.position);
+            JobWithBoat job = (JobWithBoat) ai.job;
+            float distance = Vector3.Distance(ai.transform.position, job.boat.transform.position);
             bool b = distance < SettingsSingleton.Instance.pickupRange;
             
             if(not)b = !b;

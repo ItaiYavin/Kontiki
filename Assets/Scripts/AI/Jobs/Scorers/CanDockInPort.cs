@@ -16,12 +16,18 @@ namespace Kontiki.AI
 
         public override float Score(IAIContext context){
             AIContext ai = (AIContext)context;
-            if(ai.job.boat.port != null){
-                float distance = Vector3.Distance( ai.job.boat.transform.position, ai.job.boat.port.position);
-                bool b = distance < ai.job.boat.dockingRange;
+            if(ai.job is JobWithBoat){
                 
-                if(not)b = !b;
-                return b ? score : 0f;
+                JobWithBoat job = (JobWithBoat) ai.job;
+                if(job.port != null){
+                    float distance = Vector3.Distance( job.boat.transform.position, job.port.position);
+                    bool b = distance < job.dockingRange;
+                    
+                    if(not)b = !b;
+                    return b ? score : 0f;
+                }else{
+                    Debug.LogError("AI - Port is null");
+                }
             }
             return 0f;
         }
