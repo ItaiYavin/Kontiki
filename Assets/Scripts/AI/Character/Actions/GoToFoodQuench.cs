@@ -1,21 +1,23 @@
-﻿using System;
+﻿using System.Diagnostics;
 using Apex.AI;
 using Kontiki;
+using UnityEngine;
 
 namespace Kontiki.AI
 {
 
+
     /// <summary>
-    /// Consumes the selected edible item if a edible is selected otherwise nothing.
+    /// Goes to the specified destination
     /// </summary>
     /// <seealso cref="Apex.AI.ActionBase" />
 
-    public sealed class GoToTarget : ActionBase
+    public sealed class GoToFoodQuench : ActionBase
     {
         public override void Execute(IAIContext context)
         {
             AIContext ai = ((AIContext)context);
-            ((AIContext)context).pathfinder.GoToTarget();
+            ((AIContext)context).pathfinder.GoTo(ai.baseroutine.foodQuench);
         }
     }
 }

@@ -3,13 +3,13 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Apex.AI.Components;
-using Kontiki.AI;
 
 namespace Kontiki {
     [RequireComponent(typeof(Character))]
     [RequireComponent(typeof(Pathfinder))]
 	[RequireComponent(typeof(Memory))]
-	[RequireComponent(typeof(UtilityAIComponent))]
+    [RequireComponent(typeof(Inventory))]
+    [RequireComponent(typeof(BaseRoutine))]
 	public sealed class AIComponentContainer : MonoBehaviour, IContextProvider {
         /**
          * Components that is required for AI
@@ -34,12 +34,11 @@ namespace Kontiki {
             get;
             private set;
         }
-        public Job job{
-            get; 
+        public BaseRoutine baseroutine
+        {
+            get;
             private set;
         }
-        
-        public bool debugAI;
 
         /**
          * Apex specific
@@ -54,22 +53,11 @@ namespace Kontiki {
             this.pathfinder = GetComponent<Pathfinder>();
 			this.memory = GetComponent<Memory>();
             this.inventory = GetComponent<Inventory>();
-            this.job = GetComponent<Job>();
-            if(job == null)
-                Debug.LogError("AI - Must have a Job");
-        }
+            this.baseroutine = GetComponent<BaseRoutine>();		}
 
 		void Awake () {
 			_context = new AIContext(this);
 		}
-        
-        #if UNITY_EDITOR
-        void Reset() {
-            if (job == null && GetComponent<Job>() == null)
-                Debug.LogError("AI - Must have a Job");
-            
-        }
-        #endif
 
 		public IAIContext GetContext(Guid aiId)
 		{

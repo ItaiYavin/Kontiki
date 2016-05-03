@@ -32,23 +32,31 @@ namespace Kontiki {
 
 		public void GoToTarget(){
 			agent.destination = target.transform.position;
-            agent.Resume();
 		}
+
+        public void GoTo(Transform destination)
+        {
+            agent.destination = destination.position;
+        }
 
 		public void StopMoving(){
 			agent.destination = transform.position;
 		}
-        
-        
-/*        private void OnDrawGizmosSelected()
+
+        public bool IsAtPosition(Vector3 pos, float range)
         {
-            
+            return (Vector3.Distance(transform.position, pos) < range) ? true : false;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            /*
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, SettingsSingleton.Instance.scanningRange);
 
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, SettingsSingleton.Instance.pickupRange);
+            */
         }
-*/       
     }
 }

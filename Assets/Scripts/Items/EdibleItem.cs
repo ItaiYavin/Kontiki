@@ -6,7 +6,7 @@ namespace Kontiki
     public class EdibleItem : Item
     {
         [Range(0, 25)]
-        public float saturation = 0.1f;
+        public float saturation = 25f;
 
         override public bool UseItem(Character person)
         {

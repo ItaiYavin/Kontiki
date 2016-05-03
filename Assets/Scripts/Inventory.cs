@@ -9,6 +9,8 @@ namespace Kontiki {
         [Range(4, 9)]
         public int inventorySize = 4;
 
+        public EdibleItem applePrefab;
+
         [SerializeField]
         private Item[] _inventoryItems;
         private Character _character;
@@ -39,7 +41,7 @@ namespace Kontiki {
                 pickup = item;
                 for (int i = 0; i < inventorySize; i++)
                 {
-                    if (_inventoryItems == null)
+                    if (_inventoryItems[i] == null)
                     {
                         _inventoryItems[i] = pickup;
                         item.gameObject.SetActive(false);
@@ -48,6 +50,13 @@ namespace Kontiki {
                 }
             }
             return false;
+        }
+
+        public void GetItemFromTrade(ItemType itemType){
+            //TODO when more items are in the game, a switch case has to be made with the enum
+            EdibleItem item = (EdibleItem)Instantiate(applePrefab, transform.position, transform.rotation);
+            
+            PutItemIntoInventory(item);
         }
 
         //TODO Find better name
@@ -67,7 +76,9 @@ namespace Kontiki {
             if (_inventoryItems[i] == null) return;
 
             _inventoryItems[i].UseItem(_character);
+            Item item = _inventoryItems[i];
             _inventoryItems[i] = null;
+            Destroy(item);
         }
 
         public Item GetInventoryItem(int i) {

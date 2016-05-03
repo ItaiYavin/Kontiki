@@ -13,6 +13,7 @@ namespace Kontiki.AI
     public sealed class Explore : ActionBase{
 
         public override void Execute(IAIContext context){
+            /*
         	AIContext ai = ((AIContext)context);
 			Vector3 point = ai.pathfinder.transform.position;
             Vector3 randomPoint = ai.pathfinder.transform.position;
@@ -31,6 +32,7 @@ namespace Kontiki.AI
 			if(ai.debugAI) Debug.Log("POSITION: " + point);
 
             ai.pathfinder.agent.destination = point;
+            */
 		}
     }
 }

@@ -22,23 +22,68 @@ namespace Kontiki {
         public Interactable selectedInteractable;
         
         
+        public Boat boat;
+        
+        [HideInInspector]
+        public bool isSleeping;
+
         void Start()
         {
             inventory = GetComponent<Inventory>();
         }
 
+        void Update()
+        {
+            //TODO: Check if this is NPC or not
+            /*
+            if (selectedItem != null)
+            {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    selectedItem.UseItem(this);
+                }
+            }*/
+        }
 
         void FixedUpdate()
         {
+            HungerUpdate();
 
+            TiredUpdate();
+        }
+
+        private void HungerUpdate()
+        {
             if (hunger < SettingsSingleton.Instance.hungerRange.max)
             {
-                hunger += SettingsSingleton.Instance.hungerIncrementPerSec * Time.deltaTime;
+                hunger += SettingsSingleton.Instance.hungerIncrementPerSec;
             }
             else
             {
                 hunger = SettingsSingleton.Instance.hungerRange.max;
             }
+        }
+
+        private void TiredUpdate()
+        {
+            switch(isSleeping)
+            {
+                case false: // If the character is awake
+                {
+                    energy -= 0.001f;
+                }
+                break;
+                case true: // If the character is asleep
+                {
+                    energy += 0.003f;
+                }
+                break;
+            }
+        }
+
+        public bool HasSelectedResource()
+        {
+            return selectedItem != null;
         }
 
         public bool HasSelected()
@@ -56,6 +101,11 @@ namespace Kontiki {
             {
                 selectedInteractable.Interact(this);
             }
+        }
+
+        public void Sleep(bool b)
+        {
+            isSleeping = b;
         }
 
         private void OnDrawGizmosSelected()
