@@ -29,7 +29,8 @@ MonoBehaviour:
     ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":29307dd2b93446f1937d40fd90b58cd9,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":f726642f017e4dda8f35fd1702585a92},"threshold":90,"_scorers":[{"@type":"Kontiki.AI.HungerScorer,
     Assembly-CSharp","threshold":0,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","_scorers":[{"@type":"Kontiki.AI.IsFishing, Assembly-CSharp","not":false,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[]},"_scorers":[{"@type":"Kontiki.AI.IsFishing,
+    Assembly-CSharp","not":false,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.StartFishing, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.CanStartFishing,
     Assembly-CSharp","not":false,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.SailToRandomFishSpot, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.IsBoatMoving,
@@ -40,13 +41,14 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Kontiki.AI.SailToPort, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.IsReturningToPort,
     Assembly-CSharp","not":true,"score":100},{"@type":"Kontiki.AI.IsBoatDocked, Assembly-CSharp","not":false,"score":-100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":5,"@y":-57},"zoom":0.64999998,"SelectorView":{"ViewArea":{"@left":18,"@top":-31,"@width":130,"@height":143},"QualifierView":{"Name":"Is
+  editorConfiguration: '{"offset":{"@x":50,"@y":15},"zoom":0.60000002,"SelectorView":{"ViewArea":{"@left":62,"@top":39,"@width":120,"@height":132},"QualifierView":{"Name":"Is
     not in the boat?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    in Boat","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":239,"@top":-31,"@width":208,"@height":143},"Name":"Not
+    in Boat","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":266,"@top":39,"@width":192,"@height":132},"Name":"Not
     in boat","QualifierView":{"Name":"Close enought to interact and boat is docked","ActionView":{"Name":"Interact"}},"QualifierView":{"Name":"Is
-    not Moving","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":200,"@top":164,"@width":156,"@height":221},"Name":"In
+    not Moving","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":230,"@top":219,"@width":144,"@height":204},"Name":"In
     The Boat","QualifierView":{"Name":"Out of Resources","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    Fishing"},"QualifierView":{"Name":"Close enough to start fishing","ActionView":{}},"QualifierView":{"Name":"Boat
-    is not Moving","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":395,"@top":164,"@width":208,"@height":143},"Name":"Return
+    Fishing","ActionView":{"Name":"Wait Until Finished"}},"QualifierView":{"Name":"Close
+    enough to start fishing","ActionView":{}},"QualifierView":{"Name":"Boat is not
+    Moving","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":410,"@top":219,"@width":192,"@height":132},"Name":"Return
     to Port","QualifierView":{"Name":"Close enough to Dock","ActionView":{}},"QualifierView":{"Name":"Undocked
     Boat is not Returning to Port","ActionView":{}},"DefaultQualifier":{}}}'
