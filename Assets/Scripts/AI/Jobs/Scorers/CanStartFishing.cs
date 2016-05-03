@@ -21,7 +21,8 @@ namespace Kontiki.AI
                 Fisher fisher = (Fisher)ai.job;
                 if(fisher.selectedFishingSpot != null){
                     float distance = Vector3.Distance(fisher.boat.transform.position, fisher.selectedFishingSpot.position);
-                    Debug.Log("distance : " + distance);    
+                    if(ai.debugAI)
+                        Debug.Log("distance : " + distance);    
                     bool b = distance < fisher.initFishingRange;
                 
                     if(not)b = !b;
