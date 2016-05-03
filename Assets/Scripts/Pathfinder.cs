@@ -4,6 +4,7 @@ using Apex.AI;
 using Apex.AI.Components;
 
 namespace Kontiki {
+    [RequireComponent(typeof(NavMeshAgent))]
 	public class Pathfinder : MonoBehaviour {
         /**
 		** Navigation variables and objects
@@ -21,7 +22,16 @@ namespace Kontiki {
 
 		// Update is called once per frame
 		void Update () {
+            //TODO Maybe this shouldn't happen here (this is here temporarily for testing)
+            if (!ai.character.isSleeping && Vector3.Distance(transform.position, ai.baseroutine.home.position) < 3f)
+		    {
+		        ai.character.isSleeping = true;
+		    }
 
+		    if (ai.character.isSleeping && ai.character.energy > 0.9f)
+		    {
+		        ai.character.isSleeping = false;
+		    }
         }
 
         public void TargetClosestItemInRange(){
@@ -34,20 +44,27 @@ namespace Kontiki {
 
         public void GoTo(Transform destination)
         {
-            agent.destination = transform.position;
+            agent.destination = destination.position;
         }
 
 		public void StopMoving(){
 			agent.destination = transform.position;
 		}
 
+        public bool IsAtPosition(Vector3 pos, float range)
+        {
+            return (Vector3.Distance(transform.position, pos) < range) ? true : false;
+        }
+
         private void OnDrawGizmosSelected()
         {
+            /*
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, SettingsSingleton.Instance.scanningRange);
 
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, SettingsSingleton.Instance.pickupRange);
+            */
         }
     }
 }

@@ -21,11 +21,18 @@ namespace Kontiki {
         [Range(0.01f, 1f)]
         public float hungerIncrementPerSec = 0.1f;
         public RangeAttribute hungerRange = new RangeAttribute(0, 100);
+        public bool debugging;
 
 
 
         // Static singleton property
         public static SettingsSingleton Instance { get; private set; }
+
+        void Start()
+        {
+            if (debugging)
+                Debug.LogWarning("Debugging Enabled");
+        }
 
         void Awake()
         {

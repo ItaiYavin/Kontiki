@@ -2,11 +2,8 @@
 using System.Collections;
 
 public class BaseRoutine : MonoBehaviour {
-    public Transform home
-    {
-        get;
-        private set;
-    }
+    public Transform home;
+    public Transform foodQuench;
 
     // Use this for initialization
     void Start () {
