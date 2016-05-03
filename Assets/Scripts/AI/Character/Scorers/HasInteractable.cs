@@ -9,11 +9,14 @@ namespace Kontiki.AI
     /// Scorer for whether character has an edible resource selected
     /// </summary>
     /// <seealso cref="Apex.AI.ContextualScorerBase" />
-    public sealed class HasEdibleResource : ContextualScorerBase
+    public sealed class HasInteractable : ContextualScorerBase
     {
       
-        [ApexSerialization, FriendlyName("In Inventory", "if false will check character selected item")]
+        [ApexSerialization, FriendlyName("in Inventory", "will check if character has edible resource in inventory")]
         public bool inInventory = false;
+        
+        [ApexSerialization, FriendlyName("in Hand", "will check character selected item")]
+        public bool inHand = false;
 
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
         public bool not = false;
@@ -24,17 +27,14 @@ namespace Kontiki.AI
             Inventory inventory = ai.inventory;
             bool b = false;
 
-            if(inInventory){
-                if(!inventory.IsInventoryEmpty()){
-                    for(int i = 0; i < inventory.inventorySize; i++){
-                        if(inventory.GetInventoryItem(i) is EdibleItem)
-                            b = true;
-                    }
+            if(inInventory && !inventory.IsInventoryEmpty()){
+                for(int i = 0; i < inventory.inventorySize; i++){
+                    if(inventory.GetInventoryItem(i) is EdibleItem)
+                        b = true;
                 }
-            } else {
-                if(character.HasSelected() != null && character.selectedInteractable is EdibleItem){
-                    b = true;
-                }
+            }
+            if(inHand && character.HasSelected<EdibleItem>()){
+                b = true;
             }
 
             if(not) b = !b;
