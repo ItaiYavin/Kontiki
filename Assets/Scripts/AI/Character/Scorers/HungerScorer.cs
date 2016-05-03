@@ -16,9 +16,9 @@ namespace Kontiki.AI
         
         public override float Score(IAIContext context){
             AIContext ai = ((AIContext)context);
-            float v = Mathf.Max((ai.character.hunger/SettingsSingleton.Instance.hungerRange.max - threshold),0)/(1-threshold);
+            float v = Mathf.Max((ai.character.hunger / SettingsSingleton.Instance.hungerRange.max - threshold), 0) / (1 - threshold);
             if(ai.debugAI)
-                Debug.Log("Hunger Score " + v + " character hunger: " + ai.character.hunger);
+                Debug.Log("Hunger Score " + (v * score) + " character hunger: " + ai.character.hunger);
             return v * score;
         }
     }
