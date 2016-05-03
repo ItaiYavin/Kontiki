@@ -12,6 +12,12 @@ namespace Kontiki
 		
 		public NavMeshAgent agent;
 		
+		public bool isDocked = true;
+		public bool isReturningToPort = false;
+		
+        public Transform port;
+        public float dockingRange;
+		
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
 		}
@@ -40,11 +46,24 @@ namespace Kontiki
 		}
 		
 		public void GoTo(Transform target){
-			agent.SetDestination(target.position);
-			agent.Resume();
+			if(isDocked)isDocked = false;
+			agent.destination = target.position;
+			
 		}
 		
 		
+		public void Dock(Transform target){
+			isDocked = true;
+			isReturningToPort = false;
+		}
+		
+        
+        
+        
+        public void GoToPort(){
+			isReturningToPort = true;
+			GoTo(port);
+        }
 			
 	}
 }

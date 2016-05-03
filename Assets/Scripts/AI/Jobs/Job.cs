@@ -16,9 +16,6 @@ namespace Kontiki.AI{
         public bool isInBoat;
         public Boat boat;
         
-        
-        
-        
         /////////////////
         //// FISHER
         //////////////
