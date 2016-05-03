@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Kontiki {
 	public class AIContext : IAIContext {
 
-		public bool debugAI = false;
+		public bool debugAI = true;
 
         public AIComponentContainer self
 		{
