@@ -13,8 +13,10 @@ namespace Kontiki.AI{
     public sealed class SailToRandomFishSpot : ActionBase{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext)context;
-            if(ai.job.boat != null && ai.job.type == Job.Type.Fisher && ai.job.selectedFishingSpot == null){
-                ai.job.GoToRandomFishingSpot();
+            if(ai.job.boat != null && ai.job is Fisher){
+                Fisher fisher = (Fisher)ai.job;
+                if(fisher.selectedFishingSpot == null)
+                    fisher.GoToRandomFishingSpot();
             }   
         }
     }

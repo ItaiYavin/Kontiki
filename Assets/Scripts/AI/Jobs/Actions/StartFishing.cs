@@ -13,8 +13,8 @@ namespace Kontiki.AI{
     public sealed class StartFishing : ActionBase{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext)context;
-            if(ai.job.boat != null && ai.job.type == Job.Type.Fisher ){
-                ai.job.StartFishing();
+            if(ai.job.boat != null && ai.job is Fisher){
+                ((Fisher)ai.job).StartFishing();
             }else{
                 Debug.LogError("AI - Does not own a boat");
             }

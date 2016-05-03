@@ -17,13 +17,16 @@ namespace Kontiki.AI
         public override float Score(IAIContext context){
             AIContext ai = (AIContext)context;
             
-            if(ai.job.type == Job.Type.Fisher && ai.job.selectedFishingSpot != null){
-                float distance = Vector3.Distance(ai.job.boat.transform.position, ai.job.selectedFishingSpot.position);
-                Debug.Log("distance : " + distance);    
-                bool b = distance < ai.job.initFishingRange;
-            
-                if(not)b = !b;
-                return b ? score : 0f;
+            if(ai.job is Fisher){
+                Fisher fisher = (Fisher)ai.job;
+                if(fisher.selectedFishingSpot != null){
+                    float distance = Vector3.Distance(fisher.boat.transform.position, fisher.selectedFishingSpot.position);
+                    Debug.Log("distance : " + distance);    
+                    bool b = distance < fisher.initFishingRange;
+                
+                    if(not)b = !b;
+                    return b ? score : 0f;
+                }
                 
             }
             return 0f;

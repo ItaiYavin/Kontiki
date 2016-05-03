@@ -2,23 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 namespace Kontiki.AI{
-    public class Job : MonoBehaviour{
+    public class Fisher : Job{
         
-
-        public enum Type{
-            Fisher,
-            Scavenger,
-            Trader            
-        }
-        
-        public Job.Type type;
-        
-        public bool isInBoat;
-        public Boat boat;
-        
-        /////////////////
-        //// FISHER
-        //////////////
         [Header("Fishing Variables")]
         public Transform[] fishingSpots;
         
@@ -26,10 +11,10 @@ namespace Kontiki.AI{
         
         public bool isFishing = false;
         
-        public float initFishingRange = 5f;
+        public float initFishingRange = 5f; // Move Into Settings
         
-        public float minFishingTime = 3f;
-        public float maxFishingTime = 6f;
+        public float minFishingTime = 3f; //Move into Settings
+        public float maxFishingTime = 6f; //Move into Settings
         
         public void GoToRandomFishingSpot(){
             if(fishingSpots.Length != 0){
@@ -43,10 +28,12 @@ namespace Kontiki.AI{
         public void StartFishing(){
             if(selectedFishingSpot != null){
                 isFishing = true;
-                StartCoroutine(Routine_StopFishing(Random.Range(minFishingTime,maxFishingTime)));
+                StartCoroutine(Routine_StopFishing(Random.Range(
+                    minFishingTime,
+                    maxFishingTime
+                )));
             }
         }
-        
         
         IEnumerator Routine_StopFishing(float length){
             yield return new WaitForSeconds(length);
@@ -55,3 +42,4 @@ namespace Kontiki.AI{
         }
     }
 }
+        

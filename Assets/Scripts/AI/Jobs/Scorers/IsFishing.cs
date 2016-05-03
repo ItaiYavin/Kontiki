@@ -16,8 +16,8 @@ namespace Kontiki.AI
 
         public override float Score(IAIContext context){
 			AIContext ai = (AIContext)context;
-            if(ai.job.type ==  Job.Type.Fisher){
-                bool b = ai.job.isFishing;
+            if(ai.job is Fisher){
+                bool b = ((Fisher)ai.job).isFishing;
                 
                 if(not) b = !b;
 
