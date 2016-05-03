@@ -4,6 +4,8 @@ using Apex.AI;
 using Apex.AI.Components;
 
 namespace Kontiki {
+    
+    [RequireComponent(typeof(NavMeshAgent))]
 	public class Pathfinder : MonoBehaviour {
         /**
 		** Navigation variables and objects

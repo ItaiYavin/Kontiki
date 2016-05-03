@@ -232,6 +232,145 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &890128355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 890128363}
+  - 114: {fileID: 890128362}
+  - 195: {fileID: 890128361}
+  - 114: {fileID: 890128360}
+  - 114: {fileID: 890128359}
+  - 114: {fileID: 890128358}
+  - 114: {fileID: 890128357}
+  - 114: {fileID: 890128356}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &890128356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890128355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 939582531, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiConfigs: []
+--- !u!114 &890128357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890128355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d517bcf4e425643b1301041f4f39dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInBoat: 0
+  boat: {fileID: 0}
+  fishingSpots: []
+  selectedFishingSpot: {fileID: 0}
+  isFishing: 0
+  initFishingRange: 5
+  minFishingTime: 3
+  maxFishingTime: 6
+--- !u!114 &890128358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890128355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugAI: 0
+--- !u!114 &890128359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890128355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c421f9565e9164fb40cdab725b6e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  memory: []
+--- !u!114 &890128360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890128355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2599267c68e5e4daee665bdb154bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  target: {fileID: 0}
+--- !u!195 &890128361
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890128355}
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &890128362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890128355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
+  energy: 1
+  hunger: 0
+  inventory: {fileID: 0}
+  selectedInteractable: {fileID: 0}
+--- !u!4 &890128363
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890128355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 112.547005, y: 68.37707, z: 121.77607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &1054955736
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,10 +789,10 @@ GameObject:
   - 33: {fileID: 1946378826}
   - 65: {fileID: 1946378825}
   - 23: {fileID: 1946378824}
+  - 114: {fileID: 1946378818}
   - 114: {fileID: 1946378823}
   - 195: {fileID: 1946378822}
   - 114: {fileID: 1946378821}
-  - 114: {fileID: 1946378818}
   - 114: {fileID: 1946378817}
   - 114: {fileID: 1946378816}
   - 114: {fileID: 1946378819}

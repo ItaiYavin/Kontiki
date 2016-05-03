@@ -9,6 +9,7 @@ namespace Kontiki {
     [RequireComponent(typeof(Character))]
     [RequireComponent(typeof(Pathfinder))]
 	[RequireComponent(typeof(Memory))]
+	[RequireComponent(typeof(UtilityAIComponent))]
 	public sealed class AIComponentContainer : MonoBehaviour, IContextProvider {
         /**
          * Components that is required for AI
@@ -61,6 +62,14 @@ namespace Kontiki {
 		void Awake () {
 			_context = new AIContext(this);
 		}
+        
+        #if UNITY_EDITOR
+        void Reset() {
+            if (job == null && GetComponent<Job>() == null)
+                Debug.LogError("AI - Must have a Job");
+            
+        }
+        #endif
 
 		public IAIContext GetContext(Guid aiId)
 		{
