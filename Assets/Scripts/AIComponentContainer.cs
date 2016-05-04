@@ -64,18 +64,11 @@ namespace Kontiki {
             this.inventory = GetComponent<Inventory>();
             this.baseroutine = GetComponent<BaseRoutine>();		
             this.job = GetComponent<Job>();
-            if(job == null)
-                Debug.LogError("AI - Must have a Job");
         }
 
 		void Awake () {
 			_context = new AIContext(this);
 		}
-        
-        void Reset(){
-            if(job == null || GetComponent<Job>() == null)
-                Debug.LogError("AI - Must have a Job");
-        }
 
 		public IAIContext GetContext(Guid aiId)
 		{
