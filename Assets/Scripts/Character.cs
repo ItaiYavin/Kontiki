@@ -56,7 +56,7 @@ namespace Kontiki {
         {
             if (hunger < SettingsSingleton.Instance.hungerRange.max)
             {
-                hunger += SettingsSingleton.Instance.hungerIncrementPerSec;
+                hunger += SettingsSingleton.Instance.hungerIncrementPerSec * Time.deltaTime;
             }
             else
             {
@@ -70,12 +70,12 @@ namespace Kontiki {
             {
                 case false: // If the character is awake
                 {
-                    energy -= 0.001f;
+                    energy -= 0.001f * Time.deltaTime;
                 }
                 break;
                 case true: // If the character is asleep
                 {
-                    energy += 0.003f;
+                    energy += 0.003f * Time.deltaTime;
                 }
                 break;
             }
