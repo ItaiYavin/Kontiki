@@ -17,7 +17,7 @@ namespace Kontiki
 
 		private Character player;
 
-		private float sphereSizeReductionPercent = 0.8f; // Needs to be between 0-1;
+		private float areaOfInterestSizeReductionPercent = 0.8f; // Needs to be between 0-1;
 
 		private float numberOfAskedPeople;
 		private float numberOfHints;
@@ -30,32 +30,40 @@ namespace Kontiki
 		}
 
 		public void GetObjectiveItem(){
+			Item[] objectiveHolderInventoryItems = objectiveHolder.inventory.GetInventoryItems();
 			
+			for(int i = 0; i < objectiveHolderInventoryItems.Length; i++){
+				if(objectiveHolderInventoryItems[i] == objective)
+					transform.GetComponent<Character>().inventory.PutItemIntoInventory(objective);
+			}
 		}
 
 		public override void UpdateQuest(Character askedCharacter){
+			if(askedCharacter == objectiveHolder)
+				GetObjectiveItem();
+
 			if(!CheckListForCharacter(askedCharacter, askedPeople))
 			{
 				bool isAskedCharacterInArea = true;
 
-				if(sphere != null) //check if person is within sphere
-					isAskedCharacterInArea = CheckCharacterIsInSphere(askedCharacter);
+				if(areaOfInterest != null) //check if person is within AreaOfInterest
+					isAskedCharacterInArea = CheckCharacterIsInAreaOfInterest(askedCharacter);
 
 				if(isAskedCharacterInArea){
 					bool askedCharacterKnows = false;
-										
+
 					int i = Random.Range(0, 10);
 					if(i > (threshold - numberOfAskedPeople)) //calculate chance to know about goal
 						askedCharacterKnows = true;
 
 					if(askedCharacterKnows)
 					{
-						if(sphere == null)
-							CreateSphereInWorld(sphereMaxSize, objectiveHolder.transform.position); //create sphere
-							// WHAT KIND OF SPHERE? AREA OF INTEREST?
-						else {
-							if(sphere.transform.localScale.x > sphereMinSize){
-								AdjustSphereInWorld(sphereSizeReductionPercent, objectiveHolder.transform.position);//make new smaller sphere
+						if(areaOfInterest == null)
+							CreateAreaOfInterestInWorld(areaOfInterestMaxSize, objectiveHolder.transform.position); //create AreaOfInterest
+						else 
+						{
+							if(areaOfInterest.transform.localScale.x > areaOfInterestMinSize){
+								AdjustAreaOfInterestInWorld(areaOfInterestSizeReductionPercent, objectiveHolder.transform.position);//make new smaller AreaOfInterest
 								numberOfAskedPeople = 0; //reset number of asked people
 							}
 						}
@@ -70,7 +78,7 @@ namespace Kontiki
 						return;
 					}
 				}
-				//TODO asked character is outside of sphere inform player
+				//TODO asked character is outside of areaOfInterest inform player
 			}
 			//TODO player has already asked character, inform player
 		}

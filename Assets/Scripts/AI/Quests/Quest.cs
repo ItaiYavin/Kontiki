@@ -5,11 +5,11 @@ using System.Collections.Generic;
 namespace Kontiki
 {
 	public abstract class Quest : MonoBehaviour {
-		// Sphere Variables
-		public GameObject spherePrefab;
-		protected GameObject sphere;
-		protected float sphereMaxSize;
-		protected float sphereMinSize;
+		// areaOfInterest Variables
+		public GameObject areaOfInterestPrefab;
+		protected GameObject areaOfInterest;
+		protected float areaOfInterestMaxSize;
+		protected float areaOfInterestMinSize;
 
 		public abstract void FinishQuest(Inventory characterInventory);
 
@@ -22,8 +22,8 @@ namespace Kontiki
 			CheckQuestState();
 		}
 
-		private static void RandomlyMoveGameObjectWithinRange(GameObject g, Vector3 position){
-			sphere.transform.position = position;
+		private void RandomlyMoveGameObjectWithinRange(GameObject g, Vector3 position){
+			areaOfInterest.transform.position = position;
 			float ranX;
 			float ranY;
 			ranX = Random.Range(-g.transform.localScale.x/2, g.transform.localScale.x/2);
@@ -32,30 +32,30 @@ namespace Kontiki
 			g.transform.position += new Vector3(ranX, ranY, 0);
 		}
 
-		public static void CreateSphereInWorld(float radius, Vector3 position){
-			sphere = Instantiate(spherePrefab, position, transform.rotation) as GameObject; //Instantiate Sphere of radius at position
-			sphere.transform.localScale = new Vector3(radius, radius, radius); // Set size of sphere
+		public void CreateAreaOfInterestInWorld(float radius, Vector3 position){
+			areaOfInterest = Instantiate(areaOfInterestPrefab, position, transform.rotation) as GameObject; //Instantiate areaOfInterest of radius at position
+			areaOfInterest.transform.localScale = new Vector3(radius, radius, radius); // Set size of areaOfInterest
 			
-			RandomlyMoveGameObjectWithinRange(sphere, position); //Randomly move sphere so that position is still within sphere
+			RandomlyMoveGameObjectWithinRange(areaOfInterest, position); //Randomly move areaOfInterest so that position is still within areaOfInterest
 		}
 
-		public static void AdjustSphereInWorld(float reduction, Vector3 position){
-			sphere.transform.localScale *= reduction; //Resize sphere
-			if(sphere.transform.localScale.x < sphereMinSize)
-				sphere.transform.localScale = new Vector3(sphereMinSize, sphereMinSize, sphereMinSize);
+		public void AdjustAreaOfInterestInWorld(float reduction, Vector3 position){
+			areaOfInterest.transform.localScale *= reduction; //Resize areaOfInterest
+			if(areaOfInterest.transform.localScale.x < areaOfInterestMinSize)
+				areaOfInterest.transform.localScale = new Vector3(areaOfInterestMinSize, areaOfInterestMinSize, areaOfInterestMinSize);
 
-			RandomlyMoveGameObjectWithinRange(sphere, position); //Move sphere so that position is still wihtin sphere
+			RandomlyMoveGameObjectWithinRange(areaOfInterest, position); //Move areaOfInterest so that position is still wihtin areaOfInterest
 		}
 
-		public static bool CheckCharacterIsInSphere(Character character){
-			if(Vector3.Distance(character.transform.position, sphere.transform.position) < sphere.transform.localScale.x/2){
+		public bool CheckCharacterIsInAreaOfInterest(Character character){
+			if(Vector3.Distance(character.transform.position, areaOfInterest.transform.position) < areaOfInterest.transform.localScale.x/2){
 				return true;
 			}
-			// character is not within sphere
+			// character is not within areaOfInterest
 			return false;
 		}
 
-		public static void RemoveCharacterFromList(Character character, List<Character> list){
+		public void RemoveCharacterFromList(Character character, List<Character> list){
 			for(int i = 0; i < list.Count; i++){
 				if(list[i] == character){
 					list.RemoveAt(i);
