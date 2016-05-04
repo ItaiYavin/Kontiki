@@ -15,13 +15,17 @@ namespace Kontiki
 		public bool isDocked = true;
 		
 		public Transform target;
+		public NavMeshPath path;
 		
+		
+		bool movingForward = false;
+		float endMoveForward;
 		
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
 			//body = GetComponent<Rigidbody>();
 			//agent.Stop();
-			//path = new NavMeshPath();
+			path = new NavMeshPath();
 			
 		}
 		
@@ -125,13 +129,17 @@ namespace Kontiki
 		}
 		**/
 		
+		
+		
 		public void GoTo(Transform target){
 			if(isDocked){
 				isDocked = false;
 			}
-			
 			this.target = target;
 			agent.SetDestination(target.position);
+			
+			//agent.SetDestination(target.position);
+			
 			/*
 			RaycastHit hitInfo;
 			if(Physics.Linecast(transform.position,target.position,out hitInfo)){
@@ -156,12 +164,12 @@ namespace Kontiki
 			
 		private void OnDrawGizmosSelected()
         {
-			/*if(target == null) return;
+			if(target == null) return;
 			if(path == null){
 				Gizmos.color = Color.blue;
 				Gizmos.DrawLine(transform.position,target.position);
 				Gizmos.color = Color.black;
-				Gizmos.DrawSphere(target.position,1f);
+				Gizmos.DrawSphere(target.position,0.2f);
 			}else{
 				int i = 0;
 				Vector3 lastPoint = transform.position;
@@ -177,13 +185,6 @@ namespace Kontiki
 				
 				
 			}
-			Gizmos.color = Color.red;
-			Gizmos.DrawLine(transform.position, transform.position + steering);
-			Gizmos.DrawSphere(transform.position + steering,1);
-			Gizmos.color = Color.green;
-			Gizmos.DrawLine(transform.position, transform.position + desiredVelocity);
-			Gizmos.DrawSphere(transform.position + desiredVelocity,1);
-			*/
         }
 	}
 }

@@ -46,7 +46,6 @@ namespace Kontiki.AI{
             isReturningToPort = false;
             boat.Dock(port);
             StartTrading();
-            Debug.Log("Docking at port " + index + " at " + port.position);
         }
         
         
