@@ -20,7 +20,6 @@ namespace Kontiki.AI{
         public void GoToRandomFishingSpot(){
             if(fishingSpots.Length != 0){
                 int index = Random.Range(0,fishingSpots.Length);
-                Debug.Log("Sailing to " + index);
                 selectedFishingSpot = fishingSpots[index];
                 boat.GoTo(selectedFishingSpot);
             }

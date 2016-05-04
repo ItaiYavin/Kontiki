@@ -10,22 +10,22 @@ namespace Kontiki.AI{
         public Boat boat;
         public Transform port;
         
-        public float dockingRange; //Move into Settings
+        public float dockingRange = 1f; //Move into Settings
         
         
 		public bool isReturningToPort = false;
         
-        public void DockAtPort(){
+        public virtual void DockAtPort(){
             DockAtPort(port);
         } 
-        public void DockAtPort(Transform port){
+        public virtual void DockAtPort(Transform port){
             isReturningToPort = false;
             boat.Dock(port);
         }
         
         
         
-        public void GoToPort(){
+        public virtual void GoToPort(){
 			isReturningToPort = true;
 			boat.GoTo(port);
         }

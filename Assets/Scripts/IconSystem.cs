@@ -110,9 +110,15 @@ namespace Kontiki {
 			}
 		}
 
-		public void RequestIcons(Transform trans, Color col, params IconTypes[] icons){ RequestIcons(trans, col, new Color(1,1,1), icons); }
+		
+		/// <summary>Create an series of icons and colors the first Quest Item or Person
+		/// </summary>
+		public void GenerateIcons(Transform trans, Color col, params IconTypes[] icons){ GenerateIcons(trans, col, new Color(1,1,1), icons); }
 
-		public void RequestIcons(Transform trans, Color col, Color col2, params IconTypes[] icons) { 
+		
+		/// <summary>Create an series of icons and colors the the first and second Quest Item or Person
+		/// </summary>
+		public void GenerateIcons(Transform trans, Color col, Color col2, params IconTypes[] icons) { 
 			Color[] cols = new Color[icons.Length];
 			
 			bool firstSymbol = true;
@@ -143,10 +149,12 @@ namespace Kontiki {
 				}
 			}
 
-			RequestIcons(trans, cols, icons); 
+			GenerateIcons(trans, cols, icons); 
 		}
 
-		public void RequestIcons(Transform trans, Color[] col, params IconTypes[] icons)
+		/// <summary>Create an series of icons and colors them pairwise
+		/// </summary>
+		public void GenerateIcons(Transform trans, Color[] col, params IconTypes[] icons)
 		{
 			Sprite[] sprites = new Sprite[icons.Length];
 
