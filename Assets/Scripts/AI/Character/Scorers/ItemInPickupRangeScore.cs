@@ -27,7 +27,7 @@ namespace Kontiki.AI
         public override float Score(IAIContext context){
             AIContext ai = (AIContext) context;
             Pathfinder character = ai.pathfinder;
-            float pickUpRange = SettingsSingleton.Instance.pickupRange;
+            float pickUpRange = Settings.pickupRange;
 
             Vector3 targetPos = character.target.transform.position;
             bool b = false;

@@ -19,7 +19,7 @@ namespace Kontiki.AI
             
             JobWithBoat job = (JobWithBoat) ai.job;
             float distance = Vector3.Distance(ai.transform.position, job.boat.transform.position);
-            bool b = distance < SettingsSingleton.Instance.pickupRange;
+            bool b = distance < Settings.pickupRange;
             
             if(not)b = !b;
             return b ? score : 0f;

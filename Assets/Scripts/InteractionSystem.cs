@@ -65,7 +65,7 @@ namespace Kontiki{
 				CheckMouseHoveringOverInteractable();
 				if(_lastTarget != null){
 					float distance = Vector3.Distance(_lastTarget.transform.position,transform.position);
-					if(distance < SettingsSingleton.Instance.pickupRange && Input.GetMouseButtonDown(0)){
+					if(distance < Settings.pickupRange && Input.GetMouseButtonDown(0)){
 						
 						
 						bool successful = false;
@@ -174,7 +174,7 @@ namespace Kontiki{
 					}else if(_lastTarget == interactable){
 						float distance = Vector3.Distance(_lastTarget.transform.position , transform.position);
 						
-						if(distance < SettingsSingleton.Instance.pickupRange){
+						if(distance < Settings.pickupRange){
                        		interactable.Highlight(new Color(0,1f,0,0.3f));
 						}
 

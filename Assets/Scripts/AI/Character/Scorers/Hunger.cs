@@ -23,9 +23,9 @@ namespace Kontiki.AI
             
             float h;
             if(inverted)
-                h =  1 - (ai.character.energy / SettingsSingleton.Instance.energyRange.max);
+                h =  1 - (ai.character.energy / Settings.energyRange.max);
             else
-                h =  ai.character.energy / SettingsSingleton.Instance.energyRange.max;
+                h =  ai.character.energy / Settings.energyRange.max;
             
             float v = Mathf.Max((h - threshold), 0) / (1 - threshold);
             if(ai.debugAI)

@@ -52,10 +52,10 @@ namespace Kontiki {
         {
             /*
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, SettingsSingleton.Instance.scanningRange);
+            Gizmos.DrawWireSphere(transform.position, Settings.Instance.scanningRange);
 
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, SettingsSingleton.Instance.pickupRange);
+            Gizmos.DrawWireSphere(transform.position, Settings.Instance.pickupRange);
             */
         }
     }

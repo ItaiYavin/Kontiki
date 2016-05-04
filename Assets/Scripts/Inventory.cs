@@ -48,7 +48,7 @@ namespace Kontiki {
 
         public bool PutItemIntoInventory(Item item)
         {
-            if (Vector3.Distance(item.transform.position, transform.position) < SettingsSingleton.Instance.pickupRange)
+            if (Vector3.Distance(item.transform.position, transform.position) < Settings.pickupRange)
             {
                 PutItemIntoInventoryRegardlessOfDistance(item);
             }

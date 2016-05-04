@@ -22,7 +22,7 @@ namespace Kontiki.AI{
 
 		public override void Execute(IAIContext context){
 			AIContext ai = (AIContext)context;
-            float pickUpRange = SettingsSingleton.Instance.pickupRange;
+            float pickUpRange = Settings.pickupRange;
             Vector3 target = ai.pathfinder.target.position;
             Vector3 itemPos;
 

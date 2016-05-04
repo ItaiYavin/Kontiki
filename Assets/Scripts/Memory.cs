@@ -35,7 +35,7 @@ namespace Kontiki {
 				if(b) memory.Add(objectInVicinity);
 			}
 
-			if(memory.Count > SettingsSingleton.Instance.memoryCapacity){ //Remove last in memory list.
+			if(memory.Count > Settings.memoryCapacity){ //Remove last in memory list.
 				memory.RemoveAt(0);
 			}
 		}
@@ -44,7 +44,7 @@ namespace Kontiki {
         {
             // Find all Objects within scanningRange area
             
-            Collider[] colliders = Physics.OverlapSphere(transform.position, SettingsSingleton.Instance.scanningRange);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, Settings.scanningRange);
 
             // Look through all colliders and Look for EdibleItem and put them in a list
             List<Item> itemsInRange = new List<Item>();
@@ -94,7 +94,7 @@ namespace Kontiki {
 			if(_knownItems.Count > 0)
 				_knownItems.Clear();
 			// Find all Objects within scanningRange area
-			Collider[] colliders = Physics.OverlapSphere(transform.position, SettingsSingleton.Instance.knownAreaSize/2);
+			Collider[] colliders = Physics.OverlapSphere(transform.position, Settings.knownAreaSize/2);
 
 			// Look through all colliders and Look for EdibleItem and put them in a list
 			List<Item> itemsInRange = new List<Item>();
