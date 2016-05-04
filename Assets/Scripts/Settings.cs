@@ -16,8 +16,8 @@ namespace Kontiki {
         public static int memoryCapacity;
         public static int knownAreaSize;
         public static float hungerIncrementPerSec;
-        public static RangeAttribute hungerRange;
-        public static RangeAttribute energyRange;
+        public static RangeAttribute hungerRange    = new RangeAttribute(0, 100);
+        public static RangeAttribute energyRange    = new RangeAttribute(0, 1);
          /**
         Job
         **/
