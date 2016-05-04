@@ -136,9 +136,8 @@ namespace Kontiki
 				isDocked = false;
 			}
 			this.target = target;
-			agent.SetDestination(target.position);
 			
-			//agent.SetDestination(target.position);
+			agent.SetDestination(target.position);
 			
 			/*
 			RaycastHit hitInfo;

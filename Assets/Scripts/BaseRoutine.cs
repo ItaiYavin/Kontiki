@@ -1,17 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Kontiki.AI;
+using Kontiki;
 
 public class BaseRoutine : MonoBehaviour {
     public Transform home;
-    public Transform foodQuench;
-
-    // Use this for initialization
-    void Start () {
-	    
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Trader trader;
+    
+    public void Start(){
+        
+    }
 }

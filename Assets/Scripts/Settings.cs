@@ -18,6 +18,12 @@ namespace Kontiki {
         public static float hungerIncrementPerSec   = 0.1f;
         public static RangeAttribute hungerRange    = new RangeAttribute(0, 100);
         public static RangeAttribute energyRange    = new RangeAttribute(0, 1);
+        
+        /**
+        Job
+        **/
+        public static float dockingRange = 1f;
+        
 
     }
 }

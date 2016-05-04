@@ -12,8 +12,8 @@ namespace Kontiki.AI
     public sealed class IsAtPosition : ContextualScorerBase
     {
 
-        [ApexSerialization, FriendlyName("Minimum Range", "Range AI needs to be within to be considered being at position")]
-        public float minimumRange = 2;
+        [ApexSerialization, FriendlyName("Range", "Range AI needs to be within to be considered being at position")]
+        public float range = 2;
 
         [ApexSerialization, FriendlyName("Destination", "Position AI is checked in relation to")]
         public PlaceType place;
@@ -30,21 +30,30 @@ namespace Kontiki.AI
             switch(place){
                 case PlaceType.Home:
                 {
-                    b = ai.pathfinder.IsAtPosition(ai.baseroutine.home.position, minimumRange);
+                    b = ai.pathfinder.IsAtPosition(ai.baseroutine.home.position, range);
                 }
                 break;
 
-                case PlaceType.FoodQuench:
+                case PlaceType.Trader:
                 {
-                    b = ai.pathfinder.IsAtPosition(ai.baseroutine.foodQuench.position, minimumRange);
+                   b = ai.pathfinder.IsAtPosition(ai.baseroutine.trader.transform.position, range);
+                }
+                break;
+
+                case PlaceType.Boat:
+                {
+                    if(ai.job is JobWithBoat){
+                        JobWithBoat job = (JobWithBoat)ai.job;
+                        b = ai.pathfinder.IsAtPosition(job.boat.transform.position, range);
+                    }
                 }
                 break;
             }
 
-            if (not) b = !b;
             if (ai.debugAI)
-                Debug.Log("Is at position: " + b);
+                Debug.Log("Is " + (b ? "" : "not") + " at " + place);
 
+            if (not) b = !b;
             return b ? score : 0f;
         }
     }

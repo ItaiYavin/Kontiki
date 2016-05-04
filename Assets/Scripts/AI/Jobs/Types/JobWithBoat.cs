@@ -10,9 +10,6 @@ namespace Kontiki.AI{
         public Boat boat;
         public Transform port;
         
-        public float dockingRange = 1f; //Move into Settings
-        
-        
 		public bool isReturningToPort = false;
         
         public virtual void DockAtPort(){

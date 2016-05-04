@@ -21,7 +21,7 @@ namespace Kontiki.AI
                 JobWithBoat job = (JobWithBoat) ai.job;
                 if(job.port != null){
                     float distance = Vector3.Distance( job.boat.transform.position, job.port.position);
-                    bool b = distance < job.dockingRange;
+                    bool b = distance < Settings.dockingRange;
                     
                     if(not)b = !b;
                     return b ? score : 0f;

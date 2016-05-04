@@ -16,7 +16,8 @@ namespace Kontiki {
     public enum PlaceType
     {
         Home,
-        FoodQuench,
+        Trader,
+        Boat
     }
 
 	public enum Gender
