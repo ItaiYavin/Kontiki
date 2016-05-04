@@ -7,6 +7,8 @@ namespace Kontiki
 	public class QuestGenerator : MonoBehaviour {		
 		public GameObject questPrefab;
 
+		public GameObject spherePrefab;
+
 		private List<Character> charactersWithoutQuestObjects;
 
 		// Use this for initialization
@@ -43,6 +45,8 @@ namespace Kontiki
 			fetch.reward = reward;
 
 			fetch.origin = questGiver;
+
+			fetch.spherePrefab = spherePrefab;
 
 			charactersWithoutQuestObjects.RemoveAt(i);
 		}
