@@ -33,6 +33,19 @@ namespace Kontiki {
             }
         }
 
+        public void PutItemIntoInventoryRegardlessOfDistance(Item item){
+            Item pickup = item;
+            for (int i = 0; i < inventorySize; i++)
+            {
+                if (_inventoryItems[i] == null)
+                {
+                    _inventoryItems[i] = pickup;
+                    item.gameObject.SetActive(false);
+                    return;
+                }
+            }
+        }
+
         public bool PutItemIntoInventory(Item item)
         {
             Item pickup;
@@ -50,6 +63,16 @@ namespace Kontiki {
                 }
             }
             return false;
+        }
+
+        public int CheckInventoryForSpecificItemAndReturnIndex(Item item){
+            for(int i = 0; i < inventorySize; i++){
+                if(_inventoryItems[i] == item){
+                    return i;
+                }
+            }
+            
+            return -1;
         }
 
         public bool CheckInventoryForSpecificItem(Item item){

@@ -11,7 +11,7 @@ namespace Kontiki
 		public Character objectiveHolder;
 		public Item objective;
 		public Item reward;
-		public int threshold = 8;
+		public int threshold = -1; // The higher the harder, roll is possible when below 10 (always possible when <= 0)
 
 		public bool hasObjective;
 
@@ -29,12 +29,22 @@ namespace Kontiki
 			hasObjective = false;
 		}
 
+		public void GiveObjectiveItem(){
+			int i = player.inventory.CheckInventoryForSpecificItemAndReturnIndex(objective);
+			if(i != -1){
+				player.inventory.GetInventoryItems()[i] = null;
+				objective = null;
+			}
+		}
+
 		public void GetObjectiveItem(){
 			Item[] objectiveHolderInventoryItems = objectiveHolder.inventory.GetInventoryItems();
 			
 			for(int i = 0; i < objectiveHolderInventoryItems.Length; i++){
-				if(objectiveHolderInventoryItems[i] == objective)
-					transform.GetComponent<Character>().inventory.PutItemIntoInventory(objective);
+				if(objectiveHolderInventoryItems[i] == objective){
+					transform.GetComponent<Character>().inventory.PutItemIntoInventoryRegardlessOfDistance(objective);
+					objectiveHolderInventoryItems[i] = null;
+				}
 			}
 		}
 
@@ -67,6 +77,7 @@ namespace Kontiki
 								numberOfAskedPeople = 0; //reset number of asked people
 							}
 						}
+						askedPeople.Add(askedCharacter);//Add AI to list of characters that has been asked.
 						return;
 					}
 					else 
@@ -85,7 +96,7 @@ namespace Kontiki
 
 		public override void FinishQuest(Inventory characterInventory){
 			if(characterInventory.IsInventoryFull()){	// Check player inventory
-				characterInventory.PutItemIntoInventory(reward); // Give reward
+				characterInventory.PutItemIntoInventoryRegardlessOfDistance(reward); // Give reward
 				Destroy(this); // Remove quest
 			} else {
 				//TODO inform player
@@ -98,7 +109,7 @@ namespace Kontiki
 					hasObjective = true;
 			}
 
-			if(hasObjective && objective == null)
+			if(hasObjective && !player.inventory.CheckInventoryForSpecificItem(objective))
 				FinishQuest(player.inventory);
 		}
 	}

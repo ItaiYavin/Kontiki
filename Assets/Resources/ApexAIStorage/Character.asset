@@ -42,10 +42,10 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Kontiki.AI.Trade, Assembly-CSharp","tradeItem":anything,"gainedItem":edible},"_scorers":[{"@type":"Kontiki.AI.IsAtPosition,
     Assembly-CSharp","minimumRange":2,"place":FoodQuench,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToFoodQuench, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":499,"@y":232},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":-125,"@top":328,"@width":240,"@height":128},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":355,"@top":104,"@width":176,"@height":176},"QualifierView":{"Name":"Has
-    selected edible?","ActionView":{}},"QualifierView":{"Name":"Has food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":147,"@top":328,"@width":160,"@height":176},"QualifierView":{"Name":"Is
+  editorConfiguration: '{"offset":{"@x":558,"@y":187},"zoom":0.89999998,"SelectorView":{"ViewArea":{"@left":-144,"@top":295,"@width":270,"@height":144},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":396,"@top":43,"@width":198,"@height":198},"QualifierView":{"Name":"Has
+    selected edible?","ActionView":{}},"QualifierView":{"Name":"Has food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":162,"@top":295,"@width":180,"@height":198},"QualifierView":{"Name":"Is
     hungry?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    Tired?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":355,"@top":392,"@width":160,"@height":128},"QualifierView":{"Name":"Is
-    Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":147,"@top":520,"@width":160,"@height":128},"QualifierView":{"Name":"Not
-    Tired?","ActionView":{"Name":"Awake"}},"DefaultQualifier":{"Name":"Keep Sleeping"}},"SelectorView":{"ViewArea":{"@left":563,"@top":120,"@width":160,"@height":128},"QualifierView":{"Name":"Is
+    Tired?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":396,"@top":295,"@width":180,"@height":144},"QualifierView":{"Name":"Is
+    Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":162,"@top":511,"@width":180,"@height":144},"QualifierView":{"Name":"Not
+    Tired?","ActionView":{"Name":"Awake"}},"DefaultQualifier":{"Name":"Keep Sleeping"}},"SelectorView":{"ViewArea":{"@left":630,"@top":43,"@width":180,"@height":144},"QualifierView":{"Name":"Is
     At Food Quench","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'

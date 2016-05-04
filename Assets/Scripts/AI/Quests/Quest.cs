@@ -8,8 +8,8 @@ namespace Kontiki
 		// areaOfInterest Variables
 		public GameObject areaOfInterestPrefab;
 		protected GameObject areaOfInterest;
-		protected float areaOfInterestMaxSize;
-		protected float areaOfInterestMinSize;
+		protected float areaOfInterestMaxSize = 200;
+		protected float areaOfInterestMinSize = 0.3f;
 
 		public abstract void FinishQuest(Inventory characterInventory);
 
@@ -25,11 +25,11 @@ namespace Kontiki
 		private void RandomlyMoveGameObjectWithinRange(GameObject g, Vector3 position){
 			areaOfInterest.transform.position = position;
 			float ranX;
-			float ranY;
-			ranX = Random.Range(-g.transform.localScale.x/2, g.transform.localScale.x/2);
-			ranY = Random.Range(-g.transform.localScale.y/2, g.transform.localScale.y/2);
+			float ranZ;
+			ranX = Random.Range(-g.transform.localScale.x/3, g.transform.localScale.x/3);
+			ranZ = Random.Range(-g.transform.localScale.z/3, g.transform.localScale.z/3);
 
-			g.transform.position += new Vector3(ranX, ranY, 0);
+			g.transform.position += new Vector3(ranX, 0, ranZ);
 		}
 
 		public void CreateAreaOfInterestInWorld(float radius, Vector3 position){

@@ -17,6 +17,12 @@ namespace Kontiki
 		// Use this for initialization
 		void Start () {
 			charactersWithoutQuestObjects = new List<Character>(); // TODO fill list
+			Character[] tempChar = FindObjectsOfType(typeof (Character)) as Character[];
+			foreach(Character character in tempChar){
+				charactersWithoutQuestObjects.Add(character);
+			}
+
+			tempChar = null;
 		}
 
 		void Awake(){
@@ -47,11 +53,13 @@ namespace Kontiki
 			fetch.objective = objective;
 
 			if(!charactersWithoutQuestObjects[i].inventory.IsInventoryFull()){
-				charactersWithoutQuestObjects[i].inventory.PutItemIntoInventory(objective);
+				charactersWithoutQuestObjects[i].inventory.PutItemIntoInventoryRegardlessOfDistance(objective);
 			} else {
 				charactersWithoutQuestObjects[i].inventory.GetInventoryItems()[0] = null;
-				charactersWithoutQuestObjects[i].inventory.PutItemIntoInventory(objective);
+				charactersWithoutQuestObjects[i].inventory.PutItemIntoInventoryRegardlessOfDistance(objective);
 			}
+			//TEMPORARY:
+			charactersWithoutQuestObjects[i].GetComponent<Renderer>().material.color = new Color(0, 1, 0);
 
 			fetch.objectiveHolder = charactersWithoutQuestObjects[i];
 
