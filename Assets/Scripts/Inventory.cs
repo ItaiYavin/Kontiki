@@ -33,34 +33,26 @@ namespace Kontiki {
             }
         }
 
-        public void PutItemIntoInventoryRegardlessOfDistance(Item item){
-            Item pickup = item;
+        public bool PutItemIntoInventoryRegardlessOfDistance(Item item){
+            Item pickup;
+            pickup = item;
             for (int i = 0; i < inventorySize; i++)
             {
                 if (_inventoryItems[i] == null)
                 {
                     _inventoryItems[i] = pickup;
                     item.gameObject.SetActive(false);
-                    return;
+                    return true;
                 }
             }
+            return false;
         }
 
         public bool PutItemIntoInventory(Item item)
         {
-            Item pickup;
             if (Vector3.Distance(item.transform.position, transform.position) < SettingsSingleton.Instance.pickupRange)
             {
-                pickup = item;
-                for (int i = 0; i < inventorySize; i++)
-                {
-                    if (_inventoryItems[i] == null)
-                    {
-                        _inventoryItems[i] = pickup;
-                        item.gameObject.SetActive(false);
-                        return true;
-                    }
-                }
+                PutItemIntoInventoryRegardlessOfDistance(item);
             }
             return false;
         }

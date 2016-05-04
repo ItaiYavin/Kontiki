@@ -14,6 +14,7 @@ namespace Kontiki
 		public int threshold = -1; // The higher the harder, roll is possible when below 10 (always possible when <= 0)
 
 		public bool hasObjective;
+		public bool hasGivenObjective;
 
 		private Character player;
 
@@ -30,11 +31,14 @@ namespace Kontiki
 		}
 
 		public void GiveObjectiveItem(){
+
 			int i = player.inventory.CheckInventoryForSpecificItemAndReturnIndex(objective);
 			if(i != -1){
 				player.inventory.GetInventoryItems()[i] = null;
 				objective = null;
 			}
+
+			FinishQuest(player.inventory);
 		}
 
 		public void GetObjectiveItem(){
@@ -95,7 +99,7 @@ namespace Kontiki
 		}
 
 		public override void FinishQuest(Inventory characterInventory){
-			if(characterInventory.IsInventoryFull()){	// Check player inventory
+			if(!characterInventory.IsInventoryFull()){	// Check player inventory
 				characterInventory.PutItemIntoInventoryRegardlessOfDistance(reward); // Give reward
 				Destroy(this); // Remove quest
 			} else {
@@ -108,9 +112,6 @@ namespace Kontiki
 				if(player.inventory.CheckInventoryForSpecificItem(objective))
 					hasObjective = true;
 			}
-
-			if(hasObjective && !player.inventory.CheckInventoryForSpecificItem(objective))
-				FinishQuest(player.inventory);
 		}
 	}
 }
