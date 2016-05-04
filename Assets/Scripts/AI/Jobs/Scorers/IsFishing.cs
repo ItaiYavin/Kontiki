@@ -19,6 +19,9 @@ namespace Kontiki.AI
             if(ai.job is Fisher){
                 bool b = ((Fisher)ai.job).isFishing;
                 
+                if(ai.debugAI)
+                    Debug.Log("Is " + (b ? "": "not") + " Fishing");
+            
                 if(not) b = !b;
 
                 return b ? score : 0f;

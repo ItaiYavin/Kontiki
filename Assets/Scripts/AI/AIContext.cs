@@ -8,6 +8,10 @@ namespace Kontiki {
 		public bool debugAI{
 			get{ return self.debugAI;}
 		}
+		public bool isOnJob{
+			get{ return self.isOnJob;}
+			set{ self.isOnJob = value;}
+		}
 
         public AIComponentContainer self
 		{

@@ -13,7 +13,7 @@ namespace Kontiki {
     [RequireComponent(typeof(Inventory))]
     [RequireComponent(typeof(BaseRoutine))]
 	public sealed class AIComponentContainer : MonoBehaviour, IContextProvider {
-        
+        public bool isOnJob = false;
         public bool debugAI;
         /**
          * Components that is required for AI

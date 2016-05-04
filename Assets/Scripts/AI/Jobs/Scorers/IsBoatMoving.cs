@@ -20,9 +20,9 @@ namespace Kontiki.AI
         	NavMeshAgent agent = job.boat.agent;
         	bool b = job.boat.agent.remainingDistance > 0;
 
-    		if(ai.debugAI){ 
-				Debug.Log("Boat is Moving: " + b  + ", distance to target = " +  job.boat.agent.remainingDistance);
-			}
+            if(ai.debugAI)
+                Debug.Log("Boat is " + (b ? "": "not") + " moving, distance to target = " +  job.boat.agent.remainingDistance);
+            
 			if(not) b = !b;
 
         	return b ? score : 0f;

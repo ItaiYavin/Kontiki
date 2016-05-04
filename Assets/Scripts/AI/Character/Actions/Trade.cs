@@ -30,6 +30,13 @@ namespace Kontiki.AI
             	}
             	break;
             }
+            if(ai.job is Fisher && ((Fisher)ai.job).hasItems){
+                for (int i = 0; i < 4; i++)
+                {
+            		ai.inventory.GetItemFromTrade(gainedItem);
+                }
+                ((Fisher)ai.job).hasItems = false;
+            }
 
         }
 	}

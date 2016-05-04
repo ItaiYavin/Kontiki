@@ -22,6 +22,6 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Kontiki.AI.DockBoat, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.CanDockInPort,
     Assembly-CSharp","not":false,"score":50},{"@type":"Kontiki.AI.IsBoatDocked, Assembly-CSharp","not":true,"score":50}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":85,"@y":101},"zoom":1,"SelectorView":{"ViewArea":{"@left":225,"@top":81,"@width":280,"@height":220},"QualifierView":{"Name":"Is
+  editorConfiguration: '{"offset":{"@x":208,"@y":57},"zoom":0.69999999,"SelectorView":{"ViewArea":{"@left":306,"@top":43,"@width":196,"@height":154},"QualifierView":{"Name":"Is
     not Trading And boat is docked","ActionView":{"Name":"Sail To next Port"}},"QualifierView":{"Name":"Close
     Enough To Dock","ActionView":{}},"DefaultQualifier":{}}}'

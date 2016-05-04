@@ -11,6 +11,9 @@ namespace Kontiki.AI{
         
         public bool isFishing = false;
         
+        public bool hasItems = false;
+        public ItemType itemType = ItemType.Edible;
+        
         public float initFishingRange = 5f; // Move Into Settings
         
         public float minFishingTime = 3f; //Move into Settings
@@ -39,6 +42,7 @@ namespace Kontiki.AI{
         IEnumerator Routine_StopFishing(float length){
             yield return new WaitForSeconds(length);
             isFishing = false;
+            hasItems = true;
             selectedFishingSpot = null;
         }
     }
