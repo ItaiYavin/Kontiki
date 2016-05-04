@@ -25,6 +25,14 @@ namespace Kontiki {
         Female
     }
 
+    public enum Window
+    {
+        Start,
+        Quest,
+        Info,
+        Trade
+    }
+
     public enum ItemType
     {
         Interactable,
