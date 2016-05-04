@@ -114,11 +114,16 @@ namespace Kontiki {
 
         private void OnDrawGizmosSelected()
         {
-            if (selectedInteractable != null)
+            if (Settings.debugging)
             {
-                Gizmos.DrawLine(transform.position, selectedInteractable.transform.position);
-                Gizmos.color = Color.red;
-                Gizmos.DrawSphere(selectedInteractable.transform.position, 0.25f);
+                if (selectedInteractable != null)
+                {
+                    Gizmos.DrawLine(transform.position, selectedInteractable.transform.position);
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawSphere(selectedInteractable.transform.position, 0.25f);
+                }
+
+                Gizmos.DrawWireSphere(transform.position, Settings.scanningRange);
             }
         }
     }

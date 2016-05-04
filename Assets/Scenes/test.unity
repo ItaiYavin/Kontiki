@@ -147,7 +147,7 @@ GameObject:
   - 114: {fileID: 138262135}
   - 114: {fileID: 138262134}
   - 195: {fileID: 138262133}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,6 +203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &138262136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,10 +247,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &138262139
@@ -339,11 +348,93 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 138262132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 28
+  m_Father: {fileID: 0}
+  m_RootOrder: 38
+--- !u!1001 &148992706
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1132487029}
+    m_Modifications:
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2715f3232c4208e478ff51909ef0cca5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &214965431
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +455,7 @@ GameObject:
   - 114: {fileID: 214965434}
   - 114: {fileID: 214965433}
   - 195: {fileID: 214965432}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,6 +511,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &214965435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,10 +555,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &214965438
@@ -556,11 +656,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214965431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 22
+  m_Father: {fileID: 0}
+  m_RootOrder: 32
 --- !u!1 &249674626
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +681,7 @@ GameObject:
   - 114: {fileID: 249674629}
   - 114: {fileID: 249674628}
   - 195: {fileID: 249674627}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,6 +737,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &249674630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,10 +781,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &249674633
@@ -773,11 +882,72 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 249674626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
+--- !u!1 &262076693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 262076696}
+  - 114: {fileID: 262076695}
+  - 114: {fileID: 262076694}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &262076694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 262076693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &262076695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 262076693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &262076696
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 262076693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 21
+  m_Father: {fileID: 0}
+  m_RootOrder: 41
 --- !u!1 &263822952
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +968,7 @@ GameObject:
   - 114: {fileID: 263822955}
   - 114: {fileID: 263822954}
   - 195: {fileID: 263822953}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,6 +1024,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &263822956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,10 +1068,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &263822959
@@ -990,11 +1169,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 263822952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 16
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
 --- !u!1 &317716943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1194,7 @@ GameObject:
   - 114: {fileID: 317716946}
   - 114: {fileID: 317716945}
   - 195: {fileID: 317716944}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,6 +1250,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &317716947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,10 +1294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &317716950
@@ -1207,11 +1395,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 317716943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 15
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
 --- !u!1 &368427979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,7 +1420,7 @@ GameObject:
   - 114: {fileID: 368427982}
   - 114: {fileID: 368427981}
   - 195: {fileID: 368427980}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,6 +1476,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &368427983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1325,10 +1520,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &368427986
@@ -1424,11 +1621,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 368427979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 24
+  m_Father: {fileID: 0}
+  m_RootOrder: 34
 --- !u!1 &371618404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1646,7 @@ GameObject:
   - 114: {fileID: 371618407}
   - 114: {fileID: 371618406}
   - 195: {fileID: 371618405}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1505,6 +1702,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &371618408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,10 +1746,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &371618411
@@ -1641,11 +1847,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371618404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1 &421225636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,7 +1872,7 @@ GameObject:
   - 114: {fileID: 421225639}
   - 114: {fileID: 421225638}
   - 195: {fileID: 421225637}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1722,6 +1928,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &421225640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1759,10 +1972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &421225643
@@ -1858,11 +2073,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 421225636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &496864387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,15 +2102,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 496864387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6d18424ce18e049bb4482b34a99cc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 462209523c98ce440a684c3edd5c381b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanningRange: 1
-  pickupRange: 1
-  memoryCapacity: 200
-  knownAreaSize: 0
-  hungerIncrementPerSec: 0.01
   debugging: 1
+  scanningRange: 77.5
+  pickupRange: 100
+  memoryCapacity: 200
+  knownAreaSize: 100
+  hungerIncrementPerSec: 0.1
 --- !u!4 &496864389
 Transform:
   m_ObjectHideFlags: 0
@@ -1908,6 +2123,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!1001 &497562188
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.836
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.577
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &594462520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,7 +2185,7 @@ GameObject:
   - 114: {fileID: 594462523}
   - 114: {fileID: 594462522}
   - 195: {fileID: 594462521}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1984,6 +2241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &594462524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,10 +2285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &594462527
@@ -2120,68 +2386,15 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 594462520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 9
---- !u!1 &723846215
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 723846216}
-  m_Layer: 0
-  m_Name: AI Holder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &723846216
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 723846215}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2086893059}
-  - {fileID: 1053750275}
-  - {fileID: 371618417}
-  - {fileID: 421225649}
-  - {fileID: 1969155062}
-  - {fileID: 1796766482}
-  - {fileID: 1267238737}
-  - {fileID: 854317147}
-  - {fileID: 916259480}
-  - {fileID: 594462533}
-  - {fileID: 2013744339}
-  - {fileID: 940101608}
-  - {fileID: 1578729462}
-  - {fileID: 1476421221}
-  - {fileID: 1867903844}
-  - {fileID: 317716956}
-  - {fileID: 263822965}
-  - {fileID: 878957405}
-  - {fileID: 928863135}
-  - {fileID: 996464122}
-  - {fileID: 900844059}
-  - {fileID: 249674639}
-  - {fileID: 214965444}
-  - {fileID: 1905257108}
-  - {fileID: 368427992}
-  - {fileID: 1881036215}
-  - {fileID: 2041610856}
-  - {fileID: 1685065172}
-  - {fileID: 138262145}
-  - {fileID: 1549451205}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+<<<<<<< HEAD
+  m_RootOrder: 19
+=======
+  m_RootOrder: 10
+>>>>>>> master
 --- !u!1 &839237787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,7 +2442,7 @@ GameObject:
   - 114: {fileID: 854317137}
   - 114: {fileID: 854317136}
   - 195: {fileID: 854317135}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2285,6 +2498,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &854317138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2322,10 +2542,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &854317141
@@ -2421,11 +2643,22 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 854317134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 7
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+--- !u!224 &869932944 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22436438, guid: 2715f3232c4208e478ff51909ef0cca5,
+    type: 2}
+  m_PrefabInternal: {fileID: 148992706}
+--- !u!114 &869932945 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11425770, guid: 2715f3232c4208e478ff51909ef0cca5,
+    type: 2}
+  m_PrefabInternal: {fileID: 148992706}
+  m_Script: {fileID: 11500000, guid: 377b5a0b17fb1fe4995c6e173bbece60, type: 3}
 --- !u!1 &878957392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,7 +2679,7 @@ GameObject:
   - 114: {fileID: 878957395}
   - 114: {fileID: 878957394}
   - 195: {fileID: 878957393}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2502,6 +2735,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &878957396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,10 +2779,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &878957399
@@ -2638,11 +2880,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 878957392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 17
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
 --- !u!1 &900844046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,7 +2905,7 @@ GameObject:
   - 114: {fileID: 900844049}
   - 114: {fileID: 900844048}
   - 195: {fileID: 900844047}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2719,6 +2961,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &900844050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,10 +3005,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &900844053
@@ -2855,11 +3106,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 900844046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 20
+  m_Father: {fileID: 0}
+  m_RootOrder: 30
 --- !u!1 &916259467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,7 +3131,7 @@ GameObject:
   - 114: {fileID: 916259470}
   - 114: {fileID: 916259469}
   - 195: {fileID: 916259468}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2936,6 +3187,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &916259471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2973,10 +3231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &916259474
@@ -3072,11 +3332,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 916259467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 8
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
 --- !u!1 &928863122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,7 +3357,7 @@ GameObject:
   - 114: {fileID: 928863125}
   - 114: {fileID: 928863124}
   - 195: {fileID: 928863123}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3153,6 +3413,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &928863126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3190,10 +3457,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &928863129
@@ -3289,11 +3558,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 928863122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 18
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
 --- !u!1 &940101595
 GameObject:
   m_ObjectHideFlags: 0
@@ -3314,7 +3583,7 @@ GameObject:
   - 114: {fileID: 940101598}
   - 114: {fileID: 940101597}
   - 195: {fileID: 940101596}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3370,6 +3639,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &940101599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3407,10 +3683,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &940101602
@@ -3506,11 +3784,43 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 940101595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+--- !u!1 &979937203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 979937204}
+  m_Layer: 5
+  m_Name: Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &979937204
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979937203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 11
+  m_Father: {fileID: 1132487029}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &996464109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3841,7 @@ GameObject:
   - 114: {fileID: 996464112}
   - 114: {fileID: 996464111}
   - 195: {fileID: 996464110}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3587,6 +3897,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &996464113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3624,10 +3941,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &996464116
@@ -3723,11 +4042,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 996464109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 19
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
 --- !u!1 &1053750262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,7 +4067,7 @@ GameObject:
   - 114: {fileID: 1053750265}
   - 114: {fileID: 1053750264}
   - 195: {fileID: 1053750263}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3804,6 +4123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1053750266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3841,10 +4167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1053750269
@@ -3940,11 +4268,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1053750262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1 &1074443516
 GameObject:
   m_ObjectHideFlags: 0
@@ -4004,7 +4332,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 21
   m_Depth: -1
   m_CullingMask:
@@ -4026,11 +4354,104 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1074443516}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 38.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1132487025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1132487029}
+  - 223: {fileID: 1132487028}
+  - 114: {fileID: 1132487027}
+  - 114: {fileID: 1132487026}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1132487026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132487025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1132487027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132487025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &1132487028
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132487025}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1132487029
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132487025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 869932944}
+  - {fileID: 979937204}
+  m_Father: {fileID: 0}
+  m_RootOrder: 40
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1237029564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4112,7 +4533,7 @@ GameObject:
   - 114: {fileID: 1267238727}
   - 114: {fileID: 1267238726}
   - 195: {fileID: 1267238725}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4168,6 +4589,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1267238728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4205,10 +4633,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1267238731
@@ -4304,11 +4734,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1267238724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 6
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
 --- !u!1 &1298965385
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,7 +4861,7 @@ GameObject:
   - 114: {fileID: 1476421211}
   - 114: {fileID: 1476421210}
   - 195: {fileID: 1476421209}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4487,6 +4917,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1476421212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4524,10 +4961,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1476421215
@@ -4623,11 +5062,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1476421208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 13
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
 --- !u!1 &1549451192
 GameObject:
   m_ObjectHideFlags: 0
@@ -4648,7 +5087,7 @@ GameObject:
   - 114: {fileID: 1549451195}
   - 114: {fileID: 1549451194}
   - 195: {fileID: 1549451193}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4704,6 +5143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1549451196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4741,10 +5187,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1549451199
@@ -4840,11 +5288,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1549451192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 29
+  m_Father: {fileID: 0}
+  m_RootOrder: 39
 --- !u!1 &1578729449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4865,7 +5313,7 @@ GameObject:
   - 114: {fileID: 1578729452}
   - 114: {fileID: 1578729451}
   - 195: {fileID: 1578729450}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4921,6 +5369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1578729453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4958,10 +5413,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1578729456
@@ -5057,11 +5514,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1578729449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 12
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
 --- !u!1 &1685065159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5082,7 +5539,7 @@ GameObject:
   - 114: {fileID: 1685065162}
   - 114: {fileID: 1685065161}
   - 195: {fileID: 1685065160}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5138,6 +5595,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1685065163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5175,10 +5639,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1685065166
@@ -5274,11 +5740,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1685065159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 27
+  m_Father: {fileID: 0}
+  m_RootOrder: 37
 --- !u!1 &1699747974
 GameObject:
   m_ObjectHideFlags: 0
@@ -5313,6 +5779,10 @@ MonoBehaviour:
   indicator: {fileID: 0}
   sprite: {fileID: 0}
   CM: {fileID: 0}
+  characterInBoat: {fileID: 0}
+  agent: {fileID: 0}
+  isDocked: 1
+  target: {fileID: 0}
 --- !u!23 &1699747976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5370,6 +5840,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!1 &1770194295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1770194298}
+  - 114: {fileID: 1770194297}
+  - 114: {fileID: 1770194296}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1770194296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770194295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1770194297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770194295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1770194298
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770194295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1 &1796766469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5390,7 +5921,7 @@ GameObject:
   - 114: {fileID: 1796766472}
   - 114: {fileID: 1796766471}
   - 195: {fileID: 1796766470}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5446,6 +5977,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1796766473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5483,10 +6021,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1796766476
@@ -5582,11 +6122,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1796766469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 5
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
 --- !u!1 &1867903831
 GameObject:
   m_ObjectHideFlags: 0
@@ -5607,7 +6147,7 @@ GameObject:
   - 114: {fileID: 1867903834}
   - 114: {fileID: 1867903833}
   - 195: {fileID: 1867903832}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5663,6 +6203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1867903835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5700,10 +6247,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1867903838
@@ -5799,11 +6348,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1867903831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 14
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
 --- !u!1 &1881036202
 GameObject:
   m_ObjectHideFlags: 0
@@ -5824,7 +6373,7 @@ GameObject:
   - 114: {fileID: 1881036205}
   - 114: {fileID: 1881036204}
   - 195: {fileID: 1881036203}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5880,6 +6429,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1881036206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5917,10 +6473,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1881036209
@@ -6016,11 +6574,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1881036202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 25
+  m_Father: {fileID: 0}
+  m_RootOrder: 35
 --- !u!1 &1905257095
 GameObject:
   m_ObjectHideFlags: 0
@@ -6041,7 +6599,7 @@ GameObject:
   - 114: {fileID: 1905257098}
   - 114: {fileID: 1905257097}
   - 195: {fileID: 1905257096}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6097,6 +6655,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1905257099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6134,10 +6699,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1905257102
@@ -6233,11 +6800,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1905257095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 23
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
 --- !u!1 &1969155049
 GameObject:
   m_ObjectHideFlags: 0
@@ -6258,7 +6825,7 @@ GameObject:
   - 114: {fileID: 1969155052}
   - 114: {fileID: 1969155051}
   - 195: {fileID: 1969155050}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6314,6 +6881,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &1969155053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6351,10 +6925,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1969155056
@@ -6450,11 +7026,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1969155049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &2013744326
 GameObject:
   m_ObjectHideFlags: 0
@@ -6475,7 +7051,7 @@ GameObject:
   - 114: {fileID: 2013744329}
   - 114: {fileID: 2013744328}
   - 195: {fileID: 2013744327}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6531,6 +7107,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &2013744330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6568,10 +7151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &2013744333
@@ -6667,11 +7252,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2013744326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 10
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
 --- !u!1 &2037253327
 GameObject:
   m_ObjectHideFlags: 0
@@ -6743,7 +7328,7 @@ GameObject:
   - 114: {fileID: 2041610846}
   - 114: {fileID: 2041610845}
   - 195: {fileID: 2041610844}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6799,6 +7384,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &2041610847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6836,10 +7428,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &2041610850
@@ -6935,11 +7529,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2041610843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 26
+  m_Father: {fileID: 0}
+  m_RootOrder: 36
 --- !u!1 &2086893048
 GameObject:
   m_ObjectHideFlags: 0
@@ -6960,7 +7554,7 @@ GameObject:
   - 114: {fileID: 2086893049}
   - 114: {fileID: 2086893060}
   - 195: {fileID: 2086893061}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Char
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6978,6 +7572,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  hightlightRenderer: {fileID: 0}
+  indicator: {fileID: 0}
+  sprite: {fileID: 0}
+=======
+>>>>>>> master
+  debugAI: 0
 --- !u!114 &2086893050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7015,10 +7616,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &2086893053
@@ -7114,11 +7717,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2086893048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 723846216}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!114 &2086893060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7168,15 +7771,8 @@ GameObject:
   - 33: {fileID: 2091737209}
   - 65: {fileID: 2091737208}
   - 23: {fileID: 2091737207}
-  - 54: {fileID: 2091737206}
-  - 114: {fileID: 2091737205}
-  - 114: {fileID: 2091737204}
   - 114: {fileID: 2091737203}
-  - 114: {fileID: 2091737202}
   - 114: {fileID: 2091737201}
-  - 114: {fileID: 2091737200}
-  - 114: {fileID: 2091737199}
-  - 195: {fileID: 2091737198}
   - 114: {fileID: 2091737197}
   m_Layer: 0
   m_Name: TempPlayer(NotReallyPlayer)
@@ -7193,59 +7789,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 2091737196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d77ca4d9ba3336a4ba60fdbb33d480f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ce1a70be13626749aaab171deebca4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apple: {fileID: 11496190, guid: 9b3710083f4514a0bb14564f73658571, type: 2}
---- !u!195 &2091737198
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2091737196}
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &2091737199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2091737196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 939582531, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiConfigs:
-  - aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
-    intervalMin: 1
-    intervalMax: 1
-    startDelayMin: 0
-    startDelayMax: 0
-    isActive: 1
---- !u!114 &2091737200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2091737196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  windowsHandler: {fileID: 869932945}
+  _isDown: 0
+  _key: 32
+  _scanRange: 100
+  _minIndicatorSize: 0.2
+  _maxIndicatorSize: 1
+  _indicatorMaxSizeRange: 1
+  _indicatorMinSizeRange: 10
+  _minIndicatorAlpha: 0
+  _maxIndicatorAlpha: 0.5
+  _indicatorTranparentRange: 10
+  _indicatorOpaqueRange: 1
+  _interactableLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  controller: {fileID: 0}
+  prefab_interactableIndicator: {fileID: 185104, guid: dd66e7cd0e29a0242801f98508dd1414,
+    type: 2}
+  container: {fileID: 979937203}
+=======
+  debugAI: 0
+>>>>>>> master
 --- !u!114 &2091737201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7260,18 +7829,6 @@ MonoBehaviour:
   inventorySize: 4
   applePrefab: {fileID: 11414606, guid: 3097f4486a96e194ebc9de57d8db1d7a, type: 2}
   _inventoryItems: []
---- !u!114 &2091737202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2091737196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c421f9565e9164fb40cdab725b6e8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  memory: []
 --- !u!114 &2091737203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7283,53 +7840,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
---- !u!114 &2091737204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2091737196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d2599267c68e5e4daee665bdb154bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  target: {fileID: 0}
---- !u!114 &2091737205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2091737196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cb398edbefe604699ff036bf91bcfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  home: {fileID: 1389109444}
-  foodQuench: {fileID: 839237788}
---- !u!54 &2091737206
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2091737196}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!23 &2091737207
 MeshRenderer:
   m_ObjectHideFlags: 0

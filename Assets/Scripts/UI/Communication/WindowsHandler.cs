@@ -17,23 +17,22 @@ namespace Kontiki
 
         // Private Variables & references
         private Character player;
-        private Canvas baseCanvas;
-        private CanvasScaler baseCanvasScaler;
-        private GraphicRaycaster baseGraphicRaycaster;
+        private GameObject basePanel;
 
         // Use this for initialization
         void Start()
         {
-            baseCanvas = GetComponent<Canvas>();
-            baseCanvasScaler = GetComponent<CanvasScaler>();
-            baseGraphicRaycaster = GetComponent<GraphicRaycaster>();
+            basePanel = transform.GetChild(0).gameObject;
             
-           SwitchWindow(Window.Start);
+            SwitchWindow(Window.Start);
+
+            SetVisibility(false);
         }
 
         // Update is called once per frame
         void Update()
         {
+            /*
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SetVisibility(false);
@@ -48,6 +47,7 @@ namespace Kontiki
             if (Input.GetKeyDown(KeyCode.Alpha4))
                 SwitchWindow(Window.Trade);
 
+            */
         }
 
         public void SwitchWindow(int i)
@@ -78,9 +78,7 @@ namespace Kontiki
 
         public void SetVisibility(bool boolean)
         {
-            baseCanvas.enabled = boolean;
-            baseCanvasScaler.enabled = boolean;
-            baseGraphicRaycaster.enabled = boolean;
+            basePanel.SetActive(boolean);
         }
     }
 }

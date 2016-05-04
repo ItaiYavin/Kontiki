@@ -4,12 +4,16 @@ using System.Collections.Generic;
 
 namespace Kontiki
 {
-	public class QuestGenerator : MonoBehaviour {		
+	public class QuestGenerator : MonoBehaviour
+	{
+	    public EdibleItem reward;
+        		
 		public GameObject objectivePrefab;
 
 		public GameObject areaOfInterestPrefab;
 
 		private List<Character> charactersWithoutQuestObjects;
+	    private List<Quest> quests;
 
         // Static singleton property
         public static QuestGenerator Instance { get; private set; }
@@ -23,6 +27,7 @@ namespace Kontiki
 			}
 
 			tempChar = null;
+            quests = new List<Quest>(5);
 		}
 
 		void Awake(){
@@ -40,16 +45,13 @@ namespace Kontiki
             DontDestroyOnLoad(gameObject);
 		}
 
-		public void GenerateQuest(Character questGiver, GameObject player, Item reward){
+		public Quest GenerateQuest(Character questGiver, Character player){
 			GameObject g = Instantiate(objectivePrefab, transform.position, transform.rotation) as GameObject;
 			
 			Item objective = g.GetComponent<Item>();
 			int i = Random.Range(0, charactersWithoutQuestObjects.Count);
 
-			player.AddComponent<Fetch>(); // TODO make general so it works with multiple quest types
-
-			Fetch fetch = player.GetComponent<Fetch>();
-
+            Fetch fetch = new Fetch(player, questGiver);
 			fetch.objective = objective;
 
 			if(!charactersWithoutQuestObjects[i].inventory.IsInventoryFull()){
@@ -58,18 +60,20 @@ namespace Kontiki
 				charactersWithoutQuestObjects[i].inventory.GetInventoryItems()[0] = null;
 				charactersWithoutQuestObjects[i].inventory.PutItemIntoInventoryRegardlessOfDistance(objective);
 			}
-			//TEMPORARY:
-			charactersWithoutQuestObjects[i].GetComponent<Renderer>().material.color = new Color(0, 1, 0);
 
 			fetch.objectiveHolder = charactersWithoutQuestObjects[i];
-
 			fetch.reward = reward;
-
 			fetch.origin = questGiver;
-
 			fetch.areaOfInterestPrefab = areaOfInterestPrefab;
 
 			charactersWithoutQuestObjects.RemoveAt(i);
+            quests.Add(fetch);
+		    return fetch;
 		}
+
+	    public void RemoveQuest(Quest quest)
+	    {
+	        quests.Remove(quest);
+	    }
 	}
 }

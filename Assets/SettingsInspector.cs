@@ -5,16 +5,16 @@ namespace Kontiki {
     public class SettingsInspector : MonoBehaviour
     {
         [Header("Debugging")]
-        public bool debugging;
+        public bool debugging = true;
 
         [Header("AI Settings")]
-        [Range(1, 100)] public float scanningRange;
-        [Range(1, 100)] public float pickupRange;
-        [Range(10, 500)] public int memoryCapacity;
-        [Range(100, 1000)] public int knownAreaSize;
-        [Range(0.01f, 0.5f)] public float hungerIncrementPerSec;
-        public RangeAttribute hungerRange;
-        public RangeAttribute energyRange;
+        [Range(1, 100)] public float scanningRange = 1;
+        [Range(1, 100)] public float pickupRange = 1;
+        [Range(10, 500)] public int memoryCapacity = 100;
+        [Range(100, 1000)] public int knownAreaSize = 200;
+        [Range(0.01f, 0.5f)] public float hungerIncrementPerSec = 0.1f;
+        public RangeAttribute hungerRange = new RangeAttribute(0, 100);
+        public RangeAttribute energyRange = new RangeAttribute(0, 1);
 
         //[Header("World Setting")]
 
@@ -22,13 +22,16 @@ namespace Kontiki {
 	    // Use this for initialization
 	    void Start ()
         {
-            debugging = Settings.debugging;
-            scanningRange = Settings.scanningRange;
-            memoryCapacity = Settings.memoryCapacity;
-            knownAreaSize = Settings.knownAreaSize;
-            hungerIncrementPerSec = Settings.hungerIncrementPerSec;
-            hungerRange = Settings.hungerRange;
-            energyRange = Settings.energyRange;
+            Settings.debugging = debugging;
+            Settings.scanningRange = scanningRange;
+	        Settings.pickupRange = pickupRange;
+            Settings.memoryCapacity = memoryCapacity;
+            Settings.knownAreaSize = knownAreaSize;
+            Settings.hungerIncrementPerSec = hungerIncrementPerSec;
+            Settings.hungerRange = hungerRange;
+            Settings.energyRange = energyRange;
+
+            Debug.LogWarning("Debugging is " + (debugging ? "enabled" : "disabled"));
         }
 	
 	    // Update is called once per frame
@@ -36,7 +39,8 @@ namespace Kontiki {
 	    {
 	        Settings.debugging = debugging;
 	        Settings.scanningRange = scanningRange;
-	        Settings.memoryCapacity = memoryCapacity;
+            Settings.pickupRange = pickupRange;
+            Settings.memoryCapacity = memoryCapacity;
 	        Settings.knownAreaSize = knownAreaSize;
 	        Settings.hungerIncrementPerSec = hungerIncrementPerSec;
 	        Settings.hungerRange = hungerRange;
@@ -47,6 +51,7 @@ namespace Kontiki {
         {
             debugging = Settings.debugging;
             scanningRange = Settings.scanningRange;
+            pickupRange = Settings.pickupRange;
             memoryCapacity = Settings.memoryCapacity;
             knownAreaSize = Settings.knownAreaSize;
             hungerIncrementPerSec = Settings.hungerIncrementPerSec;

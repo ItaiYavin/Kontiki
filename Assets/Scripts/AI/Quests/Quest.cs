@@ -4,12 +4,15 @@ using System.Collections.Generic;
 
 namespace Kontiki
 {
-	public abstract class Quest : MonoBehaviour {
+	public abstract class Quest {
 		// areaOfInterest Variables
 		public GameObject areaOfInterestPrefab;
 		protected GameObject areaOfInterest;
 		protected float areaOfInterestMaxSize = 200;
 		protected float areaOfInterestMinSize = 0.3f;
+
+	    protected Character player;
+	    protected Character origin;
 
 		public abstract void FinishQuest(Inventory characterInventory);
 
@@ -17,7 +20,13 @@ namespace Kontiki
 
 		public abstract void UpdateQuest(Character askedPerson);
 
-		// Update is called once per frame
+	    public Quest(Character player, Character origin)
+	    {
+	        this.player = player;
+	        this.origin = origin;
+	    }
+        
+        // Update is called once per frame
 		void Update () {
 			CheckQuestState();
 		}
@@ -33,7 +42,7 @@ namespace Kontiki
 		}
 
 		public void CreateAreaOfInterestInWorld(float radius, Vector3 position){
-			areaOfInterest = Instantiate(areaOfInterestPrefab, position, transform.rotation) as GameObject; //Instantiate areaOfInterest of radius at position
+			areaOfInterest = Object.Instantiate(areaOfInterestPrefab, position, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at position
 			areaOfInterest.transform.localScale = new Vector3(radius, radius, radius); // Set size of areaOfInterest
 			
 			RandomlyMoveGameObjectWithinRange(areaOfInterest, position); //Randomly move areaOfInterest so that position is still within areaOfInterest

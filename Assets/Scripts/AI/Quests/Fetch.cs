@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 namespace Kontiki
 {
@@ -25,9 +26,10 @@ namespace Kontiki
 		private int numberOfHints;
 
 		// Use this for initialization
-		void Awake () {
+		public Fetch (Character player, Character origin) : base(player, origin)
+		{
+		   
 			askedPeople = new List<Character>();
-			player = GetComponent<Character>();
 			hasObjective = false;
 		}
 
@@ -47,7 +49,7 @@ namespace Kontiki
 			
 			for(int i = 0; i < objectiveHolderInventoryItems.Length; i++){
 				if(objectiveHolderInventoryItems[i] == objective){
-					transform.GetComponent<Character>().inventory.PutItemIntoInventoryRegardlessOfDistance(objective);
+					player.inventory.PutItemIntoInventoryRegardlessOfDistance(objective);
 					objectiveHolderInventoryItems[i] = null;
 				}
 			}
@@ -99,7 +101,7 @@ namespace Kontiki
 		public override void FinishQuest(Inventory characterInventory){
 			if(!characterInventory.IsInventoryFull()){	// Check player inventory
 				characterInventory.PutItemIntoInventoryRegardlessOfDistance(reward); // Give reward
-				Destroy(this); // Remove quest
+			    QuestGenerator.Instance.RemoveQuest(this);
 			} else {
 				//TODO inform player
 			}
@@ -111,5 +113,16 @@ namespace Kontiki
 					hasObjective = true;
 			}
 		}
+
+	    public override string ToString()
+	    {
+	        string s = "";
+
+	        s += "Origin: " + origin.name;
+            s += "\nObjective Holder: " + objectiveHolder.name;
+            s += "\nObjective: " + objective.name;
+
+	        return s;
+	    }
 	}
 }

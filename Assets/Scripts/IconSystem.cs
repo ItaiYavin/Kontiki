@@ -125,7 +125,7 @@ namespace Kontiki {
 
 			for(int i = 0; i < icons.Length; i++){
 				switch(icons[i]){
-					case IconTypes.QuestItem:
+					case IconTypes.Quest:
 						if(firstSymbol){
 							cols[i] = col;
 							firstSymbol = false;

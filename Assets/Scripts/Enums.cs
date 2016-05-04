@@ -4,13 +4,23 @@ using System.Collections;
 namespace Kontiki {
     public enum IconTypes
     {
-        Food,
-        Eat,
+        Bring,
+        Find,
+        No,
+        Question,
+        SomethingToSay,
+        TakeTo,
         Trade,
+        Boat,
+        BoatWithSail,
+        Fish,
+        Fisherboat,
+        Net,
         Quest,
-        QuestItem,
+        Rig,
+        Water,
         Person,
-        Question
+        Beggar
     }
 
     public enum PlaceType

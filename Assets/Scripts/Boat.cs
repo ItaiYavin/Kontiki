@@ -29,8 +29,8 @@ namespace Kontiki
 			
 		}
 		
-		public override bool Interact(Character character){
-			if (character.isPlayer){
+		public override bool Interact(Character player){
+			if (player.isPlayer){
 				if(CM != null){
 					if (CM.currentControllerType == Sui_Demo_ControllerType.character){
 						CM.currentControllerType = Sui_Demo_ControllerType.boat;
@@ -43,24 +43,24 @@ namespace Kontiki
 				}
 			}
 			
-			if(characterInBoat == character){
+			if(characterInBoat == player){
 				characterInBoat = null;
-				character.transform.SetParent(null,true);
+				player.transform.SetParent(null,true);
 				
-				if(!character.isPlayer){
-					character.GetComponent<Pathfinder>().enabled = true;
-					character.GetComponent<Pathfinder>().agent.enabled = true;
+				if(!player.isPlayer){
+					player.GetComponent<Pathfinder>().enabled = true;
+					player.GetComponent<Pathfinder>().agent.enabled = true;
 				}
 			}else if(characterInBoat == null){
-				characterInBoat = character;
+				characterInBoat = player;
 				
-				character.transform.rotation = transform.rotation;
-				character.transform.SetParent(transform,true);
-				character.transform.localPosition = Vector3.up * transform.localScale.y/2;
+				player.transform.rotation = transform.rotation;
+				player.transform.SetParent(transform,true);
+				player.transform.localPosition = Vector3.up * transform.localScale.y/2;
 				
-				if(!character.isPlayer){
-					character.GetComponent<Pathfinder>().enabled = false;
-					character.GetComponent<Pathfinder>().agent.enabled = false;
+				if(!player.isPlayer){
+					player.GetComponent<Pathfinder>().enabled = false;
+					player.GetComponent<Pathfinder>().agent.enabled = false;
 				}
 			}
 				
