@@ -34,13 +34,11 @@ namespace Kontiki {
         }
 
         public bool PutItemIntoInventoryRegardlessOfDistance(Item item){
-            Item pickup;
-            pickup = item;
             for (int i = 0; i < inventorySize; i++)
             {
                 if (_inventoryItems[i] == null)
                 {
-                    _inventoryItems[i] = pickup;
+                    _inventoryItems[i] = item;
                     item.gameObject.SetActive(false);
                     return true;
                 }
@@ -82,6 +80,17 @@ namespace Kontiki {
             EdibleItem item = (EdibleItem)Instantiate(applePrefab, transform.position, transform.rotation);
             
             PutItemIntoInventory(item);
+        }
+
+        public bool RemoveItem(Item item){
+            for (int i = 0; i < _inventoryItems.Length; i++)
+            {
+                if(_inventoryItems[i] == item){
+                    _inventoryItems[i] = null;
+                    return true;
+                }
+            }
+            return false;
         }
 
         //TODO Find better name

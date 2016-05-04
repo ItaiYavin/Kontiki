@@ -54,14 +54,8 @@ namespace Kontiki {
 
         private void HungerUpdate()
         {
-            if (hunger < SettingsSingleton.Instance.hungerRange.max)
-            {
-                hunger += SettingsSingleton.Instance.hungerIncrementPerSec * Time.deltaTime;
-            }
-            else
-            {
-                hunger = SettingsSingleton.Instance.hungerRange.max;
-            }
+           hunger += SettingsSingleton.Instance.hungerIncrementPerSec * Time.deltaTime;
+           hunger = Mathf.Clamp(hunger,SettingsSingleton.Instance.hungerRange.min,SettingsSingleton.Instance.hungerRange.max);
         }
 
         private void TiredUpdate()
@@ -79,6 +73,8 @@ namespace Kontiki {
                 }
                 break;
             }
+            
+           energy = Mathf.Clamp(energy,SettingsSingleton.Instance.energyRange.min,SettingsSingleton.Instance.energyRange.max);
         }
 
         public bool HasSelected(ItemType type)

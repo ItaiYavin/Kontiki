@@ -11,7 +11,7 @@ namespace Kontiki
 		public Character objectiveHolder;
 		public Item objective;
 		public Item reward;
-		public int threshold = -1; // The higher the harder, roll is possible when below 10 (always possible when <= 0)
+		public int chanceForKnowledge = 8; // The higher the harder, roll is possible when below 10 (always possible when <= 0)
 
 		public bool hasObjective;
 		public bool hasGivenObjective;
@@ -20,8 +20,9 @@ namespace Kontiki
 
 		private float areaOfInterestSizeReductionPercent = 0.8f; // Needs to be between 0-1;
 
-		private float numberOfAskedPeople;
-		private float numberOfHints;
+		private int numberOfAskedPeople;
+		private int peakNumberOfPeople = 10;
+		private int numberOfHints;
 
 		// Use this for initialization
 		void Awake () {
@@ -64,13 +65,10 @@ namespace Kontiki
 					isAskedCharacterInArea = CheckCharacterIsInAreaOfInterest(askedCharacter);
 
 				if(isAskedCharacterInArea){
-					bool askedCharacterKnows = false;
 
-					int i = Random.Range(0, 10);
-					if(i > (threshold - numberOfAskedPeople)) //calculate chance to know about goal
-						askedCharacterKnows = true;
+					float chanceForKnowledge = Random.Range(0f, 1f);
 
-					if(askedCharacterKnows)
+					if(chanceForKnowledge > (chanceForKnowledge - (numberOfAskedPeople / peakNumberOfPeople)))
 					{
 						if(areaOfInterest == null)
 							CreateAreaOfInterestInWorld(areaOfInterestMaxSize, objectiveHolder.transform.position); //create AreaOfInterest

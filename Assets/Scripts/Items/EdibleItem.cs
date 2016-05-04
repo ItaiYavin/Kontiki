@@ -12,7 +12,8 @@ namespace Kontiki
         {
             if (person.hunger > 0)
             {
-                /*bool target = false;
+                /*
+                bool target = false;
                 bool selected = false;
                 */
 
@@ -26,14 +27,17 @@ namespace Kontiki
                     selected = true;
                 }
                 */
-                
-                DestroyImmediate(gameObject, true);
+                person.inventory.RemoveItem(this);
+                Destroy(gameObject);
                 /*
                 person.GetInventory().Clean();
                 person.CleanMemory();
                 if(target) person.target = null;
                 if(selected) person.selectedItem = null;
-                person.FillKnownItemList();*/
+                person.FillKnownItemList();
+                */
+                
+                
                 return true;
             }
             else

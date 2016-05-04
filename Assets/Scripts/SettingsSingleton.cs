@@ -21,6 +21,7 @@ namespace Kontiki {
         [Range(0.01f, 1f)]
         public float hungerIncrementPerSec = 0.1f;
         public RangeAttribute hungerRange = new RangeAttribute(0, 100);
+        public RangeAttribute energyRange = new RangeAttribute(0, 1);
         public bool debugging;
 
 
