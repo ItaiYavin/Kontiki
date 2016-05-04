@@ -7,17 +7,17 @@
 namespace Kontiki { 
     public static class Settings
     {
-        public static bool debugging                = true;
+        public static bool debugging;
         /**
          * Settings & Attributes of AI
          **/
-        public static float scanningRange           = 1;
-        public static float pickupRange             = 1;
-        public static int memoryCapacity            = 200;
-        public static int knownAreaSize             = 100;
-        public static float hungerIncrementPerSec   = 0.1f;
-        public static RangeAttribute hungerRange    = new RangeAttribute(0, 100);
-        public static RangeAttribute energyRange    = new RangeAttribute(0, 1);
+        public static float scanningRange;
+        public static float pickupRange;
+        public static int memoryCapacity;
+        public static int knownAreaSize;
+        public static float hungerIncrementPerSec;
+        public static RangeAttribute hungerRange;
+        public static RangeAttribute energyRange;
 
     }
 }

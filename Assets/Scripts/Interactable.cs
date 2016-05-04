@@ -27,6 +27,6 @@ namespace Kontiki
                 hightlightRenderer.material.SetColor("_TintColor",new Color(0,0,0,0));
         }
         
-        public abstract bool Interact(Character character);
+        public abstract bool Interact(Character player);
     }
 }

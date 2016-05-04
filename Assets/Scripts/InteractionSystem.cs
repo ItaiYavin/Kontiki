@@ -5,14 +5,15 @@ using System.Collections.Generic;
 
 namespace Kontiki{
 	
-	public class InteractionSystem : MonoBehaviour {
-		
+	public class InteractionSystem : MonoBehaviour
+	{
+	    public WindowsHandler windowsHandler;
 		
 		[SerializeField] private bool _isDown = false;
 		
 		[SerializeField] private KeyCode _key = KeyCode.Space;
 		
-		private Character _character;
+		private Character _player;
         private Inventory _inventory;
         private Interactable _lastTarget;
 		
@@ -29,11 +30,7 @@ namespace Kontiki{
 		
 		[SerializeField] private float _indicatorTranparentRange = 10;
 		[SerializeField] private float _indicatorOpaqueRange = 1;
-		
-		
-		
-		
-		
+			
 		[SerializeField] private LayerMask _interactableLayer;
 		
 		public sui_demo_ControllerMaster controller;
@@ -47,7 +44,7 @@ namespace Kontiki{
 		
 
 		void Start () {
-			_character = GetComponent<Character>();
+			_player = GetComponent<Character>();
             _inventory = GetComponent<Inventory>();
 			_freeIndicators = new List<InteractableIndicator>();
 			_occupiedIndicators = new List<InteractableIndicator>();
@@ -55,8 +52,8 @@ namespace Kontiki{
 		
 		void Update () {
 			_isDown = Input.GetKey(_key);
-			controller.interactionButtonDown = _isDown;
-			container.SetActive(_isDown);
+			// controller.interactionButtonDown = _isDown;
+			// container.SetActive(_isDown);
 			if(_isDown){
 				
 				ScanForInteractableIndicators();
@@ -65,15 +62,27 @@ namespace Kontiki{
 				CheckMouseHoveringOverInteractable();
 				if(_lastTarget != null){
 					float distance = Vector3.Distance(_lastTarget.transform.position,transform.position);
-					if(distance < Settings.pickupRange && Input.GetMouseButtonDown(0)){
-						
-						
+					if(distance < Settings.pickupRange && Input.GetMouseButtonDown(0))
+					{
 						bool successful = false;
-						
-						if(_lastTarget is Item)
-							successful = _inventory.PutItemIntoInventory((Item)_lastTarget);
-						else
-							successful = _lastTarget.Interact(_character);
+
+                        if (_lastTarget is Item)
+                        {
+                            successful = _inventory.PutItemIntoInventory((Item)_lastTarget);
+                        }
+                        if (_lastTarget is AIComponentContainer)
+                        {
+                            bool doesCharacterHaveQuest = _lastTarget.Interact(_player); //TODO STORE VALUE IN CHARACTER OR SOMETHING
+
+                            if (doesCharacterHaveQuest)
+                            {
+                                var q = (_lastTarget as AIComponentContainer).GetQuest(_player);
+                                Debug.Log(q.ToString());
+                            }
+
+                            windowsHandler.SetVisibility(true);
+                        }
+
 							
 						if(successful){
 							InteractableIndicator indicator = _lastTarget.indicator;
@@ -118,7 +127,6 @@ namespace Kontiki{
 				color.a = a;
 				indicator.image.color = color;
 				indicator.transform.localScale = new Vector3(size,size,1);
-				
 			}
 		}
 		
@@ -139,9 +147,10 @@ namespace Kontiki{
 						_freeIndicators.RemoveAt(0);
 					}else{
 						//isntantiate
+                        // PLEASE BRING ME BACK
 						GameObject g = Instantiate(prefab_interactableIndicator);
 						g.transform.SetParent(container.transform, false);
-						indicator = g.GetComponent<InteractableIndicator>(); 
+						indicator = g.GetComponent<InteractableIndicator>();
 					}
 					
 					indicator.gameObject.SetActive(true);
@@ -165,8 +174,7 @@ namespace Kontiki{
             if (Physics.Raycast(ray, out hit)){
 				interactable = hit.transform.GetComponent<Interactable>();
 				if(interactable != null){
-					
-					if(_lastTarget == null){					
+                    if (_lastTarget == null){					
 						_lastTarget = interactable;
                         
                         interactable.Highlight(new Color(0.5f,0,0,0.3f));

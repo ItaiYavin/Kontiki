@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Apex.AI.Components;
 
 using Kontiki.AI;
+using Random = UnityEngine.Random;
 
 namespace Kontiki {
     [RequireComponent(typeof(Character))]
@@ -12,7 +13,7 @@ namespace Kontiki {
 	[RequireComponent(typeof(Memory))]
     [RequireComponent(typeof(Inventory))]
     [RequireComponent(typeof(BaseRoutine))]
-	public sealed class AIComponentContainer : MonoBehaviour, IContextProvider {
+	public sealed class AIComponentContainer : Interactable, IContextProvider {
         
         public bool debugAI;
         /**
@@ -64,13 +65,26 @@ namespace Kontiki {
             this.inventory = GetComponent<Inventory>();
             this.baseroutine = GetComponent<BaseRoutine>();		
             this.job = GetComponent<Job>();
+
+            indicator = gameObject.AddComponent <InteractableIndicator>();
+            indicator.interactable = this;
         }
 
 		void Awake () {
 			_context = new AIContext(this);
 		}
 
-		public IAIContext GetContext(Guid aiId)
+        public override bool Interact(Character player)
+        {
+            return Random.Range(0f,1f) > 0.5f; // FAIR ROLL OF DICE
+        }
+
+        public Quest GetQuest(Character player)
+        {
+            return QuestGenerator.Instance.GenerateQuest(this.character, player);
+        }
+
+        public IAIContext GetContext(Guid aiId)
 		{
 			return _context;
 		}
