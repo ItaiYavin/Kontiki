@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &138262136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,10 +241,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &138262139
@@ -420,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &214965435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,10 +461,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &214965438
@@ -637,6 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &249674630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,10 +681,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &249674633
@@ -854,6 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &263822956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,10 +901,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &263822959
@@ -1071,6 +1083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &317716947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,10 +1121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &317716950
@@ -1288,6 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &368427983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1325,10 +1341,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &368427986
@@ -1505,6 +1523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &371618408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,10 +1561,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &371618411
@@ -1722,6 +1743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &421225640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1759,10 +1781,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &421225643
@@ -1908,6 +1932,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!1001 &497562188
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.836
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.577
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408082, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 29d7ed7b3b9a76a4fa14925904e63c41, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &594462520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,6 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &594462524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,10 +2088,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &594462527
@@ -2181,7 +2250,7 @@ Transform:
   - {fileID: 138262145}
   - {fileID: 1549451205}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &839237787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &854317138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2322,10 +2392,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &854317141
@@ -2502,6 +2574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &878957396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,10 +2612,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &878957399
@@ -2719,6 +2794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &900844050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,10 +2832,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &900844053
@@ -2936,6 +3014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &916259471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2973,10 +3052,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &916259474
@@ -3153,6 +3234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &928863126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3190,10 +3272,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &928863129
@@ -3370,6 +3454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &940101599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3407,10 +3492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &940101602
@@ -3587,6 +3674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &996464113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3624,10 +3712,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &996464116
@@ -3804,6 +3894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1053750266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3841,10 +3932,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1053750269
@@ -4168,6 +4261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1267238728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4205,10 +4299,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1267238731
@@ -4487,6 +4583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1476421212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4524,10 +4621,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1476421215
@@ -4704,6 +4803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1549451196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4741,10 +4841,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1549451199
@@ -4921,6 +5023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1578729453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4958,10 +5061,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1578729456
@@ -5138,6 +5243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1685065163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5175,10 +5281,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1685065166
@@ -5313,6 +5421,10 @@ MonoBehaviour:
   indicator: {fileID: 0}
   sprite: {fileID: 0}
   CM: {fileID: 0}
+  characterInBoat: {fileID: 0}
+  agent: {fileID: 0}
+  isDocked: 1
+  target: {fileID: 0}
 --- !u!23 &1699747976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5370,6 +5482,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!1 &1770194295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1770194298}
+  - 114: {fileID: 1770194297}
+  - 114: {fileID: 1770194296}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1770194296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770194295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1770194297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770194295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1770194298
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770194295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1 &1796766469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5446,6 +5619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1796766473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5483,10 +5657,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1796766476
@@ -5663,6 +5839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1867903835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5700,10 +5877,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1867903838
@@ -5880,6 +6059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1881036206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5917,10 +6097,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1881036209
@@ -6097,6 +6279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1905257099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6134,10 +6317,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1905257102
@@ -6314,6 +6499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &1969155053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6351,10 +6537,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &1969155056
@@ -6531,6 +6719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &2013744330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6568,10 +6757,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &2013744333
@@ -6799,6 +6990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &2041610847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6836,10 +7028,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &2041610850
@@ -6978,6 +7172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &2086893050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7015,10 +7210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &2086893053
@@ -7246,6 +7443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAI: 0
 --- !u!114 &2091737201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7283,10 +7481,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21aa1be28e54254856c5dc7fc4c1f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  gender: 0
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
-  selectedItem: {fileID: 0}
+  selectedInteractable: {fileID: 0}
   boat: {fileID: 1699747975}
   isSleeping: 0
 --- !u!114 &2091737204
