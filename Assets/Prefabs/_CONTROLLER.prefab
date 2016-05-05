@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &145696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 476660}
+  - 114: {fileID: 11471192}
+  - 114: {fileID: 11459362}
+  - 114: {fileID: 11499796}
+  - 114: {fileID: 11422948}
+  m_Layer: 0
+  m_Name: _CONTROLLER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &476660
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11422948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a7b570deb2afc4b8a0db75fb3db924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
+  isControllable: 1
+  renderer: {fileID: 0}
+  isExtraZoom: 0
+  cameraTarget: {fileID: 0}
+  reverseYAxis: 1
+  reverseXAxis: 0
+  mouseSensitivity: {x: 12, y: 12}
+  cameraFOV: 46
+  cameraOffset: {x: -0.5, y: 0.15}
+  cameraLean: 0
+  walkSpeed: 0.11
+  runSpeed: 0.22
+  rotationLimits: {x: 0, y: 0, z: 30}
+  minZoomAmount: 4
+  maxZoomAmount: 12
+  targetAnimator: {fileID: 0}
+--- !u!114 &11459362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d447c2c5307964544bddbdc894f61388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraObject: {fileID: 0}
+  currentControllerType: 1
+  interactionButtonDown: 0
+--- !u!114 &11471192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a92bf6c25a40f7d41b674492e47d96b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11499796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a102ca3c6a557354e942ce7349b5131e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
+  isControllable: 1
+  isExtraZoom: 0
+  cameraTarget: {fileID: 0}
+  buoyancyTarget: {fileID: 0}
+  reverseYAxis: 1
+  reverseXAxis: 0
+  mouseSensitivity: {x: 25, y: 10}
+  cameraFOV: 50
+  cameraOffset: {x: 5, y: 5}
+  cameraLean: 0
+  walkSpeed: 0.034
+  runSpeed: 0.09
+  sprintSpeed: 0.14
+  rotationSensitivity: 2
+  rotationLimits: {x: 0, y: 0, z: 0}
+  minZoomAmount: 1.25
+  maxZoomAmount: 8
+  showDebug: 0
+  isInWater: 0
+  isInWaterDeep: 0
+  isUnderWater: 0
+  isAtSurface: 0
+  isFloating: 0
+  isFalling: 0
+  isInBoat: 0
+  targetAnimator: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 145696}
+  m_IsPrefabParent: 1

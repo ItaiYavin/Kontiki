@@ -33,7 +33,7 @@ namespace Kontiki{
 			
 		[SerializeField] private LayerMask _interactableLayer;
 		
-		public sui_demo_ControllerMaster controller;
+		//public sui_demo_ControllerMaster controller;
 		
 		public GameObject prefab_interactableIndicator;
 		public GameObject container;
