@@ -6,11 +6,11 @@ namespace Kontiki
 {
 	public class QuestGenerator : MonoBehaviour
 	{
-	    public EdibleItem reward;
-        		
+	    public EdibleItem reward;       		
 		public GameObject objectivePrefab;
-
 		public GameObject areaOfInterestPrefab;
+
+	    public Quest proposedQuest;
 
 		private List<Character> charactersWithoutQuestObjects;
 	    private List<Quest> quests;
@@ -45,7 +45,7 @@ namespace Kontiki
             DontDestroyOnLoad(gameObject);
 		}
 
-		public Quest GenerateQuest(Character questGiver, Character player){
+		public Quest GenerateQuest(Character player, Character questGiver){
 			GameObject g = Instantiate(objectivePrefab, transform.position, transform.rotation) as GameObject;
 			
 			Item objective = g.GetComponent<Item>();
@@ -71,9 +71,28 @@ namespace Kontiki
 		    return fetch;
 		}
 
-	    public void RemoveQuest(Quest quest)
+        public void RemoveQuest(Quest quest)
 	    {
 	        quests.Remove(quest);
 	    }
+
+	    public void ProposeQuest(Quest q)
+	    {
+	        proposedQuest = q;
+	    }
+
+	    public void AcceptProposedQuest()
+        {
+            if (Settings.debugQuestInfo)
+                Debug.Log("Player accepted quest from " + proposedQuest.origin);
+
+            quests.Add(proposedQuest);
+	        proposedQuest = null;
+        }
+
+	    public void DeclineProposedQuest()
+	    {
+	        proposedQuest = null;
+        }
 	}
 }

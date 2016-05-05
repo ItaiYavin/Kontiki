@@ -7,8 +7,7 @@ namespace Kontiki{
 	
 	public class InteractionSystem : MonoBehaviour
 	{
-	    public WindowsHandler windowsHandler;
-		
+        [Header("Keys")]
 		[SerializeField] private bool _isDown = false;
 		
 		[SerializeField] private KeyCode _key = KeyCode.Space;
@@ -16,8 +15,9 @@ namespace Kontiki{
 		private Character _player;
         private Inventory _inventory;
         private Interactable _lastTarget;
-		
-		[SerializeField] private float _scanRange = 100;
+
+        [Header("Setting")]
+        [SerializeField] private float _scanRange = 100;
 		
 		[SerializeField] private float _minIndicatorSize = .2f;
 		[SerializeField] private float _maxIndicatorSize = 1;
@@ -32,14 +32,15 @@ namespace Kontiki{
 		[SerializeField] private float _indicatorOpaqueRange = 1;
 			
 		[SerializeField] private LayerMask _interactableLayer;
-		
-		//public sui_demo_ControllerMaster controller;
-		
-		public GameObject prefab_interactableIndicator;
+
+        //public sui_demo_ControllerMaster controller;
+
+        [Header("Pointers")]
+        public GameObject prefab_interactableIndicator;
 		public GameObject container;
-		
-		
-		private List<InteractableIndicator> _occupiedIndicators;
+        public WindowsHandler windowsHandler;
+
+        private List<InteractableIndicator> _occupiedIndicators;
 		private List<InteractableIndicator> _freeIndicators;
 		
 
@@ -72,13 +73,7 @@ namespace Kontiki{
                         }
                         if (_lastTarget is AIComponentContainer)
                         {
-                            bool doesCharacterHaveQuest = _lastTarget.Interact(_player); //TODO STORE VALUE IN CHARACTER OR SOMETHING
-
-                            if (doesCharacterHaveQuest)
-                            {
-                                var q = (_lastTarget as AIComponentContainer).GetQuest(_player);
-                                Debug.Log(q.ToString());
-                            }
+                            _lastTarget.Interact(_player); //TODO STORE VALUE IN CHARACTER OR SOMETHING
 
                             windowsHandler.SetVisibility(true);
                         }

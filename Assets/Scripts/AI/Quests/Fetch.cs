@@ -8,7 +8,6 @@ namespace Kontiki
 	public class Fetch : Quest {
 		private List<Character> askedPeople;
 
-		public Character origin;
 		public Character objectiveHolder;
 		public Item objective;
 		public Item reward;
@@ -28,7 +27,9 @@ namespace Kontiki
 		// Use this for initialization
 		public Fetch (Character player, Character origin) : base(player, origin)
 		{
-		   
+		    this.origin = origin;
+            this.player = player;
+
 			askedPeople = new List<Character>();
 			hasObjective = false;
 		}
@@ -113,16 +114,5 @@ namespace Kontiki
 					hasObjective = true;
 			}
 		}
-
-	    public override string ToString()
-	    {
-	        string s = "";
-
-	        s += "Origin: " + origin.name;
-            s += "\nObjective Holder: " + objectiveHolder.name;
-            s += "\nObjective: " + objective.name;
-
-	        return s;
-	    }
 	}
 }

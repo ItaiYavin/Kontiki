@@ -75,15 +75,18 @@ namespace Kontiki {
 
         public override bool Interact(Character player)
         {
-            if(Settings.debugging)
+            if(Settings.debugInteractionInfo)
                 Debug.Log(character + " interacted with " + gameObject.name);
 
-            return Random.Range(0f,1f) > 0.5f; // FAIR ROLL OF DICE
-        }
+            if(Settings.debugQuestInfo)
+                Debug.Log("NPC" + (baseroutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
 
-        public Quest GetQuest(Character player)
-        {
-            return QuestGenerator.Instance.GenerateQuest(this.character, player);
+            if (baseroutine.hasQuestToOffer && baseroutine.questOffer == null) { 
+                baseroutine.questOffer = QuestGenerator.Instance.GenerateQuest(character, player);
+                QuestGenerator.Instance.proposedQuest = baseroutine.questOffer;
+            }
+
+            return true;
         }
 
         public IAIContext GetContext(Guid aiId)

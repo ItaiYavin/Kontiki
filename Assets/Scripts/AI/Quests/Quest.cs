@@ -11,8 +11,8 @@ namespace Kontiki
 		protected float areaOfInterestMaxSize = 200;
 		protected float areaOfInterestMinSize = 0.3f;
 
-	    protected Character player;
-	    protected Character origin;
+        public Character player;
+        public Character origin;
 
 		public abstract void FinishQuest(Inventory characterInventory);
 

@@ -6,7 +6,7 @@ namespace Kontiki {
     {
         [Header("Debugging")]
         public bool debugging 			    = true;
-		public bool debugJobInfo 		    = false;
+		public bool debugQuestInfo 		    = false;
 		public bool debugInteractionInfo 	= false;
 
         [Header("AI Settings")]
@@ -33,7 +33,7 @@ namespace Kontiki {
             Settings.hungerRange = hungerRange;
             Settings.energyRange = energyRange;
 	        Settings.debugInteractionInfo = debugInteractionInfo;
-	        Settings.debugJobInfo = debugJobInfo;
+	        Settings.debugQuestInfo = debugQuestInfo;
 
             Debug.LogWarning("Debugging is " + (debugging ? "enabled" : "disabled"));
         }
@@ -50,7 +50,7 @@ namespace Kontiki {
 	        Settings.hungerRange = hungerRange;
 	        Settings.energyRange = energyRange;
             Settings.debugInteractionInfo = debugInteractionInfo;
-            Settings.debugJobInfo = debugJobInfo;
+            Settings.debugQuestInfo = debugQuestInfo;
         }
 
         void LateUpdate()
@@ -63,7 +63,7 @@ namespace Kontiki {
             hungerIncrementPerSec = Settings.hungerIncrementPerSec;
             hungerRange = Settings.hungerRange;
             energyRange = Settings.energyRange;
-            debugJobInfo = Settings.debugJobInfo;
+            debugQuestInfo = Settings.debugQuestInfo;
             debugInteractionInfo = Settings.debugInteractionInfo;
         }
     }

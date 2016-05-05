@@ -352,7 +352,7 @@
         </member>
         <member name="M:Apex.Serialization.SerializationExtensions.AddTextValue(Apex.Serialization.StageContainer,System.String,System.String,System.Boolean)">
             <summary>
-            Adds a text element.
+            Adds a questText element.
             </summary>
             <param name="parent">The parent element to add to.</param>
             <param name="name">The name of the item to add.</param>
@@ -372,7 +372,7 @@
         </member>
         <member name="M:Apex.Serialization.SerializationExtensions.AddTextAttribute(Apex.Serialization.StageElement,System.String,System.String,System.Boolean)">
             <summary>
-            Adds an attribute with a text value.
+            Adds an attribute with a questText value.
             </summary>
             <param name="parent">The parent element to add to.</param>
             <param name="name">The name of the attribute to add.</param>
@@ -391,7 +391,7 @@
         </member>
         <member name="M:Apex.Serialization.SerializationExtensions.SetTextAttribute(Apex.Serialization.StageElement,System.String,System.String,System.Boolean)">
             <summary>
-            Sets the value of a text attribute. If it does not exist it is created.
+            Sets the value of a questText attribute. If it does not exist it is created.
             If the value is <c>null</c> the attribute is removed.
             If multiple identically named attributes exists only the first one is set.
             </summary>
@@ -624,7 +624,7 @@
             </summary>
             <param name="name">The name.</param>
             <param name="value">The value.</param>
-            <param name="isText">Whether of not the value represents textual content.</param>
+            <param name="isText">Whether of not the value represents questTextual content.</param>
         </member>
         <member name="P:Apex.Serialization.StageValue.value">
             <summary>
@@ -636,10 +636,10 @@
         </member>
         <member name="P:Apex.Serialization.StageValue.isText">
             <summary>
-            Gets a value indicating whether this instance is text.
+            Gets a value indicating whether this instance is questText.
             </summary>
             <value>
-              <c>true</c> if this instance is text; otherwise, <c>false</c>.
+              <c>true</c> if this instance is questText; otherwise, <c>false</c>.
             </value>
         </member>
         <member name="T:Apex.Serialization.StageList">

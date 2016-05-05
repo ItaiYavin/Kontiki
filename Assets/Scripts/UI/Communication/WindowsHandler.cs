@@ -7,13 +7,16 @@ namespace Kontiki
 {
     public class WindowsHandler : MonoBehaviour
     {
-        // Insepector Objects & Variables
+        // Inspector Objects & Variables
+        [Header("Windows")]
         public Window currentWindow;
         public GameObject startWindow;
         public GameObject questWindow;
         public GameObject infoWindow;
         public GameObject tradeWindow;
 
+        [Header("Information")]
+        public Text questText;
 
         // Private Variables & references
         private Character player;
@@ -32,22 +35,35 @@ namespace Kontiki
         // Update is called once per frame
         void Update()
         {
-            /*
-            if (Input.GetKeyDown(KeyCode.Q))
+            switch (currentWindow)
             {
-                SetVisibility(false);
+                case Window.Info:
+                {
+                    
+                }
+                break;
+
+                case Window.Quest:
+                {
+                    
+                }
+                break;
+
+                case Window.Start:
+                {
+                    
+                }
+                break;
+
+                case Window.Trade:
+                {
+                    
+                }
+                break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-
-            if(Input.GetKeyDown(KeyCode.Alpha1))
-                SwitchWindow(Window.Start);
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                SwitchWindow(Window.Quest);
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-                SwitchWindow(Window.Info);
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-                SwitchWindow(Window.Trade);
-
-            */
         }
 
         public void SwitchWindow(int i)
@@ -60,19 +76,47 @@ namespace Kontiki
             // A bit brute-force-ish, sorry :(
 
             // Start Window
-            if (window == Window.Start) { startWindow.SetActive(true); currentWindow = Window.Start; }
+            if (window == Window.Start)
+            {
+                startWindow.SetActive(true); currentWindow = Window.Start;
+            }
             else startWindow.SetActive(false);
 
             // Info Window
-            if (window == Window.Info) { infoWindow.SetActive(true); currentWindow = Window.Info; }
+            if (window == Window.Info)
+            {
+                infoWindow.SetActive(true); currentWindow = Window.Info;
+            }
             else infoWindow.SetActive(false);
 
             // Trade Window
-            if (window == Window.Trade) { tradeWindow.SetActive(true); currentWindow = Window.Trade; }
+            if (window == Window.Trade)
+            {
+                tradeWindow.SetActive(true); currentWindow = Window.Trade;
+            }
             else tradeWindow.SetActive(false);
 
             // Quest Window
-            if (window == Window.Quest) { questWindow.SetActive(true); currentWindow = Window.Quest; }
+            if (window == Window.Quest)
+            {
+                questWindow.SetActive(true); currentWindow = Window.Quest;
+
+                var q = QuestGenerator.Instance.proposedQuest;
+
+                if (q != null)
+                {
+                    if (q is Fetch)
+                    {
+                        var fetchQuest = q as Fetch;
+                        questText.text = ("Fetch me " + fetchQuest.objective.gameObject.name + " and you will be rewarded!");
+                    }
+                }
+                else
+                {
+                    
+                }
+                
+            }
             else questWindow.SetActive(false);
         }
 

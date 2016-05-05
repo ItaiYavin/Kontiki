@@ -7,7 +7,7 @@ namespace Kontiki {
          * Debug Configuration
          **/
         public static bool debugging = true;
-        public static bool debugJobInfo = false;
+        public static bool debugQuestInfo = false;
         public static bool debugInteractionInfo = false;
         /**
          * Settings & Attributes of AI
