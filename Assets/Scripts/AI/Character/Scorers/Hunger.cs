@@ -28,8 +28,7 @@ namespace Kontiki.AI
                 h =  ai.character.hunger / Settings.hungerRange.max;
             
             float v = Mathf.Max((h - threshold), 0) / (1 - threshold);
-            if(ai.debugAI)
-                Debug.Log("Hunger Score " + v + " character hunger: " + ai.character.hunger);
+
             return v * score;
         }
     }

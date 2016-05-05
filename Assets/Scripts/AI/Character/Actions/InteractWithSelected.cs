@@ -13,7 +13,7 @@ namespace Kontiki.AI{
     public sealed class InteractWithSelected : ActionBase{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext) context;
-            if(ai.debugAI)
+            if(Settings.debugInteractionInfo)
                 Debug.Log("Interacting with " + ai.character.selectedInteractable);
             ai.character.InteractWithSelected();
         }

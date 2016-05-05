@@ -53,8 +53,6 @@ namespace Kontiki.AI
             }
 
             if(not) b = !b;
-            if(ai.debugAI)
-                Debug.Log("HasEdibleResource: " + b);
 
             return b ? 1f * score : 0f * score;
         }

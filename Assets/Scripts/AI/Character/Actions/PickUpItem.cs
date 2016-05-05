@@ -77,25 +77,25 @@ namespace Kontiki.AI{
 			            	}
 			            }
 			            if(!(closestItem is EdibleItem)){
-			            	if(ai.debugAI) Debug.Log("No Edible Item found");
+			            	if(Settings.debugInteractionInfo) Debug.Log("No Edible Item found");
 			            	return;
 			            }
 
 		        	break;
 					
 					case ItemType.fuel:
-						if(ai.debugAI) Debug.Log("FUEL NOT IMPLEMENTED YET");
+						if(Settings.debugInteractionInfo) Debug.Log("FUEL NOT IMPLEMENTED YET");
 					break;
 
 					default:
-						if(ai.debugAI) Debug.Log("No pickup type chosen");
+						if(Settings.debugInteractionInfo) Debug.Log("No pickup type chosen");
 					break;
 				}
 
 				ai.inventory.PutItemIntoInventory(closestItem);
 			}
 			else 
-				if(ai.debugAI) Debug.Log("Inventory is full");
+				if(Settings.debugInteractionInfo) Debug.Log("Inventory is full");
 		}
 	}
 }

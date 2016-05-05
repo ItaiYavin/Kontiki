@@ -58,7 +58,7 @@ namespace Kontiki.AI
             		}
 	            }
         		ai.pathfinder.target = mostFitting;
-        		if(ai.debugAI)
+        		if(Settings.debugInteractionInfo)
         			Debug.Log("Edible found and added to target!");
         	}
         }

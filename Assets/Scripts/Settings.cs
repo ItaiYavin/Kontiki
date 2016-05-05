@@ -3,7 +3,12 @@
 namespace Kontiki { 
     public static class Settings
     {
-        public static bool debugging;
+        /**
+         * Debug Configuration
+         **/
+        public static bool debugging = true;
+        public static bool debugJobInfo = false;
+        public static bool debugInteractionInfo = false;
         /**
          * Settings & Attributes of AI
          **/

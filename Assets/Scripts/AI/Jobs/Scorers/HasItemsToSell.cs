@@ -21,9 +21,8 @@ namespace Kontiki.AI
             
             bool b = fisher.hasItems;
             
-            if(ai.debugAI)
-                Debug.Log("Has " + (b ? "": "no") + " items");
-            
+            if(Settings.debugInteractionInfo)
+                Debug.Log(ai.self.name + " has " + (b ? "": "no") + " items"); 
             
             if(not)b = !b;
             

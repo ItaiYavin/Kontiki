@@ -23,9 +23,6 @@ namespace Kontiki.AI
         	if(not)
         		b = !b;
 
-            if(ai.debugAI)
-                Debug.Log("HasTarget: " + b);
-
         	return b ? 1f * score : 0f * score;
         }
 	}

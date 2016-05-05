@@ -22,8 +22,6 @@ namespace Kontiki.AI
             */
             float v = Mathf.Max(((ai.character.energy / 1) - threshold), 0) / (1 - threshold);
 
-            if (ai.debugAI)
-                Debug.Log("Energy Score " + v + " character energy: " + ai.character.energy);
             //TODO Make this more flexible
             return v * score;
         }

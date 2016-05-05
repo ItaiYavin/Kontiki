@@ -1,5 +1,7 @@
+using System.Diagnostics;
 using Apex.AI;
 using Kontiki;
+using UnityEngine;
 
 namespace Kontiki.AI{
 
@@ -12,8 +14,9 @@ namespace Kontiki.AI{
     public sealed class ConsumeSelectedItem : ActionBase{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext) context;
-            if(ai.character.selectedInteractable is EdibleItem)
+            if(ai.character.selectedInteractable is EdibleItem) { 
                 ai.character.InteractWithSelected();
+            }
         }
     }
 }

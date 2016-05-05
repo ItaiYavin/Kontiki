@@ -5,7 +5,9 @@ namespace Kontiki {
     public class SettingsInspector : MonoBehaviour
     {
         [Header("Debugging")]
-        public bool debugging = true;
+        public bool debugging 			    = true;
+		public bool debugJobInfo 		    = false;
+		public bool debugInteractionInfo 	= false;
 
         [Header("AI Settings")]
         [Range(1, 100)] public float scanningRange = 1;
@@ -30,6 +32,8 @@ namespace Kontiki {
             Settings.hungerIncrementPerSec = hungerIncrementPerSec;
             Settings.hungerRange = hungerRange;
             Settings.energyRange = energyRange;
+	        Settings.debugInteractionInfo = debugInteractionInfo;
+	        Settings.debugJobInfo = debugJobInfo;
 
             Debug.LogWarning("Debugging is " + (debugging ? "enabled" : "disabled"));
         }
@@ -45,7 +49,9 @@ namespace Kontiki {
 	        Settings.hungerIncrementPerSec = hungerIncrementPerSec;
 	        Settings.hungerRange = hungerRange;
 	        Settings.energyRange = energyRange;
-	    }
+            Settings.debugInteractionInfo = debugInteractionInfo;
+            Settings.debugJobInfo = debugJobInfo;
+        }
 
         void LateUpdate()
         {
@@ -57,6 +63,8 @@ namespace Kontiki {
             hungerIncrementPerSec = Settings.hungerIncrementPerSec;
             hungerRange = Settings.hungerRange;
             energyRange = Settings.energyRange;
+            debugJobInfo = Settings.debugJobInfo;
+            debugInteractionInfo = Settings.debugInteractionInfo;
         }
     }
 }

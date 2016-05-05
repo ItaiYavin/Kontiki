@@ -4,10 +4,6 @@ using Kontiki.AI;
 
 namespace Kontiki {
 	public class AIContext : IAIContext {
-
-		public bool debugAI{
-			get{ return self.debugAI;}
-		}
 		public bool isOnJob{
 			get{ return self.isOnJob;}
 			set{ self.isOnJob = value;}

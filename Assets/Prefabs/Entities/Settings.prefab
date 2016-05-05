@@ -40,6 +40,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugging: 1
+  debugJobInfo: 0
+  debugInteractionInfo: 0
   scanningRange: 1
   pickupRange: 0
   memoryCapacity: 200

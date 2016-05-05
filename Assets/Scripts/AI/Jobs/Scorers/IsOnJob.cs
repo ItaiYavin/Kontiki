@@ -19,13 +19,11 @@ namespace Kontiki.AI
         public override float Score(IAIContext context){
            AIContext ai = (AIContext)context;
             bool b = ai.isOnJob;
-           
-                
-            if(ai.debugAI)
-                Debug.Log("Is " + (b ? "on": "off") + " job");
-            if(not) b = !b;
-            
-            
+                           
+            //if(ai.debugAI)
+            //    Debug.Log("Is " + (b ? "on": "off") + " job");
+
+            if(not) b = !b;   
 
             return b ? score : 0f;
         

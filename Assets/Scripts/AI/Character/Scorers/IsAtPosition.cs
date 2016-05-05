@@ -50,8 +50,8 @@ namespace Kontiki.AI
                 break;
             }
 
-            if (ai.debugAI)
-                Debug.Log("Is " + (b ? "" : "not") + " at " + place);
+            //if (ai.debugAI)
+            //    Debug.Log("Is " + (b ? "" : "not") + " at " + place);
 
             if (not) b = !b;
             return b ? score : 0f;

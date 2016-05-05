@@ -1,4 +1,5 @@
-﻿using Apex.AI;
+﻿using System;
+using Apex.AI;
 using Apex.Serialization;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ namespace Kontiki.AI
                         Item foundItem = c.GetComponent<Item>();
                         if (foundItem is EdibleItem)
                         {
-                            if(ai.debugAI)
+                            if(Settings.debugInteractionInfo)
                                 Debug.Log("Found edible item in pickup range");
                             b = true;
                             continue;
@@ -56,11 +57,11 @@ namespace Kontiki.AI
                 break;
 
                 case ItemType.fuel:
-                    if(ai.debugAI) Debug.Log("Fuel is not implemented!");
+                    throw new NotImplementedException();
                 break;
 
                 default:
-                    if(ai.debugAI) Debug.Log("No target type chosen");
+                    if(Settings.debugInteractionInfo) Debug.Log("No target type chosen");
                 break;
             }
 

@@ -15,7 +15,6 @@ namespace Kontiki {
     [RequireComponent(typeof(BaseRoutine))]
 	public sealed class AIComponentContainer : Interactable, IContextProvider {
         public bool isOnJob = false;
-        public bool debugAI;
         /**
          * Components that is required for AI
          **/
@@ -76,6 +75,9 @@ namespace Kontiki {
 
         public override bool Interact(Character player)
         {
+            if(Settings.debugging)
+                Debug.Log(character + " interacted with " + gameObject.name);
+
             return Random.Range(0f,1f) > 0.5f; // FAIR ROLL OF DICE
         }
 

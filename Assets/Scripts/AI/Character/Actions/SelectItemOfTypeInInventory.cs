@@ -1,4 +1,5 @@
-﻿using Apex.AI;
+﻿using System;
+using Apex.AI;
 using Apex.Serialization;
 using Kontiki;
 using UnityEngine;
@@ -41,19 +42,19 @@ namespace Kontiki.AI{
 	            		break;
 
 	            	case ItemType.fuel:
-	            		if(ai.debugAI)
-	            			Debug.Log("THIS OPTION IS NOT IMPLEMENTED YET");
+	            		if(Settings.debugInteractionInfo)
+	            			throw new NotImplementedException();
 	            		break;
 
 	            	default:
-	            		if(ai.debugAI)
+	            		if(Settings.debugInteractionInfo)
 	            			Debug.Log("No type was chosen");
 	            		break;
 	            }
 
 	            character.SetSelected(bestCandidate);
 	        }
-	        if(ai.debugAI)
+	        if(Settings.debugInteractionInfo)
 	        	Debug.Log("Inventory is empty");
         }
 	}
