@@ -1,9 +1,5 @@
 ﻿using UnityEngine;
 
-/**
- * Singleton Template from http://clearcutgames.net/home/?p=437
- **/
-
 namespace Kontiki { 
     public static class Settings
     {
@@ -19,8 +15,8 @@ namespace Kontiki {
         public static RangeAttribute hungerRange    = new RangeAttribute(0, 100);
         public static RangeAttribute energyRange    = new RangeAttribute(0, 1);
          /**
-        Job
-        **/
+          * Jobs
+          **/
         public static float dockingRange = 1f;
 
     }

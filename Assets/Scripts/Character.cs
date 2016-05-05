@@ -6,7 +6,6 @@ namespace Kontiki {
     {
         
         public bool isPlayer = false;
-        public Gender gender;
 
         [Range(0f, 1f)]
         public float energy = 1;
