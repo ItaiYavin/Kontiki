@@ -18,7 +18,7 @@ namespace Kontiki.AI{
             AIContext ai = (AIContext)context;
             JobWithBoat job = (JobWithBoat) ai.job;
             bool b = job.isReturningToPort;
-             if(Settings.debugInteractionInfo)
+             if(ai.debugAI_Job)
                 Debug.Log(ai.self.name + " is " + (b ? "": "not") + " returning to port");
             
             if(not) b = !b;

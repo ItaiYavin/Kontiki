@@ -4,6 +4,17 @@ using Kontiki.AI;
 
 namespace Kontiki {
 	public class AIContext : IAIContext {
+		
+		public bool debugAI_Character{
+			get{return self.debugAI_Character;}
+		}
+		public bool debugAI_Job{
+			get{return self.debugAI_Job;}
+		}
+		public bool debugAI_Interaction{
+			get{return self.debugAI_Interaction;}
+		}
+		
 		public bool isOnJob{
 			get{ return self.isOnJob;}
 			set{ self.isOnJob = value;}

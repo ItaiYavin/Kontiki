@@ -18,11 +18,13 @@ namespace Kontiki.AI
             for(int i = 0; i < character.memory.Count; i++)
                 if(character.memory[i].GetComponent<EdibleItem>() != null)
                 {
-                    if (Settings.debugInteractionInfo) Debug.Log(ai.self.name + " found edible item in memory");
+                    if (ai.debugAI_Character) 
+                        Debug.Log(ai.self.name + " found edible item in memory");
                     return 1 * score;
                 }
 
-            if(Settings.debugInteractionInfo) Debug.Log(ai.self.name + "Found NO edible item in memory");
+            if(ai.debugAI_Character) 
+                Debug.Log(ai.self.name + "Found NO edible item in memory");
             return 0;
         }
 	}
