@@ -6,54 +6,22 @@ using System.Collections.Generic;
 namespace Kontiki {
 	public class IconSystem : MonoBehaviour 
 	{
-		public struct Icon 
-		{	
-			public Image 	image;
-			public Vector3 	inWorldPosition;
-			public float 	timeAtInit;
-			public Vector2 	iconOffset;
-
-			public Icon(Image prefab, Sprite imageSprite, Vector3 pos, float duration)
-			{
-				iconOffset 		= Vector3.zero;
-				image 			= Object.Instantiate<Image>(prefab);
-				image.sprite 	= imageSprite;
-				inWorldPosition = pos;
-				timeAtInit 		= Time.time + duration;
-			}
-
-			public void SetOffset(Vector3 offset){
-				iconOffset 		= offset;
-			}
-
-			public void SetImagePosition(Vector2 pos)
-			{
-				image.GetComponent<RectTransform>().anchoredPosition = pos + iconOffset;
-			}
-
-			public void SetImageSize(float size){
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
-			}
-		}
-
 		// References //
 		[Header("References")]
 		[Tooltip("Prefab for icon images")]
-		public Image		imagePrefab;
+		public Image imagePrefab;
 		[Tooltip("Parent for icons")]
-		public Canvas 		canvasParent;
+		public Canvas canvasParent;
 		
 		// ICONS //
-		private List<Icon> 	_iconList;
+		private List<Icon> _iconList;
 
 		// Display variables //
 		[Header("Display Variables")]
 		[Tooltip("Duration icons stay on screen")]
-		public float 		iconDuration;
+		public float iconDuration;
 		[Tooltip("Position offset between icons in series")]
-		public float 		seriesOffset;
-		[Tooltip("Position offset of icon in world space")]
-		public Vector3 		offset;
+		public float offset;
 
 		void Start()
 		{
@@ -68,54 +36,57 @@ namespace Kontiki {
 
 		public void UpdateIcons()
 		{
+			float startX = -(_iconList.Count/2) * (Settings.iconWidth + Settings.iconOffset) + offset;
+			Vector3 position = new Vector3();
+			
 			for(int i = 0; i < _iconList.Count; i++)
 			{
-				_iconList[i].SetImagePosition(offset);
 				if(_iconList[i].image != null){
 
-					if(_iconList[i].timeAtInit - Time.time < 0)
-					{
-						Icon tempIcon = _iconList[i];
+					if(_iconList[i].destroyTime < Time.time){
+
+						Destroy(_iconList[i].image.gameObject);
 						_iconList.RemoveAt(i);
-
-						Destroy(tempIcon.image.gameObject);
 					}
-				}
-				else 
+						
+					position.x = startX + i * (Settings.iconWidth + Settings.iconOffset) + offset;
+					_iconList[i].SetImagePosition(position);
+					_iconList[i].SetImageSize(Settings.iconWidth);
+				}else{
 					_iconList.RemoveAt(i);
+				}
 			}
-
 		}
 
-		private void CreateIcon(Sprite iconSprite, Transform trans, Vector2 iconOffset, Color col)
+		private void CreateIcon(Sprite iconSprite, Vector3 position, Color col)
 		{
-			Icon icon = new Icon(imagePrefab, iconSprite, trans.position, iconDuration);
+			Icon icon = new Icon(imagePrefab, iconSprite, position, iconDuration);
 			icon.image.color = col;
-			icon.image.transform.SetParent(canvasParent.transform, true);
-			icon.SetOffset(iconOffset);
+			icon.image.transform.SetParent(canvasParent.transform, false);
+			icon.SetImageSize(Settings.iconWidth);
 			_iconList.Add(icon);
 		}
 
-		private void CreateIconSeries(Sprite[] icons, Transform trans, Color[] col)
+		private void CreateIconSeries(Sprite[] icons, Color[] col)
 		{
-			Vector2 temp = Vector2.zero;
+			float startX = -(icons.Length/2) * (Settings.iconWidth + Settings.iconOffset) + offset;
+			Vector3 position = new Vector3();
 			for(int i = 0; i < icons.Length; i++)
 			{
-				float count = icons.Length;
-				temp.x = (i - (count - 1) / 2) * (icons[i].rect.width / 2 + seriesOffset);
-				CreateIcon(icons[i], trans, temp, col[i]);
+				position.x = startX + i * (Settings.iconWidth + Settings.iconOffset) + offset;
+				CreateIcon(icons[i], position, col[i]);
 			}
 		}
 
 		
 		/// <summary>Create an series of icons and colors the first Quest Item or Person
 		/// </summary>
-		public void GenerateIcons(Transform trans, Color col, params IconType[] icons){ GenerateIcons(trans, col, new Color(1,1,1), icons); }
+		public void GenerateIcons(Color col, params IconType[] icons){ GenerateIcons(col, new Color(1,1,1), icons); }
 
 		
 		/// <summary>Create an series of icons and colors the the first and second Quest Item or Person
 		/// </summary>
-		public void GenerateIcons(Transform trans, Color col, Color col2, params IconType[] icons) { 
+		public void GenerateIcons(Color col, Color col2, params IconType[] icons) { 
 			Color[] cols = new Color[icons.Length];
 			
 			bool firstSymbol = true;
@@ -146,21 +117,21 @@ namespace Kontiki {
 				}
 			}
 
-			GenerateIcons(trans, cols, icons); 
+			GenerateIcons(cols, icons); 
 		}
 
 		/// <summary>Create an series of icons and colors them pairwise
 		/// </summary>
-		public void GenerateIcons(Transform trans, Color[] col, params IconType[] icons)
+		public void GenerateIcons(Color[] col, params IconType[] icons)
 		{
 			Sprite[] sprites = new Sprite[icons.Length];
-
+			Debug.Log("in here");
 			for(int i = 0; i < icons.Length; i++){
 				int type = (int)icons[i];
 				sprites[i] = Settings.iconSprites[Settings.iconTypes.IndexOf(icons[i])];
 			}
 
-			CreateIconSeries(sprites, trans, col);
+			CreateIconSeries(sprites, col);
 		}
 
 	}

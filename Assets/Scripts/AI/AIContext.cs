@@ -55,6 +55,11 @@ namespace Kontiki {
             get { return self.baseroutine; }
         }
 
+        public IconSystem iconSystem
+        {
+            get { return self.iconSystem; }
+        }
+
 		public AIContext(AIComponentContainer self)
 		{
 			this.self = self;

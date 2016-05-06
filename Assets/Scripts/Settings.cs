@@ -31,6 +31,9 @@ namespace Kontiki {
          
          public static List<IconType> iconTypes;
          public static List<Sprite> iconSprites;
+         
+         public static float iconWidth;
+         public static float iconOffset;
 
     }
 }

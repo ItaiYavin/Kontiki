@@ -14,6 +14,8 @@ namespace Kontiki {
 	[RequireComponent(typeof(Memory))]
     [RequireComponent(typeof(Inventory))]
     [RequireComponent(typeof(BaseRoutine))]
+    [RequireComponent(typeof(IconSystem))]
+    
 	public sealed class AIComponentContainer : Interactable, IContextProvider {
         public bool isOnJob = false;
             
@@ -56,28 +58,32 @@ namespace Kontiki {
             private set;
         }
 
+        public IconSystem iconSystem
+        {
+            get;
+            private set;
+        }
+
         /**
          * Apex specific
          **/
         private AIContext _context;
 
-
-        // Use this for initialization
+        void Awake () {
+			_context = new AIContext(this);
+		}
         void Start()
         {
             this.character = GetComponent<Character>();
             this.pathfinder = GetComponent<Pathfinder>();
 			this.memory = GetComponent<Memory>();
             this.inventory = GetComponent<Inventory>();
-            this.baseroutine = GetComponent<BaseRoutine>();		
+            this.baseroutine = GetComponent<BaseRoutine>();	
+            this.iconSystem = GetComponent<IconSystem>();		
             this.job = GetComponent<Job>();
         }
 
-		void Awake () {
-			_context = new AIContext(this);
-            
-            
-		}
+		
 
         public override bool Interact(Character player)
         {
@@ -85,14 +91,15 @@ namespace Kontiki {
             if(debugAI_Interaction)
                 Debug.Log(character + " interacted with " + gameObject.name);
 
-            if(!player.isPlayer)
-                return true;
             
             if(Settings.debugQuestInfo)
                 Debug.Log("NPC" + (baseroutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
 
-            if (baseroutine.hasQuestToOffer && baseroutine.questOffer == null) { 
-                baseroutine.questOffer = QuestSystem.Instance.GenerateQuest(character, player);
+            if (player.isPlayer &&  baseroutine.hasQuestToOffer && baseroutine.questOffer == null) { 
+                baseroutine.questOffer = QuestSystem.Instance.GenerateQuest(player,character);
+                Language.Quest(iconSystem,baseroutine.questOffer);
+                
+                
                 QuestSystem.Instance.proposedQuest = baseroutine.questOffer;
             }
 

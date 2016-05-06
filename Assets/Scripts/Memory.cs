@@ -24,6 +24,7 @@ namespace Kontiki {
 		// Update is called once per frame
 		void FixedUpdate () {
             //TODO: Put this into Courutine and check every x minute
+           /*
             objectInVicinity = CheckForClosestItemInRange(); 
 
 			if(objectInVicinity != null){
@@ -38,6 +39,7 @@ namespace Kontiki {
 			if(memory.Count > Settings.memoryCapacity){ //Remove last in memory list.
 				memory.RemoveAt(0);
 			}
+            */
 		}
 
         public Item CheckForClosestItemInRange()

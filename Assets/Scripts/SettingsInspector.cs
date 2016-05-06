@@ -12,6 +12,8 @@ namespace Kontiki {
         [Header("Language")]
         public List<IconType> iconTypes;
         public List<Sprite> iconSprites;
+        public float iconWidth;
+        public float iconOffset;
         
          
         [Header("AI Settings")]
@@ -41,6 +43,8 @@ namespace Kontiki {
             
             Settings.iconTypes = iconTypes;
             Settings.iconSprites = iconSprites;
+            Settings.iconWidth = iconWidth;
+            Settings.iconOffset = iconOffset;
 
             Debug.LogWarning("Debugging is " + (debugging ? "enabled" : "disabled"));
         }
@@ -57,6 +61,9 @@ namespace Kontiki {
 	        Settings.hungerRange = hungerRange;
 	        Settings.energyRange = energyRange;
             Settings.debugQuestInfo = debugQuestInfo;
+            
+            Settings.iconWidth = iconWidth;
+            Settings.iconOffset = iconOffset;
         }
 
         void LateUpdate()
@@ -70,6 +77,9 @@ namespace Kontiki {
             hungerRange = Settings.hungerRange;
             energyRange = Settings.energyRange;
             debugQuestInfo = Settings.debugQuestInfo;
+            
+            Settings.iconWidth = iconWidth;
+            Settings.iconOffset = iconOffset;
         }
     }
 }

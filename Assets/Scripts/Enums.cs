@@ -41,7 +41,10 @@
         Edible,
         Item
     };
-    
+   public enum QuestType{
+       Fetch,
+       Give
+   }
    
 }
 
