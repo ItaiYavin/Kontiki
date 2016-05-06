@@ -191,11 +191,11 @@ Material:
       data:
         first:
           name: _EdgeFoamFade
-        second: 105.164955
+        second: 154.50003
       data:
         first:
           name: _DepthFade
-        second: 12.8936
+        second: 81.659195
       data:
         first:
           name: _RefractFade
@@ -219,7 +219,7 @@ Material:
       data:
         first:
           name: _shorelineHeight
-        second: 0.397
+        second: 0.641
       data:
         first:
           name: _Tess
@@ -235,15 +235,15 @@ Material:
       data:
         first:
           name: _suimono_uvx
-        second: -0.00000047683716
+        second: -3.2216
       data:
         first:
           name: _suimono_uvy
-        second: 6.4432
+        second: -3.2216
       data:
         first:
           name: _foamScale
-        second: 10.54
+        second: 5.7699957
       data:
         first:
           name: _ShallowFoamAmt
@@ -251,19 +251,19 @@ Material:
       data:
         first:
           name: _HeightFoamAmt
-        second: 0.85
+        second: 0.18
       data:
         first:
           name: _HeightFoamHeight
-        second: 0.65
+        second: 0.494
       data:
         first:
           name: _HeightFoamSpread
-        second: 0.276
+        second: 0
       data:
         first:
           name: _ShallowFade
-        second: 45.6943
+        second: 163.2796
       data:
         first:
           name: _FoamFade
@@ -272,6 +272,10 @@ Material:
         first:
           name: _HeightFoamFade
         second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 0.24
       data:
         first:
           name: _ZWrite
@@ -310,10 +314,6 @@ Material:
         second: 0
       data:
         first:
-          name: _InvFade
-        second: 0.24
-      data:
-        first:
           name: _EmissionScaleUI
         second: 0
     m_Colors:
@@ -328,7 +328,7 @@ Material:
       data:
         first:
           name: _BlendColor
-        second: {r: 0.36, g: 1, b: 0.867, a: 0.22}
+        second: {r: 0.244, g: 0.269, b: 0.279, a: 0.4}
       data:
         first:
           name: _OverlayColor
@@ -336,15 +336,15 @@ Material:
       data:
         first:
           name: _ReflectionColor
-        second: {r: 1, g: 1, b: 1, a: 0.376}
+        second: {r: 0.678, g: 0.691, b: 0.699, a: 0.259}
       data:
         first:
           name: _SSSColor
-        second: {r: 0, g: 0.324, b: 0.015, a: 0.239}
+        second: {r: 0.191, g: 0.167, b: 0.032, a: 0.376}
       data:
         first:
           name: _FoamColor
-        second: {r: 0.912, g: 0.874, b: 0.791, a: 1}
+        second: {r: 0.882, g: 0.835, b: 0.733, a: 1}
       data:
         first:
           name: _CausticsColor
@@ -352,19 +352,19 @@ Material:
       data:
         first:
           name: _UnderwaterColor
-        second: {r: 0.034, g: 0.102, b: 0.154, a: 0.404}
+        second: {r: 0.008, g: 0.033, b: 0.051, a: 0.467}
       data:
         first:
           name: _shallowColor
-        second: {r: 0.208, g: 0.373, b: 0.441, a: 0.784}
+        second: {r: 0.137, g: 0.346, b: 0.19, a: 0.71}
       data:
         first:
           name: _depthColor
-        second: {r: 0.16, g: 0.281, b: 0.382, a: 1}
+        second: {r: 0.065, g: 0.118, b: 0.162, a: 1}
       data:
         first:
           name: _SpecularColor
-        second: {r: 0.063, g: 0.326, b: 0.375, a: 0.161}
+        second: {r: 0.525, g: 0.6, b: 0.482, a: 0.082}
       data:
         first:
           name: _TintColor
