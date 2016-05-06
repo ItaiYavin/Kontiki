@@ -10,6 +10,8 @@ namespace Kontiki
 		public sui_demo_ControllerMaster CM;
 		
 		public Character characterInBoat;
+
+		public Transform seat;
 		
 		[HideInInspector]
 		public NavMeshAgent agent;
@@ -56,7 +58,8 @@ namespace Kontiki
 				
 				player.transform.rotation = transform.rotation;
 				player.transform.SetParent(transform,true);
-				player.transform.localPosition = Vector3.up * transform.localScale.y;
+				player.transform.localPosition = seat.localPosition;
+				player.transform.rotation = seat.rotation;
 				
 				if(!player.isPlayer){
 					player.GetComponent<Pathfinder>().enabled = false;
