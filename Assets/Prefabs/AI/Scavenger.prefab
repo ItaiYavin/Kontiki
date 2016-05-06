@@ -424,6 +424,7 @@ GameObject:
   - 114: {fileID: 11408670}
   - 114: {fileID: 11469770}
   - 114: {fileID: 11458808}
+  - 136: {fileID: 13627164}
   m_Layer: 11
   m_Name: Scavenger
   m_TagString: Untagged
@@ -853,6 +854,9 @@ MonoBehaviour:
   indicator: {fileID: 0}
   sprite: {fileID: 0}
   isOnJob: 1
+  debugAI_Character: 0
+  debugAI_Job: 0
+  debugAI_Interaction: 0
 --- !u!114 &11429416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -926,7 +930,6 @@ MonoBehaviour:
   hunger: 0
   inventory: {fileID: 0}
   selectedInteractable: {fileID: 0}
-  boat: {fileID: 0}
   isSleeping: 0
 --- !u!114 &11497186
 MonoBehaviour:
@@ -942,6 +945,19 @@ MonoBehaviour:
   inventorySize: 4
   applePrefab: {fileID: 11414606, guid: 3097f4486a96e194ebc9de57d8db1d7a, type: 2}
   _inventoryItems: []
+--- !u!136 &13627164
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!137 &13716104
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

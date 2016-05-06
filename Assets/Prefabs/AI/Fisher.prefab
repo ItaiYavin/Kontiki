@@ -198,6 +198,7 @@ GameObject:
   - 114: {fileID: 11496226}
   - 114: {fileID: 11452718}
   - 114: {fileID: 11412446}
+  - 136: {fileID: 13634400}
   m_Layer: 11
   m_Name: Fisher
   m_TagString: Untagged
@@ -871,7 +872,6 @@ MonoBehaviour:
   hunger: 0
   inventory: {fileID: 0}
   selectedInteractable: {fileID: 0}
-  boat: {fileID: 0}
   isSleeping: 0
 --- !u!114 &11466818
 MonoBehaviour:
@@ -902,6 +902,9 @@ MonoBehaviour:
   indicator: {fileID: 0}
   sprite: {fileID: 0}
   isOnJob: 1
+  debugAI_Character: 0
+  debugAI_Job: 0
+  debugAI_Interaction: 0
 --- !u!114 &11474058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -942,6 +945,19 @@ MonoBehaviour:
   initFishingRange: 5
   minFishingTime: 3
   maxFishingTime: 6
+--- !u!136 &13634400
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.35, z: 0}
 --- !u!137 &13768116
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
