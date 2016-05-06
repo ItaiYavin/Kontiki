@@ -17,6 +17,7 @@ namespace Kontiki {
 	public sealed class AIComponentContainer : Interactable, IContextProvider {
         public bool isOnJob = false;
             
+        [Header("Debug AI")]
         public bool debugAI_Character = false;
         public bool debugAI_Job = false;
         public bool debugAI_Interaction = false;
