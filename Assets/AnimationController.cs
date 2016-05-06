@@ -10,7 +10,7 @@ namespace Kontiki {
 
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
-			anim = GetComponent<Animator>();
+		    anim = transform.GetChild(0).GetComponent<Animator>();
 		}
 
 		public void Update(){
