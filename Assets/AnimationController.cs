@@ -10,17 +10,21 @@ namespace Kontiki {
 
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
-			anim = GetComponent<Animator>();
+		    anim = transform.GetChild(0).GetComponent<Animator>();
 		}
 
 		public void Update(){
-			if(agent.remainingDistance > 1){
-				Debug.Log(agent.remainingDistance);
-				Run(true);
-				Sit(false);
-			}
-			else
-			{
+			if(agent.enabled){
+				if(agent.remainingDistance > 1){
+					Run(true);
+					Sit(false);
+				}
+				else
+				{
+					Run(false);
+					Sit(true);
+				}
+			} else {
 				Run(false);
 				Sit(true);
 			}
