@@ -70,9 +70,6 @@ namespace Kontiki {
             this.inventory = GetComponent<Inventory>();
             this.baseroutine = GetComponent<BaseRoutine>();		
             this.job = GetComponent<Job>();
-
-            indicator = gameObject.AddComponent <InteractableIndicator>();
-            indicator.interactable = this;
         }
 
 		void Awake () {
