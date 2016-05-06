@@ -12,12 +12,18 @@ namespace Kontiki.AI{
         public float maxTradingTime = 6f;
         
         void Start(){
-            if(ports.Length == 0){
+            if(ports.Length == 0 && port == null){
                 Debug.LogError("AI - Trader Must have at least one port");
                 return;
             }
+            
+            if(port == null) 
+                port = ports[index];
                 
-            port = ports[index];
+            if(port != null && ports.Length == 0) {
+                ports = new Transform[1] {port};
+            }
+                
             if(isTrading){
                 if(!boat.isDocked){
                     DockAtPort();

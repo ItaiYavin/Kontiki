@@ -4,18 +4,20 @@ using System.Collections;
 namespace Kontiki
 {
 			
+    [RequireComponent(typeof(NavMeshAgent))]
 	public class Boat : Interactable {
 		
 		public sui_demo_ControllerMaster CM;
 		
 		public Character characterInBoat;
 		
+		[HideInInspector]
 		public NavMeshAgent agent;
 		
 		public bool isDocked = true;
 		
+		[HideInInspector]
 		public Transform target;
-		public NavMeshPath path;
 		
 		
 		bool movingForward = false;
@@ -24,8 +26,6 @@ namespace Kontiki
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
 			//body = GetComponent<Rigidbody>();
-			//agent.Stop();
-			path = new NavMeshPath();
 			
 		}
 		
@@ -160,7 +160,7 @@ namespace Kontiki
 		
         
         
-			
+			/*
 		private void OnDrawGizmosSelected()
         {
 			if(target == null) return;
@@ -185,5 +185,6 @@ namespace Kontiki
 				
 			}
         }
+		*/
 	}
 }
