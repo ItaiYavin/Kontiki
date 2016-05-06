@@ -50,15 +50,15 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Apex.AI.AILinkAction, ApexAI","_aiId":085dc00fdecb4c3bbb013dd9687b6943},"_scorers":[{"@type":"Kontiki.AI.IsJobType,
     Assembly-CSharp","not":false,"type":Trader,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":648,"@y":312},"zoom":0.64999998,"SelectorView":{"ViewArea":{"@left":50,"@top":312,"@width":130,"@height":143},"Name":"Root","QualifierView":{"Name":"Go
-    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":648,"@top":429,"@width":143,"@height":143},"Name":"is
+  editorConfiguration: '{"offset":{"@x":427,"@y":310},"zoom":0.40000001,"SelectorView":{"ViewArea":{"@left":59,"@top":310,"@width":80,"@height":88},"Name":"Root","QualifierView":{"Name":"Go
+    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":427,"@top":382,"@width":88,"@height":88},"Name":"is
     Hungry","QualifierView":{"Name":"Has selected edible?","ActionView":{}},"QualifierView":{"Name":"Has
-    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":388,"@top":312,"@width":130,"@height":143},"Name":"is
+    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":267,"@top":310,"@width":80,"@height":88},"Name":"is
     Awake","QualifierView":{"Name":"Is Tired?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":648,"@top":312,"@width":143,"@height":104},"Name":"is
-    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":388,"@top":468,"@width":130,"@height":104},"Name":"is
+    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":427,"@top":310,"@width":88,"@height":64},"Name":"is
+    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":267,"@top":406,"@width":80,"@height":64},"Name":"is
     Sleeping","QualifierView":{"Name":"Not Tired?","ActionView":{"Name":"Awake"}},"DefaultQualifier":{"Name":"Keep
-    Sleeping"}},"SelectorView":{"ViewArea":{"@left":908,"@top":442,"@width":130,"@height":104},"Name":"Get
-    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":388,"@top":156,"@width":143,"@height":143},"Name":"Go
+    Sleeping"}},"SelectorView":{"ViewArea":{"@left":587,"@top":390,"@width":80,"@height":64},"Name":"Get
+    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":267,"@top":214,"@width":88,"@height":88},"Name":"Go
     To Job","QualifierView":{"Name":"Is Fisher","ActionView":{"@connectorType":"AILink"}},"QualifierView":{"Name":"Is
-    Trader","Description":"Should not be possible...","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{}},"AILinkView":{"@id":d2213d02f31647c09c25761303e1b758,"ViewArea":{"@left":648,"@top":143,"@width":130,"@height":49}},"AILinkView":{"@id":085dc00fdecb4c3bbb013dd9687b6943,"ViewArea":{"@left":648,"@top":208,"@width":130,"@height":49}}}'
+    Trader","Description":"Should not be possible...","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{}},"AILinkView":{"@id":d2213d02f31647c09c25761303e1b758,"ViewArea":{"@left":427,"@top":206,"@width":80,"@height":30}},"AILinkView":{"@id":085dc00fdecb4c3bbb013dd9687b6943,"ViewArea":{"@left":427,"@top":246,"@width":80,"@height":30}}}'
