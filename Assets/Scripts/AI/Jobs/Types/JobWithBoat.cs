@@ -12,6 +12,15 @@ namespace Kontiki.AI{
         
 		public bool isReturningToPort = false;
         
+        
+        void Start(){
+            moveBoatToPort();
+        }
+        
+        public virtual void moveBoatToPort(){moveBoatToPort(port);}
+        public virtual void moveBoatToPort(Transform port){
+            boat.transform.position = port.position;
+        }
         public virtual void DockAtPort(){
             DockAtPort(port);
         } 

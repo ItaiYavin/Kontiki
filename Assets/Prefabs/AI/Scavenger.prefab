@@ -415,9 +415,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 492338}
-  - 33: {fileID: 3314100}
-  - 65: {fileID: 6515278}
-  - 23: {fileID: 2373698}
   - 114: {fileID: 11410476}
   - 114: {fileID: 11495090}
   - 195: {fileID: 19585880}
@@ -425,8 +422,8 @@ GameObject:
   - 114: {fileID: 11429416}
   - 114: {fileID: 11450880}
   - 114: {fileID: 11408670}
-  - 114: {fileID: 11458808}
   - 114: {fileID: 11469770}
+  - 114: {fileID: 11458808}
   m_Layer: 11
   m_Name: Scavenger
   m_TagString: Untagged
@@ -647,7 +644,7 @@ Transform:
   m_GameObject: {fileID: 167572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 472918}
   - {fileID: 410400}
@@ -797,51 +794,6 @@ Transform:
   - {fileID: 492604}
   m_Father: {fileID: 455736}
   m_RootOrder: 0
---- !u!23 &2373698
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197574}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 4f265522dc0fafe46934ef42f5c21e25, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &3314100
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197574}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6515278
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9563002
 Animator:
   serializedVersion: 3
@@ -957,6 +909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   home: {fileID: 0}
   trader: {fileID: 0}
+  hasQuestToOffer: 0
 --- !u!114 &11495090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1064,8 +1017,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
+  m_Height: 2.7
+  m_BaseOffset: 0
   m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000

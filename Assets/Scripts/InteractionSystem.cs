@@ -33,7 +33,7 @@ namespace Kontiki{
 			
 		[SerializeField] private LayerMask _interactableLayer;
 
-        //public sui_demo_ControllerMaster controller;
+        public sui_demo_ControllerMaster controller;
 
         [Header("Pointers")]
         public GameObject prefab_interactableIndicator;
@@ -53,8 +53,8 @@ namespace Kontiki{
 		
 		void Update () {
 			_isDown = Input.GetKey(_key);
-			// controller.interactionButtonDown = _isDown;
-			// container.SetActive(_isDown);
+			controller.interactionButtonDown = _isDown;
+			container.SetActive(_isDown);
 			if(_isDown){
 				
 				ScanForInteractableIndicators();

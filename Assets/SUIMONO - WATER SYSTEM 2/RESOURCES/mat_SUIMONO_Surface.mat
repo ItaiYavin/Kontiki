@@ -277,11 +277,11 @@ Material:
       data:
         first:
           name: _suimono_uvx
-        second: 0
+        second: 3.2216
       data:
         first:
           name: _suimono_uvy
-        second: 0
+        second: 3.2216
       data:
         first:
           name: _foamScale
@@ -545,6 +545,10 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
+          name: _TintColor
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+      data:
+        first:
           name: _DynReflColor
         second: {r: 1, g: 1, b: 1, a: 0.5}
       data:
@@ -591,10 +595,6 @@ Material:
         first:
           name: _SpecularColor
         second: {r: 0.063, g: 0.326, b: 0.375, a: 0.161}
-      data:
-        first:
-          name: _TintColor
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
       data:
         first:
           name: _HighColor

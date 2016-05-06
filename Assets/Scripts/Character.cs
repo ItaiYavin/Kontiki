@@ -20,9 +20,6 @@ namespace Kontiki {
         **/
         public Interactable selectedInteractable;
         
-        
-        public Boat boat;
-        
         [HideInInspector]
         public bool isSleeping;
 

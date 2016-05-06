@@ -189,9 +189,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439294}
-  - 33: {fileID: 3396662}
-  - 65: {fileID: 6523612}
-  - 23: {fileID: 2387386}
   - 114: {fileID: 11473568}
   - 114: {fileID: 11461454}
   - 195: {fileID: 19547058}
@@ -199,8 +196,8 @@ GameObject:
   - 114: {fileID: 11441024}
   - 114: {fileID: 11474058}
   - 114: {fileID: 11496226}
-  - 114: {fileID: 11412446}
   - 114: {fileID: 11452718}
+  - 114: {fileID: 11412446}
   m_Layer: 11
   m_Name: Fisher
   m_TagString: Untagged
@@ -567,7 +564,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 34.3}
+  m_LocalPosition: {x: 0, y: 0, z: 34.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 448766}
@@ -797,51 +794,6 @@ Transform:
   - {fileID: 423036}
   m_Father: {fileID: 472678}
   m_RootOrder: 0
---- !u!23 &2387386
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151432}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 760bf26430d6b29449299a7a8669775f, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &3396662
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151432}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6523612
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151432}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9549032
 Animator:
   serializedVersion: 3
@@ -902,6 +854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   home: {fileID: 0}
   trader: {fileID: 0}
+  hasQuestToOffer: 0
 --- !u!114 &11461454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1064,8 +1017,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
+  m_Height: 2.69
+  m_BaseOffset: 0
   m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000

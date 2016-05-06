@@ -56,7 +56,7 @@ namespace Kontiki
 				
 				player.transform.rotation = transform.rotation;
 				player.transform.SetParent(transform,true);
-				player.transform.localPosition = Vector3.up * transform.localScale.y/2;
+				player.transform.localPosition = Vector3.up * transform.localScale.y;
 				
 				if(!player.isPlayer){
 					player.GetComponent<Pathfinder>().enabled = false;
