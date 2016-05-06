@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace Kontiki {
+﻿namespace Kontiki {
     public enum IconTypes
     {
         Bring,
@@ -29,13 +26,7 @@ namespace Kontiki {
         Trader,
         Boat
     }
-
-	public enum Gender
-    {
-        Male,
-        Female
-    }
-
+    
     public enum Window
     {
         Start,
@@ -59,5 +50,12 @@ namespace Kontiki.AI
     public enum JobType{
        Fisher,
        Trader            
+    }
+    
+    [System.Flags]
+    public enum DebugAI{
+        Character   = (0 << 1),
+        Job         = (0 << 2),
+        Interaction = (0 << 3)
     }
 }

@@ -12,11 +12,7 @@ namespace Kontiki.AI{
     /// </summary>
     /// <seealso cref="Apex.AI.ActionBase" />
 	public sealed class SelectItemOfTypeInInventory : ActionBase {
-		enum ItemType 
-		{
-			edible, 
-			fuel
-		};
+		
 
 		[ApexSerialization, FriendlyName("Item Types", "Type of item")]
 		ItemType itemType;
@@ -31,7 +27,7 @@ namespace Kontiki.AI{
 	            Item bestCandidate = inv.GetInventoryItem(0);
 
 	            switch(itemType){
-	            	case ItemType.edible:
+	            	case ItemType.Edible:
 	            		for(int i = 0; i < inv.inventorySize; i++){
 	            			if(inv.GetInventoryItem(i) is EdibleItem)
 			            		if(!(bestCandidate is EdibleItem))
@@ -40,22 +36,13 @@ namespace Kontiki.AI{
 			            			bestCandidate = inv.GetInventoryItem(i);
 	            		}
 	            		break;
-
-	            	case ItemType.fuel:
-	            		if(Settings.debugInteractionInfo)
-	            			throw new NotImplementedException();
-	            		break;
-
-	            	default:
-	            		if(Settings.debugInteractionInfo)
-	            			Debug.Log("No type was chosen");
-	            		break;
 	            }
 
 	            character.SetSelected(bestCandidate);
 	        }
-	        if(Settings.debugInteractionInfo)
-	        	Debug.Log("Inventory is empty");
+			if(ai.debugAI_Character){
+					Debug.Log("Inventory is empty");
+			}
         }
 	}
 }

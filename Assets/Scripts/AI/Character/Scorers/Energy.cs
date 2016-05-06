@@ -20,9 +20,6 @@ namespace Kontiki.AI
         public override float Score(IAIContext context)
         {
             AIContext ai = ((AIContext)context);
-            /*
-            float v = Mathf.Max((ai.character.energy / 1 - threshold), 0) / (1 - threshold);
-            */
             
             float e;
             if(inverted)

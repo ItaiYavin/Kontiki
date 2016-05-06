@@ -22,11 +22,12 @@ namespace Kontiki.AI
         	if(agent.remainingDistance > 0){
         		b = true;
         	}
-
-    		//if(ai.debugAI){ 
-			//	Debug.Log("Is Moving: " + b  + ", distance to target = " + agent.remainingDistance);
-			//}
+			
+			if(ai.debugAI_Character)
+				Debug.Log("Is Moving: " + b  + ", distance to target = " + agent.remainingDistance);
+			
 			if(not) b = !b;
+			
 
         	return b ? score : 0f;
         }

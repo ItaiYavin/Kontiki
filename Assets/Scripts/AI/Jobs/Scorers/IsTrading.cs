@@ -19,7 +19,7 @@ namespace Kontiki.AI
             if(ai.job is Trader){
                 bool b = ((Trader)ai.job).isTrading;
                 
-                if(Settings.debugInteractionInfo)
+                if(ai.debugAI_Job)
                     Debug.Log(ai.self.name + " is " + (b ? "": "not") + " trading items");
             
                 if(not) b = !b;

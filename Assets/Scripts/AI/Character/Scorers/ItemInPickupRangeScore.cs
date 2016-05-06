@@ -48,7 +48,7 @@ namespace Kontiki.AI
                         Item foundItem = c.GetComponent<Item>();
                         if (foundItem is EdibleItem)
                         {
-                            if(Settings.debugInteractionInfo)
+                            if(ai.debugAI_Character)
                                 Debug.Log("Found edible item in pickup range");
                             b = true;
                             continue;
@@ -61,7 +61,8 @@ namespace Kontiki.AI
                 break;
 
                 default:
-                    if(Settings.debugInteractionInfo) Debug.Log("No target type chosen");
+                    if(ai.debugAI_Character) 
+                        Debug.Log("No target type chosen");
                 break;
             }
 

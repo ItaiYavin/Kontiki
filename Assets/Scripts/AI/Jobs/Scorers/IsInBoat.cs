@@ -21,7 +21,7 @@ namespace Kontiki.AI
             JobWithBoat job = (JobWithBoat) ai.job;
             bool b = job.boat.characterInBoat == ai.character; 
             
-            if(Settings.debugInteractionInfo)
+            if(ai.debugAI_Job)
                 Debug.Log("Is " + (b ? "": "not") + " in boat");
             
             if(not)b = !b;

@@ -21,7 +21,7 @@ namespace Kontiki.AI
             JobWithBoat job = (JobWithBoat) ai.job;
             bool b = job.boat.isDocked;
             
-            if(Settings.debugInteractionInfo)
+            if(ai.debugAI_Job)
                 Debug.Log(ai.self.name + "'s boat is " + (b ? "": "not") + " docked");
             
             

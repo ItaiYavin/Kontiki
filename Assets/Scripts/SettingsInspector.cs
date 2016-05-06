@@ -7,7 +7,6 @@ namespace Kontiki {
         [Header("Debugging")]
         public bool debugging 			    = true;
 		public bool debugQuestInfo 		    = false;
-		public bool debugInteractionInfo 	= false;
 
         [Header("AI Settings")]
         [Range(1, 100)] public float scanningRange = 1;
@@ -32,7 +31,6 @@ namespace Kontiki {
             Settings.hungerIncrementPerSec = hungerIncrementPerSec;
             Settings.hungerRange = hungerRange;
             Settings.energyRange = energyRange;
-	        Settings.debugInteractionInfo = debugInteractionInfo;
 	        Settings.debugQuestInfo = debugQuestInfo;
 
             Debug.LogWarning("Debugging is " + (debugging ? "enabled" : "disabled"));
@@ -49,7 +47,6 @@ namespace Kontiki {
 	        Settings.hungerIncrementPerSec = hungerIncrementPerSec;
 	        Settings.hungerRange = hungerRange;
 	        Settings.energyRange = energyRange;
-            Settings.debugInteractionInfo = debugInteractionInfo;
             Settings.debugQuestInfo = debugQuestInfo;
         }
 
@@ -64,7 +61,6 @@ namespace Kontiki {
             hungerRange = Settings.hungerRange;
             energyRange = Settings.energyRange;
             debugQuestInfo = Settings.debugQuestInfo;
-            debugInteractionInfo = Settings.debugInteractionInfo;
         }
     }
 }

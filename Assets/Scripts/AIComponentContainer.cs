@@ -1,6 +1,7 @@
 using Apex.AI;
 using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Apex.AI.Components;
 
@@ -15,6 +16,11 @@ namespace Kontiki {
     [RequireComponent(typeof(BaseRoutine))]
 	public sealed class AIComponentContainer : Interactable, IContextProvider {
         public bool isOnJob = false;
+            
+        public bool debugAI_Character = false;
+        public bool debugAI_Job = false;
+        public bool debugAI_Interaction = false;
+        
         /**
          * Components that is required for AI
          **/
@@ -71,11 +77,13 @@ namespace Kontiki {
 
 		void Awake () {
 			_context = new AIContext(this);
+            
+            
 		}
 
         public override bool Interact(Character player)
         {
-            if(Settings.debugInteractionInfo)
+            if(debugAI_Interaction)
                 Debug.Log(character + " interacted with " + gameObject.name);
 
             if(Settings.debugQuestInfo)
