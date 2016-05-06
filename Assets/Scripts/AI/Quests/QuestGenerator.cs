@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Kontiki
 {
-	public class QuestGenerator : MonoBehaviour
+	public class QuestSystem : MonoBehaviour
 	{
 	    public EdibleItem reward;       		
 		public GameObject objectivePrefab;
@@ -16,7 +16,7 @@ namespace Kontiki
 	    private List<Quest> quests;
 
         // Static singleton property
-        public static QuestGenerator Instance { get; private set; }
+        public static QuestSystem Instance { get; private set; }
 
 		// Use this for initialization
 		void Start () {

@@ -45,9 +45,6 @@ namespace Kontiki {
 		
 		// ICONS //
 		private List<Icon> 	_iconList;
-		[Header("Icon sprites")]
-		[Tooltip("Array of icon sprites")]
-		public Sprite[]		iconSprites;
 
 		// Display variables //
 		[Header("Display Variables")]
@@ -113,19 +110,19 @@ namespace Kontiki {
 		
 		/// <summary>Create an series of icons and colors the first Quest Item or Person
 		/// </summary>
-		public void GenerateIcons(Transform trans, Color col, params IconTypes[] icons){ GenerateIcons(trans, col, new Color(1,1,1), icons); }
+		public void GenerateIcons(Transform trans, Color col, params IconType[] icons){ GenerateIcons(trans, col, new Color(1,1,1), icons); }
 
 		
 		/// <summary>Create an series of icons and colors the the first and second Quest Item or Person
 		/// </summary>
-		public void GenerateIcons(Transform trans, Color col, Color col2, params IconTypes[] icons) { 
+		public void GenerateIcons(Transform trans, Color col, Color col2, params IconType[] icons) { 
 			Color[] cols = new Color[icons.Length];
 			
 			bool firstSymbol = true;
 
 			for(int i = 0; i < icons.Length; i++){
 				switch(icons[i]){
-					case IconTypes.Quest:
+					case IconType.Quest:
 						if(firstSymbol){
 							cols[i] = col;
 							firstSymbol = false;
@@ -134,7 +131,7 @@ namespace Kontiki {
 							cols[i] = col2;
 					break;
 
-					case IconTypes.Person:
+					case IconType.Person:
 						if(firstSymbol){
 							cols[i] = col;
 							firstSymbol = false;
@@ -154,13 +151,13 @@ namespace Kontiki {
 
 		/// <summary>Create an series of icons and colors them pairwise
 		/// </summary>
-		public void GenerateIcons(Transform trans, Color[] col, params IconTypes[] icons)
+		public void GenerateIcons(Transform trans, Color[] col, params IconType[] icons)
 		{
 			Sprite[] sprites = new Sprite[icons.Length];
 
 			for(int i = 0; i < icons.Length; i++){
 				int type = (int)icons[i];
-				sprites[i] = iconSprites[type];
+				sprites[i] = Settings.iconSprites[Settings.iconTypes.IndexOf(icons[i])];
 			}
 
 			CreateIconSeries(sprites, trans, col);

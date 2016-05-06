@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Kontiki {
     public class SettingsInspector : MonoBehaviour
@@ -8,6 +9,11 @@ namespace Kontiki {
         public bool debugging 			    = true;
 		public bool debugQuestInfo 		    = false;
 
+        [Header("Language")]
+        public List<IconType> iconTypes;
+        public List<Sprite> iconSprites;
+        
+         
         [Header("AI Settings")]
         [Range(1, 100)] public float scanningRange = 1;
         [Range(1, 100)] public float pickupRange = 1;
@@ -32,6 +38,9 @@ namespace Kontiki {
             Settings.hungerRange = hungerRange;
             Settings.energyRange = energyRange;
 	        Settings.debugQuestInfo = debugQuestInfo;
+            
+            Settings.iconTypes = iconTypes;
+            Settings.iconSprites = iconSprites;
 
             Debug.LogWarning("Debugging is " + (debugging ? "enabled" : "disabled"));
         }

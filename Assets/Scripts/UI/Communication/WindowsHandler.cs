@@ -101,7 +101,7 @@ namespace Kontiki
             {
                 questWindow.SetActive(true); currentWindow = Window.Quest;
 
-                var q = QuestGenerator.Instance.proposedQuest;
+                var q = QuestSystem.Instance.proposedQuest;
 
                 if (q != null)
                 {

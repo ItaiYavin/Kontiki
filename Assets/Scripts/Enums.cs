@@ -1,5 +1,5 @@
 ﻿namespace Kontiki {
-    public enum IconTypes
+    public enum IconType
     {
         Bring,
         Find,

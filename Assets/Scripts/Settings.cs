@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace Kontiki { 
     public static class Settings
@@ -23,6 +24,13 @@ namespace Kontiki {
           * Jobs
           **/
         public static float dockingRange = 1f;
+        
+        /**
+         * Language
+         **/
+         
+         public static List<IconType> iconTypes;
+         public static List<Sprite> iconSprites;
 
     }
 }

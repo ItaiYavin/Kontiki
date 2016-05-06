@@ -81,15 +81,19 @@ namespace Kontiki {
 
         public override bool Interact(Character player)
         {
+            
             if(debugAI_Interaction)
                 Debug.Log(character + " interacted with " + gameObject.name);
 
+            if(!player.isPlayer)
+                return true;
+            
             if(Settings.debugQuestInfo)
                 Debug.Log("NPC" + (baseroutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
 
             if (baseroutine.hasQuestToOffer && baseroutine.questOffer == null) { 
-                baseroutine.questOffer = QuestGenerator.Instance.GenerateQuest(character, player);
-                QuestGenerator.Instance.proposedQuest = baseroutine.questOffer;
+                baseroutine.questOffer = QuestSystem.Instance.GenerateQuest(character, player);
+                QuestSystem.Instance.proposedQuest = baseroutine.questOffer;
             }
 
             return true;

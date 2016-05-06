@@ -102,7 +102,7 @@ namespace Kontiki
 		public override void FinishQuest(Inventory characterInventory){
 			if(!characterInventory.IsInventoryFull()){	// Check player inventory
 				characterInventory.PutItemIntoInventoryRegardlessOfDistance(reward); // Give reward
-			    QuestGenerator.Instance.RemoveQuest(this);
+			    QuestSystem.Instance.RemoveQuest(this);
 			} else {
 				//TODO inform player
 			}

@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: b70f9f69cbace624fa5aaddbc1e78899
-timeCreated: 1462108285
+timeCreated: 1462542944
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - imagePrefab: {fileID: 11471848, guid: 032e4bc0cb047d54fbd713fe6d817238, type: 2}
+  - canvasParent: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
