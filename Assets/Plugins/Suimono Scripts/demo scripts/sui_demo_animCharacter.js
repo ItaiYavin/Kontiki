@@ -19,6 +19,7 @@ var wetAmount : float = 0.0;
 var gSlope : float = 0.0;
 var useSlope : float = 0.0;
 
+var anim : Animator;
 
 //PRIVATE VARIABLES
 private var cameraObject : GameObject;
@@ -102,32 +103,37 @@ function LateUpdate () {
 	
 	if (!isInBoat){
 	
-		useClip = "anim_miho_idle_normal";
+		//useClip = "anim_miho_idle_normal";
+		anim.SetBool("isSitting", true);
 		fadeSpeed = 1.2;
 		playSpeed = 1.0;
 
-		if (isWalking){
-			useClip = "anim_miho_walk_normal";
+		/*if (isWalking){
+			//useClip = "anim_miho_walk_normal";
+			anim.SetBool("isMoving", true);
 			fadeSpeed = 0.5;
 			playSpeed = 1.1;
 			if (moveForward != 0.0 && moveSideways != 0.0){
 				fadeSpeed = 0.5;
 				playSpeed = 1.1;
 			}
-		}
+		}*/
 		
-		if (isRunning){
-			useClip = "anim_miho_run_normal";
+		/*if (isRunning){
+			anim.SetBool("isMoving", true);
+		
+			//useClip = "anim_miho_run_normal";
 			fadeSpeed = 0.8;
 			playSpeed = 0.9;
 			if (moveForward != 0.0 && moveSideways != 0.0){
 				fadeSpeed = 0.8;
 				playSpeed = 0.9;
 			}
-		}
+		}*/
 
-		if (isSprinting){
-			useClip = "anim_miho_sprint_normal";
+		if (isSprinting || isWalking || isRunning){
+			anim.SetBool("isMoving", true);
+			//useClip = "anim_miho_sprint_normal";
 			fadeSpeed = 1.3;
 			playSpeed = 1.1;
 			if (moveForward != 0.0 && moveSideways != 0.0){
@@ -161,11 +167,13 @@ function LateUpdate () {
 		
 		if (isUnderWater){
 			wetAmount = 1.0;
-			useClip = "anim_miho_swim_idle";
+			anim.SetBool("isSwimming", true);
+			//useClip = "anim_miho_swim_idle";
 			fadeSpeed = 1.2;
 			playSpeed = 1.0;
 			if (isWalking || isRunning){
-				useClip = "anim_miho_swim_forward";
+				anim.SetBool("isSwimming", true);
+				//useClip = "anim_miho_swim_forward";
 				fadeSpeed = 1.8;
 				playSpeed = 1.0;
 				if (isRunning) playSpeed = 1.4;
@@ -176,7 +184,8 @@ function LateUpdate () {
 
 
 		if (isAtSurface){
-			useClip = "anim_miho_swim_surface_idle";
+			anim.SetBool("isSwimming", true);
+			//useClip = "anim_miho_swim_surface_idle";
 			fadeSpeed = 0.8;
 			playSpeed = 1.0;
 			if (physRigidbody != null) physRigidbody.useGravity = true;
@@ -184,7 +193,8 @@ function LateUpdate () {
 	
 	
 	} else if (isInBoat){
-		useClip = "anim_miho_boat_sit_idle";
+		anim.SetBool("isSitting", true);
+		//useClip = "anim_miho_boat_sit_idle";
 		fadeSpeed = 0.4;
 		playSpeed = 1.0;
 	}	
