@@ -425,6 +425,7 @@ GameObject:
   - 114: {fileID: 11469770}
   - 114: {fileID: 11458808}
   - 136: {fileID: 13627164}
+  - 114: {fileID: 11434166}
   m_Layer: 11
   m_Name: Scavenger
   m_TagString: Untagged
@@ -869,6 +870,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   memory: []
+--- !u!114 &11434166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f90d054b9108499f32488bd87cd3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11450880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1025,7 +1037,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 197574}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
