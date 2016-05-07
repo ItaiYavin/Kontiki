@@ -73,8 +73,11 @@ namespace Kontiki{
                         }
                         if (_lastTarget is AIComponentContainer)
                         {
-                            _lastTarget.Interact(_player); //TODO STORE VALUE IN CHARACTER OR SOMETHING
-
+                            //_lastTarget.Interact(_player); 
+							LanguageExchanger target = _lastTarget.GetComponent<LanguageExchanger>();
+							_player.languageExchanger.speakingTo = target;
+							target.speakingTo = _player.languageExchanger;
+							
                             windowsHandler.SetVisibility(true);
                         }
 
@@ -133,16 +136,15 @@ namespace Kontiki{
 				Interactable interactable = colliders[i].GetComponent<Interactable>();
 				
 				if(interactable.indicator == null){
-					//unregistered
+					//unregistered interactable
 					InteractableIndicator indicator;
 					if(_freeIndicators.Count > 0){
-						//repurpose
+						//repurpose indicator
 						indicator = _freeIndicators[0];
 						
 						_freeIndicators.RemoveAt(0);
 					}else{
-						//isntantiate
-                        // PLEASE BRING ME BACK
+						//instantiate indicator
 						GameObject g = Instantiate(prefab_interactableIndicator);
 						g.transform.SetParent(container.transform, false);
 						indicator = g.GetComponent<InteractableIndicator>();
@@ -162,7 +164,7 @@ namespace Kontiki{
 		}
 		
 		
-        public void CheckMouseHoveringOverInteractable(){ //TODO: FIND BETTER METHOD (THIS METHOD SETS THE OUTLINE TO 0)
+        public void CheckMouseHoveringOverInteractable(){
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Interactable interactable;
@@ -196,6 +198,7 @@ namespace Kontiki{
                 }
             }
         }
+		
 	}
 
 }

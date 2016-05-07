@@ -41,6 +41,7 @@ namespace Kontiki {
          
          public static float iconWidth;
          public static float iconOffset;
+         public static Vector3 iconContainerOffset;
 
     }
 }

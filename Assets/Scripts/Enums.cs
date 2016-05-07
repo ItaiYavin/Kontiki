@@ -17,7 +17,8 @@
         Rig,
         Water,
         Person,
-        Beggar
+        Beggar,
+        Yes
     }
 
     public enum PlaceType
@@ -30,7 +31,8 @@
     public enum Window
     {
         Start,
-        Quest,
+        Quest1,
+        Quest2,
         Info,
         Trade
     }
@@ -46,6 +48,15 @@
        Give
    }
    
+   public enum LanguageTopic{
+       IHaveQuest,
+       DoYouHaveQuest,
+       WhatDoIGetForQuest,
+       IWillTradeThisForQuestObjective,
+       AcceptQuest,
+       DeclineQuest,
+       Trade
+   }
 }
 
 namespace Kontiki.AI
@@ -53,12 +64,5 @@ namespace Kontiki.AI
     public enum JobType{
        Fisher,
        Trader            
-    }
-    
-    [System.Flags]
-    public enum DebugAI{
-        Character   = (0 << 1),
-        Job         = (0 << 2),
-        Interaction = (0 << 3)
     }
 }

@@ -20,8 +20,6 @@ namespace Kontiki {
 		[Header("Display Variables")]
 		[Tooltip("Duration icons stay on screen")]
 		public float iconDuration;
-		[Tooltip("Position offset between icons in series")]
-		public Vector3 offset;
 		
 		public float iconsDestroyTime;
 
@@ -44,7 +42,7 @@ namespace Kontiki {
 				{
 					position.x = startX + i * (Settings.iconWidth + Settings.iconOffset);
 					_iconList[i].GetComponent<RectTransform>().sizeDelta = new Vector2(Settings.iconWidth, Settings.iconWidth);
-					_iconList[i].GetComponent<RectTransform>().anchoredPosition = position + offset;
+					_iconList[i].GetComponent<RectTransform>().anchoredPosition = position + Settings.iconContainerOffset;
 				}
 			}
 		}
@@ -83,7 +81,9 @@ namespace Kontiki {
 			}
 			_iconList.Clear();
 		}
-		
+		/// <summary>Create an series of icons with only white icons
+		/// </summary>
+		public void GenerateIcons(params IconType[] icons){ GenerateIcons(new Color(1,1,1), new Color(1,1,1), icons); }
 		/// <summary>Create an series of icons and colors the first Quest Item or Person
 		/// </summary>
 		public void GenerateIcons(Color col, params IconType[] icons){ GenerateIcons(col, new Color(1,1,1), icons); }

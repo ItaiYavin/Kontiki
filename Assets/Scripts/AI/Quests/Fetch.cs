@@ -11,7 +11,6 @@ namespace Kontiki
 
 		public Character objectiveHolder;
 		public Item objective;
-		public Item reward;
 		public int chanceForKnowledge = 8; // The higher the harder, roll is possible when below 10 (always possible when <= 0)
 
 		public bool hasObjective;

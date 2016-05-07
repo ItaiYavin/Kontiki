@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Kontiki
 {
-	public abstract class Quest {
+	public abstract class Quest : Information {
 		// areaOfInterest Variables
 		public GameObject areaOfInterestPrefab;
 		protected GameObject areaOfInterest;
@@ -13,6 +13,7 @@ namespace Kontiki
 
         public Character player;
         public Character origin;
+		public Item reward;
 		
 		public Color colorOrigin;
 		

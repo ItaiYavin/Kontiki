@@ -16,6 +16,7 @@ namespace Kontiki {
         public List<Color> languageColors;
         public float iconWidth;
         public float iconOffset;
+        public Vector3 iconContainerOffset;
         
          
         [Header("AI Settings")]
@@ -70,6 +71,7 @@ namespace Kontiki {
             
             Settings.iconWidth = iconWidth;
             Settings.iconOffset = iconOffset;
+            Settings.iconContainerOffset = iconContainerOffset;
             Settings.stopInteractingDistance = stopInteractingDistance;
         }
     }

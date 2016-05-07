@@ -11,7 +11,8 @@ namespace Kontiki
         [Header("Windows")]
         public Window currentWindow;
         public GameObject startWindow;
-        public GameObject questWindow;
+        public GameObject questWindow1;
+        public GameObject questWindow2;
         public GameObject infoWindow;
         public GameObject tradeWindow;
 
@@ -19,9 +20,27 @@ namespace Kontiki
         public Text questText;
 
         // Private Variables & references
-        private Character player;
+        public LanguageExchanger playerLang;
         private GameObject basePanel;
+        
+        public static WindowsHandler Instance { get; private set; }
 
+		void Awake(){
+			// First we check if there are any other instances conflicting
+            if (Instance != null && Instance != this)
+            {
+                // If that is the case, we destroy other instances
+                Destroy(gameObject);
+            }
+
+            // Here we save our singleton instance
+            Instance = this;
+
+            // Furthermore we make sure that we don't destroy between scenes (this is optional)
+            DontDestroyOnLoad(gameObject);
+		}
+ 
+        
         // Use this for initialization
         void Start()
         {
@@ -31,38 +50,72 @@ namespace Kontiki
 
             SetVisibility(false);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
+        
+        public void OnButtonClick(int buttonIndex){
             switch (currentWindow)
             {
-                case Window.Info:
-                {
+                case Window.Start:{
+                    switch (buttonIndex)
+                    {
+                        case 0:{
+                            //Quest Button
+                            Language.DoYouHaveQuest(playerLang, playerLang.speakingTo);
+                            
+                        }break;                     
+                        case 1:{
+                            //Info Button
+                            
+                        }break;                     
+                        case 2:{
+                           //Trade Button
+                           
+                        }break;                     
+                    }
+                }break;
+                case Window.Info:{
                     
-                }
-                break;
-
-                case Window.Quest:
-                {
+                }break;
+                case Window.Trade:{
                     
-                }
-                break;
-
-                case Window.Start:
-                {
+                }break;
+                case Window.Quest1:{
                     
-                }
-                break;
-
-                case Window.Trade:
-                {
+                    switch (buttonIndex)
+                    {
+                        case 0:{
+                            //Trade Button
+                            Language.WhatDoIGetForQuest(playerLang, playerLang.speakingTo);
+                            
+                        }break;                     
+                        case 1:{
+                            //Decline Button
+                            Language.DeclineQuest(playerLang, playerLang.speakingTo);
+                            
+                            SetVisibility(false);
+                            SwitchWindow(Window.Start);
+                        }break;                     
+                    }
+                }break; 
+                case Window.Quest2:{
                     
-                }
-                break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
+                    switch (buttonIndex)
+                    {
+                        case 0:{
+                            //Accept Button
+                            Language.AcceptQuest(playerLang, playerLang.speakingTo);
+                            SetVisibility(false);
+                            SwitchWindow(Window.Start);
+                            
+                        }break;                     
+                        case 1:{
+                            //Decline Button
+                            Language.DeclineQuest(playerLang, playerLang.speakingTo);
+                            
+                            SetVisibility(false);
+                            SwitchWindow(Window.Start);
+                        }break;                     
+                    }
+                }break;
             }
         }
 
@@ -73,51 +126,32 @@ namespace Kontiki
 
         public void SwitchWindow(Window window)
         {
-            // A bit brute-force-ish, sorry :(
 
-            // Start Window
-            if (window == Window.Start)
+            startWindow.SetActive(false);
+            infoWindow.SetActive(false);
+            tradeWindow.SetActive(false);
+            questWindow1.SetActive(false);
+            questWindow2.SetActive(false);
+
+            currentWindow = window;
+            switch (window)
             {
-                startWindow.SetActive(true); currentWindow = Window.Start;
+                case Window.Start:{
+                    startWindow.SetActive(true); 
+                }break;
+                case Window.Info:{
+                    infoWindow.SetActive(true);
+                }break;
+                case Window.Trade:{
+                    tradeWindow.SetActive(true);
+                }break;
+                case Window.Quest1:{
+                    questWindow1.SetActive(true);
+                }break;
+                case Window.Quest2:{
+                    questWindow2.SetActive(true);
+                }break;
             }
-            else startWindow.SetActive(false);
-
-            // Info Window
-            if (window == Window.Info)
-            {
-                infoWindow.SetActive(true); currentWindow = Window.Info;
-            }
-            else infoWindow.SetActive(false);
-
-            // Trade Window
-            if (window == Window.Trade)
-            {
-                tradeWindow.SetActive(true); currentWindow = Window.Trade;
-            }
-            else tradeWindow.SetActive(false);
-
-            // Quest Window
-            if (window == Window.Quest)
-            {
-                questWindow.SetActive(true); currentWindow = Window.Quest;
-
-                var q = QuestSystem.Instance.proposedQuest;
-
-                if (q != null)
-                {
-                    if (q is Fetch)
-                    {
-                        var fetchQuest = q as Fetch;
-                        questText.text = ("Fetch me " + fetchQuest.objective.gameObject.name + " and you will be rewarded!");
-                    }
-                }
-                else
-                {
-                    
-                }
-                
-            }
-            else questWindow.SetActive(false);
         }
 
         public void SetVisibility(bool boolean)

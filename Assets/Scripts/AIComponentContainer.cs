@@ -15,6 +15,7 @@ namespace Kontiki {
     [RequireComponent(typeof(Inventory))]
     [RequireComponent(typeof(BaseRoutine))]
     [RequireComponent(typeof(IconSystem))]
+    [RequireComponent(typeof(LanguageExchanger))]
     
 	public sealed class AIComponentContainer : Interactable, IContextProvider {
         public bool isOnJob = false;
@@ -64,6 +65,12 @@ namespace Kontiki {
             private set;
         }
 
+        public LanguageExchanger languageExchanger
+        {
+            get;
+            private set;
+        }
+
         /**
          * Apex specific
          **/
@@ -79,7 +86,8 @@ namespace Kontiki {
 			this.memory = GetComponent<Memory>();
             this.inventory = GetComponent<Inventory>();
             this.baseRoutine = GetComponent<BaseRoutine>();	
-            this.iconSystem = GetComponent<IconSystem>();		
+            this.iconSystem = GetComponent<IconSystem>();	
+            this.languageExchanger = GetComponent<LanguageExchanger>();		
             this.job = GetComponent<Job>();
         }
 
@@ -90,23 +98,6 @@ namespace Kontiki {
             
             if(debugAI_Interaction)
                 Debug.Log(character + " interacted with " + gameObject.name);
-
-            
-            if(Settings.debugQuestInfo)
-                Debug.Log("NPC" + (baseRoutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
-                
-            character.characterInteracting = player;
-            
-            if (player.isPlayer && baseRoutine.hasQuestToOffer) { 
-                if(baseRoutine.questOffer == null){
-                    baseRoutine.questOffer = QuestSystem.Instance.GenerateQuest(player,character);
-                    
-                    QuestSystem.Instance.proposedQuest = baseRoutine.questOffer;
-                }
-                
-                Language.Quest(iconSystem,baseRoutine.questOffer);    
-            }
-
             return true;
         }
 

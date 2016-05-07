@@ -17,7 +17,7 @@ namespace Kontiki {
         public Inventory inventory;
         
         [HideInInspector]
-        public IconSystem iconSystem;
+        public LanguageExchanger languageExchanger;
         
         public SkinnedMeshRenderer modelRenderer;
         private Material material;
@@ -31,13 +31,11 @@ namespace Kontiki {
         
         [HideInInspector]
         public bool isSleeping;
-        
-        public Character characterInteracting;
 
-        void Start()
+        void Awake()
         {
             inventory = GetComponent<Inventory>();
-            iconSystem = GetComponent<IconSystem>();
+            languageExchanger = GetComponent<LanguageExchanger>();
             
             material = new Material(modelRenderer.material);
             modelRenderer.material = material;
@@ -51,19 +49,7 @@ namespace Kontiki {
             HungerUpdate();
             TiredUpdate();
             
-            if(characterInteracting != null){
-                float distance = Vector3.Distance(transform.position,characterInteracting.transform.position);
-                
-                if(distance > Settings.stopInteractingDistance){
-                    characterInteracting.characterInteracting = null;
-                    characterInteracting = null;
-                    iconSystem.Clear();
-                }else{
-                    Vector3 lookDirection = characterInteracting.transform.position;
-                    lookDirection.y = transform.position.y;
-                    transform.LookAt(lookDirection);
-                }
-            }
+          
         }
 
         private void HungerUpdate()
