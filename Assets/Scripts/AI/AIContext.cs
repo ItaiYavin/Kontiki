@@ -50,9 +50,9 @@ namespace Kontiki {
 			get { return self.transform;}
         }
 
-        public BaseRoutine baseroutine
+        public BaseRoutine baseRoutine
         {
-            get { return self.baseroutine; }
+            get { return self.baseRoutine; }
         }
 
         public IconSystem iconSystem

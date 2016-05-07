@@ -13,7 +13,7 @@
         Fish,
         Fisherboat,
         Net,
-        Quest,
+        QuestObjective,
         Rig,
         Water,
         Person,

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
@@ -16,13 +17,16 @@ namespace Kontiki
 		public bool hasObjective;
 		public bool hasGivenObjective;
 
-		private Character player;
-
 		private float areaOfInterestSizeReductionPercent = 0.8f; // Needs to be between 0-1;
 
 		private int numberOfAskedPeople;
 		private int peakNumberOfPeople = 10;
 		private int numberOfHints;
+		
+		
+		
+		public Color colorObjectiveHolder;
+		public Color colorObjective;
 
 		// Use this for initialization
 		public Fetch (Character player, Character origin) : base(player, origin)

@@ -19,11 +19,11 @@ namespace Kontiki.AI
 			AIContext ai = (AIContext) context;
         	Pathfinder pathfinder = ((AIContext)context).pathfinder;
             
-            if(ai.baseroutine.trader == null)
+            if(ai.baseRoutine.trader == null)
                 return 0f;
                 
             NavMeshPath path = new NavMeshPath();
-            pathfinder.agent.CalculatePath(ai.baseroutine.trader.transform.position, path);
+            pathfinder.agent.CalculatePath(ai.baseRoutine.trader.transform.position, path);
             b = path.status == NavMeshPathStatus.PathComplete;
         	
             if(not)

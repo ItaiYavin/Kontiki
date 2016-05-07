@@ -14,7 +14,7 @@ namespace Kontiki.AI{
     public sealed class GoToHome : ActionBase{
         public override void Execute(IAIContext context){
             AIContext ai = ((AIContext)context);
-            ((AIContext)context).pathfinder.GoTo(ai.baseroutine.home);
+            ((AIContext)context).pathfinder.GoTo(ai.baseRoutine.home);
         }
     }
 }

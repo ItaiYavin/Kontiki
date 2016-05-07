@@ -52,7 +52,7 @@ namespace Kontiki {
             get;
             private set;
         }
-        public BaseRoutine baseroutine
+        public BaseRoutine baseRoutine
         {
             get;
             private set;
@@ -78,7 +78,7 @@ namespace Kontiki {
             this.pathfinder = GetComponent<Pathfinder>();
 			this.memory = GetComponent<Memory>();
             this.inventory = GetComponent<Inventory>();
-            this.baseroutine = GetComponent<BaseRoutine>();	
+            this.baseRoutine = GetComponent<BaseRoutine>();	
             this.iconSystem = GetComponent<IconSystem>();		
             this.job = GetComponent<Job>();
         }
@@ -93,14 +93,18 @@ namespace Kontiki {
 
             
             if(Settings.debugQuestInfo)
-                Debug.Log("NPC" + (baseroutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
-
-            if (player.isPlayer &&  baseroutine.hasQuestToOffer && baseroutine.questOffer == null) { 
-                baseroutine.questOffer = QuestSystem.Instance.GenerateQuest(player,character);
-                Language.Quest(iconSystem,baseroutine.questOffer);
+                Debug.Log("NPC" + (baseRoutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
                 
+            character.characterInteracting = player;
+            
+            if (player.isPlayer && baseRoutine.hasQuestToOffer) { 
+                if(baseRoutine.questOffer == null){
+                    baseRoutine.questOffer = QuestSystem.Instance.GenerateQuest(player,character);
+                    
+                    QuestSystem.Instance.proposedQuest = baseRoutine.questOffer;
+                }
                 
-                QuestSystem.Instance.proposedQuest = baseroutine.questOffer;
+                Language.Quest(iconSystem,baseRoutine.questOffer);    
             }
 
             return true;

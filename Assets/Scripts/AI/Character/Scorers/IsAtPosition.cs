@@ -30,13 +30,13 @@ namespace Kontiki.AI
             switch(place){
                 case PlaceType.Home:
                 {
-                    b = ai.pathfinder.IsAtPosition(ai.baseroutine.home.position, range);
+                    b = ai.pathfinder.IsAtPosition(ai.baseRoutine.home.position, range);
                 }
                 break;
 
                 case PlaceType.Trader:
                 {
-                   b = ai.pathfinder.IsAtPosition(ai.baseroutine.trader.transform.position, range);
+                   b = ai.pathfinder.IsAtPosition(ai.baseRoutine.trader.transform.position, range);
                 }
                 break;
 

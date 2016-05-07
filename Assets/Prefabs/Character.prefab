@@ -241,6 +241,7 @@ GameObject:
   - 114: {fileID: 11430206}
   - 114: {fileID: 11422972}
   - 114: {fileID: 11408030}
+  - 114: {fileID: 11406724}
   - 114: {fileID: 11419990}
   - 136: {fileID: 13672314}
   m_Layer: 11
@@ -260,6 +261,23 @@ GameObject:
   - 4: {fileID: 499294}
   m_Layer: 11
   m_Name: mixamorig:Spine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &154142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22410216}
+  - 223: {fileID: 22346734}
+  - 114: {fileID: 11490072}
+  m_Layer: 11
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,10 +494,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8, y: 1, z: 16.8}
+  m_LocalPosition: {x: -7.54, y: 1, z: 16.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 491964}
+  - {fileID: 22410216}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &410700
@@ -825,6 +844,22 @@ MonoBehaviour:
   inventorySize: 4
   applePrefab: {fileID: 11414606, guid: 3097f4486a96e194ebc9de57d8db1d7a, type: 2}
   _inventoryItems: []
+--- !u!114 &11406724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70f9f69cbace624fa5aaddbc1e78899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 106842, guid: 032e4bc0cb047d54fbd713fe6d817238, type: 2}
+  canvasParent: {fileID: 22346734}
+  iconDuration: 10
+  offset: 0
+  iconsDestroyTime: 0
 --- !u!114 &11408030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -838,7 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   home: {fileID: 0}
   trader: {fileID: 0}
-  hasQuestToOffer: 0
+  hasQuestToOffer: 1
 --- !u!114 &11408820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -854,8 +889,11 @@ MonoBehaviour:
   energy: 1
   hunger: 100
   inventory: {fileID: 0}
+  iconSystem: {fileID: 0}
+  modelRenderer: {fileID: 13735800}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
+  characterInteracting: {fileID: 0}
 --- !u!114 &11414264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -917,6 +955,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   memory: []
+--- !u!114 &11490072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 100
 --- !u!136 &13672314
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1009,6 +1068,42 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
+--- !u!223 &22346734
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154142}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &22410216
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154142}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 408082}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4}
+  m_SizeDelta: {x: 600, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

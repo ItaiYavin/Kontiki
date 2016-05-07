@@ -14,6 +14,8 @@ namespace Kontiki
 
 		private List<Character> charactersWithoutQuestObjects;
 	    private List<Quest> quests;
+		
+        public List<int> usedColors;
 
         // Static singleton property
         public static QuestSystem Instance { get; private set; }
@@ -66,6 +68,9 @@ namespace Kontiki
 			fetch.reward = reward;
 			fetch.origin = questGiver;
 			fetch.areaOfInterestPrefab = areaOfInterestPrefab;
+			
+			fetch.colorObjective = GetUnusedColor();
+			fetch.colorOrigin = GetUnusedColor();
 
 			charactersWithoutQuestObjects.RemoveAt(i);
             quests.Add(fetch);
@@ -75,6 +80,7 @@ namespace Kontiki
         public void RemoveQuest(Quest quest)
 	    {
 	        quests.Remove(quest);
+			
 	    }
 
 	    public void ProposeQuest(Quest q)
@@ -95,5 +101,29 @@ namespace Kontiki
 	    {
 	        proposedQuest = null;
         }
+		
+		public Color GetUnusedColor(){
+			if(usedColors.Count == Settings.languageColors.Count){
+				Debug.LogError("All Language Colors has been Used - defaulting to white");
+				return new Color(1,1,1);
+			}
+			
+			int index = Random.Range(0,Settings.languageColors.Count);
+			while(usedColors.IndexOf(index) != -1)
+				index = Random.Range(0,Settings.languageColors.Count);
+			usedColors.Add(index);
+			return Settings.languageColors[index];
+		}
+		
+		public void FreeUsedColor(Color color){
+			FreeUsedColor(Settings.languageColors.IndexOf(color));
+		}
+		
+		public void FreeUsedColor(int index){
+			if(index < 0 || index >= usedColors.Count){
+				return;
+			}
+			usedColors.Remove(index);
+		}
 	}
 }

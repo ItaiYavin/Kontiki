@@ -8,10 +8,12 @@ namespace Kontiki {
         [Header("Debugging")]
         public bool debugging 			    = true;
 		public bool debugQuestInfo 		    = false;
+		public bool debugIconSystem	    = false;
 
         [Header("Language")]
         public List<IconType> iconTypes;
         public List<Sprite> iconSprites;
+        public List<Color> languageColors;
         public float iconWidth;
         public float iconOffset;
         
@@ -22,8 +24,12 @@ namespace Kontiki {
         [Range(10, 500)] public int memoryCapacity = 100;
         [Range(100, 1000)] public int knownAreaSize = 200;
         [Range(0.01f, 0.5f)] public float hungerIncrementPerSec = 0.1f;
+        [Range(0.01f, 0.5f)] public float energyIncrementPerSec = 0.3f;
+        [Range(0.01f, 0.5f)] public float energyDecrementPerSec = 0.1f;
+        [Range(0.1f,50f)] public float stopInteractingDistance = 1f;
         public RangeAttribute hungerRange = new RangeAttribute(0, 100);
         public RangeAttribute energyRange = new RangeAttribute(0, 1);
+        
 
         //[Header("World Setting")]
 
@@ -31,55 +37,40 @@ namespace Kontiki {
 	    // Use this for initialization
 	    void Start ()
         {
-            Settings.debugging = debugging;
-            Settings.scanningRange = scanningRange;
-	        Settings.pickupRange = pickupRange;
-            Settings.memoryCapacity = memoryCapacity;
-            Settings.knownAreaSize = knownAreaSize;
-            Settings.hungerIncrementPerSec = hungerIncrementPerSec;
-            Settings.hungerRange = hungerRange;
-            Settings.energyRange = energyRange;
-	        Settings.debugQuestInfo = debugQuestInfo;
+            SetValues();
             
+            //Only once at Start
             Settings.iconTypes = iconTypes;
             Settings.iconSprites = iconSprites;
-            Settings.iconWidth = iconWidth;
-            Settings.iconOffset = iconOffset;
+            Settings.languageColors = languageColors;
 
             Debug.LogWarning("Debugging is " + (debugging ? "enabled" : "disabled"));
         }
 	
-	    // Update is called once per frame
-	    void Update ()
+	    void FixedUpdate ()
 	    {
-	        Settings.debugging = debugging;
+	        SetValues();
+        }
+
+        
+        void SetValues(){
+            Settings.debugging = debugging;
+            Settings.debugIconSystem = debugIconSystem;
+            Settings.debugQuestInfo = debugQuestInfo;
+            
 	        Settings.scanningRange = scanningRange;
             Settings.pickupRange = pickupRange;
             Settings.memoryCapacity = memoryCapacity;
 	        Settings.knownAreaSize = knownAreaSize;
 	        Settings.hungerIncrementPerSec = hungerIncrementPerSec;
+            Settings.energyIncrementPerSec = energyIncrementPerSec;
+            Settings.energyDecrementPerSec = energyDecrementPerSec;
 	        Settings.hungerRange = hungerRange;
 	        Settings.energyRange = energyRange;
-            Settings.debugQuestInfo = debugQuestInfo;
             
             Settings.iconWidth = iconWidth;
             Settings.iconOffset = iconOffset;
-        }
-
-        void LateUpdate()
-        {
-            debugging = Settings.debugging;
-            scanningRange = Settings.scanningRange;
-            pickupRange = Settings.pickupRange;
-            memoryCapacity = Settings.memoryCapacity;
-            knownAreaSize = Settings.knownAreaSize;
-            hungerIncrementPerSec = Settings.hungerIncrementPerSec;
-            hungerRange = Settings.hungerRange;
-            energyRange = Settings.energyRange;
-            debugQuestInfo = Settings.debugQuestInfo;
-            
-            Settings.iconWidth = iconWidth;
-            Settings.iconOffset = iconOffset;
+            Settings.stopInteractingDistance = stopInteractingDistance;
         }
     }
 }

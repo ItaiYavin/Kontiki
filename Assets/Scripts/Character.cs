@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using System.Collections;
 
 namespace Kontiki {
     public class Character : MonoBehaviour
@@ -14,6 +15,14 @@ namespace Kontiki {
 
         [HideInInspector]
         public Inventory inventory;
+        
+        [HideInInspector]
+        public IconSystem iconSystem;
+        
+        public SkinnedMeshRenderer modelRenderer;
+        private Material material;
+        
+        
 
         /**
         ** Inventory stats & Objects
@@ -22,36 +31,45 @@ namespace Kontiki {
         
         [HideInInspector]
         public bool isSleeping;
+        
+        public Character characterInteracting;
 
         void Start()
         {
             inventory = GetComponent<Inventory>();
-        }
-
-        void Update()
-        {
-            //TODO: Check if this is NPC or not
-            /*
-            if (selectedItem != null)
-            {
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    selectedItem.UseItem(this);
-                }
-            }*/
+            iconSystem = GetComponent<IconSystem>();
+            
+            material = new Material(modelRenderer.material);
+            modelRenderer.material = material;
+            
+            if(isPlayer)
+                ChangeColor(QuestSystem.Instance.GetUnusedColor(),10f);
         }
 
         void FixedUpdate()
         {
             HungerUpdate();
-
             TiredUpdate();
+            
+            if(characterInteracting != null){
+                float distance = Vector3.Distance(transform.position,characterInteracting.transform.position);
+                
+                if(distance > Settings.stopInteractingDistance){
+                    characterInteracting.characterInteracting = null;
+                    characterInteracting = null;
+                    iconSystem.Clear();
+                }else{
+                    Vector3 lookDirection = characterInteracting.transform.position;
+                    lookDirection.y = transform.position.y;
+                    transform.LookAt(lookDirection);
+                }
+            }
         }
 
         private void HungerUpdate()
         {
            hunger += Settings.hungerIncrementPerSec * Time.deltaTime;
-           hunger = Mathf.Clamp(hunger,Settings.hungerRange.min,Settings.hungerRange.max);
+           hunger = Mathf.Clamp(hunger, Settings.hungerRange.min, Settings.hungerRange.max);
         }
 
         private void TiredUpdate()
@@ -60,17 +78,17 @@ namespace Kontiki {
             {
                 case false: // If the character is awake
                 {
-                    energy -= 0.001f * Time.deltaTime;
+                    energy -= Settings.energyDecrementPerSec * Time.deltaTime;
                 }
                 break;
                 case true: // If the character is asleep
                 {
-                    energy += 0.003f * Time.deltaTime;
+                    energy += Settings.energyIncrementPerSec * Time.deltaTime;
                 }
                 break;
             }
             
-           energy = Mathf.Clamp(energy,Settings.energyRange.min,Settings.energyRange.max);
+           energy = Mathf.Clamp(energy, Settings.energyRange.min, Settings.energyRange.max);
         }
 
         public bool HasSelected(ItemType type)
@@ -107,6 +125,10 @@ namespace Kontiki {
         {
             isSleeping = b;
         }
+        
+        public void ChangeColor(Color newColor, float duration){
+            StartCoroutine(Routine_ChangeColor(newColor,duration));
+        }
 
         private void OnDrawGizmosSelected()
         {
@@ -121,6 +143,21 @@ namespace Kontiki {
 
                 Gizmos.DrawWireSphere(transform.position, Settings.scanningRange);
             }
+        }
+        
+        IEnumerator Routine_ChangeColor(Color endColor, float duration){
+            Color startColor = material.color;
+            
+            float startTime = Time.time;
+            float endTime = startTime + duration;
+            
+            while(endTime > Time.time){
+                float t = (Time.time - startTime)/duration;
+                material.color = Color.Lerp(startColor, endColor, t);
+                yield return null;
+            }
+            
+            material.color = endColor;
         }
     }
 }

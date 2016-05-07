@@ -13,6 +13,9 @@ namespace Kontiki
 
         public Character player;
         public Character origin;
+		
+		public Color colorOrigin;
+		
 
 		public abstract void FinishQuest(Inventory characterInventory);
 

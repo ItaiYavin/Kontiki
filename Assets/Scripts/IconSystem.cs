@@ -9,75 +9,80 @@ namespace Kontiki {
 		// References //
 		[Header("References")]
 		[Tooltip("Prefab for icon images")]
-		public Image imagePrefab;
+		public GameObject iconPrefab;
 		[Tooltip("Parent for icons")]
 		public Canvas canvasParent;
 		
 		// ICONS //
-		private List<Icon> _iconList;
+		private List<Image> _iconList;
 
 		// Display variables //
 		[Header("Display Variables")]
 		[Tooltip("Duration icons stay on screen")]
 		public float iconDuration;
 		[Tooltip("Position offset between icons in series")]
-		public float offset;
+		public Vector3 offset;
+		
+		public float iconsDestroyTime;
 
 		void Start()
 		{
-			_iconList 		= new List<Icon>();
+			_iconList = new List<Image>();
 		}
 
 		void FixedUpdate()
 		{
-			if(_iconList.Count > 0)
-				UpdateIcons();
-		}
-
-		public void UpdateIcons()
-		{
-			float startX = -(_iconList.Count/2) * (Settings.iconWidth + Settings.iconOffset) + offset;
-			Vector3 position = new Vector3();
 			
-			for(int i = 0; i < _iconList.Count; i++)
-			{
-				if(_iconList[i].image != null){
-
-					if(_iconList[i].destroyTime < Time.time){
-
-						Destroy(_iconList[i].image.gameObject);
-						_iconList.RemoveAt(i);
-					}
-						
-					position.x = startX + i * (Settings.iconWidth + Settings.iconOffset) + offset;
-					_iconList[i].SetImagePosition(position);
-					_iconList[i].SetImageSize(Settings.iconWidth);
-				}else{
-					_iconList.RemoveAt(i);
+			if(iconsDestroyTime < Time.time){
+				Clear();
+			}
+			
+			if(Settings.debugIconSystem){
+				float startX = -(_iconList.Count/2) * (Settings.iconWidth + Settings.iconOffset);
+				Vector3 position = new Vector3();
+				for(int i = 0; i < _iconList.Count; i++)
+				{
+					position.x = startX + i * (Settings.iconWidth + Settings.iconOffset);
+					_iconList[i].GetComponent<RectTransform>().sizeDelta = new Vector2(Settings.iconWidth, Settings.iconWidth);
+					_iconList[i].GetComponent<RectTransform>().anchoredPosition = position + offset;
 				}
 			}
 		}
 
-		private void CreateIcon(Sprite iconSprite, Vector3 position, Color col)
+        private void CreateIcon(Sprite iconSprite, Vector3 position, Color col)
 		{
-			Icon icon = new Icon(imagePrefab, iconSprite, position, iconDuration);
-			icon.image.color = col;
-			icon.image.transform.SetParent(canvasParent.transform, false);
-			icon.SetImageSize(Settings.iconWidth);
+			GameObject g = Instantiate(iconPrefab, position, Quaternion.identity) as GameObject;
+			g.transform.SetParent(canvasParent.transform, false);
+			g.GetComponent<RectTransform>().sizeDelta = new Vector2(Settings.iconWidth, Settings.iconWidth);
+			g.GetComponent<RectTransform>().anchoredPosition = position;
+			
+			Image icon = g.GetComponent<Image>();
+			icon.color = col;
+			icon.sprite = iconSprite;
 			_iconList.Add(icon);
+			
 		}
 
 		private void CreateIconSeries(Sprite[] icons, Color[] col)
 		{
-			float startX = -(icons.Length/2) * (Settings.iconWidth + Settings.iconOffset) + offset;
+			float startX = -(icons.Length/2) * (Settings.iconWidth + Settings.iconOffset);
 			Vector3 position = new Vector3();
+			iconsDestroyTime = Time.time + iconDuration;
 			for(int i = 0; i < icons.Length; i++)
 			{
-				position.x = startX + i * (Settings.iconWidth + Settings.iconOffset) + offset;
+				position.x = startX + i * (Settings.iconWidth + Settings.iconOffset);
 				CreateIcon(icons[i], position, col[i]);
 			}
 		}
 
+
+		public void Clear(){
+			for (int i = 0; i < _iconList.Count; i++)
+			{
+				Destroy(_iconList[i].gameObject);
+			}
+			_iconList.Clear();
+		}
 		
 		/// <summary>Create an series of icons and colors the first Quest Item or Person
 		/// </summary>
@@ -93,7 +98,7 @@ namespace Kontiki {
 
 			for(int i = 0; i < icons.Length; i++){
 				switch(icons[i]){
-					case IconType.Quest:
+					case IconType.QuestObjective:
 						if(firstSymbol){
 							cols[i] = col;
 							firstSymbol = false;
@@ -124,8 +129,10 @@ namespace Kontiki {
 		/// </summary>
 		public void GenerateIcons(Color[] col, params IconType[] icons)
 		{
+			if(_iconList.Count != 0){
+				Clear();
+			}
 			Sprite[] sprites = new Sprite[icons.Length];
-			Debug.Log("in here");
 			for(int i = 0; i < icons.Length; i++){
 				int type = (int)icons[i];
 				sprites[i] = Settings.iconSprites[Settings.iconTypes.IndexOf(icons[i])];
