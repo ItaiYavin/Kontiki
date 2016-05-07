@@ -45,7 +45,10 @@ namespace Kontiki {
 
         public bool IsAtPosition(Vector3 pos, float range)
         {
-            return (Vector3.Distance(transform.position, pos) < range) ? true : false;
+            float distance = Vector3.Distance(transform.position, pos);
+            if(ai.debugAI_Character)
+                Debug.Log("Distance to " + pos + " is " + distance  + " range: " + range + " remaining distance: " + agent.remainingDistance);
+            return distance < range;
         }
 
         private void OnDrawGizmosSelected()

@@ -241,9 +241,8 @@ GameObject:
   - 114: {fileID: 11407268}
   - 114: {fileID: 11427646}
   - 114: {fileID: 11447200}
-  - 114: {fileID: 11463810}
   - 114: {fileID: 11428426}
-  - 95: {fileID: 9590854}
+  - 114: {fileID: 11459436}
   m_Layer: 11
   m_Name: Fisher
   m_TagString: Untagged
@@ -791,7 +790,7 @@ Transform:
   m_GameObject: {fileID: 157608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -171.6557, y: -0.15500069, z: -97.27182}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 401930}
   m_Father: {fileID: 0}
@@ -813,23 +812,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9590854
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157608}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11401032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -844,7 +826,10 @@ MonoBehaviour:
   hightlightRenderer: {fileID: 0}
   indicator: {fileID: 0}
   sprite: {fileID: 0}
-  isOnJob: 0
+  isOnJob: 1
+  debugAI_Character: 0
+  debugAI_Job: 0
+  debugAI_Interaction: 0
 --- !u!114 &11407268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -923,7 +908,14 @@ MonoBehaviour:
   boat: {fileID: 0}
   port: {fileID: 0}
   isReturningToPort: 0
-  fishingSpots: []
+  fishingSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   selectedFishingSpot: {fileID: 0}
   isFishing: 0
   hasItems: 0
@@ -931,7 +923,7 @@ MonoBehaviour:
   initFishingRange: 5
   minFishingTime: 3
   maxFishingTime: 6
---- !u!114 &11463810
+--- !u!114 &11459436
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -943,7 +935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiConfigs:
-  - aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
+  - aiId: d2213d02-f316-47c0-9c25-761303e1b758
     intervalMin: 1
     intervalMax: 1
     startDelayMin: 0
@@ -964,8 +956,11 @@ MonoBehaviour:
   energy: 1
   hunger: 78
   inventory: {fileID: 0}
+  iconSystem: {fileID: 0}
+  modelRenderer: {fileID: 13788986}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
+  characterInteracting: {fileID: 0}
 --- !u!137 &13788986
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1033,7 +1028,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 157608}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

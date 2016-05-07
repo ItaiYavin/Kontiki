@@ -393,7 +393,9 @@ GameObject:
   - 114: {fileID: 11425488}
   - 114: {fileID: 11405632}
   - 114: {fileID: 11445592}
-  - 114: {fileID: 11441444}
+  - 95: {fileID: 9564684}
+  - 114: {fileID: 11409426}
+  - 114: {fileID: 11483446}
   m_Layer: 11
   m_Name: Trader
   m_TagString: Untagged
@@ -633,7 +635,7 @@ Transform:
   m_GameObject: {fileID: 195656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 478974}
   m_Father: {fileID: 0}
@@ -794,6 +796,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400302}
   m_RootOrder: 0
+--- !u!95 &9564684
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9566402
 Animator:
   serializedVersion: 3
@@ -825,6 +844,24 @@ MonoBehaviour:
   home: {fileID: 0}
   trader: {fileID: 0}
   hasQuestToOffer: 0
+--- !u!114 &11409426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 939582531, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiConfigs:
+  - aiId: 085dc00f-decb-4c3b-bb01-3dd9687b6943
+    intervalMin: 1
+    intervalMax: 1
+    startDelayMin: 0
+    startDelayMax: 0
+    isActive: 1
 --- !u!114 &11418164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -852,24 +889,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   target: {fileID: 0}
---- !u!114 &11441444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 939582531, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiConfigs:
-  - aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
-    intervalMin: 1
-    intervalMax: 1
-    startDelayMin: 0
-    startDelayMax: 0
-    isActive: 1
 --- !u!114 &11445592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -902,7 +921,10 @@ MonoBehaviour:
   hightlightRenderer: {fileID: 0}
   indicator: {fileID: 0}
   sprite: {fileID: 0}
-  isOnJob: 0
+  isOnJob: 1
+  debugAI_Character: 0
+  debugAI_Job: 0
+  debugAI_Interaction: 0
 --- !u!114 &11451490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -918,8 +940,11 @@ MonoBehaviour:
   energy: 1
   hunger: 78
   inventory: {fileID: 0}
+  iconSystem: {fileID: 0}
+  modelRenderer: {fileID: 13765890}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
+  characterInteracting: {fileID: 0}
 --- !u!114 &11460368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -932,6 +957,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   memory: []
+--- !u!114 &11483446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f90d054b9108499f32488bd87cd3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &13765890
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

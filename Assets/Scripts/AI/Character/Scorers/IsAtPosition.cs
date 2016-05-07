@@ -14,8 +14,13 @@ namespace Kontiki.AI
 
         [ApexSerialization, FriendlyName("Range", "Range AI needs to be within to be considered being at position")]
         public float range = 2;
+        [ApexSerialization, FriendlyName("Non-Zero", "returns false if range is zero")]
+        public bool nonZero = false;
+        
+        [ApexSerialization, FriendlyName("Use Pathfinding Distance", "Use the calculated distance from the pathfinder else use direct path")]
+        public bool usePathfindingDistance = false;
 
-        [ApexSerialization, FriendlyName("Destination", "Position AI is checked in relation to")]
+        [ApexSerialization, FriendlyName("Destination", "Position AI is checked in relation to"), MemberDependency("usePathfindingDistance", false)]
         public PlaceType place;
 
         [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
@@ -26,30 +31,39 @@ namespace Kontiki.AI
             AIContext ai = (AIContext)context;
             Character character = ai.character;
             bool b = false;
-
-            switch(place){
-                case PlaceType.Home:
-                {
-                    b = ai.pathfinder.IsAtPosition(ai.baseRoutine.home.position, range);
-                }
-                break;
-
-                case PlaceType.Trader:
-                {
-                   b = ai.pathfinder.IsAtPosition(ai.baseRoutine.trader.transform.position, range);
-                }
-                break;
-
-                case PlaceType.Boat:
-                {
-                    if(ai.job is JobWithBoat){
-                        JobWithBoat job = (JobWithBoat)ai.job;
-                        b = ai.pathfinder.IsAtPosition(job.boat.transform.position, range);
+            
+            if(usePathfindingDistance ){
+                if(nonZero && ai.pathfinder.agent.remainingDistance == 0)
+                    b = false;
+                else
+                    b = ai.pathfinder.agent.remainingDistance < range;
+            }else{
+                switch(place){
+                    case PlaceType.Home:
+                    {
+                        b = ai.pathfinder.IsAtPosition(ai.baseRoutine.home.position, range);
                     }
+                    break;
+
+                    case PlaceType.Trader:
+                    {
+                    b = ai.pathfinder.IsAtPosition(ai.baseRoutine.trader.transform.position, range);
+                    }
+                    break;
+
+                    case PlaceType.Boat:
+                    {
+                        if(ai.job is JobWithBoat){
+                            JobWithBoat job = (JobWithBoat)ai.job;
+                            b = ai.pathfinder.IsAtPosition(job.boat.transform.position, range);
+                        }
+                    }
+                    break;
                 }
-                break;
+
             }
 
+           
             if (ai.debugAI_Character)
                 Debug.Log("Is " + (b ? "" : "not") + " at " + place);
 
