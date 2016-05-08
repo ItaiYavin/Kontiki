@@ -12,8 +12,9 @@ namespace Kontiki {
 
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
+		    anim = transform.FindChild("Character Model").GetComponent<Animator>();
 
-		    animController = GetComponent<sui_demo_animCharacter>();
+            animController = GetComponent<sui_demo_animCharacter>();
 		    if (animController != null)
 		        isPlayer = true;
 		    else
