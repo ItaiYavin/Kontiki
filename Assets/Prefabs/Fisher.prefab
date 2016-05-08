@@ -957,7 +957,7 @@ MonoBehaviour:
   hunger: 78
   inventory: {fileID: 0}
   iconSystem: {fileID: 0}
-  modelRenderer: {fileID: 13788986}
+  modelRenderer: {fileID: 13786964, guid: d599ce26c56cf2747a20e5c05614e36a, type: 2}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
   characterInteracting: {fileID: 0}

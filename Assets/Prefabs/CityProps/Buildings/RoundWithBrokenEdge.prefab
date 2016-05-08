@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432598}
-  - 95: {fileID: 9521630}
   - 136: {fileID: 13663036}
   m_Layer: 0
   m_Name: RoundWithBrokenEdge
@@ -210,23 +209,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118880}
   m_Mesh: {fileID: 4300000, guid: fd4996127d745fe44b9768ffeb06b51d, type: 3}
---- !u!95 &9521630
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101306}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: fd4996127d745fe44b9768ffeb06b51d, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!136 &13663036
 CapsuleCollider:
   m_ObjectHideFlags: 1

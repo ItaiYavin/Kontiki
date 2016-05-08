@@ -18,7 +18,9 @@ ModelImporter:
     400008: transform434
     400010: transform435
     2300000: pCylinder142
+    2300002: //RootNode
     3300000: pCylinder142
+    3300002: //RootNode
     4300000: pCylinder142
     9500000: //RootNode
   materials:

@@ -423,9 +423,9 @@ GameObject:
   - 114: {fileID: 11450880}
   - 114: {fileID: 11408670}
   - 114: {fileID: 11469770}
-  - 114: {fileID: 11458808}
   - 136: {fileID: 13627164}
   - 114: {fileID: 11434166}
+  - 114: {fileID: 11458808}
   m_Layer: 11
   m_Name: Scavenger
   m_TagString: Untagged
@@ -646,7 +646,7 @@ Transform:
   m_GameObject: {fileID: 167572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 472918}
   - {fileID: 410400}
@@ -764,7 +764,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.34, y: 1, z: 26.67}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455994}
@@ -907,8 +907,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiConfigs:
   - aiId: d2213d02-f316-47c0-9c25-761303e1b758
-    intervalMin: 1
-    intervalMax: 1
+    intervalMin: 0.25
+    intervalMax: 0.25
     startDelayMin: 0
     startDelayMax: 0
     isActive: 1
@@ -941,8 +941,11 @@ MonoBehaviour:
   energy: 1
   hunger: 0
   inventory: {fileID: 0}
+  iconSystem: {fileID: 0}
+  modelRenderer: {fileID: 13786964, guid: d599ce26c56cf2747a20e5c05614e36a, type: 2}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
+  characterInteracting: {fileID: 0}
 --- !u!114 &11497186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -966,10 +969,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.7
+  m_Radius: 1.125
+  m_Height: 11
   m_Direction: 1
-  m_Center: {x: 0, y: 1.35, z: 0}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!137 &13716104
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1036,7 +1039,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197574}
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1.125
   m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1045,7 +1048,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2.7
+  m_Height: 11
   m_BaseOffset: 0
   m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
