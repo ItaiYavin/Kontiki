@@ -79,6 +79,8 @@ namespace Kontiki {
             //TODO when more items are in the game, a switch case has to be made with the enum
             EdibleItem item = (EdibleItem)Instantiate(applePrefab, transform.position, transform.rotation);
             
+            
+            Language.GotItem(_character.languageExchanger, itemType);
             PutItemIntoInventory(item);
         }
 

@@ -4,8 +4,6 @@ using System.Collections;
 namespace Kontiki{
     public class LanguageExchanger : MonoBehaviour{
         
-        
-        
         public LanguageExchanger speakingTo;
         
         
@@ -28,7 +26,6 @@ namespace Kontiki{
                 float distance = Vector3.Distance(transform.position, speakingTo.transform.position);
                 
                 if(distance > Settings.stopInteractingDistance){
-                    speakingTo.speakingTo = null;
                     speakingTo = null;
                     iconSystem.Clear();
                 }else{
@@ -36,53 +33,128 @@ namespace Kontiki{
                     lookDirection.y = transform.position.y;
                     transform.LookAt(lookDirection);
                 }
+            }else if(speakingTo != null && isPlayer){
+                float distance = Vector3.Distance(transform.position, speakingTo.transform.position);
+                
+                if(distance > Settings.stopInteractingDistance){
+                    speakingTo = null;
+                    iconSystem.Clear();
+                    WindowsHandler.Instance.SetVisibility(false);
+                }else{
+                    
+                }
             }
         }
         
-        public void React(LanguageExchanger sender, LanguageTopic topic, params Information[] information){
+        public void React(LanguageExchanger sender, Language.Topic topic, params Information[] information){
             switch (topic)
             {
-                case LanguageTopic.DoYouHaveQuest:{
+                case Language.Topic.DoYouHaveQuest:{
                     if (!isPlayer) { 
                         
                         if(Settings.debugQuestInfo)
                             Debug.Log("NPC" + (ai.baseRoutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
                             
                         if(ai.baseRoutine.hasQuestToOffer){
-                            
                             //if NPC react to DoYouHaveQuest from player
-                            if(ai.baseRoutine.questOffer == null){
-                                ai.baseRoutine.questOffer = QuestSystem.Instance.GenerateQuest(sender.character, character);
-                                
+                            
+                            Quest quest = ai.baseRoutine.questOffer;
+                            if(quest == null){
+                                quest = QuestSystem.Instance.GenerateQuest(sender.character, character);
                             }
                             
-                            Language.IHaveQuest(this, sender, ai.baseRoutine.questOffer);    
+                            Language.IHaveQuest(this, sender, quest); 
+                            character.ChangeColor(quest.colorOrigin, 0.5f); 
+                            ai.baseRoutine.questOffer = quest;  
                         }
                     }
                 }break;
-                case LanguageTopic.IHaveQuest:{
+                case Language.Topic.IHaveQuest:{
                    if(isPlayer){
                         //is Player and has received the topic Quest from a npc
                         WindowsHandler.Instance.SwitchWindow(Window.Quest1);
                     }
                 }break;
-                case LanguageTopic.WhatDoIGetForQuest:{
+                case Language.Topic.WhatDoIGetForQuest:{
                     if (!isPlayer) { 
-                        Language.WillTradeThisForQuestObjective(this, sender, ai.baseRoutine.questOffer);    
+                        Quest quest = (Quest) information[0];
+                        Language.WillTradeThisForQuestObjective(this, sender, quest);    
                     }
                 }break;
-                case LanguageTopic.IWillTradeThisForQuestObjective:{
+                case Language.Topic.IWillTradeThisForQuestObjective:{
                     if(isPlayer){
                         WindowsHandler.Instance.SwitchWindow(Window.Quest2);
                     }
                 }break;
-                case LanguageTopic.AcceptQuest:{
+                case Language.Topic.AcceptQuest:{
                     if (!isPlayer && ai.baseRoutine.questOffer != null){
-                        QuestSystem.Instance.proposedQuest = ai.baseRoutine.questOffer;
+                        Quest quest = (Quest) information[0];
+                        quest.accepted = true;
+                        QuestSystem.Instance.AcceptQuest(quest);
+                        
+                        //just to show player the quest an extra time.. receiver set to null ie. player will not receive it..
+                        Language.IHaveQuest(this, null, quest); 
                     }
                 }break;
-                case LanguageTopic.DeclineQuest:{
-                    
+                case Language.Topic.DeclineQuest:{
+                    if (!isPlayer){
+                        speakingTo = null;
+                        character.ChangeColor(Color.white, 0.5f); 
+                        Fetch quest = (Fetch) information[0];
+                        QuestSystem.Instance.FreeUsedObjectiveColor(quest.colorObjective);
+                        QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
+                        iconSystem.Clear();
+                    }
+                }break;
+                case Language.Topic.IHaveQuestObjective:{
+                     if(isPlayer){
+                        Debug.Log("Quest Objective item");
+                    }
+                }break;
+                case Language.Topic.QuestFinished:{
+                    if(isPlayer){
+                        Debug.Log("Quest Finsihed");
+                    }
+                }break;
+                case Language.Topic.DoYouHaveInfoAboutQuest:{
+                    Fetch quest = (Fetch)information[0];
+                    Debug.Log((quest.origin == character) + " - " + quest.hasObjective);
+                    if(quest.origin == character && quest.hasObjective){
+                        quest.FinishQuest(sender.character.inventory);
+                        Language.QuestFinished(this, sender, quest);
+                    }else if(quest.CheckIfCharacterHasObjective(character)){
+                        // asked person has objective and has given it to the player
+                        Language.IHaveQuestObjective(this, sender, quest);
+                    }else if(quest.HasCharacterBeenAsked(character)){
+                        Debug.Log("Character has already been asked");
+                        //@TODO(Kasper) Character has been asked = indicate to user
+                        
+                    }else{
+                        if(quest.CheckIfCharacterHasInfoAboutQuest(character)){
+                            //has information
+                            Debug.Log("Character has Information");
+                            Language.IHaveInfoAboutQuest(this, sender, quest);
+                            
+                        }else{
+                            //has no information
+                            Debug.Log("Character has no Information");
+                        }
+                    }
+                    speakingTo.iconSystem.Clear();
+                    speakingTo = null;
+                    iconSystem.Clear();
+                }break;
+                case Language.Topic.IHaveInfoAboutQuest:{
+                    if(isPlayer){
+                        //received that npc has info.
+                        iconSystem.Clear();
+                    }
+                }break;
+                case Language.Topic.DeclineInfo:{
+                    if (!isPlayer){
+                        speakingTo = null;
+                        iconSystem.Clear();
+                    }
                 }break;
             }
         }

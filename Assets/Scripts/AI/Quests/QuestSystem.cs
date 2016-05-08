@@ -9,13 +9,12 @@ namespace Kontiki
 	    public EdibleItem reward;       		
 		public GameObject objectivePrefab;
 		public GameObject areaOfInterestPrefab;
-
-	    public Quest proposedQuest;
-
 		private List<Character> charactersWithoutQuestObjects;
 	    private List<Quest> quests;
+		private List<Quest> acceptedQuests;
 		
-        public List<int> usedColors;
+        public List<int> usedObjectiveColors;
+        public List<int> usedPersonColors;
 
         // Static singleton property
         public static QuestSystem Instance { get; private set; }
@@ -30,6 +29,7 @@ namespace Kontiki
 
 			tempChar = null;
             quests = new List<Quest>(5);
+			acceptedQuests = new List<Quest>(5);
 		}
 
 		void Awake(){
@@ -48,7 +48,7 @@ namespace Kontiki
 		}
  
 		public Quest GenerateQuest(Character questGetter, Character questGiver){
-			//@TODO(KasperHdL) make generic..
+			//@TODO(KasperHdL) make generic, fetch quest specific currently..
 			GameObject g = Instantiate(objectivePrefab, transform.position, transform.rotation) as GameObject;
 			
 			Item objective = g.GetComponent<Item>();
@@ -69,8 +69,8 @@ namespace Kontiki
 			fetch.origin = questGiver;
 			fetch.areaOfInterestPrefab = areaOfInterestPrefab;
 			
-			fetch.colorObjective = GetUnusedColor();
-			fetch.colorOrigin = GetUnusedColor();
+			fetch.colorObjective = GetUnusedObjectiveColor();
+			fetch.colorOrigin = GetUnusedPersonColor();
 
 			charactersWithoutQuestObjects.RemoveAt(i);
             quests.Add(fetch);
@@ -79,51 +79,76 @@ namespace Kontiki
 
         public void RemoveQuest(Quest quest)
 	    {
-	        quests.Remove(quest);
-			
+	        if(!quests.Remove(quest))
+				acceptedQuests.Remove(quest);
 	    }
-
-	    public void ProposeQuest(Quest q)
-	    {
-	        proposedQuest = q;
-	    }
-
-	    public void AcceptProposedQuest()
+		
+	    public void AcceptQuest(Quest quest)
         {
             if (Settings.debugQuestInfo)
-                Debug.Log("Player accepted quest from " + proposedQuest.origin);
+                Debug.Log("Player accepted quest from " + quest.origin);
 
-            quests.Add(proposedQuest);
-	        proposedQuest = null;
-        }
-
-	    public void DeclineProposedQuest()
-	    {
-	        proposedQuest = null;
+            acceptedQuests.Add(quest);
         }
 		
-		public Color GetUnusedColor(){
-			if(usedColors.Count == Settings.languageColors.Count){
+	
+	
+		public Quest[] GetAcceptedQuests(){
+			return acceptedQuests.ToArray();
+		}
+		
+	
+		/**
+		 * Colors 
+		 **/
+		
+		
+		public Color GetUnusedPersonColor(){
+			if(usedPersonColors.Count == Settings.languageColors.Count){
 				Debug.LogError("All Language Colors has been Used - defaulting to white");
 				return new Color(1,1,1);
 			}
 			
 			int index = Random.Range(0,Settings.languageColors.Count);
-			while(usedColors.IndexOf(index) != -1)
+			while(usedPersonColors.IndexOf(index) != -1)
 				index = Random.Range(0,Settings.languageColors.Count);
-			usedColors.Add(index);
+			usedPersonColors.Add(index);
 			return Settings.languageColors[index];
 		}
 		
-		public void FreeUsedColor(Color color){
-			FreeUsedColor(Settings.languageColors.IndexOf(color));
+		public void FreeUsedPersonColor(Color color){
+			FreeUsedPersonColor(Settings.languageColors.IndexOf(color));
 		}
 		
-		public void FreeUsedColor(int index){
-			if(index < 0 || index >= usedColors.Count){
+		public void FreeUsedPersonColor(int index){
+			if(index < 0 || index >= usedPersonColors.Count){
 				return;
 			}
-			usedColors.Remove(index);
+			usedPersonColors.Remove(index);
+		}
+		
+		public Color GetUnusedObjectiveColor(){
+			if(usedObjectiveColors.Count == Settings.languageColors.Count){
+				Debug.LogError("All Language Colors has been Used - defaulting to white");
+				return new Color(1,1,1);
+			}
+			
+			int index = Random.Range(0,Settings.languageColors.Count);
+			while(usedObjectiveColors.IndexOf(index) != -1)
+				index = Random.Range(0,Settings.languageColors.Count);
+			usedObjectiveColors.Add(index);
+			return Settings.languageColors[index];
+		}
+		
+		public void FreeUsedObjectiveColor(Color color){
+			FreeUsedObjectiveColor(Settings.languageColors.IndexOf(color));
+		}
+		
+		public void FreeUsedObjectiveColor(int index){
+			if(index < 0 || index >= usedObjectiveColors.Count){
+				return;
+			}
+			usedObjectiveColors.Remove(index);
 		}
 	}
 }

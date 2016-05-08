@@ -41,7 +41,7 @@ namespace Kontiki {
             modelRenderer.material = material;
             
             if(isPlayer)
-                ChangeColor(QuestSystem.Instance.GetUnusedColor(),10f);
+                ChangeColor(QuestSystem.Instance.GetUnusedPersonColor(),10f);
         }
 
         void FixedUpdate()

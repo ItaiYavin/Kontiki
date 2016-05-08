@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 namespace Kontiki
 {
 	public class Fetch : Quest {
-		private List<Character> askedPeople;
 
 		public Character objectiveHolder;
 		public Item objective;
@@ -19,7 +18,7 @@ namespace Kontiki
 		private float areaOfInterestSizeReductionPercent = 0.8f; // Needs to be between 0-1;
 
 		private int numberOfAskedPeople;
-		private int peakNumberOfPeople = 10;
+		private int peakNumberOfPeople = 3;
 		private int numberOfHints;
 		
 		
@@ -33,7 +32,6 @@ namespace Kontiki
 		    this.origin = origin;
             this.player = player;
 
-			askedPeople = new List<Character>();
 			hasObjective = false;
 		}
 
@@ -59,63 +57,60 @@ namespace Kontiki
 			}
 		}
 
-		public override void UpdateQuest(Character askedCharacter){
-			if(askedCharacter == objectiveHolder)
-				GetObjectiveItem();
-
-			if(!CheckListForCharacter(askedCharacter, askedPeople))
+		public override bool CheckIfCharacterHasInfoAboutQuest(Character askedCharacter){
+			if(!HasCharacterBeenAsked(askedCharacter))
 			{
 				bool isAskedCharacterInArea = true;
 
 				if(areaOfInterest != null) //check if person is within AreaOfInterest
 					isAskedCharacterInArea = CheckCharacterIsInAreaOfInterest(askedCharacter);
-
+				
+				float chanceForKnowledge;
 				if(isAskedCharacterInArea){
+					chanceForKnowledge = Random.Range(0f, 1f);
+				}else{
+					chanceForKnowledge = Random.Range(0f, 0.5f);
+				}
 
-					float chanceForKnowledge = Random.Range(0f, 1f);
-
-					if(chanceForKnowledge > (chanceForKnowledge - (numberOfAskedPeople / peakNumberOfPeople)))
-					{
-						if(areaOfInterest == null)
-							CreateAreaOfInterestInWorld(areaOfInterestMaxSize, objectiveHolder.transform.position); //create AreaOfInterest
-						else 
-						{
-							if(areaOfInterest.transform.localScale.x > areaOfInterestMinSize){
-								AdjustAreaOfInterestInWorld(areaOfInterestSizeReductionPercent, objectiveHolder.transform.position);//make new smaller AreaOfInterest
-								numberOfAskedPeople = 0; //reset number of asked people
-							}
-						}
-						askedPeople.Add(askedCharacter);//Add AI to list of characters that has been asked.
-						return;
-					}
+				Debug.Log(chanceForKnowledge + " - " + ((float)numberOfAskedPeople / (float)peakNumberOfPeople) + " = " + (chanceForKnowledge  - ((float)numberOfAskedPeople / (float)peakNumberOfPeople)));
+				if(chanceForKnowledge > (chanceForKnowledge - ((float)numberOfAskedPeople / peakNumberOfPeople)))
+				{
+					if(areaOfInterest == null)
+						CreateAreaOfInterestInWorld(areaOfInterestMaxSize, objectiveHolder.transform.position); //create AreaOfInterest
 					else 
 					{
-						numberOfAskedPeople++;
-						//TODO inform player that this AI does not know
-
-						askedPeople.Add(askedCharacter);//Add AI to list of characters that has been asked.
-						return;
+						if(areaOfInterest.transform.localScale.x > areaOfInterestMinSize){
+							AdjustAreaOfInterestInWorld(areaOfInterestSizeReductionPercent, objectiveHolder.transform.position);//make new smaller AreaOfInterest
+						}
 					}
+					numberOfAskedPeople = 0; //reset number of asked people
+					askedPeople.Add(askedCharacter); //Add AI to list of characters that has been asked.
+					return true;
+				}else{
+					numberOfAskedPeople++;
+					Debug.Log("n People: " + numberOfAskedPeople);
+					askedPeople.Add(askedCharacter); //Add AI to list of characters that has been asked.
+					return false;
 				}
-				//TODO asked character is outside of areaOfInterest inform player
 			}
-			//TODO player has already asked character, inform player
+			return false;
+		}
+		
+		public bool CheckIfCharacterHasObjective(Character askedCharacter){
+			if(askedCharacter == objectiveHolder){
+				GetObjectiveItem();
+				return true;
+			}
+			return false;
+
 		}
 
-		public override void FinishQuest(Inventory characterInventory){
-			if(!characterInventory.IsInventoryFull()){	// Check player inventory
-				characterInventory.PutItemIntoInventoryRegardlessOfDistance(reward); // Give reward
-			    QuestSystem.Instance.RemoveQuest(this);
-			} else {
-				//TODO inform player
-			}
-		}
 
 		public override void CheckQuestState(){
 			if(!hasObjective){
 				if(player.inventory.CheckInventoryForSpecificItem(objective))
 					hasObjective = true;
 			}
-		}
+		}	
 	}
 }

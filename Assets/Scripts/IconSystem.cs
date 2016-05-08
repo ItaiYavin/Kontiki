@@ -21,6 +21,7 @@ namespace Kontiki {
 		[Tooltip("Duration icons stay on screen")]
 		public float iconDuration;
 		
+		[HideInInspector]
 		public float iconsDestroyTime;
 
 		void Start()
@@ -52,7 +53,7 @@ namespace Kontiki {
 			GameObject g = Instantiate(iconPrefab, position, Quaternion.identity) as GameObject;
 			g.transform.SetParent(canvasParent.transform, false);
 			g.GetComponent<RectTransform>().sizeDelta = new Vector2(Settings.iconWidth, Settings.iconWidth);
-			g.GetComponent<RectTransform>().anchoredPosition = position;
+			g.GetComponent<RectTransform>().anchoredPosition = position + Settings.iconContainerOffset;
 			
 			Image icon = g.GetComponent<Image>();
 			icon.color = col;

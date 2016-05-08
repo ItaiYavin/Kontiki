@@ -11,28 +11,36 @@ namespace Kontiki
 		protected float areaOfInterestMaxSize = 200;
 		protected float areaOfInterestMinSize = 0.3f;
 
+		public bool accepted = false;
+
+		protected List<Character> askedPeople;
         public Character player;
         public Character origin;
 		public Item reward;
 		
 		public Color colorOrigin;
-		
-
-		public abstract void FinishQuest(Inventory characterInventory);
 
 		public abstract void CheckQuestState();
 
-		public abstract void UpdateQuest(Character askedPerson);
+		public abstract bool CheckIfCharacterHasInfoAboutQuest(Character askedPerson);
 
 	    public Quest(Character player, Character origin)
 	    {
 	        this.player = player;
 	        this.origin = origin;
+			askedPeople = new List<Character>();
 	    }
         
         // Update is called once per frame
 		void Update () {
 			CheckQuestState();
+		}
+		
+		public void FinishQuest(Inventory characterInventory){
+			if(!characterInventory.IsInventoryFull()){	// Check player inventory
+				characterInventory.PutItemIntoInventoryRegardlessOfDistance(reward); // Give reward
+			    QuestSystem.Instance.RemoveQuest(this);
+			}
 		}
 
 		private void RandomlyMoveGameObjectWithinRange(GameObject g, Vector3 position){
@@ -53,7 +61,7 @@ namespace Kontiki
 		}
 
 		public void AdjustAreaOfInterestInWorld(float reduction, Vector3 position){
-			areaOfInterest.transform.localScale *= reduction; //Resize areaOfInterest
+			areaOfInterest.transform.localScale *= 1 - reduction; //Resize areaOfInterest
 			if(areaOfInterest.transform.localScale.x < areaOfInterestMinSize)
 				areaOfInterest.transform.localScale = new Vector3(areaOfInterestMinSize, areaOfInterestMinSize, areaOfInterestMinSize);
 
@@ -87,6 +95,10 @@ namespace Kontiki
 			}
 			// Character was not found on list!
 			return false;
+		}
+		
+		public bool HasCharacterBeenAsked(Character askedCharacter){
+			return CheckListForCharacter(askedCharacter, askedPeople);
 		}
 	}
 }

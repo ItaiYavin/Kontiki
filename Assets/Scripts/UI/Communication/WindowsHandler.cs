@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace Kontiki
@@ -15,6 +16,11 @@ namespace Kontiki
         public GameObject questWindow2;
         public GameObject infoWindow;
         public GameObject tradeWindow;
+        
+        [Header("Prefabs")]
+
+        public GameObject questInfoPrefab;
+        private List<GameObject> questInfoBoxes;
 
         [Header("Information")]
         public Text questText;
@@ -45,6 +51,8 @@ namespace Kontiki
         void Start()
         {
             basePanel = transform.GetChild(0).gameObject;
+            questInfoBoxes = new List<GameObject>();
+            
             
             SwitchWindow(Window.Start);
 
@@ -64,7 +72,41 @@ namespace Kontiki
                         }break;                     
                         case 1:{
                             //Info Button
+                            Quest[] quests = QuestSystem.Instance.GetAcceptedQuests();
                             
+                            Vector3 position = Vector3.zero;
+                            GameObject g;
+                            Quest q;
+                            
+                            for (int i = 0; i < quests.Length; i++){
+                                q = quests[i];
+                                if(questInfoBoxes.Count >= i){
+                                    g = Instantiate(questInfoPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+                                    g.transform.SetParent(infoWindow.transform, false);
+                                    g.GetComponent<ButtonInfo>().windowHandler = this;
+                                    
+                                    questInfoBoxes.Add(g);      
+                                
+                                }else{
+                                    g = questInfoBoxes[i];
+                                }  
+                                
+                                
+                                ButtonInfo buttonInfo = g.GetComponent<ButtonInfo>();   
+                                buttonInfo.index = buttonIndex;
+                                
+                                position = new Vector3(i * 100 - 300, 0, 0);
+                                g.GetComponent<RectTransform>().anchoredPosition = position;
+                                
+                                buttonInfo.index = i;
+                                
+                                if(q is Fetch){
+                                    buttonInfo.icon.sprite = Settings.iconSprites[Settings.iconTypes.IndexOf(IconType.QuestObjective)];
+                                    buttonInfo.icon.color = ((Fetch)q).colorObjective;     
+                                   
+                                }               
+                            }
+                            SwitchWindow(Window.Info);
                         }break;                     
                         case 2:{
                            //Trade Button
@@ -73,7 +115,8 @@ namespace Kontiki
                     }
                 }break;
                 case Window.Info:{
-                    
+                    Quest quest = QuestSystem.Instance.GetAcceptedQuests()[buttonIndex];
+                    Language.DoYouHaveInfoAboutQuest(playerLang, playerLang.speakingTo, quest);
                 }break;
                 case Window.Trade:{
                     
@@ -84,7 +127,9 @@ namespace Kontiki
                     {
                         case 0:{
                             //Trade Button
-                            Language.WhatDoIGetForQuest(playerLang, playerLang.speakingTo);
+                            
+                            Quest q = playerLang.speakingTo.ai.baseRoutine.questOffer;
+                            Language.WhatDoIGetForQuest(playerLang, playerLang.speakingTo, q);
                             
                         }break;                     
                         case 1:{
@@ -92,7 +137,6 @@ namespace Kontiki
                             Language.DeclineQuest(playerLang, playerLang.speakingTo);
                             
                             SetVisibility(false);
-                            SwitchWindow(Window.Start);
                         }break;                     
                     }
                 }break; 
@@ -102,9 +146,9 @@ namespace Kontiki
                     {
                         case 0:{
                             //Accept Button
-                            Language.AcceptQuest(playerLang, playerLang.speakingTo);
+                            Quest q = playerLang.speakingTo.ai.baseRoutine.questOffer;
+                            Language.AcceptQuest(playerLang, playerLang.speakingTo,q);
                             SetVisibility(false);
-                            SwitchWindow(Window.Start);
                             
                         }break;                     
                         case 1:{
@@ -112,7 +156,6 @@ namespace Kontiki
                             Language.DeclineQuest(playerLang, playerLang.speakingTo);
                             
                             SetVisibility(false);
-                            SwitchWindow(Window.Start);
                         }break;                     
                     }
                 }break;
@@ -157,6 +200,7 @@ namespace Kontiki
         public void SetVisibility(bool boolean)
         {
             basePanel.SetActive(boolean);
+            SwitchWindow(Window.Start);
         }
     }
 }

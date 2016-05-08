@@ -47,16 +47,6 @@
        Fetch,
        Give
    }
-   
-   public enum LanguageTopic{
-       IHaveQuest,
-       DoYouHaveQuest,
-       WhatDoIGetForQuest,
-       IWillTradeThisForQuestObjective,
-       AcceptQuest,
-       DeclineQuest,
-       Trade
-   }
 }
 
 namespace Kontiki.AI
