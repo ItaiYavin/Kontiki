@@ -43,6 +43,7 @@ namespace Kontiki{
         private List<InteractableIndicator> _occupiedIndicators;
 		private List<InteractableIndicator> _freeIndicators;
 		
+		public bool menuOpen = false;
 
 		void Start () {
 			_player = GetComponent<Character>();
@@ -50,15 +51,14 @@ namespace Kontiki{
 			_freeIndicators = new List<InteractableIndicator>();
 			_occupiedIndicators = new List<InteractableIndicator>();
 		}
-		
 		void Update () {
 			_isDown = Input.GetKey(_key);
 			controller.interactionButtonDown = _isDown;
 			container.SetActive(_isDown);
 			if(_isDown){
 				
-				ScanForInteractableIndicators();
-				UpdateInteractableIndicators();
+				//ScanForInteractableIndicators();
+				//UpdateInteractableIndicators();
 				
 				CheckMouseHoveringOverInteractable();
 				if(_lastTarget != null){
@@ -78,7 +78,29 @@ namespace Kontiki{
 							_player.languageExchanger.speakingTo = target;
 							target.speakingTo = _player.languageExchanger;
 							
-                            windowsHandler.SetVisibility(true);
+							bool hasQuest = false;	
+												
+							Quest[] acceptedQuests = QuestSystem.Instance.acceptedQuests.ToArray();
+							for (int i = 0; i < acceptedQuests.Length; i++)
+							{
+								Fetch quest = (Fetch)acceptedQuests[i];
+								bool playerHasObjective = _player.inventory.CheckInventoryForSpecificItem(quest.objective);
+
+								if(quest.origin == target.character){
+									//is talking to the quest origin 
+									if(playerHasObjective && _player.inventory.RemoveItem(quest.objective)){
+									//Player has objective and player has given objective
+										QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
+										target.character.ChangeColor(Color.white,10f);
+										quest.FinishQuest(_player.inventory);
+										Language.QuestFinished(target.character.languageExchanger, _player.languageExchanger, quest);
+										hasQuest = true;
+									}
+								}
+							}
+							
+							if(!hasQuest)
+                            	windowsHandler.SetVisibility(true);
                         }
 
 							
@@ -99,7 +121,14 @@ namespace Kontiki{
 				_lastTarget = null;
 			}
 			
-			
+			if(menuOpen || _isDown){
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.Confined;
+			}else{
+				Cursor.visible = false;
+				Cursor.lockState = CursorLockMode.Locked;
+			}
+				
 		}
 		
 		public void UpdateInteractableIndicators(){

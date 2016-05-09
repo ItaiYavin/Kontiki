@@ -27,7 +27,7 @@ namespace Kontiki
 	    {
             // Set Size
 	        Vector2 size = originalSizeDelta;
-	        size.x = remap(player.hunger, 0, 100, 0, originalSizeDelta.x);
+	        size.x = remap(player.hunger, 100, 0, 0, originalSizeDelta.x);
             hungerProgress.sizeDelta = size;
         
             // Set Position

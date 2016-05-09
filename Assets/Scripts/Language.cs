@@ -5,6 +5,7 @@ namespace Kontiki{
                 
         public enum Topic{
             IHaveQuest,
+            IHaveNoQuest,
             DoYouHaveQuest,
             WhatDoIGetForQuest,
             IWillTradeThisForQuestObjective,
@@ -25,6 +26,11 @@ namespace Kontiki{
            
             if(receiver != null)
                 receiver.React(sender, Topic.IHaveQuest, quest);
+        }
+        
+        public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver){
+            sender.iconSystem.GenerateIcons(IconType.No);
+            receiver.React(sender, Topic.IHaveNoQuest);
         }
         
         public static void DoYouHaveQuest(LanguageExchanger sender, LanguageExchanger receiver){
@@ -91,12 +97,7 @@ namespace Kontiki{
         }
         
          public static void GotItem(LanguageExchanger sender, ItemType itemGained){
-            switch (itemGained)
-            {
-                case ItemType.Edible:{
-                    sender.iconSystem.GenerateIcons(IconType.Fish);
-                }break;
-            }
+            sender.iconSystem.GenerateIcons(IconType.Fish);
         }
         
     /**

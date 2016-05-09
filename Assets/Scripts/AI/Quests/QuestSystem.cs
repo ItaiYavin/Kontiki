@@ -13,8 +13,7 @@ namespace Kontiki
 	    public List<Quest> quests;
 		public List<Quest> acceptedQuests;
 		
-        public List<int> usedObjectiveColors;
-        public List<int> usedPersonColors;
+        public List<int> usedPersonColors = new List<int>();
 
         // Static singleton property
         public static QuestSystem Instance { get; private set; }
@@ -128,28 +127,5 @@ namespace Kontiki
 			usedPersonColors.Remove(index);
 		}
 		
-		public Color GetUnusedObjectiveColor(){
-			if(usedObjectiveColors.Count == Settings.languageColors.Count){
-				Debug.LogError("All Language Colors has been Used - defaulting to white");
-				return new Color(1,1,1);
-			}
-			
-			int index = Random.Range(0,Settings.languageColors.Count);
-			while(usedObjectiveColors.IndexOf(index) != -1)
-				index = Random.Range(0,Settings.languageColors.Count);
-			usedObjectiveColors.Add(index);
-			return Settings.languageColors[index];
-		}
-		
-		public void FreeUsedObjectiveColor(Color color){
-			FreeUsedObjectiveColor(Settings.languageColors.IndexOf(color));
-		}
-		
-		public void FreeUsedObjectiveColor(int index){
-			if(index < 0 || index >= usedObjectiveColors.Count){
-				return;
-			}
-			usedObjectiveColors.Remove(index);
-		}
 	}
 }

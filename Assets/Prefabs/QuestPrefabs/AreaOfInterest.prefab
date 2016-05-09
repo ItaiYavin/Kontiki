@@ -62,7 +62,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109562}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 1154327dc0ec9db4db00f1a217a479f9, type: 3}
 --- !u!114 &11401672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,6 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce945073f753a834bad5ce0085795734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  areaOfInterestMaxSize: 50
+  areaOfInterestMinSize: 5
+  animationDuration: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

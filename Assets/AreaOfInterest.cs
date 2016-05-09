@@ -8,19 +8,23 @@ namespace Kontiki
 
 		public Material material;
 		
-		protected float areaOfInterestMaxSize = 50f;
-		protected float areaOfInterestMinSize = 5f;
-		protected float animationDuration = 2f;
+		public float areaOfInterestMaxSize = 50f;
+		public float areaOfInterestMinSize = 5f;
+		public float animationDuration = 2f;
 		
 		// Use this for initialization
-		void Start () {
-			
+		void Awake () {
+			if(material == null){
+				material = new Material(GetComponent<MeshRenderer>().material);
+				GetComponent<MeshRenderer>().material = material;
+				material.color = new Color(1,1,1,0);
+			}
 			transform.localScale = new Vector3(areaOfInterestMaxSize, areaOfInterestMaxSize, areaOfInterestMaxSize);
 		}
 		
-		public void RandomlyMoveGameObjectWithinRange(Vector3 position){
-			float ranX = Random.Range(-transform.localScale.x/3, transform.localScale.x/3);
-			float ranZ = Random.Range(-transform.localScale.z/3, transform.localScale.z/3);
+		public void RandomlyMoveGameObjectWithinRange(float scale, Vector3 position){
+			float ranX = Random.Range(-scale/4, scale/4);
+			float ranZ = Random.Range(-scale/4, scale/4);
 			
 			ChangePosition(position + new Vector3(ranX, 0, ranZ));
 		}
@@ -33,15 +37,17 @@ namespace Kontiki
 				newScale = areaOfInterestMinSize;
 
 			ChangeScale(newScale);
-			RandomlyMoveGameObjectWithinRange(position); //Move areaOfInterest so that position is still wihtin areaOfInterest
+			RandomlyMoveGameObjectWithinRange(newScale, position); //Move areaOfInterest so that position is still wihtin areaOfInterest
 		}
 		
 		public void ChangeColor(Color color){
 			if(material == null){
 				material = new Material(GetComponent<MeshRenderer>().material);
 				GetComponent<MeshRenderer>().material = material;
+				material.color = new Color(1,1,1,0);
 			}
-			material.color = color;
+			StartCoroutine(Routine_ChangeColor(color, animationDuration));
+			
 		}
 		
 		public void ChangeScale(float scale){

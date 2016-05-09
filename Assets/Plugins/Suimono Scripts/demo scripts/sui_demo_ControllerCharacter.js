@@ -612,8 +612,10 @@ if (isActive){
 		cameraObject.transform.position = cameraTarget.transform.position+(-cameraObject.transform.forward*followTgtDistance);
 		cameraObject.transform.position.y += camHeight;
 		cameraObject.transform.LookAt(Vector3(targetPosition.x,targetPosition.y + followHeight,targetPosition.z));
-		
+			
+		/*
 		//CHECK CAMERA OCCLUSION and REPOSITION
+	
 		var hits : RaycastHit[];
 		var testPos : Vector3 = cameraTarget.transform.position;
 		testPos.y += followHeight;
@@ -638,10 +640,10 @@ if (isActive){
 				}
 			}
 		}
-
+		*/
 		//set camera offset
 		//cameraObject.transform.position.x += (cameraOffset.x);
-		//cameraObject.transform.position.z += (cameraOffset.y);
+		cameraObject.transform.position.y += (cameraOffset.y);
 		
 		//set camera leaning
 		cameraObject.transform.rotation.eulerAngles.z = cameraLean;

@@ -40,8 +40,6 @@ namespace Kontiki{
                     speakingTo = null;
                     iconSystem.Clear();
                     WindowsHandler.Instance.SetVisibility(false);
-                }else{
-                    
                 }
             }
         }
@@ -55,17 +53,19 @@ namespace Kontiki{
                         if(Settings.debugQuestInfo)
                             Debug.Log("NPC" + (ai.baseRoutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
                             
-                        if(ai.baseRoutine.hasQuestToOffer){
+                        if(ai.baseRoutine.questOffer == null && ai.baseRoutine.hasQuestToOffer){
                             //if NPC react to DoYouHaveQuest from player
                             
-                            Quest quest = ai.baseRoutine.questOffer;
-                            if(quest == null){
-                                quest = QuestSystem.Instance.GenerateQuest(sender.character, character);
-                            }
-                            
+                            Quest quest = QuestSystem.Instance.GenerateQuest(sender.character, character);
+                           
                             Language.IHaveQuest(this, sender, quest); 
                             character.ChangeColor(quest.colorOrigin, 0.5f); 
                             ai.baseRoutine.questOffer = quest;  
+                        }else if(ai.baseRoutine.questOffer != null && ai.baseRoutine.hasQuestToOffer){
+                            
+                            Language.IHaveQuest(this, null, ai.baseRoutine.questOffer); 
+                        }else{
+                            Language.IHaveNoInfoAboutQuest(this, sender);
                         }
                     }
                 }break;
@@ -101,7 +101,6 @@ namespace Kontiki{
                         speakingTo = null;
                         character.ChangeColor(Color.white, 0.5f); 
                         Fetch quest = (Fetch) information[0];
-                        QuestSystem.Instance.FreeUsedObjectiveColor(quest.colorObjective);
                         QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
                         iconSystem.Clear();
                     }
@@ -128,12 +127,17 @@ namespace Kontiki{
                             character.ChangeColor(Color.white,10f);
                             quest.FinishQuest(sender.character.inventory);
                             Language.QuestFinished(this, sender, quest);
+                            
                         }else{
                             Language.IHaveQuest(this, null, quest); 
                         }
                     }else if(quest.CheckIfCharacterHasObjective(character)){
                         // asked person has objective and has given it to the player
                         Language.IHaveQuestObjective(this, sender, quest);
+                        
+                        quest.RemoveAreaOfInterest();
+                        WindowsHandler.Instance.SetVisibility(false);
+                        
                     }else if(quest.HasCharacterBeenAsked(character)){
                         Debug.Log("Character has already been asked");
                         

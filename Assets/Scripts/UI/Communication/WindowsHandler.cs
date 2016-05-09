@@ -31,6 +31,7 @@ namespace Kontiki
 
         // Private Variables & references
         public LanguageExchanger playerLang;
+        public InteractionSystem interactionSystem;
         private GameObject basePanel;
         
         public static WindowsHandler Instance { get; private set; }
@@ -55,6 +56,7 @@ namespace Kontiki
         void Start()
         {
             basePanel = transform.GetChild(0).gameObject;
+            interactionSystem = playerLang.GetComponent<InteractionSystem>();
             questInfoBoxes = new List<ButtonInfo>();
             SetVisibility(false);
         }
@@ -99,8 +101,10 @@ namespace Kontiki
                                 
                                 Debug.Log(q.HasCharacterBeenAsked(playerLang.speakingTo.character));
                                 b.button.interactable = !q.HasCharacterBeenAsked(playerLang.speakingTo.character);
-                                                                
-                                position = new Vector3(i * 100 - 200, 0, 0);
+                                
+                                float x = (i % 6) * 100 - 250;
+                                float y = Mathf.Floor((float)i / 6) * -100;
+                                position = new Vector3(x, y, 0);
                                 b.GetComponent<RectTransform>().anchoredPosition = position;
                                 
                                 
@@ -230,9 +234,11 @@ namespace Kontiki
             }
         }
 
-        public void SetVisibility(bool boolean)
+        public void SetVisibility(bool visible)
         {
-            basePanel.SetActive(boolean);
+            
+            interactionSystem.menuOpen = visible;
+            basePanel.SetActive(visible);
             SwitchWindow(Window.Start);
         }
     }

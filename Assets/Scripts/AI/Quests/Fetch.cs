@@ -72,7 +72,6 @@ namespace Kontiki
 					chanceForKnowledge = Random.Range(0f, 0.5f);
 				}
 
-				Debug.Log(colorObjective);				
 				if(chanceForKnowledge > (chanceForKnowledge - ((float)numberOfAskedPeople / peakNumberOfPeople)))
 				{
 					if(areaOfInterest == null)

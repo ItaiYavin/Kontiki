@@ -31,7 +31,6 @@ namespace Kontiki
 		
 		public void FinishQuest(Inventory characterInventory){
 			characterInventory.PutItemIntoInventoryRegardlessOfDistance(rewardType); // Give reward
-			Object.Destroy(areaOfInterest.gameObject);
 			QuestSystem.Instance.RemoveQuest(this);
 		}
 
@@ -41,6 +40,13 @@ namespace Kontiki
 			Debug.Log(areaOfInterest + " " + colorOrigin);
 			areaOfInterest.ChangeColor(colorOrigin);
 			areaOfInterest.ChangePosition(position); //Randomly move areaOfInterest so that position is still within areaOfInterest
+		}
+		
+		public void RemoveAreaOfInterest(){
+			Color c = colorOrigin;
+			c.a = 0;
+			areaOfInterest.ChangeColor(c);
+			Object.Destroy(areaOfInterest.gameObject,areaOfInterest.animationDuration);
 		}
 
 		public bool CheckCharacterIsInAreaOfInterest(Character character){

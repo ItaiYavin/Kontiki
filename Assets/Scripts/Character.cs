@@ -32,7 +32,7 @@ namespace Kontiki {
         [HideInInspector]
         public bool isSleeping;
 
-        void Awake()
+        void Start()
         {
             inventory = GetComponent<Inventory>();
             languageExchanger = GetComponent<LanguageExchanger>();

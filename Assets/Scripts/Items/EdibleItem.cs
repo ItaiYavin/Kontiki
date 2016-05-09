@@ -12,30 +12,10 @@ namespace Kontiki
         {
             if (person.hunger > 0)
             {
-                /*
-                bool target = false;
-                bool selected = false;
-                */
+                person.hunger -= saturation;
 
-                person.hunger = Mathf.Max(0f, person.hunger - saturation);
-
-                /*
-                if(transform == person.target){
-                    target = true;
-                }
-                if(this == person.selectedItem){
-                    selected = true;
-                }
-                */
                 person.inventory.RemoveItem(this);
                 Destroy(gameObject);
-                /*
-                person.GetInventory().Clean();
-                person.CleanMemory();
-                if(target) person.target = null;
-                if(selected) person.selectedItem = null;
-                person.FillKnownItemList();
-                */
                 
                 
                 return true;

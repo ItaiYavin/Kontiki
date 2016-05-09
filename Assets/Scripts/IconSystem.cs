@@ -31,7 +31,10 @@ namespace Kontiki {
 
 		void FixedUpdate()
 		{
-			
+			if(_iconList.Count != 0 && Vector3.Distance(canvasParent.transform.position, Camera.main.transform.position) > 2f){
+				canvasParent.transform.LookAt(Camera.main.transform);
+				canvasParent.transform.Rotate(0, 180, 0);
+			}
 			if(iconsDestroyTime < Time.time){
 				Clear();
 			}
