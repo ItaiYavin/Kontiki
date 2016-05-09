@@ -402,7 +402,6 @@ MonoBehaviour:
   timeUntilContinuationDesire: 2
   yesNoPanel: {fileID: 107738}
   whyPanel: {fileID: 119610}
-  path: C:\Users\itai.yavin\Desktop\ContinuationDesire\ContinuationDesire
   inputField: {fileID: 11407802}
   OtherCanvases:
   - {fileID: 0}

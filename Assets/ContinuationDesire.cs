@@ -10,19 +10,22 @@ public class ContinuationDesire : MonoBehaviour {
 	public float timeUntilContinuationDesire;
 	public GameObject yesNoPanel;
 	public GameObject whyPanel;
-	public string path;
 	public InputField inputField;
 
 	public GameObject[] OtherCanvases;
 
 	private bool notCurrentlyAsking;
+	private string path;
 
 	// Use this for initialization
 	void Start () {
+		path = Application.dataPath;
+		path = path + "/Continuation_Desire";
 		notCurrentlyAsking = true;
 		whyPanel.SetActive(false);
 		yesNoPanel.SetActive(false);
 		WriteToFile("----------| New Participant |----------" + Environment.NewLine);
+		Debug.Log(path);
 	}
 	
 	// Update is called once per frame
