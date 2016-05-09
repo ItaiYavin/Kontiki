@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   icon: {fileID: 11486690}
+  button: {fileID: 11499116}
   windowHandler: {fileID: 0}
 --- !u!114 &11486690
 MonoBehaviour:

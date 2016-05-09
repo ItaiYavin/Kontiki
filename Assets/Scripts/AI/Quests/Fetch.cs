@@ -72,16 +72,13 @@ namespace Kontiki
 					chanceForKnowledge = Random.Range(0f, 0.5f);
 				}
 
-				Debug.Log(chanceForKnowledge + " - " + ((float)numberOfAskedPeople / (float)peakNumberOfPeople) + " = " + (chanceForKnowledge  - ((float)numberOfAskedPeople / (float)peakNumberOfPeople)));
+				Debug.Log(colorObjective);				
 				if(chanceForKnowledge > (chanceForKnowledge - ((float)numberOfAskedPeople / peakNumberOfPeople)))
 				{
 					if(areaOfInterest == null)
-						CreateAreaOfInterestInWorld(areaOfInterestMaxSize, objectiveHolder.transform.position); //create AreaOfInterest
-					else 
-					{
-						if(areaOfInterest.transform.localScale.x > areaOfInterestMinSize){
-							AdjustAreaOfInterestInWorld(areaOfInterestSizeReductionPercent, objectiveHolder.transform.position);//make new smaller AreaOfInterest
-						}
+						CreateAreaOfInterestInWorld(objectiveHolder.transform.position); //create AreaOfInterest
+					else{
+						areaOfInterest.AdjustAreaOfInterestInWorld(areaOfInterestSizeReductionPercent, objectiveHolder.transform.position);	
 					}
 					numberOfAskedPeople = 0; //reset number of asked people
 					askedPeople.Add(askedCharacter); //Add AI to list of characters that has been asked.
@@ -105,12 +102,5 @@ namespace Kontiki
 
 		}
 
-
-		public override void CheckQuestState(){
-			if(!hasObjective){
-				if(player.inventory.CheckInventoryForSpecificItem(objective))
-					hasObjective = true;
-			}
-		}	
 	}
 }

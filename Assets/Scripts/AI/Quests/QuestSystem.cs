@@ -6,12 +6,12 @@ namespace Kontiki
 {
 	public class QuestSystem : MonoBehaviour
 	{
-	    public EdibleItem reward;       		
+	    public ItemType rewardType;       		
 		public GameObject objectivePrefab;
 		public GameObject areaOfInterestPrefab;
 		private List<Character> charactersWithoutQuestObjects;
-	    private List<Quest> quests;
-		private List<Quest> acceptedQuests;
+	    public List<Quest> quests;
+		public List<Quest> acceptedQuests;
 		
         public List<int> usedObjectiveColors;
         public List<int> usedPersonColors;
@@ -52,6 +52,7 @@ namespace Kontiki
 			GameObject g = Instantiate(objectivePrefab, transform.position, transform.rotation) as GameObject;
 			
 			Item objective = g.GetComponent<Item>();
+			charactersWithoutQuestObjects.Add(questGiver);
 			int i = Random.Range(0, charactersWithoutQuestObjects.Count);
 
             Fetch fetch = new Fetch(questGetter, questGiver);
@@ -65,12 +66,12 @@ namespace Kontiki
 			}
 
 			fetch.objectiveHolder = charactersWithoutQuestObjects[i];
-			fetch.reward = reward;
+			fetch.rewardType = rewardType;
 			fetch.origin = questGiver;
 			fetch.areaOfInterestPrefab = areaOfInterestPrefab;
 			
-			fetch.colorObjective = GetUnusedObjectiveColor();
 			fetch.colorOrigin = GetUnusedPersonColor();
+			fetch.colorObjective = fetch.colorOrigin;
 
 			charactersWithoutQuestObjects.RemoveAt(i);
             quests.Add(fetch);
@@ -79,8 +80,8 @@ namespace Kontiki
 
         public void RemoveQuest(Quest quest)
 	    {
-	        if(!quests.Remove(quest))
-				acceptedQuests.Remove(quest);
+			acceptedQuests.Remove(quest);
+	        quests.Remove(quest);
 	    }
 		
 	    public void AcceptQuest(Quest quest)
@@ -94,6 +95,7 @@ namespace Kontiki
 	
 	
 		public Quest[] GetAcceptedQuests(){
+			Debug.Log("acceptedQuests " + acceptedQuests.Count);
 			return acceptedQuests.ToArray();
 		}
 		
@@ -101,8 +103,7 @@ namespace Kontiki
 		/**
 		 * Colors 
 		 **/
-		
-		
+		 
 		public Color GetUnusedPersonColor(){
 			if(usedPersonColors.Count == Settings.languageColors.Count){
 				Debug.LogError("All Language Colors has been Used - defaulting to white");

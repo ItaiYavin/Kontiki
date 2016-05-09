@@ -118,17 +118,26 @@ namespace Kontiki{
                 }break;
                 case Language.Topic.DoYouHaveInfoAboutQuest:{
                     Fetch quest = (Fetch)information[0];
-                    Debug.Log((quest.origin == character) + " - " + quest.hasObjective);
-                    if(quest.origin == character && quest.hasObjective){
-                        quest.FinishQuest(sender.character.inventory);
-                        Language.QuestFinished(this, sender, quest);
+                    bool playerHasObjective = sender.character.inventory.CheckInventoryForSpecificItem(quest.objective);
+                    
+                    if(quest.origin == character){
+                        //is talking to the quest origin 
+                        if(playerHasObjective && sender.character.inventory.RemoveItem(quest.objective)){
+                        //Player has objective and player has given objective
+                            QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
+                            character.ChangeColor(Color.white,10f);
+                            quest.FinishQuest(sender.character.inventory);
+                            Language.QuestFinished(this, sender, quest);
+                        }else{
+                            Language.IHaveQuest(this, null, quest); 
+                        }
                     }else if(quest.CheckIfCharacterHasObjective(character)){
                         // asked person has objective and has given it to the player
                         Language.IHaveQuestObjective(this, sender, quest);
                     }else if(quest.HasCharacterBeenAsked(character)){
                         Debug.Log("Character has already been asked");
-                        //@TODO(Kasper) Character has been asked = indicate to user
                         
+                        Language.IHaveAlreadyBeenAsked(this,sender,quest);
                     }else{
                         if(quest.CheckIfCharacterHasInfoAboutQuest(character)){
                             //has information
@@ -138,11 +147,10 @@ namespace Kontiki{
                         }else{
                             //has no information
                             Debug.Log("Character has no Information");
+                            Language.IHaveNoInfoAboutQuest(this, sender, quest);
                         }
                     }
-                    speakingTo.iconSystem.Clear();
                     speakingTo = null;
-                    iconSystem.Clear();
                 }break;
                 case Language.Topic.IHaveInfoAboutQuest:{
                     if(isPlayer){

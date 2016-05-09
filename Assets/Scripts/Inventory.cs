@@ -20,11 +20,6 @@ namespace Kontiki {
             _character = GetComponent<Character>();
         }
 
-	    void Update () {
-            CheckIfInventoryItemIsPressed();
-
-        }
-
         public void Clean(){
             for(int i = 0; i < _inventoryItems.Length; i++){
                 if(_inventoryItems[i] == null){
@@ -33,6 +28,11 @@ namespace Kontiki {
             }
         }
 
+        public bool PutItemIntoInventoryRegardlessOfDistance(ItemType itemType){
+            EdibleItem item = (EdibleItem)Instantiate(applePrefab, transform.position, transform.rotation);
+            Language.GotItem(_character.languageExchanger, itemType);
+            return PutItemIntoInventory(item);
+        }
         public bool PutItemIntoInventoryRegardlessOfDistance(Item item){
             for (int i = 0; i < inventorySize; i++)
             {
@@ -76,12 +76,10 @@ namespace Kontiki {
         }
 
         public void GetItemFromTrade(ItemType itemType){
-            //TODO when more items are in the game, a switch case has to be made with the enum
             EdibleItem item = (EdibleItem)Instantiate(applePrefab, transform.position, transform.rotation);
             
-            
             Language.GotItem(_character.languageExchanger, itemType);
-            PutItemIntoInventory(item);
+            PutItemIntoInventoryRegardlessOfDistance(item);
         }
 
         public bool RemoveItem(Item item){
@@ -95,26 +93,15 @@ namespace Kontiki {
             return false;
         }
 
-        //TODO Find better name
-        void CheckIfInventoryItemIsPressed()
-        {
-            for(int i = 1; i <= inventorySize; i++)
-            {
-                if(Input.GetKeyUp(""+i))
-                {
-                    UseInventoryItem(i-1); // Zero index start
-                }
-            }
-        }
-
         public void UseInventoryItem(int i)
         {
             if (_inventoryItems[i] == null) return;
 
-            _inventoryItems[i].UseItem(_character);
-            Item item = _inventoryItems[i];
-            _inventoryItems[i] = null;
-            Destroy(item);
+            if(_inventoryItems[i].UseItem(_character)){
+                Item item = _inventoryItems[i];
+                _inventoryItems[i] = null;
+                Destroy(item);
+            }
         }
 
         public Item GetInventoryItem(int i) {

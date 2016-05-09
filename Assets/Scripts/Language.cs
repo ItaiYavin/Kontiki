@@ -51,33 +51,38 @@ namespace Kontiki{
         }
         
         
-        public static void DeclineQuest(LanguageExchanger sender, LanguageExchanger receiver){
+        public static void DeclineQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
             sender.iconSystem.GenerateIcons(IconType.No);
-            receiver.React(sender, Topic.DeclineQuest);
+            receiver.React(sender, Topic.DeclineQuest, quest);
         }
         
         public static void IHaveQuestObjective(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
             Fetch f = (Fetch) quest;
             Debug.Log("i have quest object");
-            sender.iconSystem.GenerateIcons(f.colorObjective, f.colorOrigin, IconType.QuestObjective, IconType.Find, IconType.Person);
+            sender.iconSystem.GenerateIcons(f.colorObjective, f.colorOrigin, IconType.QuestObjective, IconType.TakeTo, IconType.Person);
             
             receiver.React(sender, Topic.IHaveQuestObjective);
         }
         
         public static void QuestFinished(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
             sender.iconSystem.GenerateIcons(IconType.Yes);
-            receiver.character.inventory.GetItemFromTrade(ItemType.Edible);
             receiver.React(sender, Topic.QuestFinished);
         }
-        
-        
         
         public static void DoYouHaveInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
             
             receiver.React(sender, Language.Topic.DoYouHaveInfoAboutQuest,quest);
         }
         public static void IHaveInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
-            
+            sender.iconSystem.GenerateIcons(IconType.Find, IconType.Yes);
+        }
+        
+        public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.iconSystem.GenerateIcons(IconType.No, IconType.Find);
+        }
+        
+        public static void IHaveAlreadyBeenAsked(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.iconSystem.GenerateIcons(IconType.No);
         }
         
         public static void Trade(LanguageExchanger sender, LanguageExchanger receiver, ItemType itemGained, ItemType itemSold){

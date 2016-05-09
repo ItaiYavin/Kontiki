@@ -42,7 +42,7 @@ namespace Kontiki
             }
             else
             {
-                Debug.Log(name + " is not hungry, " + name + " is not consumed");
+                Debug.Log(person.name + " is not hungry, " + name + " is not consumed");
 
                 return false;
             }

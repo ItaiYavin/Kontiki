@@ -44,6 +44,21 @@ namespace Kontiki {
         void FixedUpdate()
         {
             RefreshInventory();
+            CheckIfInventoryItemIsPressed();
+
+        }
+        
+
+        //TODO Find better name
+        void CheckIfInventoryItemIsPressed()
+        {
+            for(int i = 1; i <= inventory.inventorySize; i++)
+            {
+                if(Input.GetKeyUp(""+i))
+                {
+                    inventory.UseInventoryItem(i-1); // Zero index start
+                }
+            }
         }
 
         private void RefreshInventory()
