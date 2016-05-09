@@ -34,6 +34,11 @@ namespace Kontiki {
 
         void Start()
         {
+            if(!isPlayer){
+                hunger = Random.Range(Settings.hungerRange.min, Settings.hungerRange.max);
+                energy = Random.Range(Settings.energyRange.min, Settings.energyRange.max);
+            }
+
             inventory = GetComponent<Inventory>();
             languageExchanger = GetComponent<LanguageExchanger>();
             

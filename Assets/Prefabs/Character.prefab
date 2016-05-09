@@ -242,8 +242,10 @@ GameObject:
   - 114: {fileID: 11422972}
   - 114: {fileID: 11408030}
   - 114: {fileID: 11406724}
-  - 114: {fileID: 11419990}
+  - 114: {fileID: 11483542}
   - 136: {fileID: 13672314}
+  - 114: {fileID: 11499854}
+  - 114: {fileID: 11419990}
   m_Layer: 11
   m_Name: Character
   m_TagString: Untagged
@@ -858,7 +860,6 @@ MonoBehaviour:
   iconPrefab: {fileID: 106842, guid: 032e4bc0cb047d54fbd713fe6d817238, type: 2}
   canvasParent: {fileID: 22346734}
   iconDuration: 10
-  offset: {x: 0, y: 0, z: 0}
   iconsDestroyTime: 0
 --- !u!114 &11408030
 MonoBehaviour:
@@ -889,11 +890,10 @@ MonoBehaviour:
   energy: 1
   hunger: 100
   inventory: {fileID: 0}
-  iconSystem: {fileID: 0}
+  languageExchanger: {fileID: 0}
   modelRenderer: {fileID: 13735800}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
-  characterInteracting: {fileID: 0}
 --- !u!114 &11414264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiConfigs:
-  - aiId: d2213d02-f316-47c0-9c25-761303e1b758
+  - aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
     intervalMin: 1
     intervalMax: 1
     startDelayMin: 0
@@ -955,6 +955,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   memory: []
+--- !u!114 &11483542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae1ddda42acaf0428debd8ca6267d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speakingTo: {fileID: 0}
+  iconSystem: {fileID: 0}
+  character: {fileID: 0}
+  ai: {fileID: 0}
 --- !u!114 &11490072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -976,6 +991,21 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 100
+--- !u!114 &11499854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70f9f69cbace624fa5aaddbc1e78899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 106842, guid: 032e4bc0cb047d54fbd713fe6d817238, type: 2}
+  canvasParent: {fileID: 22346734}
+  iconDuration: 0
+  iconsDestroyTime: 0
 --- !u!136 &13672314
 CapsuleCollider:
   m_ObjectHideFlags: 1
