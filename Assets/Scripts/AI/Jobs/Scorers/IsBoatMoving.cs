@@ -18,7 +18,7 @@ namespace Kontiki.AI
 			AIContext ai = (AIContext)context;
             JobWithBoat job = (JobWithBoat) ai.job;
         	NavMeshAgent agent = job.boat.agent;
-        	bool b = job.boat.agent.remainingDistance > 0;
+        	bool b = job.boat.agent.remainingDistance > 0 && job.boat.agent.remainingDistance < Mathf.Infinity;
 
             if(ai.debugAI_Job)
                 Debug.Log(ai.self.name + "'s boat is " + (b ? "": "not") + " moving, distance to target " +  job.boat.agent.remainingDistance + " units");

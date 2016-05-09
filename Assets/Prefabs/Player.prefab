@@ -402,7 +402,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460596}
-  - 136: {fileID: 13647294}
   - 54: {fileID: 5432500}
   - 114: {fileID: 11472946}
   - 81: {fileID: 8185146}
@@ -413,6 +412,7 @@ GameObject:
   - 114: {fileID: 11472708}
   - 114: {fileID: 11451478}
   - 114: {fileID: 11461922}
+  - 64: {fileID: 6474302}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -766,7 +766,7 @@ Transform:
   m_GameObject: {fileID: 190374}
   m_LocalRotation: {x: 0, y: -0.98279786, z: 0, w: 0.18468478}
   m_LocalPosition: {x: 46.2, y: 53.6, z: 205.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 441272}
   - {fileID: 425348}
@@ -952,6 +952,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!64 &6474302
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: 1d2f802ea2762d946a5bb76fba2c3633, type: 3}
 --- !u!81 &8185146
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1231,19 +1243,6 @@ MonoBehaviour:
   inventorySize: 9
   applePrefab: {fileID: 11414606, guid: 3097f4486a96e194ebc9de57d8db1d7a, type: 2}
   _inventoryItems: []
---- !u!136 &13647294
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190374}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 13.6
-  m_Direction: 1
-  m_Center: {x: 0, y: 5.79, z: 0}
 --- !u!137 &13778474
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1312,11 +1311,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 1, y: 6.8, z: 1}
+  m_Extents: {x: 0.26, y: 5.565, z: 0.26}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 5.79, z: 0}
+  m_Center: {x: 0, y: 5.3, z: 0}
   m_TimeToStationary: 0.5
 --- !u!223 &22340478
 Canvas:
