@@ -25,7 +25,6 @@ public class ContinuationDesire : MonoBehaviour {
 		whyPanel.SetActive(false);
 		yesNoPanel.SetActive(false);
 		WriteToFile("----------| New Participant |----------" + Environment.NewLine);
-		Debug.Log(path);
 	}
 	
 	// Update is called once per frame
@@ -36,6 +35,7 @@ public class ContinuationDesire : MonoBehaviour {
 			notCurrentlyAsking = false;
 			yesNoPanel.SetActive(true);
 			SetActiveOtherCanvases(false);
+			Time.timeScale = 0;
 		}
 	}
 
@@ -61,7 +61,7 @@ public class ContinuationDesire : MonoBehaviour {
 		inputField.text = "";
 		SetActiveOtherCanvases(true);
 		timeUntilContinuationDesire += Time.time;
-
+		Time.timeScale = 1f;
 	}
 
 	public void StartWhyPanel(){
