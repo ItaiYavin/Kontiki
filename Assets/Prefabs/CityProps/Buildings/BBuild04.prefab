@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 460226}
   - 33: {fileID: 3309318}
   - 23: {fileID: 2360962}
-  - 95: {fileID: 9599152}
   - 65: {fileID: 6542584}
   m_Layer: 0
   m_Name: BBuild04
@@ -78,23 +77,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.71142, y: 33.84654, z: 6.354791}
   m_Center: {x: -0.1099031, y: -13.923268, z: -0.04368377}
---- !u!95 &9599152
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154242}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b457929b11bc7834287655b93e592f24, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

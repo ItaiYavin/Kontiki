@@ -19,12 +19,11 @@ var wetAmount : float = 0.0;
 var gSlope : float = 0.0;
 var useSlope : float = 0.0;
 
-var anim : Animator;
 
 //PRIVATE VARIABLES
 private var cameraObject : GameObject;
 private var physRigidbody : Rigidbody;
-private var physAnimation : Animation;
+private var physAnimation : Animator;
 //private var cameraControl : sui_demo_Controller2;
 //private var gunControl : Object_Gun;
 private var currClip : String;
@@ -65,17 +64,16 @@ private var boneLFoot : Transform;
 
 function Start () {
 
-	//log components
-	physRigidbody = this.GetComponent.<Rigidbody>();
-	physAnimation = this.GetComponent.<Animation>();
+    //log components
+    physRigidbody = this.GetComponent.<Rigidbody>();
+    physAnimation = this.transform.GetChild(0).GetComponent.<Animator>();
 	
-	//start animations
-	useClip = "anim_miho_idle_normal";
-	defaultClip = useClip;
+    //start animations
+    useClip = "anim_miho_idle_normal";
+    defaultClip = useClip;
 	
-	//set important bones
-	SetBoneTransforms();
-	
+    //set important bones
+    //SetBoneTransforms();
 }
 
 
@@ -87,203 +85,195 @@ function Start () {
 function LateUpdate () {
 
 
-	//UNDERWATER status get's sent to this
-	//component by the camera controller component.
-	if (!isInWater){
-		wetAmount -= (Time.deltaTime * 0.05);
-		wetAmount = Mathf.Clamp(wetAmount,0.0,1.0);
-	} else {
-		wetAmount = 1.0;
-	}
-	
-	
-	//set animation clips
-	useClip = defaultClip;
-	playSpeed = 1.0;
-	
-	if (!isInBoat){
-	
-		//useClip = "anim_miho_idle_normal";
-		anim.SetBool("isSitting", true);
-		fadeSpeed = 1.2;
-		playSpeed = 1.0;
+    //UNDERWATER status get's sent to this
+    //component by the camera controller component.
+    if (!isInWater){
+        wetAmount -= (Time.deltaTime * 0.05);
+        wetAmount = Mathf.Clamp(wetAmount,0.0,1.0);
+    } else {
+        wetAmount = 1.0;
+    }
 
-		/*if (isWalking){
-			//useClip = "anim_miho_walk_normal";
-			anim.SetBool("isMoving", true);
-			fadeSpeed = 0.5;
-			playSpeed = 1.1;
-			if (moveForward != 0.0 && moveSideways != 0.0){
-				fadeSpeed = 0.5;
-				playSpeed = 1.1;
-			}
-		}*/
-		
-		/*if (isRunning){
-			anim.SetBool("isMoving", true);
-		
-			//useClip = "anim_miho_run_normal";
-			fadeSpeed = 0.8;
-			playSpeed = 0.9;
-			if (moveForward != 0.0 && moveSideways != 0.0){
-				fadeSpeed = 0.8;
-				playSpeed = 0.9;
-			}
-		}*/
+	
+	
+    //set animation clips
+    useClip = defaultClip;
+    playSpeed = 1.0;
+	
+    if (!isInBoat){
+	
+        useClip = "anim_miho_idle_normal";
+        fadeSpeed = 1.2;
+        playSpeed = 1.0;
 
-		if (isSprinting || isWalking || isRunning){
-			anim.SetBool("isMoving", true);
-			//useClip = "anim_miho_sprint_normal";
-			fadeSpeed = 1.3;
-			playSpeed = 1.1;
-			if (moveForward != 0.0 && moveSideways != 0.0){
-				fadeSpeed = 0.3;
-				playSpeed = 1.1;
-			}
-		}
+        /*if (isWalking){
+            useClip = "anim_miho_walk_normal";
+            fadeSpeed = 0.5;
+            playSpeed = 1.1;
+            if (moveForward != 0.0 && moveSideways != 0.0){
+                fadeSpeed = 0.5;
+                playSpeed = 1.1;
+            }
+        }*/
+		
+        if (isRunning){
+            useClip = "anim_miho_run_normal";
+            fadeSpeed = 0.8;
+            playSpeed = 0.9;
+            if (moveForward != 0.0 && moveSideways != 0.0){
+                fadeSpeed = 0.8;
+                playSpeed = 0.9;
+            }
+        }
+
+        if (isSprinting){
+            useClip = "anim_miho_sprint_normal";
+            fadeSpeed = 1.3;
+            playSpeed = 1.1;
+            if (moveForward != 0.0 && moveSideways != 0.0){
+                fadeSpeed = 0.3;
+                playSpeed = 1.1;
+            }
+        }
 
 		
-		//if (isFalling){
-		//	useClip = "anim_miho_fall_normal";
-		//	fadeSpeed = 0.4;
-		//	playSpeed = 1.0;
-		//}	
+        //if (isFalling){
+        //	useClip = "anim_miho_fall_normal";
+        //	fadeSpeed = 0.4;
+        //	playSpeed = 1.0;
+        //}	
 		
-		if (isInWater){
-			wetAmount = 1.0;
-			//useClip = "anim_miho_run_normal";
-			//fadeSpeed = 0.3;
-			//playSpeed = 1.0;
-		}
+        if (isInWater){
+            wetAmount = 1.0;
+            //useClip = "anim_miho_run_normal";
+            //fadeSpeed = 0.3;
+            //playSpeed = 1.0;
+        }
 		
-		if (isInWaterDeep){
-			wetAmount = 1.0;
-			if (isWalking){
-				useClip = "anim_miho_walk_water";
-				fadeSpeed = 0.8;
-				playSpeed = 0.8;
-			}
-		}	
+        if (isInWaterDeep){
+            wetAmount = 1.0;
+            if (isWalking){
+                useClip = "anim_miho_walk_water";
+                fadeSpeed = 0.8;
+                playSpeed = 0.8;
+            }
+        }	
 		
-		if (isUnderWater){
-			wetAmount = 1.0;
-			anim.SetBool("isSwimming", true);
-			//useClip = "anim_miho_swim_idle";
-			fadeSpeed = 1.2;
-			playSpeed = 1.0;
-			if (isWalking || isRunning){
-				anim.SetBool("isSwimming", true);
-				//useClip = "anim_miho_swim_forward";
-				fadeSpeed = 1.8;
-				playSpeed = 1.0;
-				if (isRunning) playSpeed = 1.4;
-			}
-			if (physRigidbody != null) physRigidbody.useGravity = false;
-			if (physRigidbody != null) physRigidbody.Sleep();
-		}
+        if (isUnderWater){
+            wetAmount = 1.0;
+            useClip = "anim_miho_swim_idle";
+            fadeSpeed = 1.2;
+            playSpeed = 1.0;
+            if (isWalking || isRunning){
+                useClip = "anim_miho_swim_forward";
+                fadeSpeed = 1.8;
+                playSpeed = 1.0;
+                if (isRunning) playSpeed = 1.4;
+            }
+            if (physRigidbody != null) physRigidbody.useGravity = false;
+            if (physRigidbody != null) physRigidbody.Sleep();
+        }
 
 
-		if (isAtSurface){
-			anim.SetBool("isSwimming", true);
-			//useClip = "anim_miho_swim_surface_idle";
-			fadeSpeed = 0.8;
-			playSpeed = 1.0;
-			if (physRigidbody != null) physRigidbody.useGravity = true;
-		}
+        if (isAtSurface){
+            useClip = "anim_miho_swim_surface_idle";
+            fadeSpeed = 0.8;
+            playSpeed = 1.0;
+            if (physRigidbody != null) physRigidbody.useGravity = true;
+        }
 	
 	
-	} else if (isInBoat){
-		anim.SetBool("isSitting", true);
-		//useClip = "anim_miho_boat_sit_idle";
-		fadeSpeed = 0.4;
-		playSpeed = 1.0;
-	}	
+    } else if (isInBoat){
+        useClip = "anim_miho_boat_sit_idle";
+        fadeSpeed = 0.4;
+        playSpeed = 1.0;
+    }	
 	
 	
-	//useClip = "anim_miho_swim_idle";
-	animTime += Time.deltaTime;
+    //useClip = "anim_miho_swim_idle";
+    animTime += Time.deltaTime;
 	
 	
-	//play animations
-	//if (currClip != useClip){
+    //play animations
+    //if (currClip != useClip){
 
-		//normalize animation clips
-		if (physAnimation[useClip] != null && physAnimation[currClip] != null){
-			physAnimation[useClip].time = physAnimation[currClip].time;
-		}
+    //normalize animation clips
+    /*if (physAnimation[useClip] != null && physAnimation[currClip] != null){
+        physAnimation[useClip].time = physAnimation[currClip].time;
+    }
 		
-		//set new clip
-		currClip = useClip;
-		animTime = 0.0;
-		if (physAnimation[currClip] != null){
-			physAnimation.CrossFade(currClip,fadeSpeed);
-			physAnimation[currClip].speed = playSpeed;
+    //set new clip
+    currClip = useClip;
+    animTime = 0.0;
+    if (physAnimation[currClip] != null){
+        physAnimation.CrossFade(currClip,fadeSpeed);
+        physAnimation[currClip].speed = playSpeed;
 
 
-			//ANIMATION BLENDS
+        //ANIMATION BLENDS
 
-			//cross fade slope walk
-			if (gSlope > 0.0){
-				if (useSlope > 15.0 && useSlope < 90.0 && (isWalking || isRunning || isSprinting)){
-					physAnimation.Blend("anim_miho_walk_water",((useSlope / 90.0))*2.0,0.1);
-				}
-			}
+        //cross fade slope walk
+        if (gSlope > 0.0){
+            if (useSlope > 15.0 && useSlope < 90.0 && (isWalking || isRunning || isSprinting)){
+                physAnimation.Blend("anim_miho_walk_water",((useSlope / 90.0))*2.0,0.1);
+            }
+        }
 
-			//falling animation
-			if (isFalling){
-				physAnimation.Blend("anim_miho_fall_normal",1.0,0.1);
-			}
+        //falling animation
+        if (isFalling){
+            physAnimation.Blend("anim_miho_fall_normal",1.0,0.1);
+        }
 				
 
-		} else {
-			Debug.Log("animation "+currClip+" cannot be found!");
-		}
-	//}
+    } else {
+        Debug.Log("animation "+currClip+" cannot be found!");
+    }
+    //}
 
 
 
 
-	//BLINK
-	//check for blinking eyes
-	if (!doBlink){
-		blinkTime += Time.smoothDeltaTime;
-		if (blinkTime > randBlinkNum){
-			blinkTime=0.0;
-			randBlinkNum = Random.Range(2.0,4.0);
-			doBlink = true;
-		}
-	}
+    //BLINK
+    //check for blinking eyes
+    if (!doBlink){
+        blinkTime += Time.smoothDeltaTime;
+        if (blinkTime > randBlinkNum){
+            blinkTime=0.0;
+            randBlinkNum = Random.Range(2.0,4.0);
+            doBlink = true;
+        }
+    }
 
 
-	//HEAD AMBIENT
-	//check for blinking eyes
-	//if (!doHeadAmb){
-		headTime += Time.smoothDeltaTime;
-		if (headTime > randHeadNum){
-			headTime=0.0;
-			var checkHeadMove : float = Random.Range(0.0,5.0);
-			if (checkHeadMove > 0.3){
-				headTgt = 0.0;
-			} else {
-				headTgt = Random.Range(-80.0,80.0);
-			}
-			randHeadNum = Random.Range(2.0,7.0);
-			randHeadSpd = Random.Range(1.0,5.0);
+    //HEAD AMBIENT
+    //check for blinking eyes
+    //if (!doHeadAmb){
+    headTime += Time.smoothDeltaTime;
+    if (headTime > randHeadNum){
+        headTime=0.0;
+        var checkHeadMove : float = Random.Range(0.0,5.0);
+        if (checkHeadMove > 0.3){
+            headTgt = 0.0;
+        } else {
+            headTgt = Random.Range(-80.0,80.0);
+        }
+        randHeadNum = Random.Range(2.0,7.0);
+        randHeadSpd = Random.Range(1.0,5.0);
 			
 			
-			//doHeadAmb = true;
-		}
+        //doHeadAmb = true;
+    }
 		
-		if (isRunning || isSprinting){
-			headTgt = 0.0;
-			randHeadSpd = 5.0;
-		}
+    if (isRunning || isSprinting){
+        headTgt = 0.0;
+        randHeadSpd = 5.0;
+    }
 		
-		headRand = Mathf.SmoothStep(headRand, headTgt, Time.deltaTime*randHeadSpd);
-		eyeRand = Mathf.SmoothStep(eyeRand, (headTgt*0.75), Time.deltaTime*(randHeadSpd*2.0));
-		if (eyeRand >= 35.0) eyeRand = 35.0;
-		if (eyeRand <= -35.0) eyeRand = -35.0;
-	//}
+    headRand = Mathf.SmoothStep(headRand, headTgt, Time.deltaTime*randHeadSpd);
+    eyeRand = Mathf.SmoothStep(eyeRand, (headTgt*0.75), Time.deltaTime*(randHeadSpd*2.0));
+    if (eyeRand >= 35.0) eyeRand = 35.0;
+    if (eyeRand <= -35.0) eyeRand = -35.0;
+    //}
 
 
 
@@ -291,42 +281,42 @@ function LateUpdate () {
 
 
 	
-//}
+    //}
 
 
 
 
-//function LateUpdate(){
+    //function LateUpdate(){
 
-	//----------------------------
-	// PROCEDURAL ANIMATIONS
-	//----------------------------
+    //----------------------------
+    // PROCEDURAL ANIMATIONS
+    //----------------------------
 	
-	//blink
-	if (doBlink){
-	var eyeAnimTime = 0.5;
-		eyelidTime += Time.deltaTime; 
-		if (eyelidTime <= eyeAnimTime){
-			boneLEyelid.transform.localEulerAngles.z = Mathf.SmoothStep(265.0,295.0,eyelidTime*5.0);
-			boneREyelid.transform.localEulerAngles.z = Mathf.SmoothStep(265.0,295.0,eyelidTime*5.0);
-		}
-		if (eyelidTime > eyeAnimTime){
-			eyelidTime = 0.0;
-			doBlink = false;
-		}
-	} else {
-		boneLEyelid.transform.localEulerAngles.z = 295.0;
-		boneREyelid.transform.localEulerAngles.z = 295.0;
-	}
+    //blink
+    if (doBlink){
+        var eyeAnimTime = 0.5;
+        eyelidTime += Time.deltaTime; 
+        if (eyelidTime <= eyeAnimTime){
+            boneLEyelid.transform.localEulerAngles.z = Mathf.SmoothStep(265.0,295.0,eyelidTime*5.0);
+            boneREyelid.transform.localEulerAngles.z = Mathf.SmoothStep(265.0,295.0,eyelidTime*5.0);
+        }
+        if (eyelidTime > eyeAnimTime){
+            eyelidTime = 0.0;
+            doBlink = false;
+        }
+    } else {
+        boneLEyelid.transform.localEulerAngles.z = 295.0;
+        boneREyelid.transform.localEulerAngles.z = 295.0;
+    }
 
 
 
-	//head ambient movement
-	boneHead.transform.localEulerAngles.x = headRand;
-	boneNeck.transform.localEulerAngles.x = (headRand * 0.5);
-	boneLEye.transform.localEulerAngles.x = eyeRand;
-	boneREye.transform.localEulerAngles.x = eyeRand;
-	
+    //head ambient movement
+    boneHead.transform.localEulerAngles.x = headRand;
+    boneNeck.transform.localEulerAngles.x = (headRand * 0.5);
+    boneLEye.transform.localEulerAngles.x = eyeRand;
+    boneREye.transform.localEulerAngles.x = eyeRand;
+	*/
 
 }
 
@@ -335,9 +325,9 @@ function LateUpdate () {
 
 function resetPos(){
 
-	var saveY : float = this.transform.position.y;
-	this.transform.position = boneRoot.transform.position;
-	this.transform.position.y = saveY;
+    var saveY : float = this.transform.position.y;
+    this.transform.position = boneRoot.transform.position;
+    this.transform.position.y = saveY;
 
 }
 
@@ -346,24 +336,24 @@ function resetPos(){
 
 function SetBoneTransforms(){
 
-	// Storing reference to some specific bone
-	// objects so we can use them later in the code.
+    // Storing reference to some specific bone
+    // objects so we can use them later in the code.
 	
-	boneRoot = transform.Find("Bip01");
-	boneNeck = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck");
-	boneHead = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head");
-	boneLEye = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head/Bip01 EyeLeft");
-	boneREye = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head/Bip01 EyeRight");
-	boneLEyelid = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head/Bip01 EyeLidLeft");
-	boneREyelid = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head/Bip01 EyeLidRight");
-	boneRHand = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand");
-	//boneprop = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand/Bip01 Prop");
+    boneRoot = transform.Find("Bip01");
+    boneNeck = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck");
+    boneHead = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head");
+    boneLEye = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head/Bip01 EyeLeft");
+    boneREye = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head/Bip01 EyeRight");
+    boneLEyelid = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head/Bip01 EyeLidLeft");
+    boneREyelid = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 Head/Bip01 EyeLidRight");
+    boneRHand = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand");
+    //boneprop = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01 Neck/Bip01 R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand/Bip01 Prop");
 	
-	boneRFoot = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 R Thigh/Bip01 R Calf/Bip01 R Foot");
-	boneLFoot = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 L Thigh/Bip01 L Calf/Bip01 L Foot");
+    boneRFoot = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 R Thigh/Bip01 R Calf/Bip01 R Foot");
+    boneLFoot = transform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 L Thigh/Bip01 L Calf/Bip01 L Foot");
 	
-	//head beginning position
-	boneHead.transform.localEulerAngles.x = headRand;
+    //head beginning position
+    boneHead.transform.localEulerAngles.x = headRand;
 
 
 }
