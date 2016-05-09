@@ -10,15 +10,17 @@ public class ContinuationDesire : MonoBehaviour {
 	public float timeUntilContinuationDesire;
 	public GameObject yesNoPanel;
 	public GameObject whyPanel;
-	public string path;
 	public InputField inputField;
 
 	public GameObject[] OtherCanvases;
 
 	private bool notCurrentlyAsking;
+	private string path;
 
 	// Use this for initialization
 	void Start () {
+		path = Application.dataPath;
+		path = path + "/Continuation_Desire";
 		notCurrentlyAsking = true;
 		whyPanel.SetActive(false);
 		yesNoPanel.SetActive(false);
@@ -33,6 +35,7 @@ public class ContinuationDesire : MonoBehaviour {
 			notCurrentlyAsking = false;
 			yesNoPanel.SetActive(true);
 			SetActiveOtherCanvases(false);
+			Time.timeScale = 0;
 		}
 	}
 
@@ -58,7 +61,7 @@ public class ContinuationDesire : MonoBehaviour {
 		inputField.text = "";
 		SetActiveOtherCanvases(true);
 		timeUntilContinuationDesire += Time.time;
-
+		Time.timeScale = 1f;
 	}
 
 	public void StartWhyPanel(){
