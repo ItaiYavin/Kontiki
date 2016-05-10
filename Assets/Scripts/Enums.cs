@@ -25,7 +25,10 @@
     {
         Home,
         Trader,
-        Boat
+        Boat,
+        Plaza,
+        DeliveryOrigin,
+        DeliveryDestination
     }
     
     public enum Window

@@ -251,7 +251,6 @@ GameObject:
   - 224: {fileID: 22436266}
   - 223: {fileID: 22325014}
   - 114: {fileID: 11449028}
-  - 114: {fileID: 11488916}
   m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
@@ -617,7 +616,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22436266}
@@ -896,7 +895,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 100
 --- !u!114 &11450312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -925,6 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   home: {fileID: 0}
   trader: {fileID: 0}
+  plaza: {fileID: 0}
   hasQuestToOffer: 0
 --- !u!114 &11461454
 MonoBehaviour:
@@ -940,11 +940,16 @@ MonoBehaviour:
   isPlayer: 0
   energy: 1
   hunger: 0
+  social: 1
   inventory: {fileID: 0}
   languageExchanger: {fileID: 0}
   modelRenderer: {fileID: 13732512}
+  isTalking: 0
+  socialPartner: {fileID: 0}
+  animationController: {fileID: 0}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
+  wantsToTalk: 0
 --- !u!114 &11466818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1005,22 +1010,6 @@ MonoBehaviour:
   canvasParent: {fileID: 22325014}
   iconDuration: 0
   iconsDestroyTime: 0
---- !u!114 &11488916
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &11496226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1033,16 +1022,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boat: {fileID: 0}
+  boatPrefab: {fileID: 164580, guid: 555ac11b44708e04eaf96beb89418fc0, type: 2}
   port: {fileID: 0}
   isReturningToPort: 0
-  fishingSpots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  isScavenger: 0
+  fishingSpots: []
   selectedFishingSpot: {fileID: 0}
   isFishing: 0
   hasItems: 0
@@ -1150,7 +1134,7 @@ Canvas:
   m_GameObject: {fileID: 147166}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1169,15 +1153,15 @@ RectTransform:
   m_GameObject: {fileID: 147166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 439294}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4}
+  m_SizeDelta: {x: 600, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

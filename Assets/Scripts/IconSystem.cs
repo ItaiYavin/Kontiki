@@ -17,15 +17,17 @@ namespace Kontiki {
 		private List<Image> _iconList;
 
 		// Display variables //
-		[Header("Display Variables")]
-		[Tooltip("Duration icons stay on screen")]
-		public float iconDuration = 10f;
+		[HideInInspector] public float iconDuration = 10f;
 		
 		[HideInInspector]
 		public float iconsDestroyTime;
 
 		void Start()
 		{
+			if(GetComponent<Character>().isPlayer)
+				iconDuration = Settings.playerIconDuration;
+			else
+				iconDuration = Settings.npcIconDuration;
 			_iconList = new List<Image>();
 		}
 

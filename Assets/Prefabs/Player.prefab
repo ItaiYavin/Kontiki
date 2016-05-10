@@ -1101,16 +1101,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   energy: 1
-  social: 1
   hunger: 0
+  social: 1
   inventory: {fileID: 0}
   languageExchanger: {fileID: 0}
-  socialPartner: {fileID: 0}
   modelRenderer: {fileID: 13766774}
+  isTalking: 0
+  socialPartner: {fileID: 0}
   animationController: {fileID: 0}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
-  isTalking: 0
   wantsToTalk: 0
 --- !u!114 &11451478
 MonoBehaviour:

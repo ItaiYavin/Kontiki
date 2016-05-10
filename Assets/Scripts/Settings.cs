@@ -34,10 +34,15 @@ namespace Kontiki {
         public static float hungerIncrementPerSec;
         public static float energyIncrementPerSec;
         public static float energyDecrementPerSec;
+        public static float socialDecrementPerSec;
+        public static float socialIncrementPerSec;
         public static RangeAttribute hungerRange    = new RangeAttribute(0, 100);
         public static RangeAttribute energyRange    = new RangeAttribute(0, 1);
+        public static RangeAttribute socialRange    = new RangeAttribute(0, 1);
         
         public static float stopInteractingDistance;
+        public static float minDeliveryRouteRange;
+        public static float deliveryScanRange;
         
          /**
           * Jobs
@@ -50,6 +55,8 @@ namespace Kontiki {
         
         public static List<Transform> fishingSpots;
         public static List<Transform> scavengingSpots;
+        
+        public static List<Transform> plazas;
         
         
         
@@ -65,6 +72,9 @@ namespace Kontiki {
          public static Vector3 iconContainerOffset;
          
          public static float speechDelay = 1f;
+         
+         public static float npcIconDuration = 10f;
+         public static float playerIconDuration = 2f;
          
          
          /**

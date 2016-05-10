@@ -139,7 +139,7 @@ namespace Kontiki
                             for (int i = 0; i < acceptedQuest.Length; i++)
                             {
                                 if(!acceptedQuest[i].HasCharacterBeenAsked(playerLang.speakingTo.character)){
-                                    SetVisibility(true);
+                                    SwitchWindow(Window.Info);
                                     break;
                                 }
                             }

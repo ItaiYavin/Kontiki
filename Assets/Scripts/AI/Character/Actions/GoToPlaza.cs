@@ -15,8 +15,7 @@ namespace Kontiki.AI
         public override void Execute(IAIContext context)
         {
             AIContext ai = ((AIContext)context);
-            if(ai.baseRoutine.plaza != null)
-                ai.pathfinder.GoTo(ai.baseRoutine.plaza.transform);
+            ai.pathfinder.GoTo(ai.baseRoutine.plaza.transform);
         }
 	}
 }

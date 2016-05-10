@@ -12,6 +12,8 @@ namespace Kontiki {
         public float energy = 1;
         [Range(0, 100)]
         public float hunger = 0;
+        [Range(0f, 1f)]
+        public float social = 1;
 
         [HideInInspector]
         public Inventory inventory;
@@ -22,7 +24,12 @@ namespace Kontiki {
         public SkinnedMeshRenderer modelRenderer;
         private Material material;
         
+        public bool isTalking;
+
+        [HideInInspector]
+        public Character socialPartner;
         
+        [HideInInspector] public AnimationController animationController;
 
         /**
         ** Inventory stats & Objects
@@ -31,7 +38,9 @@ namespace Kontiki {
         
         [HideInInspector] public bool isSleeping;
 
+        [HideInInspector] public bool wantsToTalk;
         void Awake(){
+            animationController = GetComponent<AnimationController>();
             inventory = GetComponent<Inventory>();
             languageExchanger = GetComponent<LanguageExchanger>();
         }
@@ -54,8 +63,7 @@ namespace Kontiki {
         {
             HungerUpdate();
             TiredUpdate();
-            
-          
+            SocialUpdate();
         }
 
         private void HungerUpdate()
@@ -81,6 +89,25 @@ namespace Kontiki {
             }
             
            energy = Mathf.Clamp(energy, Settings.energyRange.min, Settings.energyRange.max);
+        }
+        
+         private void SocialUpdate(){
+            switch(isTalking)
+            {
+                case false: // If character is not talking
+                {
+                    social -= Settings.socialDecrementPerSec * Time.deltaTime;
+                }
+                break;
+
+                case true: // IF character is talking
+                {
+                    social += Settings.socialIncrementPerSec * Time.deltaTime;
+                }
+                break;
+            
+            }
+            social = Mathf.Clamp(social, Settings.socialRange.min, Settings.socialRange.max);
         }
 
         public bool HasSelected(ItemType type)

@@ -174,6 +174,7 @@ namespace Kontiki{
                     if(isPlayer){
                         //received that npc has info.
                         iconSystem.Clear();
+                        WindowsHandler.Instance.SetVisibility(false);
                     }
                 }break;
                 case Language.Topic.DeclineInfo:{

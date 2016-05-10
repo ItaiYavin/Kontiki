@@ -10,7 +10,6 @@ namespace Kontiki.AI{
         public bool hasRoute = false;
         public bool isOnRoute = false;
         
-        public float minDestinationRange = 10;
         
         private Character character;
         
@@ -20,7 +19,7 @@ namespace Kontiki.AI{
         
         public void CreateRoute(){
             
-            Collider[] colliders = Physics.OverlapSphere(transform.position, Settings.scanningRange, 1 << 11);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, Settings.deliveryScanRange, 1 << 11);
             List<Character> characters = new List<Character>();
             for (int i = 0; i < colliders.Length; i++){
                 Character c = colliders[i].gameObject.GetComponent<Character>();
@@ -40,7 +39,7 @@ namespace Kontiki.AI{
             {
                 float d = Vector3.Distance(origin.transform.position, characters[i].transform.position);
                 
-                if(d < minDestinationRange)
+                if(d < Settings.minDeliveryRouteRange)
                     characters.RemoveAt(i);
             }
             

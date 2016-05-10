@@ -39,13 +39,22 @@ namespace Kontiki {
         [Range(1, 100)] public float pickupRange = 1;
         [Range(10, 500)] public int memoryCapacity = 100;
         [Range(100, 1000)] public int knownAreaSize = 200;
-        [Range(0.01f, 0.5f)] public float hungerIncrementPerSec = 0.1f;
-        [Range(0.01f, 0.5f)] public float energyIncrementPerSec = 0.3f;
-        [Range(0.01f, 0.5f)] public float energyDecrementPerSec = 0.1f;
+        [Range(0.0001f, 0.5f)] public float hungerIncrementPerSec = 0.1f;
+        [Range(0.0001f, 0.1f)] public float energyIncrementPerSec = 0.3f;
+        [Range(0.0001f, 0.1f)] public float energyDecrementPerSec = 0.001f;
+        [Range(0.0001f, 0.1f)] public float socialDecrementPerSec = 0.001f;
+        [Range(0.0001f, 0.1f)] public float socialIncrementPerSec = 0.001f;
         [Range(0.1f,50f)] public float stopInteractingDistance = 1f;
+        [Range(5f,50f)] public float minDeliveryRouteRange = 10f;
+        [Range(50f,500f)] public float deliveryScanRange = 200f;
+        [Range(0.1f,20f)] public float npcIconDuration = 10f;
+        [Range(0.1f,20f)] public float playerIconDuration = 2f;
+        
+        
+        
         public RangeAttribute hungerRange = new RangeAttribute(0, 100);
         public RangeAttribute energyRange = new RangeAttribute(0, 1);
-        
+        public RangeAttribute socialRange = new RangeAttribute(0, 1);
         
         
         [Header("Job Settings")]
@@ -57,11 +66,13 @@ namespace Kontiki {
         public Transform fishingSpotContainer;
         public Transform scavengingSpotContainer;
         public Transform homeContainer;
+        public Transform plazaContainer;
 
         private List<Transform> ports           = new List<Transform>();
         private List<Transform> fishingSpots    = new List<Transform>();
         private List<Transform> scavengingSpots = new List<Transform>();
         private List<Transform> homes           = new List<Transform>();
+        private List<Transform> plazas           = new List<Transform>();
 	    
         void Awake(){
             Init();
@@ -87,6 +98,8 @@ namespace Kontiki {
                 scavengingSpots.Add(transform);
             foreach (Transform transform in portContainer)
                 ports.Add(transform);
+            foreach (Transform transform in plazaContainer)
+                plazas.Add(transform);
             
             if(ports.Count == 0)
                 Debug.LogError("no Ports found in Settings");
@@ -128,10 +141,15 @@ namespace Kontiki {
             Settings.iconOffset = iconOffset;
             Settings.iconContainerOffset = iconContainerOffset;
             Settings.stopInteractingDistance = stopInteractingDistance;
+            Settings.minDeliveryRouteRange = minDeliveryRouteRange;
+            Settings.deliveryScanRange = deliveryScanRange;
             
             Settings.iconTypes = iconTypes;
             Settings.iconSprites = iconSprites;
             Settings.languageColors = languageColors;
+            
+            Settings.playerIconDuration = playerIconDuration;
+            Settings.npcIconDuration = npcIconDuration;
             
             Settings.controller = controller;
             Settings.ports = ports;
@@ -139,6 +157,7 @@ namespace Kontiki {
             Settings.homes = homes;
             Settings.fishingSpots = fishingSpots;
             Settings.scavengingSpots = scavengingSpots;
+            Settings.plazas = plazas;
             Settings.player = player;
             Settings.interactableIndicatorContainer = interactableIndicatorContainer;
             Settings.windowsHandler = windowsHandler;

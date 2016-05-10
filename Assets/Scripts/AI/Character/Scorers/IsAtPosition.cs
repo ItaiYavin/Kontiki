@@ -45,12 +45,10 @@ namespace Kontiki.AI
                     }
                     break;
 
-					case PlaceType.Plaza :
+					case PlaceType.Plaza:
 					{					
 						b = ai.pathfinder.IsAtPosition(ai.baseRoutine.plaza.transform.position, range);
                         
-                        if(ai.debugAI_Character && b){
-                            Debug.Log("Is at plaza");   
                     }
 					break;
 
@@ -68,6 +66,20 @@ namespace Kontiki.AI
                         }
                     }
                     break;
+                    
+                    case PlaceType.DeliveryOrigin:{
+                        if(ai.job is DeliveryMan){
+                            DeliveryMan job = (DeliveryMan)ai.job;
+                            b = ai.pathfinder.IsAtPosition(job.origin.transform.position, range);
+                        }
+                    }break;
+                    
+                    case PlaceType.DeliveryDestination:{
+                        if(ai.job is DeliveryMan){
+                            DeliveryMan job = (DeliveryMan)ai.job;
+                            b = ai.pathfinder.IsAtPosition(job.destination.transform.position, range);
+                        }
+                    }break;
                 }
 
             }
