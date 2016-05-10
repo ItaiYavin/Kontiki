@@ -47,7 +47,9 @@ namespace Kontiki.AI
 
 					case PlaceType.Plaza:
 					{					
-						b = ai.pathfinder.IsAtPosition(ai.baseRoutine.plaza.transform.position, range);
+                        
+                        if(ai.baseRoutine.selectedPlaza != null)
+						    b = ai.pathfinder.IsAtPosition(ai.baseRoutine.selectedPlaza.position, range);
                         
                     }
 					break;

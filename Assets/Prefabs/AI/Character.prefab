@@ -497,7 +497,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -11.4, y: -4.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22410216}
@@ -875,6 +875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   home: {fileID: 0}
   trader: {fileID: 0}
+  plaza: {fileID: 0}
   hasQuestToOffer: 1
 --- !u!114 &11408820
 MonoBehaviour:
@@ -890,11 +891,16 @@ MonoBehaviour:
   isPlayer: 0
   energy: 1
   hunger: 100
+  social: 1
   inventory: {fileID: 0}
   languageExchanger: {fileID: 0}
   modelRenderer: {fileID: 13710498}
+  isTalking: 0
+  socialPartner: {fileID: 0}
+  animationController: {fileID: 0}
   selectedInteractable: {fileID: 0}
   isSleeping: 0
+  wantsToTalk: 0
 --- !u!114 &11414264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -926,8 +932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiConfigs:
   - aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
-    intervalMin: 1
-    intervalMax: 1
+    intervalMin: 0.25
+    intervalMax: 0.25
     startDelayMin: 0
     startDelayMax: 0
     isActive: 1

@@ -7,7 +7,8 @@ namespace Kontiki {
     [ExecuteInEditMode]
     public class SettingsInspector : MonoBehaviour
     {
-        public bool UpdateValuesEveryFrame = false;
+        public bool updateValuesEveryFrame = false;
+        public bool countEverything = false;
         
         [Header("Debugging")]
         public bool debugging 			    = true;
@@ -72,10 +73,51 @@ namespace Kontiki {
         private List<Transform> fishingSpots    = new List<Transform>();
         private List<Transform> scavengingSpots = new List<Transform>();
         private List<Transform> homes           = new List<Transform>();
-        private List<Transform> plazas           = new List<Transform>();
+        private List<Transform> plazas          = new List<Transform>();
 	    
         void Awake(){
             Init();
+            
+          
+            
+        }
+        
+        void Start(){
+              if(countEverything){
+                AIComponentContainer[] ais = GameObject.FindObjectsOfType<AIComponentContainer>();
+                int total = ais.Length;
+                int numTraders = 0;
+                int numScavengers = 0;
+                int numFishers = 0;
+                int numDeliveryMans = 0;
+                int numCitizens = 0;
+                
+                int numHomes = homes.Count;
+                int numPorts = ports.Count;
+                int numFishingSpots = fishingSpots.Count;
+                int numScavengingSpots = scavengingSpots.Count;
+                
+                //count stuff
+                
+                for (int i = 0; i < ais.Length; i++)
+                {
+                    AIComponentContainer ai = ais[i];
+                    if(ai.GetComponent<DeliveryMan>() != null)
+                        numDeliveryMans++;
+                    else if(ai.job is Fisher){
+                        if(((Fisher)ai.job).isScavenger)
+                            numScavengers++;
+                        else
+                            numFishers++;
+                    }else if(ai.job is Trader)
+                        numTraders++;
+                    else
+                        numCitizens++;
+                }
+                
+                Debug.Log("total: " + total + ", traders: " + numTraders + ", Scavengers: " + numScavengers + ", Fishers: " + numFishers + ", DeliveryMans: " + numDeliveryMans + ", Citizen: " + numCitizens);
+                Debug.Log("homes: " + (total - numTraders) + "/" + numHomes + ", ports: " + (numFishers + numScavengers) + "/" + (numPorts) + ", fishingSpots: " + (numFishers) + "/" + (numFishingSpots) + ", fishingSpots: " + (numScavengers) + "/" + (numScavengingSpots));
+            }   
         }
         
         void Init(){
@@ -116,7 +158,7 @@ namespace Kontiki {
             if (Application.isEditor && !Application.isPlaying) {
                 Init();
             }
-            if(UpdateValuesEveryFrame)
+            if(updateValuesEveryFrame)
                 SetValues();
            
         }
@@ -134,7 +176,10 @@ namespace Kontiki {
 	        Settings.hungerIncrementPerSec = hungerIncrementPerSec;
             Settings.energyIncrementPerSec = energyIncrementPerSec;
             Settings.energyDecrementPerSec = energyDecrementPerSec;
+            Settings.socialIncrementPerSec = socialIncrementPerSec;
+            Settings.socialDecrementPerSec = socialDecrementPerSec;
 	        Settings.hungerRange = hungerRange;
+	        Settings.socialRange = socialRange;
 	        Settings.energyRange = energyRange;
             
             Settings.iconWidth = iconWidth;

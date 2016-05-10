@@ -67,29 +67,29 @@ MonoBehaviour:
     ApexAI"}},{"@type":"Apex.AI.ScoreSelector, ApexAI","_id":1496e516255649d2b38ca17878f3b40f,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":e27a31a4fe884414af83f36d0bc07464},"_scorers":[{"@type":"Kontiki.AI.HasSocialPartner,
     Assembly-CSharp","not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.FindSocialPartner, Assembly-CSharp","searchRadius":0}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","action":{"@type":"Kontiki.AI.FindSocialPartner, Assembly-CSharp","searchRadius":10}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":e27a31a4fe884414af83f36d0bc07464,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.Talk, Assembly-CSharp","stop":false},"_scorers":[{"@type":"Kontiki.AI.IsWithinRangeOfPartner,
     Assembly-CSharp","range":2,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToPartner, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":833,"@y":553},"zoom":0.89999998,"SelectorView":{"ViewArea":{"@left":5,"@top":553,"@width":180,"@height":198},"Name":"Root","QualifierView":{"Name":"Go
-    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":833,"@top":715,"@width":198,"@height":198},"Name":"is
+  editorConfiguration: '{"offset":{"@x":139,"@y":-130},"zoom":0.89999998,"SelectorView":{"ViewArea":{"@left":-689,"@top":-130,"@width":180,"@height":198},"Name":"Root","QualifierView":{"Name":"Go
+    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":139,"@top":32,"@width":198,"@height":198},"Name":"is
     Hungry","QualifierView":{"Name":"Has selected edible?","ActionView":{}},"QualifierView":{"Name":"Has
-    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":473,"@top":553,"@width":180,"@height":252},"Name":"is
+    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":-221,"@top":-130,"@width":180,"@height":252},"Name":"is
     Awake","QualifierView":{"Name":"Is Tired?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
     hungry?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    Lonely?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":833,"@top":553,"@width":198,"@height":144},"Name":"is
-    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":473,"@top":859,"@width":180,"@height":144},"Name":"is
+    Lonely?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":139,"@top":-130,"@width":198,"@height":144},"Name":"is
+    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":-221,"@top":176,"@width":180,"@height":144},"Name":"is
     Sleeping","QualifierView":{"Name":"Not Tired?","ActionView":{"Name":"Awake"}},"DefaultQualifier":{"Name":"Keep
-    Sleeping"}},"SelectorView":{"ViewArea":{"@left":1193,"@top":733,"@width":180,"@height":144},"Name":"Get
-    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":491,"@top":247,"@width":198,"@height":252},"Name":"Go
+    Sleeping"}},"SelectorView":{"ViewArea":{"@left":499,"@top":50,"@width":180,"@height":144},"Name":"Get
+    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":-203,"@top":-436,"@width":198,"@height":252},"Name":"Go
     To Job","QualifierView":{"Name":"Is Fisher","ActionView":{}},"QualifierView":{"Name":"Is
     Trader","Description":"Should not be possible...","ActionView":{}},"QualifierView":{"Name":"Is
-    DeliveryMan","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1193,"@top":949,"@width":180,"@height":144},"QualifierView":{"Name":"Is
-    at plaza","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":833,"@top":949,"@width":180,"@height":144},"Name":"Is
+    DeliveryMan","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":499,"@top":266,"@width":180,"@height":144},"QualifierView":{"Name":"Is
+    at plaza","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":139,"@top":266,"@width":180,"@height":144},"Name":"Is
     Talking","QualifierView":{"Name":"Is not talking","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Is
-    Talking","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":1193,"@top":1129,"@width":180,"@height":144},"QualifierView":{"Name":"Not
+    Talking","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":499,"@top":446,"@width":180,"@height":144},"QualifierView":{"Name":"Not
     lonely?","ActionView":{"Name":"Stop Talking"}},"DefaultQualifier":{"Name":"Keep
-    Talking"}},"SelectorView":{"ViewArea":{"@left":1553,"@top":949,"@width":180,"@height":144},"QualifierView":{"Name":"Has
-    social partner","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1913,"@top":949,"@width":180,"@height":144},"QualifierView":{"Name":"Is
+    Talking"}},"SelectorView":{"ViewArea":{"@left":859,"@top":266,"@width":180,"@height":144},"QualifierView":{"Name":"Has
+    social partner","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1219,"@top":266,"@width":180,"@height":144},"QualifierView":{"Name":"Is
     within range of partner","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
