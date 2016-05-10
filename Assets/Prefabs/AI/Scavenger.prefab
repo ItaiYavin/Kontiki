@@ -863,7 +863,7 @@ MonoBehaviour:
   boatPrefab: {fileID: 164580, guid: 555ac11b44708e04eaf96beb89418fc0, type: 2}
   port: {fileID: 0}
   isReturningToPort: 0
-  isScavenger: 0
+  isScavenger: 1
   fishingSpots: []
   selectedFishingSpot: {fileID: 0}
   isFishing: 0
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   home: {fileID: 0}
   trader: {fileID: 0}
-  plaza: {fileID: 0}
+  selectedPlaza: {fileID: 0}
   hasQuestToOffer: 0
 --- !u!114 &11495090
 MonoBehaviour:

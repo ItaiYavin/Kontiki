@@ -17,7 +17,7 @@ namespace Kontiki {
         private AIComponentContainer ai;
 
 		// Use this for initialization
-		void Start () {
+		void Awake () {
 			agent = GetComponent<NavMeshAgent>();
             ai = GetComponent<AIComponentContainer>();
 		}
