@@ -106,13 +106,17 @@ namespace Kontiki{
                     }
                 }break;
                 case Language.Topic.IHaveQuestObjective:{
-                     if(isPlayer){
-                        Debug.Log("Quest Objective item");
+                    if(isPlayer){
+                        
+                        if(Settings.debugQuestInfo)
+                            Debug.Log("Quest Objective item");
                     }
                 }break;
                 case Language.Topic.QuestFinished:{
                     if(isPlayer){
-                        Debug.Log("Quest Finsihed");
+                        
+                        if(Settings.debugQuestInfo)
+                            Debug.Log("Quest Finsihed");
                     }
                 }break;
                 case Language.Topic.DoYouHaveInfoAboutQuest:{
@@ -139,18 +143,22 @@ namespace Kontiki{
                         WindowsHandler.Instance.SetVisibility(false);
                         
                     }else if(quest.HasCharacterBeenAsked(character)){
-                        Debug.Log("Character has already been asked");
+                        
+                        if(Settings.debugQuestInfo)    
+                            Debug.Log("Character has already been asked");
                         
                         Language.IHaveAlreadyBeenAsked(this,sender,quest);
                     }else{
                         if(quest.CheckIfCharacterHasInfoAboutQuest(character)){
                             //has information
-                            Debug.Log("Character has Information");
+                            if(Settings.debugQuestInfo)
+                                Debug.Log("Character has Information");
                             Language.IHaveInfoAboutQuest(this, sender, quest);
                             
                         }else{
                             //has no information
-                            Debug.Log("Character has no Information");
+                            if(Settings.debugQuestInfo)
+                                Debug.Log("Character has no Information");
                             Language.IHaveNoInfoAboutQuest(this, sender, quest);
                         }
                     }

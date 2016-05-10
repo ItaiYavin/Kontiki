@@ -12,6 +12,8 @@ public class BaseRoutine : MonoBehaviour {
     
     void Start()
     {
+        trader = Settings.GetTrader();
+        home = Settings.GetHome();
         hasQuestToOffer = Random.Range(0f, 1f) <= 0.90f;
 
 

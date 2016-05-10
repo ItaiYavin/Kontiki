@@ -27,10 +27,14 @@ namespace Kontiki {
         /**
         ** Inventory stats & Objects
         **/
-        public Interactable selectedInteractable;
+        [HideInInspector] public Interactable selectedInteractable;
         
-        [HideInInspector]
-        public bool isSleeping;
+        [HideInInspector] public bool isSleeping;
+
+        void Awake(){
+            inventory = GetComponent<Inventory>();
+            languageExchanger = GetComponent<LanguageExchanger>();
+        }
 
         void Start()
         {
@@ -38,9 +42,6 @@ namespace Kontiki {
                 hunger = Random.Range(Settings.hungerRange.min, Settings.hungerRange.max);
                 energy = Random.Range(Settings.energyRange.min, Settings.energyRange.max);
             }
-
-            inventory = GetComponent<Inventory>();
-            languageExchanger = GetComponent<LanguageExchanger>();
             
             material = new Material(modelRenderer.material);
             modelRenderer.material = material;
