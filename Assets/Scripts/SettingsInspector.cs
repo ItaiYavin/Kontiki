@@ -40,19 +40,16 @@ namespace Kontiki {
         [Range(0.01f, 0.5f)] public float hungerIncrementPerSec = 0.1f;
         [Range(0.01f, 0.5f)] public float energyIncrementPerSec = 0.3f;
         [Range(0.01f, 0.5f)] public float energyDecrementPerSec = 0.1f;
-        [Range(0.01f, 0.5f)] public float socialIncrementPerSec = 0.3f;
-        [Range(0.01f, 0.5f)] public float socialDecrementPerSec = 0.1f;
         [Range(0.1f,50f)] public float stopInteractingDistance = 1f;
         public RangeAttribute hungerRange = new RangeAttribute(0, 100);
         public RangeAttribute energyRange = new RangeAttribute(0, 1);
-        public RangeAttribute socialRange = new RangeAttribute(0, 1);
         
         
         
         [Header("Job Settings")]
         public float dockingRange = 1f;
         public List<Trader> traders;
-        public GameObject boatPrefab;
+        
         
         public Transform portContainer;
         public Transform fishingSpotContainer;
@@ -122,11 +119,8 @@ namespace Kontiki {
 	        Settings.hungerIncrementPerSec = hungerIncrementPerSec;
             Settings.energyIncrementPerSec = energyIncrementPerSec;
             Settings.energyDecrementPerSec = energyDecrementPerSec;
-            Settings.socialIncrementPerSec = socialIncrementPerSec;
-            Settings.socialDecrementPerSec = socialDecrementPerSec;
 	        Settings.hungerRange = hungerRange;
 	        Settings.energyRange = energyRange;
-            Settings.socialRange = socialRange;
             
             Settings.iconWidth = iconWidth;
             Settings.iconOffset = iconOffset;
@@ -137,7 +131,6 @@ namespace Kontiki {
             Settings.iconSprites = iconSprites;
             Settings.languageColors = languageColors;
             
-            Settings.boatPrefab = boatPrefab;
             Settings.controller = controller;
             Settings.ports = ports;
             Settings.traders = traders;

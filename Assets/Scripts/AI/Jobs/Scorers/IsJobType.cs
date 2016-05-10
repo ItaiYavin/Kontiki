@@ -31,9 +31,6 @@ namespace Kontiki.AI
                 case JobType.Trader:{
                     b = job is Trader;
                 }break;
-                case JobType.DeliveryMan:{
-                    b = job is DeliveryMan;
-                }break;
             }
            
                 

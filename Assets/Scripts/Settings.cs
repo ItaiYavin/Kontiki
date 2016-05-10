@@ -34,11 +34,8 @@ namespace Kontiki {
         public static float hungerIncrementPerSec;
         public static float energyIncrementPerSec;
         public static float energyDecrementPerSec;
-        public static float socialIncrementPerSec;
-        public static float socialDecrementPerSec;
-        public static RangeAttribute socialRange    = new RangeAttribute(0, 1);
-        public static RangeAttribute energyRange    = new RangeAttribute(0, 1);
         public static RangeAttribute hungerRange    = new RangeAttribute(0, 100);
+        public static RangeAttribute energyRange    = new RangeAttribute(0, 1);
         
         public static float stopInteractingDistance;
         
@@ -53,7 +50,7 @@ namespace Kontiki {
         
         public static List<Transform> fishingSpots;
         public static List<Transform> scavengingSpots;
-        public static GameObject boatPrefab;
+        
         
         
         /**

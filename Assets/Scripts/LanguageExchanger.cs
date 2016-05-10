@@ -176,13 +176,6 @@ namespace Kontiki{
                         iconSystem.Clear();
                     }
                 }break;
-                case Language.Topic.RandomTalk:{
-                    if (!isPlayer){
-                        //DELAY
-                        iconSystem.Clear();
-                        Language.RandomTalk(this, sender);
-                    }
-                }break;
             }
         }
     }

@@ -15,12 +15,12 @@ namespace Kontiki.AI{
         
         
 
-        [ApexSerialization, FriendlyName("Value", "")]
-        public bool val = false;
+        [ApexSerialization, FriendlyName("Not", "Returns the opposite")]
+        public bool not = false;
 
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext) context;
-            ai.isOnJob = val;
+            ai.isOnJob = !not;
         }
     }
 }

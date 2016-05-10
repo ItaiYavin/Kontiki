@@ -10,8 +10,6 @@ namespace Kontiki {
 
         [Range(0f, 1f)]
         public float energy = 1;
-        [Range(0f, 1f)]
-        public float social = 1;
         [Range(0, 100)]
         public float hunger = 0;
 
@@ -20,15 +18,10 @@ namespace Kontiki {
         
         [HideInInspector]
         public LanguageExchanger languageExchanger;
-
-        [HideInInspector]
-        public Character socialPartner;
         
         public SkinnedMeshRenderer modelRenderer;
         private Material material;
         
-        [HideInInspector]
-        public AnimationController animationController;
         
 
         /**
@@ -39,16 +32,9 @@ namespace Kontiki {
         [HideInInspector] public bool isSleeping;
 
         void Awake(){
-            animationController = GetComponent<AnimationController>();
             inventory = GetComponent<Inventory>();
             languageExchanger = GetComponent<LanguageExchanger>();
         }
-
-        [HideInInspector]
-        public bool isTalking;
-
-        [HideInInspector]
-        public bool wantsToTalk;
 
         void Start()
         {
@@ -68,28 +54,8 @@ namespace Kontiki {
         {
             HungerUpdate();
             TiredUpdate();
-            SocialUpdate();
             
           
-        }
-
-        private void SocialUpdate(){
-            switch(isTalking)
-            {
-                case false: // If character is not talking
-                {
-                    social -= Settings.socialDecrementPerSec * Time.deltaTime;
-                }
-                break;
-
-                case true: // IF character is talking
-                {
-                    social += Settings.socialIncrementPerSec * Time.deltaTime;
-                }
-                break;
-            
-                social = Mathf.Clamp(social, Settings.socialRange.min, Settings.socialRange.max);
-            }
         }
 
         private void HungerUpdate()

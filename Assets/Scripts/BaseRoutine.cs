@@ -6,7 +6,6 @@ using Kontiki;
 public class BaseRoutine : MonoBehaviour {
     public Transform home;
     public Trader trader;
-    public Transform plaza;
 
     public bool hasQuestToOffer;
     public Quest questOffer;
