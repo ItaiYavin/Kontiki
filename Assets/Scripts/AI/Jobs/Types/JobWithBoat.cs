@@ -19,7 +19,7 @@ namespace Kontiki.AI{
         
         public virtual void moveBoatToPort(){moveBoatToPort(port);}
         public virtual void moveBoatToPort(Transform port){
-vvvvvvv            boat.transform.position = port.position;
+            boat.transform.position = port.position;
         }
         public virtual void DockAtPort(){
             DockAtPort(port);

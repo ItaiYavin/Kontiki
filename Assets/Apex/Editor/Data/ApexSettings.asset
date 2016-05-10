@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _allowAutomaticUpdateCheck: 1
   _updateCheckIntervalHours: 12
-  _lastUpdateCheck: 05/07/2016 08:54:21
+  _lastUpdateCheck: 05/10/2016 08:07:42
   _updateCheckBaseUrl: http://apexgametoolsproductservice.azurewebsites.net
   _knownPendingUpdates:
-  - Apex Utility AI@1.0.2.1
+  - Apex Utility AI@1.0.2
   - Apex Path
   - Apex Mecanim Tutorial Project
   - Advanced Dynamic Obstacles

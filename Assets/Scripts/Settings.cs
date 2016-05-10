@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
+using Kontiki.AI;
 namespace Kontiki { 
     public static class Settings
     {
@@ -11,6 +11,15 @@ namespace Kontiki {
         public static bool debugQuestInfo = false;
         
         public static bool debugIconSystem = false;
+        
+        /**
+         * References
+         **/
+        
+        public static Character player;
+        public static Transform[] homes;
+        
+        
         
         /**
          * Settings & Attributes of AI
@@ -31,6 +40,12 @@ namespace Kontiki {
           * Jobs
           **/
         public static float dockingRange = 1f;
+        
+        public static Transform[] ports;
+        
+        public static Trader[] traders;
+        
+        
         
         /**
          * Language
