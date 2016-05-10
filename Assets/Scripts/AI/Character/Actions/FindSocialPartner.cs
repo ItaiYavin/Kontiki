@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Apex.AI;
 using Apex.Serialization;
 using Kontiki;
@@ -31,7 +30,7 @@ namespace Kontiki.AI
             foreach (Collider c in colliders)
             {
                 Character foundCharacter = c.GetComponent<Character>();
-                if (foundCharacter != null && !foundCharacter.isPlayer)
+                if (foundCharacter != null && !foundCharacter.isPlayer && foundCharacter != self)
                 {
                     charactersInRange.Add(foundCharacter);
                 }
@@ -39,10 +38,14 @@ namespace Kontiki.AI
 
             for(int i = 0; i < charactersInRange.Count; i++)
             {
-            	if(charactersInRange[i].socialPartner == null && charactersInRange[i].wantsToTalk)
-            	{
-            		charactersInRange[i].socialPartner = self;
-            		self.socialPartner = charactersInRange[i];
+                if(charactersInRange[i].socialPartner == null && charactersInRange[i].wantsToTalk)
+                {
+                    charactersInRange[i].socialPartner = self;
+                    self.socialPartner = charactersInRange[i];
+                    
+                    if(ai.debugAI_Character){
+                        Debug.Log("Found social partner");
+                    }
             	}
             }
         }

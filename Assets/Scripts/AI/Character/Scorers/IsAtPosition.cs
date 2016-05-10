@@ -45,6 +45,15 @@ namespace Kontiki.AI
                     }
                     break;
 
+					case PlaceType.Plaza :
+					{					
+						b = ai.pathfinder.IsAtPosition(ai.baseRoutine.plaza.transform.position, range);
+                        
+                        if(ai.debugAI_Character && b){
+                            Debug.Log("Is at plaza");   
+                    }
+					break;
+
                     case PlaceType.Trader:
                     {
                         b = ai.pathfinder.IsAtPosition(ai.baseRoutine.trader.transform.position, range);
@@ -62,7 +71,6 @@ namespace Kontiki.AI
                 }
 
             }
-
            
             if (ai.debugAI_Character)
                 Debug.Log("Is " + (b ? "" : "not") + " at " + place);

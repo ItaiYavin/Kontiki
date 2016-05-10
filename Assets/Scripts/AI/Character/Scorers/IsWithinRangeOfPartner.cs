@@ -26,6 +26,10 @@ namespace Kontiki.AI
             	b = true;
             }
 
+            if(ai.debugAI_Character){
+                Debug.Log("Is within range of partner: " + b);
+            }
+
             b = not ? !b : b;
 
             return b ? score : 0f;

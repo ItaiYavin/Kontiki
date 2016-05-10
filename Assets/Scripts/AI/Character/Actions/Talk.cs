@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Apex.AI;
 using Apex.Serialization;
 using Kontiki;
@@ -24,6 +23,11 @@ namespace Kontiki.AI {
 	        	Language.RandomTalk(languageExchanger, languageExchanger.speakingTo);
 	        	self.isTalking = true;
 	        	partner.isTalking = true;
+
+		        if(ai.debugAI_Character){
+					Debug.Log("Started talking");		        	
+		        }
+
 	        } else {
 	        	self.wantsToTalk = false;
 	        	self.isTalking = false;
@@ -31,6 +35,11 @@ namespace Kontiki.AI {
 
 	        	partner.socialPartner = null;
 	        	self.socialPartner = null;
+
+
+		        if(ai.debugAI_Character){
+		     		Debug.Log("Stopped Conversation");   	
+		        }
 	        }
 		}
 	}

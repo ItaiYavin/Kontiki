@@ -126,6 +126,5 @@ namespace Kontiki{
                 IconType.Fish
             );
         }
-        
     }
 }
