@@ -24,7 +24,7 @@ MonoBehaviour:
     ApexAI","_id":f5b0c95400434e61a1a731a3d469870a,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.ConsumeSelectedItem, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.HasInteractable,
     Assembly-CSharp","inInventory":false,"inHand":true,"itemType":Edible,"not":false,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.SelectItemOfTypeInInventory, Assembly-CSharp","itemType":edible},"_scorers":[{"@type":"Kontiki.AI.HasInteractable,
+    ApexAI","action":{"@type":"Kontiki.AI.SelectItemOfTypeInInventory, Assembly-CSharp","itemType":Interactable},"_scorers":[{"@type":"Kontiki.AI.HasInteractable,
     Assembly-CSharp","inInventory":true,"inHand":false,"itemType":Edible,"not":false,"score":9}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":2658260d16c6491b9645afc96e2f5feb}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":379541efe0754ac3b69518a2bdb53ba9,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
@@ -32,33 +32,36 @@ MonoBehaviour:
     Assembly-CSharp","threshold":0.40000001,"inverted":true,"score":11}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":f5b0c95400434e61a1a731a3d469870a},"_scorers":[{"@type":"Kontiki.AI.Hunger,
     Assembly-CSharp","threshold":0.40000001,"inverted":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.SetIsOnJob, Assembly-CSharp","not":false}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","action":{"@type":"Kontiki.AI.SetIsOnJob, Assembly-CSharp","val":true}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":894892a4fc024e758135749291650f86,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.Sleep, Assembly-CSharp","stop":false},"_scorers":[{"@type":"Kontiki.AI.IsAtPosition,
-    Assembly-CSharp","range":2,"place":Home,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","range":2,"nonZero":false,"usePathfindingDistance":false,"place":Home,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToHome, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":60b3f94e6c2846b5868182929d6050a3,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.Sleep, Assembly-CSharp","stop":true},"_scorers":[{"@type":"Kontiki.AI.IsEnergized,
-    Assembly-CSharp","threshold":0.85000002,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.Sleep, Assembly-CSharp","stop":true},"_scorers":[{"@type":"Kontiki.AI.Energy,
+    Assembly-CSharp","threshold":0.85000002,"inverted":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}},{"@type":"Apex.AI.ScoreSelector, ApexAI","_id":2658260d16c6491b9645afc96e2f5feb,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.Trade, Assembly-CSharp","tradeItem":Item,"gainedItem":Edible},"_scorers":[{"@type":"Kontiki.AI.IsAtPosition,
-    Assembly-CSharp","range":5,"place":Trader,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","range":5,"nonZero":false,"usePathfindingDistance":false,"place":Trader,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToTrader, Assembly-CSharp"}}},{"@type":"Apex.AI.PrioritySelector,
     ApexAI","_id":dcdc29d487fe417e9aa66e2c05877ee2,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
-    ApexAI","action":{"@type":"Apex.AI.AILinkAction, ApexAI","_aiId":d2213d02f31647c09c25761303e1b758},"_scorers":[{"@type":"Kontiki.AI.IsJobType,
+    ApexAI","action":{"@type":"Apex.AI.AIExecuteAction, ApexAI","_aiId":d2213d02f31647c09c25761303e1b758},"_scorers":[{"@type":"Kontiki.AI.IsJobType,
     Assembly-CSharp","not":false,"type":Fisher,"score":10}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
-    ApexAI","action":{"@type":"Apex.AI.AILinkAction, ApexAI","_aiId":085dc00fdecb4c3bbb013dd9687b6943},"_scorers":[{"@type":"Kontiki.AI.IsJobType,
-    Assembly-CSharp","not":false,"type":Trader,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":427,"@y":310},"zoom":0.40000001,"SelectorView":{"ViewArea":{"@left":59,"@top":310,"@width":80,"@height":88},"Name":"Root","QualifierView":{"Name":"Go
-    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":427,"@top":382,"@width":88,"@height":88},"Name":"is
+    ApexAI","action":{"@type":"Apex.AI.AIExecuteAction, ApexAI","_aiId":085dc00fdecb4c3bbb013dd9687b6943},"_scorers":[{"@type":"Kontiki.AI.IsJobType,
+    Assembly-CSharp","not":false,"type":Trader,"score":10}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Apex.AI.AIExecuteAction, ApexAI","_aiId":dd452b4ee55b4e1f9b0882f295808c81},"_scorers":[{"@type":"Kontiki.AI.IsJobType,
+    Assembly-CSharp","not":false,"type":DeliveryMan,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.SetIsOnJob, Assembly-CSharp","val":false}}}]}'
+  editorConfiguration: '{"offset":{"@x":147,"@y":-2},"zoom":0.55000001,"SelectorView":{"ViewArea":{"@left":-359,"@top":-2,"@width":110,"@height":121},"Name":"Root","QualifierView":{"Name":"Go
+    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":147,"@top":97,"@width":121,"@height":121},"Name":"is
     Hungry","QualifierView":{"Name":"Has selected edible?","ActionView":{}},"QualifierView":{"Name":"Has
-    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":267,"@top":310,"@width":80,"@height":88},"Name":"is
+    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":-73,"@top":-2,"@width":110,"@height":121},"Name":"is
     Awake","QualifierView":{"Name":"Is Tired?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":427,"@top":310,"@width":88,"@height":64},"Name":"is
-    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":267,"@top":406,"@width":80,"@height":64},"Name":"is
+    hungry?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":147,"@top":-2,"@width":121,"@height":88},"Name":"is
+    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":-73,"@top":130,"@width":110,"@height":88},"Name":"is
     Sleeping","QualifierView":{"Name":"Not Tired?","ActionView":{"Name":"Awake"}},"DefaultQualifier":{"Name":"Keep
-    Sleeping"}},"SelectorView":{"ViewArea":{"@left":587,"@top":390,"@width":80,"@height":64},"Name":"Get
-    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":267,"@top":214,"@width":88,"@height":88},"Name":"Go
-    To Job","QualifierView":{"Name":"Is Fisher","ActionView":{"@connectorType":"AILink"}},"QualifierView":{"Name":"Is
-    Trader","Description":"Should not be possible...","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{}},"AILinkView":{"@id":d2213d02f31647c09c25761303e1b758,"ViewArea":{"@left":427,"@top":206,"@width":80,"@height":30}},"AILinkView":{"@id":085dc00fdecb4c3bbb013dd9687b6943,"ViewArea":{"@left":427,"@top":246,"@width":80,"@height":30}}}'
+    Sleeping"}},"SelectorView":{"ViewArea":{"@left":367,"@top":108,"@width":110,"@height":88},"Name":"Get
+    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":-73,"@top":-178,"@width":121,"@height":154},"Name":"Go
+    To Job","QualifierView":{"Name":"Is Fisher","ActionView":{}},"QualifierView":{"Name":"Is
+    Trader","Description":"Should not be possible...","ActionView":{}},"QualifierView":{"Name":"Is
+    DeliveryMan","Description":"Should not be possible...","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'

@@ -5,11 +5,10 @@ using Kontiki;
 namespace Kontiki.AI{
     public abstract class JobWithBoat : Job{      
         
-        
         [Header("Boat Variables")]
+        
         [HideInInspector] public Boat boat;
         [HideInInspector] public GameObject boatPrefab;
-        
         [HideInInspector] public Transform port;
         
 		public bool isReturningToPort = false;
@@ -26,19 +25,20 @@ namespace Kontiki.AI{
         }
         
         public virtual void moveBoatToPort(){moveBoatToPort(port);}
+        
         public virtual void moveBoatToPort(Transform port){
             boat.transform.position = port.position;
         }
+        
         public virtual void DockAtPort(){
             DockAtPort(port);
         } 
+        
         public virtual void DockAtPort(Transform port){
             isReturningToPort = false;
             boat.Dock(port);
         }
-        
-        
-        
+                
         public virtual void GoToPort(){
 			isReturningToPort = true;
 			boat.GoTo(port);
