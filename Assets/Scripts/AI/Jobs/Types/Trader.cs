@@ -18,6 +18,9 @@ namespace Kontiki.AI{
         }
         
         void Start(){
+            boatPrefab = Settings.boatPrefab;
+
+            
             if(ports.Length == 0 && port == null){
                 Debug.LogError("AI - Trader Must have at least one port");
                 return;

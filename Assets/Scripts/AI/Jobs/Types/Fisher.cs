@@ -23,6 +23,7 @@ namespace Kontiki.AI{
 		
         
         void Start(){
+            boatPrefab = Settings.boatPrefab;
             if(isScavenger){
                 fishingSpots = Settings.scavengingSpots.ToArray();
             }else{
