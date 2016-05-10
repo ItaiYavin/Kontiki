@@ -34,7 +34,7 @@ MonoBehaviour:
     Assembly-CSharp","threshold":0.40000001,"inverted":false,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":d748c600b9ed4c7a8d3866fff32dda22},"_scorers":[{"@type":"Kontiki.AI.Social,
     Assembly-CSharp","threshold":0.40000001,"inverted":true,"score":9}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.SetIsOnJob, Assembly-CSharp","not":false}}},{"@type":"Apex.AI.ScoreSelector,
+    ApexAI","action":{"@type":"Kontiki.AI.SetIsOnJob, Assembly-CSharp","val":false}}},{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":894892a4fc024e758135749291650f86,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.Sleep, Assembly-CSharp","stop":false},"_scorers":[{"@type":"Kontiki.AI.IsAtPosition,
     Assembly-CSharp","range":2,"nonZero":false,"usePathfindingDistance":false,"place":Home,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
@@ -70,23 +70,23 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Kontiki.AI.Talk, Assembly-CSharp","stop":false},"_scorers":[{"@type":"Kontiki.AI.IsWithinRangeOfPartner,
     Assembly-CSharp","range":2,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToPartner, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":284,"@y":-184},"zoom":0.80000001,"SelectorView":{"ViewArea":{"@left":-452,"@top":-184,"@width":160,"@height":176},"Name":"Root","QualifierView":{"Name":"Go
-    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":284,"@top":-40,"@width":176,"@height":176},"Name":"is
+  editorConfiguration: '{"offset":{"@x":203,"@y":-24},"zoom":1,"SelectorView":{"ViewArea":{"@left":-717,"@top":-24,"@width":200,"@height":220},"Name":"Root","QualifierView":{"Name":"Go
+    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":203,"@top":156,"@width":220,"@height":220},"Name":"is
     Hungry","QualifierView":{"Name":"Has selected edible?","ActionView":{}},"QualifierView":{"Name":"Has
-    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":-36,"@top":-184,"@width":160,"@height":224},"Name":"is
+    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":-197,"@top":-24,"@width":200,"@height":280},"Name":"is
     Awake","QualifierView":{"Name":"Is Tired?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
     hungry?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    Lonely?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":284,"@top":-184,"@width":176,"@height":128},"Name":"is
-    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":-36,"@top":88,"@width":160,"@height":128},"Name":"is
+    Lonely?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":203,"@top":-24,"@width":220,"@height":160},"Name":"is
+    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":-197,"@top":316,"@width":200,"@height":160},"Name":"is
     Sleeping","QualifierView":{"Name":"Not Tired?","ActionView":{"Name":"Awake"}},"DefaultQualifier":{"Name":"Keep
-    Sleeping"}},"SelectorView":{"ViewArea":{"@left":604,"@top":-24,"@width":160,"@height":128},"Name":"Get
-    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":-36,"@top":-376,"@width":176,"@height":176},"Name":"Go
+    Sleeping"}},"SelectorView":{"ViewArea":{"@left":603,"@top":176,"@width":200,"@height":160},"Name":"Get
+    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":-197,"@top":-264,"@width":220,"@height":220},"Name":"Go
     To Job","QualifierView":{"Name":"Is Fisher","ActionView":{"@connectorType":"AILink"}},"QualifierView":{"Name":"Is
-    Trader","Description":"Should not be possible...","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":604,"@top":168,"@width":160,"@height":128},"QualifierView":{"Name":"Is
-    at plaza","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":284,"@top":168,"@width":160,"@height":128},"Name":"Is
+    Trader","Description":"Should not be possible...","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":603,"@top":416,"@width":200,"@height":160},"QualifierView":{"Name":"Is
+    at plaza","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":203,"@top":416,"@width":200,"@height":160},"Name":"Is
     Talking","QualifierView":{"Name":"Is not talking","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Is
-    Talking","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":604,"@top":328,"@width":160,"@height":128},"QualifierView":{"Name":"Not
+    Talking","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":603,"@top":616,"@width":200,"@height":160},"QualifierView":{"Name":"Not
     lonely?","ActionView":{"Name":"Stop Talking"}},"DefaultQualifier":{"Name":"Keep
-    Talking"}},"SelectorView":{"ViewArea":{"@left":924,"@top":168,"@width":160,"@height":128},"QualifierView":{"Name":"Has
-    social partner","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1244,"@top":168,"@width":160,"@height":128},"QualifierView":{"Name":"Is
-    within range of partner","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"AILinkView":{"@id":d2213d02f31647c09c25761303e1b758,"ViewArea":{"@left":284,"@top":-392,"@width":160,"@height":60}},"AILinkView":{"@id":085dc00fdecb4c3bbb013dd9687b6943,"ViewArea":{"@left":284,"@top":-312,"@width":160,"@height":60}}}'
+    Talking"}},"SelectorView":{"ViewArea":{"@left":1003,"@top":416,"@width":200,"@height":160},"QualifierView":{"Name":"Has
+    social partner","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1403,"@top":416,"@width":200,"@height":160},"QualifierView":{"Name":"Is
+    within range of partner","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"AILinkView":{"@id":d2213d02f31647c09c25761303e1b758,"ViewArea":{"@left":203,"@top":-284,"@width":200,"@height":75}},"AILinkView":{"@id":085dc00fdecb4c3bbb013dd9687b6943,"ViewArea":{"@left":203,"@top":-184,"@width":200,"@height":75}}}'
