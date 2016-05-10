@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 432598}
   - 33: {fileID: 3399230}
   - 23: {fileID: 2316808}
-  - 136: {fileID: 13663036}
   m_Layer: 0
   m_Name: Building 3
   m_TagString: Untagged
@@ -24,9 +23,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101306}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,19 +68,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101306}
   m_Mesh: {fileID: 4300000, guid: fd4996127d745fe44b9768ffeb06b51d, type: 3}
---- !u!136 &13663036
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101306}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 39.167053
-  m_Height: 194.92
-  m_Direction: 1
-  m_Center: {x: 53.859787, y: -12.566303, z: -0.32061577}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
