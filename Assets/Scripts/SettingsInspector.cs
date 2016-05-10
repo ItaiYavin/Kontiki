@@ -31,6 +31,8 @@ namespace Kontiki {
         public float iconOffset;
         public Vector3 iconContainerOffset;
         
+        public float speechDelay = 1f;
+        
          
         [Header("AI Settings")]
         [Range(1, 100)] public float scanningRange = 1;

@@ -75,6 +75,12 @@ namespace Kontiki{
                         WindowsHandler.Instance.SwitchWindow(Window.Quest1);
                     }
                 }break;
+                case Language.Topic.IHaveNoQuest:{
+                   if(isPlayer){
+                        //is Player and has received the topic Quest from a npc
+                        WindowsHandler.Instance.SetVisibility(false);
+                    }
+                }break;
                 case Language.Topic.WhatDoIGetForQuest:{
                     if (!isPlayer) { 
                         Quest quest = (Quest) information[0];

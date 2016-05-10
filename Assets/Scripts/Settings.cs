@@ -46,7 +46,7 @@ namespace Kontiki {
         
         public static List<Transform> ports;
         
-        public static List<Trader> traders;
+        public static List<Trader> traders = new List<Trader>();
         
         public static List<Transform> fishingSpots;
         public static List<Transform> scavengingSpots;
@@ -64,7 +64,7 @@ namespace Kontiki {
          public static float iconOffset;
          public static Vector3 iconContainerOffset;
          
-         
+         public static float speechDelay = 1f;
          
          
          /**

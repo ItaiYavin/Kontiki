@@ -19,7 +19,7 @@ namespace Kontiki {
 		// Display variables //
 		[Header("Display Variables")]
 		[Tooltip("Duration icons stay on screen")]
-		public float iconDuration;
+		public float iconDuration = 10f;
 		
 		[HideInInspector]
 		public float iconsDestroyTime;

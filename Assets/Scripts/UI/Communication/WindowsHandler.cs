@@ -60,6 +60,8 @@ namespace Kontiki
         }
         
         public void OnButtonClick(int buttonIndex){
+            basePanel.SetActive(false);
+            
             switch (currentWindow)
             {
                 case Window.Start:{
@@ -133,18 +135,14 @@ namespace Kontiki
                             Quest quest = acceptedQuest[buttonIndex];
                             Language.DoYouHaveInfoAboutQuest(playerLang, playerLang.speakingTo, quest);
                             questInfoBoxes[buttonIndex].button.interactable = false;
-                            bool b = false;
+                            
                             for (int i = 0; i < acceptedQuest.Length; i++)
                             {
                                 if(!acceptedQuest[i].HasCharacterBeenAsked(playerLang.speakingTo.character)){
-                                    b = true;
+                                    SetVisibility(true);
                                     break;
                                 }
-                                
                             }
-                            
-                            if(!b)
-                                SetVisibility(false);
                         }
                     }
                     
@@ -168,7 +166,6 @@ namespace Kontiki
                             Quest q = playerLang.speakingTo.ai.baseRoutine.questOffer;
                             Language.DeclineQuest(playerLang, playerLang.speakingTo, q);
                             
-                            SetVisibility(false);
                         }break;                     
                     }
                 }break; 
@@ -180,15 +177,12 @@ namespace Kontiki
                             //Accept Button
                             Quest q = playerLang.speakingTo.ai.baseRoutine.questOffer;
                             Language.AcceptQuest(playerLang, playerLang.speakingTo, q);
-                            SetVisibility(false);
                             
                         }break;                     
                         case 1:{
                             //Decline Button
                             Quest q = playerLang.speakingTo.ai.baseRoutine.questOffer;
                             Language.DeclineQuest(playerLang, playerLang.speakingTo, q);
-                            
-                            SetVisibility(false);
                         }break;                     
                     }
                 }break;
@@ -202,7 +196,7 @@ namespace Kontiki
 
         public void SwitchWindow(Window window)
         {
-
+            basePanel.SetActive(true);
             startWindow.SetActive(false);
             infoWindow.SetActive(false);
             tradeWindow.SetActive(false);
@@ -236,8 +230,8 @@ namespace Kontiki
         {
             
             interactionSystem.menuOpen = visible;
-            basePanel.SetActive(visible);
             SwitchWindow(Window.Start);
+            basePanel.SetActive(visible);
         }
     }
 }

@@ -18,86 +18,151 @@ namespace Kontiki{
             DeclineInfo,
             Trade,
             GotItem,
+            RandomTalk,
         }
         
         public static void IHaveQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
             if(quest is Fetch)
                 IHaveQuest_Fetch(sender, receiver, (Fetch)quest);
-           
+                
             if(receiver != null)
-                receiver.React(sender, Topic.IHaveQuest, quest);
+                receiver.iconSystem.Clear();
+                
+            Delayer.Start(delegate() {  
+                if(receiver != null)
+                    receiver.React(sender, Topic.IHaveQuest, quest);
+            }, Settings.speechDelay);
         }
         
         public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.No);
-            receiver.React(sender, Topic.IHaveNoQuest);
+            
+            Delayer.Start(delegate() {  
+                receiver.React(sender, Topic.IHaveNoQuest);
+            }, Settings.speechDelay);
         }
         
         public static void DoYouHaveQuest(LanguageExchanger sender, LanguageExchanger receiver){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.Question);
-            receiver.React(sender, Topic.DoYouHaveQuest);
+            Delayer.Start(delegate() {
+                receiver.React(sender, Topic.DoYouHaveQuest);
+            }, Settings.speechDelay);
         }
         
         public static void WhatDoIGetForQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
             sender.iconSystem.GenerateIcons(IconType.Trade, IconType.Question);
-            receiver.React(sender, Topic.WhatDoIGetForQuest, quest);
+            receiver.iconSystem.Clear();
+            Delayer.Start(delegate() {
+                receiver.React(sender, Topic.WhatDoIGetForQuest, quest);
+            }, Settings.speechDelay);
         }
         
         public static void WillTradeThisForQuestObjective(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             if(quest is Fetch)
                 WillTradeThisForQuestObjective_Fetch(sender, receiver, (Fetch)quest);
                 
-            receiver.React(sender,Topic.IWillTradeThisForQuestObjective, quest);
+            Delayer.Start(delegate() {
+                receiver.React(sender,Topic.IWillTradeThisForQuestObjective, quest);
+            }, Settings.speechDelay);
         }
         
         
         public static void AcceptQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.Yes);
-            receiver.React(sender, Topic.AcceptQuest, quest);
+            Delayer.Start(delegate() {
+                receiver.React(sender, Topic.AcceptQuest, quest);
+            }, Settings.speechDelay);
         }
         
         
         public static void DeclineQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.No);
-            receiver.React(sender, Topic.DeclineQuest, quest);
+            Delayer.Start(delegate() {
+                receiver.React(sender, Topic.DeclineQuest, quest);
+            }, Settings.speechDelay);
         }
         
         public static void IHaveQuestObjective(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             Fetch f = (Fetch) quest;
             Debug.Log("i have quest object");
             sender.iconSystem.GenerateIcons(f.colorObjective, f.colorOrigin, IconType.QuestObjective, IconType.TakeTo, IconType.Person);
             
-            receiver.React(sender, Topic.IHaveQuestObjective);
+            Delayer.Start(delegate() {
+                receiver.React(sender, Topic.IHaveQuestObjective);
+            }, Settings.speechDelay);
         }
         
         public static void QuestFinished(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.Yes);
-            receiver.React(sender, Topic.QuestFinished);
+            Delayer.Start(delegate() {
+                receiver.React(sender, Topic.QuestFinished);
+            }, Settings.speechDelay);
         }
         
         public static void DoYouHaveInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
-            
-            receiver.React(sender, Language.Topic.DoYouHaveInfoAboutQuest,quest);
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
+            Delayer.Start(delegate() {
+                receiver.React(sender, Language.Topic.DoYouHaveInfoAboutQuest,quest);
+            }, Settings.speechDelay);
         }
         public static void IHaveInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.Find, IconType.Yes);
         }
         
         public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.No, IconType.Find);
         }
         
         public static void IHaveAlreadyBeenAsked(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.No);
         }
         
         public static void Trade(LanguageExchanger sender, LanguageExchanger receiver, ItemType itemGained, ItemType itemSold){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
             GotItem(sender, itemGained);
             GotItem(receiver, itemSold);
         }
         
          public static void GotItem(LanguageExchanger sender, ItemType itemGained){
+            sender.character.animationController.anim.SetTrigger("talk");
             sender.iconSystem.GenerateIcons(IconType.Fish);
+        }
+
+        public static void RandomTalk(LanguageExchanger sender, LanguageExchanger receiver){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
+            sender.iconSystem.GenerateIcons(
+                Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)],
+                Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)],
+                Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)]
+            );
+            Delayer.Start(delegate() {
+                receiver.React(sender, Topic.RandomTalk);
+            }, Settings.speechDelay);
         }
         
     /**
