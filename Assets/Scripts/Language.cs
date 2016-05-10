@@ -118,10 +118,6 @@ namespace Kontiki{
 
         public static void RandomTalk(LanguageExchanger sender, LanguageExchanger receiver){
             sender.character.animationController.anim.SetTrigger("talk");
-            GameObject temp = new GameObject();
-            temp.AddComponent<Delay>();
-            Delay delay = temp.GetComponent<Delay>();
-            delay.StartDelay(1f);
             sender.iconSystem.GenerateIcons(
                 Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)],
                 Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)],

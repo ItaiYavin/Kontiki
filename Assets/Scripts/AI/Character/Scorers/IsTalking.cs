@@ -18,7 +18,11 @@ namespace Kontiki.AI
             bool b;
 
             b = ai.character.isTalking;
-          
+        
+            if(ai.debugAI_Character){
+                Debug.Log("Is Talking: " + b);                
+            }
+
           	if(not) b = !b;
 
           	return b ? score : 0f;

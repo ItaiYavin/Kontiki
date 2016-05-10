@@ -26,6 +26,10 @@ namespace Kontiki.AI
                 e = ai.character.social / Settings.socialRange.max;
                 
             float v = Mathf.Max(e - threshold, 0) / (1 - threshold);
+
+            if(ai.debugAI_Character){
+                Debug.Log("social: " + v);                
+            }
            
             //TODO Make this more flexible
             return v * score;
