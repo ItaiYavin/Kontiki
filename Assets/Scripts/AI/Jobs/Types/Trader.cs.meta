@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: ece54d0ddd7f6e843b1cfc938dbde49c
-timeCreated: 1462270147
+timeCreated: 1462874062
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - boat: {instanceID: 0}
+  - boatPrefab: {fileID: 164580, guid: 555ac11b44708e04eaf96beb89418fc0, type: 2}
+  - port: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

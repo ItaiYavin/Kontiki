@@ -26,12 +26,9 @@ namespace Kontiki
         public GameObject questInfoPrefab;
         private List<ButtonInfo> questInfoBoxes;
 
-        [Header("Information")]
-        public Text questText;
-
         // Private Variables & references
-        public LanguageExchanger playerLang;
-        public InteractionSystem interactionSystem;
+        [HideInInspector] public LanguageExchanger playerLang;
+        [HideInInspector] public InteractionSystem interactionSystem;
         private GameObject basePanel;
         
         public static WindowsHandler Instance { get; private set; }
@@ -56,6 +53,7 @@ namespace Kontiki
         void Start()
         {
             basePanel = transform.GetChild(0).gameObject;
+            playerLang = Settings.player.languageExchanger;
             interactionSystem = playerLang.GetComponent<InteractionSystem>();
             questInfoBoxes = new List<ButtonInfo>();
             SetVisibility(false);
@@ -181,7 +179,7 @@ namespace Kontiki
                         case 0:{
                             //Accept Button
                             Quest q = playerLang.speakingTo.ai.baseRoutine.questOffer;
-                            Language.AcceptQuest(playerLang, playerLang.speakingTo,q);
+                            Language.AcceptQuest(playerLang, playerLang.speakingTo, q);
                             SetVisibility(false);
                             
                         }break;                     

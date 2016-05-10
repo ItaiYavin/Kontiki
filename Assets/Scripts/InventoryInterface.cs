@@ -6,7 +6,7 @@ namespace Kontiki {
     public class InventoryInterface : MonoBehaviour
     {
         [Header("Pointers")]
-        public Inventory inventory;
+        [HideInInspector] public Inventory inventory;
         public GameObject buttonPrefab;
 
         [Header("Inventory Bar Look")]
@@ -30,6 +30,7 @@ namespace Kontiki {
         // Use this for initialization
         void Start()
         {
+            inventory = Settings.player.inventory;
             _rt = GetComponent<RectTransform>();
             GenerateButtonsForInventoryBar();
             float elementSize = marginBetweenButtons + sizeOfButtons;

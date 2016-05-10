@@ -5,6 +5,8 @@ namespace Kontiki.AI{
     public class Fisher : JobWithBoat{
         
         [Header("Fishing Variables")]
+        
+        public bool isScavenger = false;
         public Transform[] fishingSpots;
         
         public Transform selectedFishingSpot;
@@ -19,6 +21,20 @@ namespace Kontiki.AI{
         public float minFishingTime = 3f; //Move into Settings
         public float maxFishingTime = 6f; //Move into Settings
 		
+        
+        void Start(){
+            if(isScavenger){
+                fishingSpots = Settings.scavengingSpots.ToArray();
+            }else{
+                fishingSpots = Settings.fishingSpots.ToArray();
+            }
+            
+            port = Settings.GetPort();
+            port.name = gameObject.name + "'s Port";
+            GameObject g = Instantiate(boatPrefab, port.transform.position, port.transform.rotation) as GameObject;
+            boat = g.GetComponent<Boat>();
+            boat.name = gameObject.name + "'s Boat";
+        }
         
         public void GoToRandomFishingSpot(){
             if(fishingSpots.Length != 0){

@@ -11,6 +11,12 @@ namespace Kontiki.AI{
         public float minTradingTime = 3f;
         public float maxTradingTime = 6f;
         
+        void Awake(){
+            if(Settings.traders.IndexOf(this) == -1){
+                Settings.traders.Add(this);
+            }
+        }
+        
         void Start(){
             if(ports.Length == 0 && port == null){
                 Debug.LogError("AI - Trader Must have at least one port");
@@ -23,6 +29,14 @@ namespace Kontiki.AI{
             if(port != null && ports.Length == 0) {
                 ports = new Transform[1] {port};
             }
+            for (int i = 0; i < ports.Length; i++)
+            {
+                ports[i].name = gameObject.name + "'s Port " + (i + 1);
+            }
+            
+            GameObject g = Instantiate(boatPrefab, port.transform.position, port.transform.rotation) as GameObject;
+            boat = g.GetComponent<Boat>();
+            boat.name = gameObject.name + "'s Boat";
                 
             if(isTrading){
                 if(!boat.isDocked){

@@ -33,11 +33,11 @@ namespace Kontiki{
 			
 		[SerializeField] private LayerMask _interactableLayer;
 
-        public sui_demo_ControllerMaster controller;
+        private sui_demo_ControllerMaster controller;
 
         [Header("Pointers")]
         public GameObject prefab_interactableIndicator;
-		public GameObject container;
+		public Transform interactableIndicatorContainer;
         public WindowsHandler windowsHandler;
 
         private List<InteractableIndicator> _occupiedIndicators;
@@ -46,6 +46,9 @@ namespace Kontiki{
 		public bool menuOpen = false;
 
 		void Start () {
+			controller = Settings.controller;
+			interactableIndicatorContainer = Settings.interactableIndicatorContainer;
+			windowsHandler = Settings.windowsHandler;
 			_player = GetComponent<Character>();
             _inventory = GetComponent<Inventory>();
 			_freeIndicators = new List<InteractableIndicator>();
@@ -54,7 +57,7 @@ namespace Kontiki{
 		void Update () {
 			_isDown = Input.GetKey(_key);
 			controller.interactionButtonDown = _isDown;
-			container.SetActive(_isDown);
+			interactableIndicatorContainer.gameObject.SetActive(_isDown);
 			if(_isDown){
 				
 				//ScanForInteractableIndicators();
@@ -175,7 +178,7 @@ namespace Kontiki{
 					}else{
 						//instantiate indicator
 						GameObject g = Instantiate(prefab_interactableIndicator);
-						g.transform.SetParent(container.transform, false);
+						g.transform.SetParent(interactableIndicatorContainer, false);
 						indicator = g.GetComponent<InteractableIndicator>();
 					}
 					

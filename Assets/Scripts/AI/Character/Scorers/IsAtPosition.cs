@@ -47,7 +47,7 @@ namespace Kontiki.AI
 
                     case PlaceType.Trader:
                     {
-                    b = ai.pathfinder.IsAtPosition(ai.baseRoutine.trader.transform.position, range);
+                        b = ai.pathfinder.IsAtPosition(ai.baseRoutine.trader.transform.position, range);
                     }
                     break;
 

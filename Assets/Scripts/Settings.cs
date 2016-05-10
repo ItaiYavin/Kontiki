@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using Kontiki.AI;
 namespace Kontiki { 
@@ -9,15 +10,17 @@ namespace Kontiki {
          **/
         public static bool debugging = true;
         public static bool debugQuestInfo = false;
-        
         public static bool debugIconSystem = false;
         
         /**
          * References
          **/
         
+        public static sui_demo_ControllerMaster controller;
+        public static Transform interactableIndicatorContainer;
+        public static WindowsHandler windowsHandler;
         public static Character player;
-        public static Transform[] homes;
+        public static List<Transform> homes;
         
         
         
@@ -44,9 +47,12 @@ namespace Kontiki {
           **/
         public static float dockingRange = 1f;
         
-        public static Transform[] ports;
+        public static List<Transform> ports;
         
-        public static Trader[] traders;
+        public static List<Trader> traders;
+        
+        public static List<Transform> fishingSpots;
+        public static List<Transform> scavengingSpots;
         
         
         
@@ -60,6 +66,30 @@ namespace Kontiki {
          public static float iconWidth;
          public static float iconOffset;
          public static Vector3 iconContainerOffset;
+         
+         
+         
+         
+         /**
+          * Private !
+          **/
+         private static int portIndex = 0;
+         private static int homeIndex = 0;
+        
+        
+         /**
+          * Methods
+          **/
+         
+         public static Trader GetTrader(){
+             return traders[Random.Range(0,traders.Count)];
+         }
+         public static Transform GetHome(){
+             return homes[homeIndex++];
+         }
+         public static Transform GetPort(){
+             return ports[portIndex++];
+         }
 
     }
 }

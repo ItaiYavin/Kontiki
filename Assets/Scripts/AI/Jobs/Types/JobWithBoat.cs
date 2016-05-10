@@ -7,14 +7,20 @@ namespace Kontiki.AI{
         
         
         [Header("Boat Variables")]
-        public Boat boat;
-        public Transform port;
+        [HideInInspector] public Boat boat;
+        [HideInInspector] public GameObject boatPrefab;
+        
+        [HideInInspector] public Transform port;
         
 		public bool isReturningToPort = false;
         
         
         void Start(){
-            moveBoatToPort();
+            port = Settings.GetPort();
+            port.name = gameObject.name + "'s Port";
+            GameObject g = Instantiate(boatPrefab, port.transform.position, port.transform.rotation) as GameObject;
+            boat = g.GetComponent<Boat>();
+            boat.name = gameObject.name + "'s Boat";
         }
         
         public virtual void moveBoatToPort(){moveBoatToPort(port);}
