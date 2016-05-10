@@ -135,12 +135,16 @@ function Awake() {
 	suimonoGameObject = GameObject.Find("SUIMONO_Module");
 	if (suimonoGameObject != null) suimonoModuleObject = suimonoGameObject.GetComponent(SuimonoModule);
 	
+	if(cameraTarget == null)	
+		cameraTarget = GameObject.FindWithTag("Player").transform;
+
 	targetPosition = cameraTarget.position;
 	targetRotation = cameraTarget.rotation;
 	
-	if (cameraTarget != null){
+	
+	if (cameraTarget != null)
 		targetAnimator = cameraTarget.gameObject.GetComponent(sui_demo_animCharacter);
-	}
+	
 	
 	//if (vehicleTarget != null){
 	//	vehiclePosition = vehicleTarget.gameObject.Find("PlayerPositionMarker").transform;
@@ -357,12 +361,13 @@ if (isActive){
 		}
 		
 		//turn off buoyancy when underwater (if object exists)
-		if (isUnderWater){
-			if (buoyancyObject != null) buoyancyObject.engageBuoyancy = false;
-		} else {
-			if (buoyancyObject != null) buoyancyObject.engageBuoyancy = true;
+		if(buoyancyObject != null){
+			if (isUnderWater){
+				if (buoyancyObject != null) buoyancyObject.engageBuoyancy = false;
+			} else {
+				if (buoyancyObject != null) buoyancyObject.engageBuoyancy = true;
+			}
 		}
-		
 	}
 	
 

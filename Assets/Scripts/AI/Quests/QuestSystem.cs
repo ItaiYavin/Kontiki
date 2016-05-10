@@ -6,7 +6,7 @@ namespace Kontiki
 {
 	public class QuestSystem : MonoBehaviour
 	{
-	    public ItemType rewardType;       		
+	    public ItemType rewardType = ItemType.Edible;       		
 		public GameObject objectivePrefab;
 		public GameObject areaOfInterestPrefab;
 		private List<Character> charactersWithoutQuestObjects;

@@ -277,7 +277,7 @@ Material:
       data:
         first:
           name: _suimono_uvx
-        second: 0
+        second: -3.2216
       data:
         first:
           name: _suimono_uvy
