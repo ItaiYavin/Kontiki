@@ -25,7 +25,8 @@
     {
         Home,
         Trader,
-        Boat
+        Boat,
+        Plaza
     }
     
     public enum Window

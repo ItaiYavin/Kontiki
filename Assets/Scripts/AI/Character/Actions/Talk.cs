@@ -25,6 +25,7 @@ namespace Kontiki.AI {
 	        	self.isTalking = true;
 	        	partner.isTalking = true;
 	        } else {
+	        	self.wantsToTalk = false;
 	        	self.isTalking = false;
 	        	partner.isTalking = false;
 

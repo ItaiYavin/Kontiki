@@ -20,7 +20,9 @@ namespace Kontiki.AI
         public override void Execute(IAIContext context)
         {
             AIContext ai = ((AIContext)context);
+            Character self = ai.character;
 
+            self.wantsToTalk = true;
 
             Collider[] colliders = Physics.OverlapSphere(ai.transform.position, Settings.scanningRange);
 
@@ -37,10 +39,10 @@ namespace Kontiki.AI
 
             for(int i = 0; i < charactersInRange.Count; i++)
             {
-            	if(charactersInRange[i].socialPartner == null)
+            	if(charactersInRange[i].socialPartner == null && charactersInRange[i].wantsToTalk)
             	{
-            		charactersInRange[i].socialPartner = ai.character;
-            		ai.character.socialPartner = charactersInRange[i];
+            		charactersInRange[i].socialPartner = self;
+            		self.socialPartner = charactersInRange[i];
             	}
             }
         }

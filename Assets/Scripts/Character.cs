@@ -27,6 +27,8 @@ namespace Kontiki {
         public SkinnedMeshRenderer modelRenderer;
         private Material material;
         
+        [HideInInspector]
+        public AnimationController animationController;
         
 
         /**
@@ -37,12 +39,16 @@ namespace Kontiki {
         [HideInInspector] public bool isSleeping;
 
         void Awake(){
+            animationController = GetComponent<AnimationController>();
             inventory = GetComponent<Inventory>();
             languageExchanger = GetComponent<LanguageExchanger>();
         }
 
         [HideInInspector]
         public bool isTalking;
+
+        [HideInInspector]
+        public bool wantsToTalk;
 
         void Start()
         {
@@ -81,6 +87,8 @@ namespace Kontiki {
                     social += Settings.socialIncrementPerSec * Time.deltaTime;
                 }
                 break;
+            
+                social = Mathf.Clamp(social, Settings.socialRange.min, Settings.socialRange.max);
             }
         }
 
