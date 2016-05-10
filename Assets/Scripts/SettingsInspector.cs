@@ -8,14 +8,15 @@ namespace Kontiki {
     public class SettingsInspector : MonoBehaviour
     {
         public bool updateValuesEveryFrame = false;
-        public bool countEverything = false;
+
         
         [Header("Debugging")]
         public bool debugging 			    = true;
 		public bool debugQuestInfo 		    = false;
 		public bool debugIconSystem	    = false;
-        
-        
+        public bool countEverything = false;
+
+
         [Header("References")]
         public Character player;
         public sui_demo_ControllerMaster controller;
@@ -104,19 +105,19 @@ namespace Kontiki {
                     AIComponentContainer ai = ais[i];
                     if(ai.GetComponent<DeliveryMan>() != null)
                         numDeliveryMans++;
-                    else if(ai.job is Fisher){
-                        if(((Fisher)ai.job).isScavenger)
+                    else if(ai.GetComponent<Fisher>()){
+                        if(ai.GetComponent<Fisher>().isScavenger)
                             numScavengers++;
                         else
                             numFishers++;
-                    }else if(ai.job is Trader)
+                    }else if(ai.GetComponent<Trader>() != null)
                         numTraders++;
                     else
                         numCitizens++;
                 }
                 
                 Debug.Log("total: " + total + ", traders: " + numTraders + ", Scavengers: " + numScavengers + ", Fishers: " + numFishers + ", DeliveryMans: " + numDeliveryMans + ", Citizen: " + numCitizens);
-                Debug.Log("homes: " + (total - numTraders) + "/" + numHomes + ", ports: " + (numFishers + numScavengers) + "/" + (numPorts) + ", fishingSpots: " + (numFishers) + "/" + (numFishingSpots) + ", fishingSpots: " + (numScavengers) + "/" + (numScavengingSpots));
+                Debug.Log("homes: " + (total - numTraders) + "/" + numHomes + ", ports: " + (numFishers + numScavengers) + "/" + (numPorts) + ", fishingSpots: " + (numFishers) + "/" + (numFishingSpots) + ", scavengingSpots: " + (numScavengers) + "/" + (numScavengingSpots));
             }   
         }
         
