@@ -47,6 +47,12 @@ namespace Kontiki.AI
                         b = ai.pathfinder.IsAtPosition(ai.baseRoutine.trader.transform.position, range);
                     }break;
 
+                    case PlaceType.Plaza:
+                    {
+                        b = ai.pathfinder.IsAtPosition(ai.baseRoutine.plaza.transform.position, range);
+                    }
+                    break;
+
                     case PlaceType.Boat:{
                         if(ai.job is JobWithBoat){
                             JobWithBoat job = (JobWithBoat)ai.job;

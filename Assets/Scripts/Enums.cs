@@ -26,6 +26,7 @@
         Home,
         Trader,
         Boat,
+		Plaza,
         DeliveryOrigin,
         DeliveryDestination,
     }
