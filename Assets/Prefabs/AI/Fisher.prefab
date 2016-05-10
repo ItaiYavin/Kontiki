@@ -924,7 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   home: {fileID: 0}
   trader: {fileID: 0}
-  plaza: {fileID: 0}
+  selectedPlaza: {fileID: 0}
   hasQuestToOffer: 0
 --- !u!114 &11461454
 MonoBehaviour:
@@ -1114,7 +1114,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 151432}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1125,7 +1125,7 @@ NavMeshAgent:
   m_Height: 2.3
   m_BaseOffset: 0
   m_WalkableMask: 7
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!223 &22325014
 Canvas:
   m_ObjectHideFlags: 1
