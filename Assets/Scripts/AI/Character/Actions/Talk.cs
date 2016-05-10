@@ -15,13 +15,22 @@ namespace Kontiki.AI {
 	        AIContext ai = ((AIContext)context);
 	        Character self = ai.character;
 
+	       	LanguageExchanger languageExchanger = self.languageExchanger;
+	       	languageExchanger.speakingTo = self.socialPartner.languageExchanger;
+
+	       	Character partner = languageExchanger.speakingTo.transform.GetComponent<Character>();
+
 	        if(!stop){ // Start talking
+	        	Language.RandomTalk(languageExchanger, languageExchanger.speakingTo);
 	        	self.isTalking = true;
-	        	self.transform.LookAt(self.socialPartner.transform, Vector3.up);
+	        	partner.isTalking = true;
 	        } else {
 	        	self.isTalking = false;
-	        }
+	        	partner.isTalking = false;
 
+	        	partner.socialPartner = null;
+	        	self.socialPartner = null;
+	        }
 		}
 	}
 }

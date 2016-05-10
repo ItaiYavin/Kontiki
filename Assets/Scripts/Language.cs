@@ -18,6 +18,7 @@ namespace Kontiki{
             DeclineInfo,
             Trade,
             GotItem,
+            RandomTalk,
         }
         
         public static void IHaveQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
@@ -98,6 +99,15 @@ namespace Kontiki{
         
          public static void GotItem(LanguageExchanger sender, ItemType itemGained){
             sender.iconSystem.GenerateIcons(IconType.Fish);
+        }
+
+        public static void RandomTalk(LanguageExchanger sender, LanguageExchanger receiver){
+            sender.iconSystem.GenerateIcons(
+                Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)],
+                Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)],
+                Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)]
+            );
+            receiver.React(sender, Topic.RandomTalk);
         }
         
     /**

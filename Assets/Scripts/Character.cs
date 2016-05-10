@@ -41,6 +41,7 @@ namespace Kontiki {
             languageExchanger = GetComponent<LanguageExchanger>();
         }
 
+        [HideInInspector]
         public bool isTalking;
 
         void Start()

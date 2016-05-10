@@ -15,7 +15,7 @@ namespace Kontiki.AI
 	public class FindSocialPartner : ActionBase 
 	{
         [ApexSerialization, FriendlyName("Search Radius", "Threshold(0-1) for hunger(0-1) where the score will be 0")]
-        public float threshold = 0;
+        public float searchRadius = 0;
         
         public override void Execute(IAIContext context)
         {
