@@ -50,7 +50,7 @@ namespace Kontiki {
         
         public static List<Transform> fishingSpots;
         public static List<Transform> scavengingSpots;
-        
+        public static GameObject boatPrefab;
         
         
         /**

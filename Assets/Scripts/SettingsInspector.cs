@@ -49,7 +49,7 @@ namespace Kontiki {
         [Header("Job Settings")]
         public float dockingRange = 1f;
         public List<Trader> traders;
-        
+        public GameObject boatPrefab;
         
         public Transform portContainer;
         public Transform fishingSpotContainer;
@@ -131,6 +131,7 @@ namespace Kontiki {
             Settings.iconSprites = iconSprites;
             Settings.languageColors = languageColors;
             
+            Settings.boatPrefab = boatPrefab;
             Settings.controller = controller;
             Settings.ports = ports;
             Settings.traders = traders;

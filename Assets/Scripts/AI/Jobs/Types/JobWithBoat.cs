@@ -16,6 +16,8 @@ namespace Kontiki.AI{
         
         
         void Start(){
+            boatPrefab = Settings.boatPrefab;
+
             port = Settings.GetPort();
             port.name = gameObject.name + "'s Port";
             GameObject g = Instantiate(boatPrefab, port.transform.position, port.transform.rotation) as GameObject;
