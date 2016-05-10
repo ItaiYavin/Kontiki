@@ -26,7 +26,9 @@
         Home,
         Trader,
         Boat,
-        Plaza
+		Plaza,
+        DeliveryOrigin,
+        DeliveryDestination,
     }
     
     public enum Window
@@ -54,6 +56,7 @@ namespace Kontiki.AI
 {
     public enum JobType{
        Fisher,
-       Trader            
+       Trader,
+       DeliveryMan            
     }
 }

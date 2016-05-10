@@ -32,24 +32,20 @@ namespace Kontiki.AI
             Character character = ai.character;
             bool b = false;
             
-            if(usePathfindingDistance ){
+            if(usePathfindingDistance){
                 if(nonZero && ai.pathfinder.agent.remainingDistance == 0)
                     b = false;
                 else
                     b = ai.pathfinder.agent.remainingDistance < range;
             }else{
                 switch(place){
-                    case PlaceType.Home:
-                    {
+                    case PlaceType.Home:{
                         b = ai.pathfinder.IsAtPosition(ai.baseRoutine.home.position, range);
-                    }
-                    break;
+                    }break;
 
-                    case PlaceType.Trader:
-                    {
+                    case PlaceType.Trader:{
                         b = ai.pathfinder.IsAtPosition(ai.baseRoutine.trader.transform.position, range);
-                    }
-                    break;
+                    }break;
 
                     case PlaceType.Plaza:
                     {
@@ -57,14 +53,26 @@ namespace Kontiki.AI
                     }
                     break;
 
-                    case PlaceType.Boat:
-                    {
+                    case PlaceType.Boat:{
                         if(ai.job is JobWithBoat){
                             JobWithBoat job = (JobWithBoat)ai.job;
                             b = ai.pathfinder.IsAtPosition(job.boat.transform.position, range);
                         }
-                    }
-                    break;
+                    }break;
+                    
+                    case PlaceType.DeliveryOrigin:{
+                        if(ai.job is DeliveryMan){
+                            DeliveryMan job = (DeliveryMan)ai.job;
+                            b = ai.pathfinder.IsAtPosition(job.origin.transform.position, range);
+                        }
+                    }break;
+                    
+                    case PlaceType.DeliveryDestination:{
+                        if(ai.job is DeliveryMan){
+                            DeliveryMan job = (DeliveryMan)ai.job;
+                            b = ai.pathfinder.IsAtPosition(job.destination.transform.position, range);
+                        }
+                    }break;
                 }
 
             }
