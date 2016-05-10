@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2360962}
   - 65: {fileID: 6542584}
   m_Layer: 0
-  m_Name: BBuild04
+  m_Name: Building 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

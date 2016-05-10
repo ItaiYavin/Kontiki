@@ -13,7 +13,7 @@ GameObject:
   - 95: {fileID: 9581906}
   - 65: {fileID: 6599154}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Building 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
