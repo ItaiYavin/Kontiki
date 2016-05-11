@@ -13,13 +13,16 @@ namespace Kontiki
 
         private Vector2 originalSizeDelta;
         private Vector2 originalPosition;
+        private float offsetPosY;
         
 	    // Use this for initialization
 	    void Start ()
 	    {
             player = Settings.player;
 	        originalSizeDelta = hungerProgress.sizeDelta;
-	        originalPosition = hungerProgress.position;
+	        originalPosition = hungerProgress.localPosition;
+
+	        offsetPosY = Mathf.Abs(originalSizeDelta.y - originalPosition.y);
 	    }
 	
 	    // Update is called once per frame
@@ -32,8 +35,8 @@ namespace Kontiki
         
             // Set Position
 	        Vector2 pos = originalPosition;
-	        pos.y = (size.y/2) + 10;
-	        hungerProgress.position = pos;
+	        pos.y = ((size.y/2) + 30)-originalSizeDelta.y;
+	        hungerProgress.localPosition = pos;
 	    }
 
         public static float remap(float value,float low1, float high1, float low2, float high2)
