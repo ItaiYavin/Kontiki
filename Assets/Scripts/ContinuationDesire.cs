@@ -8,6 +8,8 @@ using Kontiki;
 
 public class ContinuationDesire : MonoBehaviour {
 
+	
+
 	public float continuationDesireDelay;
 	private float nextPrompt;
 	public GameObject yesNoPanel;
@@ -108,7 +110,7 @@ public class ContinuationDesire : MonoBehaviour {
 			case UrgencyLevel.Med: urgencyString = "M"; break;
 			case UrgencyLevel.None: urgencyString = "N"; break;
 		}
-		
+		Settings.urgencyLevel = chosen;
 		notCurrentlyAsking = true;
 		whyPanel.SetActive(false);
 		yesNoPanel.SetActive(false);

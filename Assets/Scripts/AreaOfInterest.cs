@@ -39,7 +39,6 @@ namespace Kontiki
 		void FixedUpdate(){
 			float distance = (Settings.player.transform.position - target.position).magnitude;
 			float limit = AOIDistanceToPlayer * transform.localScale.x;
-			Debug.Log("d: " + distance + " - " + limit + " S " + transform.localScale.x);
 			if(distance > limit){
 				AdjustAreaOfInterestInWorld(0f, target.position);
 				if(!colorChanging && material.color.a != maxAlpha){
