@@ -50,7 +50,7 @@ namespace Kontiki
 			//@TODO(KasperHdL) make generic, fetch quest specific currently..
 			GameObject g = Instantiate(objectivePrefab, transform.position, transform.rotation) as GameObject;
 			
-			Item objective = g.GetComponent<Item>();
+			QuestItem objective = g.GetComponent<QuestItem>();
 			charactersWithoutQuestObjects.Add(questGiver);
 			int i = Random.Range(0, charactersWithoutQuestObjects.Count);
 

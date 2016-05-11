@@ -74,7 +74,11 @@ namespace Kontiki {
                     Color col = invImage.color;
                     invImage.sprite = item.sprite;		
                     invImage.color = new Color(col.r, col.g, col.b, buttonTransparency);	
-                    _inventoryItemButtons[i].GetComponent<InventoryItem>().text.text = "" + (i+1);		
+                    _inventoryItemButtons[i].GetComponent<InventoryItem>().text.text = "" + (i+1);
+                    if (item is QuestItem)
+                    {
+                        invImage.color = (item as QuestItem).quest.colorOrigin;
+                    }
                 }
                 else 
                 {

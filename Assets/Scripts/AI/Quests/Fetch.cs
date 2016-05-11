@@ -9,7 +9,7 @@ namespace Kontiki
 	public class Fetch : Quest {
 
 		public Character objectiveHolder;
-		public Item objective;
+		public QuestItem objective;
 		public int chanceForKnowledge = 8; // The higher the harder, roll is possible when below 10 (always possible when <= 0)
 
 		public bool hasObjective;
@@ -50,7 +50,9 @@ namespace Kontiki
 			Item[] objectiveHolderInventoryItems = objectiveHolder.inventory.GetInventoryItems();
 			
 			for(int i = 0; i < objectiveHolderInventoryItems.Length; i++){
-				if(objectiveHolderInventoryItems[i] == objective){
+				if(objectiveHolderInventoryItems[i] == objective)
+				{
+				    objective.quest = this;
 					player.inventory.PutItemIntoInventoryRegardlessOfDistance(objective);
 					objectiveHolderInventoryItems[i] = null;
 				}
