@@ -970,7 +970,7 @@ MonoBehaviour:
   windowsHandler: {fileID: 0}
   menuOpen: 0
   cursorCanReach: {fileID: 2800000, guid: e04ddf28055001942ae81641bab48c74, type: 3}
-  cursorIsPerson: {fileID: 2800000, guid: 69610d1d0fd79cd4dbd8c8a3a1c92605, type: 3}
+  cursorIsPerson: {fileID: 2800000, guid: 00c70016f73c0844c84752b47516c53c, type: 3}
   cursorCannotReach: {fileID: 2800000, guid: 4ae17a1b023d5284b9c240a1c9cb5025, type: 3}
 --- !u!114 &11434276
 MonoBehaviour:
