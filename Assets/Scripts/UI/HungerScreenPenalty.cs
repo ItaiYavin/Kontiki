@@ -22,12 +22,17 @@ namespace Kontiki
 		void Start () {
 			player = Settings.player;
 			blur = GetComponent<BlurOptimized>();
+			blur.enabled = false;
 			fisheye = GetComponent<Fisheye>();
+			fisheye.enabled = false;
 			originalColor = hungerSliderBackground.color;
 		}
 		
 		// Update is called once per frame
 		void Update () {
+			bool activate = player.hunger > threshold;
+			fisheye.enabled = activate;
+			blur.enabled = activate;
 			if(player.hunger > threshold){
 				HungerEffect();
 			} else if (player.hunger < threshold && hungerSliderBackground.color != originalColor){
@@ -36,6 +41,7 @@ namespace Kontiki
 		}
 
 		public void HungerEffect(){
+			
 			float percent = (player.hunger-threshold)/(Settings.hungerRange.max-threshold);
 			SetBlurSize(percent*3f);
 
