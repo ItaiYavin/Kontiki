@@ -31,7 +31,6 @@ namespace Kontiki{
 
         }
         public static void DeclineConversation(LanguageExchanger sender, LanguageExchanger receiver){
-            Debug.Log(receiver.character.material.color);
             sender.iconSystem.GenerateIcons(receiver.character.material.color, IconType.No);
             receiver.iconSystem.Clear();
             receiver.playerIsSpeakingToMe = false;
