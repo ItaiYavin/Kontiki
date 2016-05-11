@@ -44,10 +44,7 @@ namespace Kontiki
 		}
 		
 		public void RemoveAreaOfInterest(){
-			Color c = colorOrigin;
-			c.a = 0;
-			areaOfInterest.ChangeColor(c);
-			Object.Destroy(areaOfInterest.gameObject,areaOfInterest.animationDuration);
+			Object.Destroy(areaOfInterest.gameObject);
 		}
 
 		public bool CheckCharacterIsInAreaOfInterest(Character character){

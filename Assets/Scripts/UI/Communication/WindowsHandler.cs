@@ -89,28 +89,16 @@ namespace Kontiki
                 }break;
                 case Window.Info:{
                     if(buttonIndex != -1){
-                            Debug.Log("info info");
-                        bool characterHasMoreInfo = false;
                         Quest[] acceptedQuest = QuestSystem.Instance.GetAcceptedQuests();
                         if(acceptedQuest.Length > 0){
-                            Quest quest = acceptedQuest[buttonIndex];
-                            Language.DoYouHaveInfoAboutQuest(playerLang, playerLang.speakingTo, quest);
                             questInfoBoxes[buttonIndex].button.interactable = false;
                             
-                            for (int i = 0; i < acceptedQuest.Length; i++)
-                            {
-                                if(!acceptedQuest[i].HasCharacterBeenAsked(playerLang.speakingTo.character)){
-                                    characterHasMoreInfo = true;
-                                    break;
-                                }
-                            }
-                        }
+                            Quest quest = acceptedQuest[buttonIndex];
                         
-                        if(characterHasMoreInfo)
-                            GenerateQuestButtons();
-                        else
+                            Language.DoYouHaveInfoAboutQuest(playerLang, playerLang.speakingTo, quest);
+                        }else
                             SetVisibility(false);
-                        break;
+                        
                     }
                     
                 }break;

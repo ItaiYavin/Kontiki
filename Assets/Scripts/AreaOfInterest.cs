@@ -20,6 +20,7 @@ namespace Kontiki
 		public float maxAlpha = 0.5f;
 		
 		private MeshRenderer cylinderRenderer;
+		private bool stopNextColorChange = false;
 		public Transform cylinder;
 		
 		// Use this for initialization
@@ -72,6 +73,15 @@ namespace Kontiki
 			
 			if(reduction != 0)
 				ChangeScale(newScale);
+			else{
+				if(colorChanging)
+					stopNextColorChange = true;
+				Color c = material.color;
+				c.a = maxAlpha;
+				
+				ChangeColor(c);
+			}
+				
 			transform.position = position;
 			//RandomlyMoveGameObjectWithinRange(newScale, position); //Move areaOfInterest so that position is still wihtin areaOfInterest
 		}
@@ -133,6 +143,7 @@ namespace Kontiki
             float endTime = startTime + duration;
             
             while(endTime > Time.time){
+				if(stopNextColorChange) endTime = Time.time;
                 float t = (Time.time - startTime)/duration;
                 transform.position = Vector3.Lerp(startPosition, endPosition, t);
                 yield return null;

@@ -218,11 +218,11 @@ namespace Kontiki{
                         }, Settings.AIDelayAfterSpeakingToPlayer);
                     }else if(quest.CheckIfCharacterHasObjective(character)){
                         // asked person has objective and has given it to the player
+                        quest.RemoveAreaOfInterest();
                         Language.IHaveQuestObjective(this, sender, quest);
                                     
                         ExitConversation();
                         
-                        quest.RemoveAreaOfInterest();
                         WindowsHandler.Instance.SetVisibility(false);
                         
                     }else if(quest.HasCharacterBeenAsked(character)){
@@ -243,6 +243,7 @@ namespace Kontiki{
                             if(Settings.debugQuestInfo)
                                 Debug.Log("Character has no Information");
                             Language.IHaveNoInfoAboutQuest(this, sender, quest);
+                            ExitConversation();
                         }
                     }
                     speakingTo = null;
@@ -251,7 +252,20 @@ namespace Kontiki{
                     if(isPlayer){
                         //received that npc has info.
                         iconSystem.Clear();
-                        WindowsHandler.Instance.SetVisibility(false);
+                        Quest[] acceptedQuest = QuestSystem.Instance.GetAcceptedQuests();
+                        bool b = false;     
+                        for (int i = 0; i < acceptedQuest.Length; i++)
+                        {
+                            if(!acceptedQuest[i].HasCharacterBeenAsked(sender.speakingTo.character)){
+                                b = true;
+                                break;
+                            }
+                        }
+                        if(b)
+                            WindowsHandler.Instance.SwitchWindow(Window.Info);
+                        else
+                            WindowsHandler.Instance.SetVisibility(false);
+
                     }
                 }break;
                 case Language.Topic.IHaveNoInfoAboutQuest:{
