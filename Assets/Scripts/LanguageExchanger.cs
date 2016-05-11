@@ -126,9 +126,16 @@ namespace Kontiki{
                             character.ChangeColor(quest.colorOrigin, 0.5f); 
                             ai.baseRoutine.questOffer = quest;  
                         }else if(ai.baseRoutine.questOffer != null && ai.baseRoutine.hasQuestToOffer){
-                            
-                            Language.IHaveQuest(this, null, ai.baseRoutine.questOffer); 
-                            ExitConversation();
+                            if (QuestSystem.Instance.acceptedQuests.IndexOf(ai.baseRoutine.questOffer) != -1)
+                            {
+                                Language.IHaveQuest(this, null, ai.baseRoutine.questOffer);
+                                ExitConversation();
+                            }
+                            else
+                            {
+                                Language.IHaveQuest(this, sender, ai.baseRoutine.questOffer);
+                                character.ChangeColor(ai.baseRoutine.questOffer.colorOrigin, 0.5f);
+                            }
                         }else{
                             Language.IHaveNoQuest(this, sender);
                             ExitConversation();

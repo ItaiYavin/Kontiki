@@ -307,6 +307,7 @@ GameObject:
   - 114: {fileID: 11413594}
   - 114: {fileID: 11483600}
   - 114: {fileID: 11418610}
+  - 114: {fileID: 11449472}
   - 114: {fileID: 11400914}
   m_Layer: 11
   m_Name: Trader
@@ -741,8 +742,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.5096546, y: 11.89, z: -0.70959866}
+  m_LocalScale: {x: 0.01, y: 1, z: 0.01}
   m_Children:
   - {fileID: 22419230}
   - {fileID: 497300}
@@ -898,6 +899,7 @@ MonoBehaviour:
   canvasParent: {fileID: 22319252}
   iconDuration: 0
   iconsDestroyTime: 0
+  character: {fileID: 0}
 --- !u!114 &11429376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -929,6 +931,21 @@ MonoBehaviour:
   debugAI_Character: 0
   debugAI_Job: 0
   debugAI_Interaction: 0
+--- !u!114 &11449472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cb398edbefe604699ff036bf91bcfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  home: {fileID: 0}
+  trader: {fileID: 0}
+  selectedPlaza: {fileID: 0}
+  hasQuestToOffer: 0
 --- !u!114 &11453040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -957,7 +974,6 @@ MonoBehaviour:
   port: {fileID: 0}
   isReturningToPort: 0
   ports:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   isTrading: 1
@@ -995,6 +1011,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   languageExchanger: {fileID: 0}
   modelRenderer: {fileID: 13715788}
+  material: {fileID: 0}
   isTalking: 0
   socialPartner: {fileID: 0}
   animationController: {fileID: 0}
@@ -1013,6 +1030,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speakingTo: {fileID: 0}
+  playerWantsToSpeakWithMe: 0
+  playerIsSpeakingToMe: 0
   iconSystem: {fileID: 0}
   character: {fileID: 0}
   ai: {fileID: 0}
@@ -1141,7 +1160,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4}
   m_SizeDelta: {x: 600, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
