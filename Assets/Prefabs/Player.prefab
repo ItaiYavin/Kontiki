@@ -697,8 +697,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -175.4, y: 3.2, z: 10}
+  m_LocalRotation: {x: 0, y: 0.92387944, z: 0, w: -0.38268363}
+  m_LocalPosition: {x: -162.23926, y: 3.2, z: 5.3058205}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 425348}
@@ -969,6 +969,9 @@ MonoBehaviour:
   interactableIndicatorContainer: {fileID: 0}
   windowsHandler: {fileID: 0}
   menuOpen: 0
+  cursorCanReach: {fileID: 2800000, guid: e04ddf28055001942ae81641bab48c74, type: 3}
+  cursorIsPerson: {fileID: 2800000, guid: 69610d1d0fd79cd4dbd8c8a3a1c92605, type: 3}
+  cursorCannotReach: {fileID: 2800000, guid: 4ae17a1b023d5284b9c240a1c9cb5025, type: 3}
 --- !u!114 &11434276
 MonoBehaviour:
   m_ObjectHideFlags: 1

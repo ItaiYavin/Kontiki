@@ -73,6 +73,7 @@ namespace Kontiki{
         public void ExitConversation(){
             if(!character.isPlayer){
                 Settings.player.languageExchanger.speakingTo = null;
+                        WindowsHandler.Instance.interactionSystem.menuOpen = false;
                 if(ai.pathfinder.enabled)
                     ai.pathfinder.agent.Resume();
                 playerWantsToSpeakWithMe = false;
@@ -94,6 +95,8 @@ namespace Kontiki{
                     }else{
                         //start conversation
                         WindowsHandler.Instance.SetVisibility(true);
+                        
+                        WindowsHandler.Instance.interactionSystem.menuOpen = true;
                         sender.speakingTo = this;
                         sender.playerWantsToSpeakWithMe = false;
                         sender.playerIsSpeakingToMe = true;
@@ -152,6 +155,7 @@ namespace Kontiki{
                    if(isPlayer){
                         //is Player and has received the topic Quest from a npc
                         WindowsHandler.Instance.SetVisibility(false);
+                        WindowsHandler.Instance.interactionSystem.menuOpen = false;
                                     
                         
                     }
@@ -175,6 +179,7 @@ namespace Kontiki{
                         
                         //just to show player the quest an extra time.. receiver set to null ie. player will not receive it..
                         Language.IHaveQuest(this, null, quest); 
+                        WindowsHandler.Instance.interactionSystem.menuOpen = false;
                         ExitConversation();
                     }
                 }break;
@@ -269,8 +274,10 @@ namespace Kontiki{
                         }
                         if(b)
                             WindowsHandler.Instance.SwitchWindow(Window.Info);
-                        else
+                        else{
                             WindowsHandler.Instance.SetVisibility(false);
+                            WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                        }
 
                     }
                 }break;
@@ -279,6 +286,7 @@ namespace Kontiki{
                         //received that npc has info.
                         iconSystem.Clear();
                         WindowsHandler.Instance.SetVisibility(false);
+                        WindowsHandler.Instance.interactionSystem.menuOpen = false;
                     }
                 }break;
                 case Language.Topic.DeclineInfo:{

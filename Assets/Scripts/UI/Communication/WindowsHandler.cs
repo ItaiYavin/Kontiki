@@ -192,7 +192,7 @@ namespace Kontiki
         public void SetVisibility(bool visible)
         {
             
-            interactionSystem.menuOpen = visible;
+            
             SwitchWindow(Window.Start);
             basePanel.SetActive(visible);
         }

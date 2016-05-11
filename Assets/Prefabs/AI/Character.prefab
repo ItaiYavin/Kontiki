@@ -916,8 +916,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hightlightRenderer: {fileID: 0}
   indicator: {fileID: 0}
-  sprite: {fileID: 21300000, guid: 8bc971c71d2cd8c4483dbce58e2b212d, type: 3}
-  isOnJob: 1
+  sprite: {fileID: 0}
+  isOnJob: 0
   debugAI_Character: 0
   debugAI_Job: 0
   debugAI_Interaction: 0

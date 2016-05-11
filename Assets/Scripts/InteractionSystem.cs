@@ -44,6 +44,10 @@ namespace Kontiki{
 		private List<InteractableIndicator> _freeIndicators;
 		
 		public bool menuOpen = false;
+		
+		public Texture2D cursorCanReach;
+		public Texture2D cursorIsPerson;
+		public Texture2D cursorCannotReach;
 
 		void Start () {
 			controller = Settings.controller;
@@ -53,8 +57,14 @@ namespace Kontiki{
             _inventory = GetComponent<Inventory>();
 			_freeIndicators = new List<InteractableIndicator>();
 			_occupiedIndicators = new List<InteractableIndicator>();
+			
+			Cursor.SetCursor(cursorCannotReach, Vector2.zero, CursorMode.Auto);
 		}
 		void Update () {
+			
+			if(menuOpen)
+				Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+			
 			_isDown = Input.GetKey(_key);
 			controller.interactionButtonDown = _isDown;
 			interactableIndicatorContainer.gameObject.SetActive(_isDown);
@@ -62,7 +72,6 @@ namespace Kontiki{
 				
 				//ScanForInteractableIndicators();
 				//UpdateInteractableIndicators();
-				
 				CheckMouseHoveringOverInteractable();
 				if(_lastTarget != null){
 					float distance = Vector3.Distance(_lastTarget.transform.position,transform.position);
@@ -125,6 +134,7 @@ namespace Kontiki{
 			}
 			
 			if(menuOpen || _isDown){
+				
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.Confined;
 			}else{
@@ -205,6 +215,7 @@ namespace Kontiki{
 				if(interactable != null){
                     if (_lastTarget == null){					
 						_lastTarget = interactable;
+						Cursor.SetCursor(cursorIsPerson, Vector2.zero, CursorMode.Auto);
                         
                         interactable.Highlight(new Color(0.5f,0,0,0.3f));
 						return;
@@ -212,12 +223,13 @@ namespace Kontiki{
 						float distance = Vector3.Distance(_lastTarget.transform.position , transform.position);
 						
 						if(distance < Settings.pickupRange){
+							Cursor.SetCursor(cursorCanReach, Vector2.zero, CursorMode.Auto);
                        		interactable.Highlight(new Color(0,1f,0,0.3f));
 						}
 
                     }else if(_lastTarget != interactable){
 						_lastTarget.RemoveHighlight();
-
+						Cursor.SetCursor(cursorCannotReach, Vector2.zero, CursorMode.Auto);
                         interactable.Highlight(new Color(0.5f,0,0,0.3f));
 						_lastTarget = interactable;
 					}
@@ -227,6 +239,7 @@ namespace Kontiki{
 						_lastTarget.RemoveHighlight();
 						_lastTarget = null;
 					}
+					Cursor.SetCursor(cursorCannotReach, Vector2.zero, CursorMode.Auto);
                 }
             }
         }

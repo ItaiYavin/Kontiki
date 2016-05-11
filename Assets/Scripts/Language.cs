@@ -225,10 +225,8 @@ namespace Kontiki{
         private static void IHaveQuest_Fetch(LanguageExchanger sender, LanguageExchanger receiver, Fetch quest){
              sender.iconSystem.GenerateIcons(
                 quest.colorObjective,
-                quest.colorOrigin,
                 IconType.QuestObjective,
-                IconType.Bring,
-                IconType.Person
+                IconType.Bring
             );
         }
         
