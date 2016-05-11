@@ -45,11 +45,12 @@ public class ContinuationDesire : MonoBehaviour {
 		
 		try{
         	readText = File.ReadAllText(path);
-		}catch(System.IO.FileNotFoundException e){
-			error = true;
+		}catch(Exception e){
+			File.Create(path);
+        	readText = File.ReadAllText(path);
 		}
 		
-		if(!error && readText.IndexOf(newParticipantString) != -1){
+		if(readText.IndexOf(newParticipantString) != -1){
 			while(readText.IndexOf(newParticipantString) != -1){
 				int startIndex = readText.IndexOf(newParticipantString);
 				string s = readText.Substring(startIndex + newParticipantString.Length, 1);
@@ -92,14 +93,6 @@ public class ContinuationDesire : MonoBehaviour {
 					chosen = UrgencyLevel.High;
 			}
 			
-		}else{
-			float r = UnityEngine.Random.Range(0f,3f);
-			if(r < 1f)
-				chosen = UrgencyLevel.None;
-			else if(r < 2f)
-				chosen = UrgencyLevel.Med;
-			else if(r < 3f)
-				chosen = UrgencyLevel.High;
 		}
 		
 		Debug.Log("h: " + high + " m: " + med + " n: " + none + " => " + chosen);
