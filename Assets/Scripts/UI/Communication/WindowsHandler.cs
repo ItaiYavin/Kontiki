@@ -74,62 +74,22 @@ namespace Kontiki
                         }break;                     
                         case 1:{
                             //Info Button
-                            Quest[] quests = QuestSystem.Instance.GetAcceptedQuests();
-                            
-                            Vector3 position = Vector3.zero;
-                            ButtonInfo b;
-                            Quest q;
-                            
-                            for (int i = 0; i < quests.Length; i++){
-                                q = quests[i];
-                                if(questInfoBoxes.Count <= i){
-                                    GameObject g = Instantiate(questInfoPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-                                    
-                                    g.transform.SetParent(infoWindow.transform, false);
-                                    
-                                    b = g.GetComponent<ButtonInfo>();
-                                    b.windowHandler = this;
-                                    
-                                    questInfoBoxes.Add(b); 
-                                
-                                }else{
-                                    b = questInfoBoxes[i];
-                                    b.gameObject.SetActive(true);
-                                }  
-                                
-                                b.index = i;
-                                
-                                Debug.Log(q.HasCharacterBeenAsked(playerLang.speakingTo.character));
-                                b.button.interactable = !q.HasCharacterBeenAsked(playerLang.speakingTo.character);
-                                
-                                float x = (i % 6) * 100 - 250;
-                                float y = Mathf.Floor((float)i / 6) * -100;
-                                position = new Vector3(x, y, 0);
-                                b.GetComponent<RectTransform>().anchoredPosition = position;
-                                
-                                
-                                if(q is Fetch){
-                                    b.icon.sprite = Settings.iconSprites[Settings.iconTypes.IndexOf(IconType.QuestObjective)];
-                                    b.icon.color = ((Fetch)q).colorObjective;     
-                                   
-                                }               
-                            }
-                            
-                            for (int i = quests.Length; i < questInfoBoxes.Count; i++)
-                            {
-                                questInfoBoxes[i].gameObject.SetActive(false);
-                            }
-                            
+                            Debug.Log("entering info");
+                            GenerateQuestButtons();
                             SwitchWindow(Window.Info);
                         }break;                     
                         case 2:{
                            //Trade Button
                            
+                            Language.DeclineConversation(playerLang, playerLang.speakingTo);
+                            playerLang.speakingTo = null;
+                            SetVisibility(false);
                         }break;                     
                     }
                 }break;
                 case Window.Info:{
                     if(buttonIndex != -1){
+                            Debug.Log("info info");
                         bool characterHasMoreInfo = false;
                         Quest[] acceptedQuest = QuestSystem.Instance.GetAcceptedQuests();
                         if(acceptedQuest.Length > 0){
@@ -147,7 +107,7 @@ namespace Kontiki
                         }
                         
                         if(characterHasMoreInfo)
-                            SwitchWindow(Window.Info);
+                            GenerateQuestButtons();
                         else
                             SetVisibility(false);
                         break;
@@ -155,7 +115,10 @@ namespace Kontiki
                     
                 }break;
                 case Window.Trade:{
-                    
+                    playerLang.speakingTo.speakingTo = null;
+                    playerLang.speakingTo = null;
+                    playerLang.iconSystem.GenerateIcons(IconType.No);
+                    SetVisibility(false);
                 }break;
                 case Window.Quest1:{
                     
@@ -239,6 +202,56 @@ namespace Kontiki
             interactionSystem.menuOpen = visible;
             SwitchWindow(Window.Start);
             basePanel.SetActive(visible);
+        }
+        
+        private void GenerateQuestButtons(){
+
+            Quest[] quests = QuestSystem.Instance.GetAcceptedQuests();
+            
+            Vector3 position = Vector3.zero;
+            ButtonInfo b;
+            Quest q;
+            
+            for (int i = 0; i < quests.Length; i++){
+                q = quests[i];
+                if(questInfoBoxes.Count <= i){
+                    GameObject g = Instantiate(questInfoPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+                    
+                    g.transform.SetParent(infoWindow.transform, false);
+                    
+                    b = g.GetComponent<ButtonInfo>();
+                    b.windowHandler = this;
+                    
+                    questInfoBoxes.Add(b); 
+                
+                }else{
+                    b = questInfoBoxes[i];
+                    b.gameObject.SetActive(true);
+                }  
+                
+                b.index = i;
+                
+                Debug.Log(q.HasCharacterBeenAsked(playerLang.speakingTo.character));
+                b.button.interactable = !q.HasCharacterBeenAsked(playerLang.speakingTo.character);
+                
+                float x = (i % 6) * 100 - 250;
+                float y = Mathf.Floor((float)i / 6) * -100;
+                position = new Vector3(x, y, 0);
+                b.GetComponent<RectTransform>().anchoredPosition = position;
+                
+                
+                if(q is Fetch){
+                    b.icon.sprite = Settings.iconSprites[Settings.iconTypes.IndexOf(IconType.QuestObjective)];
+                    b.icon.color = ((Fetch)q).colorObjective;     
+                    
+                }               
+            }
+            
+            for (int i = quests.Length; i < questInfoBoxes.Count; i++)
+            {
+                questInfoBoxes[i].gameObject.SetActive(false);
+            }
+            
         }
     }
 }
