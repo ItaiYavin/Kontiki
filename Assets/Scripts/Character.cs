@@ -22,7 +22,7 @@ namespace Kontiki {
         public LanguageExchanger languageExchanger;
         
         public SkinnedMeshRenderer modelRenderer;
-        private Material material;
+        public Material material;
         
         public bool isTalking;
 
