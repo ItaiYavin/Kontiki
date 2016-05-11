@@ -48,6 +48,8 @@ public class ContinuationDesire : MonoBehaviour {
 		}catch(Exception e){
 			File.Create(path);
         	readText = File.ReadAllText(path);
+		
+			
 		}
 		
 		if(readText.IndexOf(newParticipantString) != -1){
@@ -93,6 +95,15 @@ public class ContinuationDesire : MonoBehaviour {
 					chosen = UrgencyLevel.High;
 			}
 			
+		}else{
+			
+			float r = UnityEngine.Random.Range(0f,3f);
+			if(r < 1f)
+				chosen = UrgencyLevel.None;
+			else if(r < 2f)
+				chosen = UrgencyLevel.Med;
+			else if(r < 3f)
+				chosen = UrgencyLevel.High;
 		}
 		
 		Debug.Log("h: " + high + " m: " + med + " n: " + none + " => " + chosen);

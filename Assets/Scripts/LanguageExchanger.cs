@@ -63,7 +63,6 @@ namespace Kontiki{
                 playerIsSpeakingToMe = true;
                 playerWantsToSpeakWithMe = false;
             }else{
-                iconSystem.GenerateIcons(IconType.No);
                 Language.DeclineConversation(this, Settings.player.languageExchanger);
                 playerWantsToSpeakWithMe = false;
                 playerIsSpeakingToMe = false;

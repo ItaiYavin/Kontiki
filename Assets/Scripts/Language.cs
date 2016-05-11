@@ -155,12 +155,19 @@ namespace Kontiki{
             sender.character.animationController.Talk();
             receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.Find, IconType.Yes);
+            Delayer.Start(delegate() {
+                receiver.React(sender, Language.Topic.IHaveInfoAboutQuest, quest);
+            }, Settings.speechDelay);
         }
         
         public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
             sender.character.animationController.Talk();
             receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.No, IconType.Find);
+            
+            Delayer.Start(delegate() {
+                receiver.React(sender, Language.Topic.IHaveNoInfoAboutQuest, quest);
+            }, Settings.speechDelay);
         }
         
         public static void IHaveAlreadyBeenAsked(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
