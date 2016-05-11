@@ -21,10 +21,11 @@ namespace Kontiki {
 		
 		[HideInInspector]
 		public float iconsDestroyTime;
-
+		public Character character;
 		void Start()
 		{
-			if(GetComponent<Character>().isPlayer)
+			character = GetComponent<Character>();
+			if(character.isPlayer)
 				iconDuration = Settings.playerIconDuration;
 			else
 				iconDuration = Settings.npcIconDuration;
@@ -33,6 +34,12 @@ namespace Kontiki {
 
 		void FixedUpdate()
 		{
+			if(Settings.playerIsTalkingToSomeone && !character.isPlayer && character.languageExchanger.speakingTo != Settings.player){
+				canvasParent.gameObject.SetActive(false);
+			}else{
+				canvasParent.gameObject.SetActive(true);				
+			}
+
 			if(_iconList.Count != 0 && Vector3.Distance(canvasParent.transform.position, Camera.main.transform.position) > 2f){
 				canvasParent.transform.LookAt(Camera.main.transform);
 				canvasParent.transform.Rotate(0, 180, 0);

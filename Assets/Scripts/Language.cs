@@ -17,6 +17,7 @@ namespace Kontiki{
             QuestFinished,
             DoYouHaveInfoAboutQuest,
             IHaveInfoAboutQuest,
+            IHaveNoInfoAboutQuest,
             DeclineInfo,
             Trade,
             GotItem,
@@ -32,11 +33,13 @@ namespace Kontiki{
         public static void DeclineConversation(LanguageExchanger sender, LanguageExchanger receiver){
             sender.iconSystem.GenerateIcons(IconType.No);
             receiver.iconSystem.Clear();
+            receiver.playerIsSpeakingToMe = false;
             
             Delayer.Start(delegate() {  
                 if(receiver != null)
                     receiver.React(sender, Topic.DeclineConversation);
             }, Settings.speechDelay);
+            
         }
         
         public static void IHaveQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
@@ -53,7 +56,7 @@ namespace Kontiki{
             }, Settings.speechDelay);
         }
         
-        public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver){
+        public static void IHaveNoQuest(LanguageExchanger sender, LanguageExchanger receiver){
             sender.character.animationController.anim.SetTrigger("talk");
             receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.No);
@@ -61,6 +64,20 @@ namespace Kontiki{
             Delayer.Start(delegate() {  
                 receiver.React(sender, Topic.IHaveNoQuest);
             }, Settings.speechDelay);
+            
+            sender.ExitConversation();
+        }
+        
+        public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver){
+            sender.character.animationController.anim.SetTrigger("talk");
+            receiver.iconSystem.Clear();
+            sender.iconSystem.GenerateIcons(IconType.No);
+            
+            Delayer.Start(delegate() {  
+                receiver.React(sender, Topic.IHaveNoInfoAboutQuest);
+            }, Settings.speechDelay);
+            sender.ExitConversation();
+            
         }
         
         public static void DoYouHaveQuest(LanguageExchanger sender, LanguageExchanger receiver){
@@ -135,6 +152,8 @@ namespace Kontiki{
         
         public static void DoYouHaveInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
             sender.character.animationController.anim.SetTrigger("talk");
+            sender.iconSystem.GenerateIcons(quest.colorOrigin, IconType.QuestObjective, IconType.Question);
+            
             receiver.iconSystem.Clear();
             Delayer.Start(delegate() {
                 receiver.React(sender, Language.Topic.DoYouHaveInfoAboutQuest,quest);

@@ -8,10 +8,18 @@ public class Delayer : MonoBehaviour{
     public delegate void Callback();
 
     void Awake(){
+        // First we check if there are any other instances conflicting
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        
+        Instance = this;
 
-        Instance = this; 
-
+        DontDestroyOnLoad(gameObject);
     }
+    
+    
     IEnumerator Perform(Callback callback, float delay){
 
         yield return new WaitForSeconds(delay);
@@ -20,8 +28,10 @@ public class Delayer : MonoBehaviour{
 
     static public void Start(Callback callback, float delay){
 
-        Instance.StartCoroutine(Instance.Perform(callback, delay)); 
-
+        if(Instance != null)
+            Instance.StartCoroutine(Instance.Perform(callback, delay));  
+        else
+            Debug.LogError("cant find the Instance of Delayer?");
     }
 
 }

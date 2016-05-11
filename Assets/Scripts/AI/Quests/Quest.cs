@@ -34,12 +34,13 @@ namespace Kontiki
 			QuestSystem.Instance.RemoveQuest(this);
 		}
 
-		public void CreateAreaOfInterestInWorld(Vector3 position){
-			GameObject g = Object.Instantiate(areaOfInterestPrefab, position, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at position
+		public void CreateAreaOfInterestInWorld(Transform target){
+			GameObject g = Object.Instantiate(areaOfInterestPrefab, target.position, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at target.position
 			areaOfInterest = g.GetComponent<AreaOfInterest>();
+			areaOfInterest.target = target;	
 			Debug.Log(areaOfInterest + " " + colorOrigin);
 			areaOfInterest.ChangeColor(colorOrigin);
-			areaOfInterest.ChangePosition(position); //Randomly move areaOfInterest so that position is still within areaOfInterest
+			areaOfInterest.ChangePosition(target.position); //Randomly move areaOfInterest so that position is still within areaOfInterest
 		}
 		
 		public void RemoveAreaOfInterest(){

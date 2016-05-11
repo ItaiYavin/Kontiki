@@ -130,6 +130,7 @@ namespace Kontiki
                 }break;
                 case Window.Info:{
                     if(buttonIndex != -1){
+                        bool characterHasMoreInfo = false;
                         Quest[] acceptedQuest = QuestSystem.Instance.GetAcceptedQuests();
                         if(acceptedQuest.Length > 0){
                             Quest quest = acceptedQuest[buttonIndex];
@@ -139,11 +140,17 @@ namespace Kontiki
                             for (int i = 0; i < acceptedQuest.Length; i++)
                             {
                                 if(!acceptedQuest[i].HasCharacterBeenAsked(playerLang.speakingTo.character)){
-                                    SwitchWindow(Window.Info);
+                                    characterHasMoreInfo = true;
                                     break;
                                 }
                             }
                         }
+                        
+                        if(characterHasMoreInfo)
+                            SwitchWindow(Window.Info);
+                        else
+                            SetVisibility(false);
+                        break;
                     }
                     
                 }break;

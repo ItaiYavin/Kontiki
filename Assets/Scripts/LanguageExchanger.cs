@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Kontiki.AI;
 
 namespace Kontiki{
     public class LanguageExchanger : MonoBehaviour{
@@ -7,6 +8,7 @@ namespace Kontiki{
         public LanguageExchanger speakingTo;
         
         public bool playerWantsToSpeakWithMe = false;
+        public bool playerIsSpeakingToMe = false;
         
         [HideInInspector] public IconSystem iconSystem;
         [HideInInspector] public Character character;
@@ -29,6 +31,7 @@ namespace Kontiki{
                 if(distance > Settings.stopInteractingDistance){
                     speakingTo = null;
                     iconSystem.Clear();
+                    ExitConversation();
                 }else{
                     Vector3 lookDirection = speakingTo.transform.position;
                     lookDirection.y = transform.position.y;
@@ -46,14 +49,40 @@ namespace Kontiki{
         }
         
         public void RespondToPlayerWantingToSpeak(bool b){
-            
             if(b){
+                if(ai.job is JobWithBoat){
+                    JobWithBoat boatJob = (JobWithBoat)ai.job;
+                    boatJob.boat.agent.Stop();
+                }
+                if(ai.pathfinder.enabled)
+                    ai.pathfinder.agent.Stop();
+                    
                  Delayer.Start(delegate() {  
                     Language.DoYouWantToStartConversation(this, Settings.player.languageExchanger);
                 }, 0.5f);
-            }else
+                playerIsSpeakingToMe = true;
+                playerWantsToSpeakWithMe = false;
+            }else{
                 Language.DeclineConversation(this, Settings.player.languageExchanger);
+                playerWantsToSpeakWithMe = false;
+                playerIsSpeakingToMe = false;
+            }
                     
+        } 
+       
+        public void ExitConversation(){
+            if(!character.isPlayer){
+                if(ai.pathfinder.enabled)
+                    ai.pathfinder.agent.Resume();
+                playerWantsToSpeakWithMe = false;
+                playerIsSpeakingToMe = false;
+                Debug.Log(gameObject.name + "exit conversation");
+                Delayer.Start(delegate() {  
+                    Debug.Log("stopping speaking to Player");
+                    playerIsSpeakingToMe = false;
+                    speakingTo = null;
+                }, Settings.AIDelayAfterSpeakingToPlayer);
+            }
         }
         
         public void React(LanguageExchanger sender, Language.Topic topic, params Information[] information){
@@ -61,12 +90,14 @@ namespace Kontiki{
             {
                 case Language.Topic.DoYouWantToStartConversation:{
                     if(!isPlayer){
-                        playerWantsToSpeakWithMe = true;
+                        if(sender.isPlayer)
+                            playerWantsToSpeakWithMe = true;
                     }else{
                         //start conversation
-                        
                         WindowsHandler.Instance.SetVisibility(true);
                         sender.speakingTo = this;
+                        sender.playerWantsToSpeakWithMe = false;
+                        sender.playerIsSpeakingToMe = true;
                         speakingTo = sender;
                     }
                 }break;
@@ -93,8 +124,10 @@ namespace Kontiki{
                         }else if(ai.baseRoutine.questOffer != null && ai.baseRoutine.hasQuestToOffer){
                             
                             Language.IHaveQuest(this, null, ai.baseRoutine.questOffer); 
+                            ExitConversation();
                         }else{
-                            Language.IHaveNoInfoAboutQuest(this, sender);
+                            Language.IHaveNoQuest(this, sender);
+                            ExitConversation();
                         }
                     }
                 }break;
@@ -108,6 +141,8 @@ namespace Kontiki{
                    if(isPlayer){
                         //is Player and has received the topic Quest from a npc
                         WindowsHandler.Instance.SetVisibility(false);
+                                    
+                        
                     }
                 }break;
                 case Language.Topic.WhatDoIGetForQuest:{
@@ -129,6 +164,7 @@ namespace Kontiki{
                         
                         //just to show player the quest an extra time.. receiver set to null ie. player will not receive it..
                         Language.IHaveQuest(this, null, quest); 
+                        ExitConversation();
                     }
                 }break;
                 case Language.Topic.DeclineQuest:{
@@ -138,6 +174,7 @@ namespace Kontiki{
                         Fetch quest = (Fetch) information[0];
                         QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
                         iconSystem.Clear();
+                        ExitConversation();
                     }
                 }break;
                 case Language.Topic.IHaveQuestObjective:{
@@ -170,9 +207,15 @@ namespace Kontiki{
                         }else{
                             Language.IHaveQuest(this, null, quest); 
                         }
+                                    
+                        Delayer.Start(delegate() {  
+                            playerIsSpeakingToMe = false;
+                        }, Settings.AIDelayAfterSpeakingToPlayer);
                     }else if(quest.CheckIfCharacterHasObjective(character)){
                         // asked person has objective and has given it to the player
                         Language.IHaveQuestObjective(this, sender, quest);
+                                    
+                        ExitConversation();
                         
                         quest.RemoveAreaOfInterest();
                         WindowsHandler.Instance.SetVisibility(false);
@@ -206,10 +249,18 @@ namespace Kontiki{
                         WindowsHandler.Instance.SetVisibility(false);
                     }
                 }break;
+                case Language.Topic.IHaveNoInfoAboutQuest:{
+                    if(isPlayer){
+                        //received that npc has info.
+                        iconSystem.Clear();
+                        WindowsHandler.Instance.SetVisibility(false);
+                    }
+                }break;
                 case Language.Topic.DeclineInfo:{
                     if (!isPlayer){
                         speakingTo = null;
                         iconSystem.Clear();
+                        ExitConversation();
                     }
                 }break;
             }

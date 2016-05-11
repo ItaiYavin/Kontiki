@@ -862,6 +862,7 @@ MonoBehaviour:
   canvasParent: {fileID: 22346734}
   iconDuration: 10
   iconsDestroyTime: 0
+  character: {fileID: 0}
 --- !u!114 &11408030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -974,6 +975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speakingTo: {fileID: 0}
+  playerWantsToSpeakWithMe: 0
+  playerIsSpeakingToMe: 0
   iconSystem: {fileID: 0}
   character: {fileID: 0}
   ai: {fileID: 0}
@@ -1025,6 +1028,7 @@ MonoBehaviour:
   canvasParent: {fileID: 22346734}
   iconDuration: 0
   iconsDestroyTime: 0
+  character: {fileID: 0}
 --- !u!136 &13672314
 CapsuleCollider:
   m_ObjectHideFlags: 1

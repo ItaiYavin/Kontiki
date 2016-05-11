@@ -73,10 +73,14 @@ namespace Kontiki {
          public static float iconOffset;
          public static Vector3 iconContainerOffset;
          
+         public static bool playerIsTalkingToSomeone = false;
+         
          public static float speechDelay = 1f;
+         public static float AIDelayAfterSpeakingToPlayer = 5f;
          
          public static float npcIconDuration = 10f;
          public static float playerIconDuration = 2f;
+         public static float AOIDistanceToPlayer = 1.5f;
          
          
          /**

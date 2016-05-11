@@ -75,7 +75,7 @@ namespace Kontiki
 				if(chanceForKnowledge > (chanceForKnowledge - ((float)numberOfAskedPeople / peakNumberOfPeople)))
 				{
 					if(areaOfInterest == null)
-						CreateAreaOfInterestInWorld(objectiveHolder.transform.position); //create AreaOfInterest
+						CreateAreaOfInterestInWorld(objectiveHolder.transform); //create AreaOfInterest
 					else{
 						areaOfInterest.AdjustAreaOfInterestInWorld(areaOfInterestSizeReductionPercent, objectiveHolder.transform.position);	
 					}
