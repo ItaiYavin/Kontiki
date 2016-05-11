@@ -31,7 +31,7 @@ namespace Kontiki.AI
            
 
             if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
-                Debug.Log("Energy: " + (v * score));
+                Debug.Log("Energy: " + (v * score) + " value " + ai.character.energy);
            
             //TODO Make this more flexible
             return v * score;

@@ -77,59 +77,57 @@ MonoBehaviour:
     Assembly-CSharp","range":2,"not":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToPartner, Assembly-CSharp"}}},{"@type":"Apex.AI.PrioritySelector,
     ApexAI","_id":8652a72b42ef4b5db5f82d0cf9bd5136,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":true},"_scorers":[{"@type":"Kontiki.AI.Hunger,
+    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":false},"_scorers":[{"@type":"Kontiki.AI.Hunger,
     Assembly-CSharp","threshold":0.60000002,"inverted":false,"score":0.30000001},{"@type":"Kontiki.AI.Energy,
-    Assembly-CSharp","threshold":0.60000002,"inverted":true,"score":0.30000001},{"@type":"Kontiki.AI.IsOnJob,
+    Assembly-CSharp","threshold":0.60000002,"inverted":false,"score":0.30000001},{"@type":"Kontiki.AI.IsOnJob,
     Assembly-CSharp","not":false,"score":0.30000001},{"@type":"Kontiki.AI.IsMoving,
     Assembly-CSharp","not":false,"score":0.050000001},{"@type":"Kontiki.AI.HasSocialPartner,
     Assembly-CSharp","not":false,"score":0.1},{"@type":"Kontiki.AI.RelatedToQuest,
     Assembly-CSharp","questOriginMultiplier":1,"hasObjectiveMultiplier":1,"score":-1000}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":false}}},{"@type":"Apex.AI.PrioritySelector,
+    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":true}}},{"@type":"Apex.AI.PrioritySelector,
     ApexAI","_id":ff83ec8e566d4cccb1f613da5155a4de,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
-    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":8652a72b42ef4b5db5f82d0cf9bd5136},"_scorers":[{"@type":"Kontiki.AI.UrgencyLevel,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":8179e68f4d1d42fe877bd69436865c18},"_scorers":[{"@type":"Kontiki.AI.UrgencyLevel,
     Assembly-CSharp","level":High,"score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":8179e68f4d1d42fe877bd69436865c18},"_scorers":[{"@type":"Kontiki.AI.UrgencyLevel,
     Assembly-CSharp","level":Med,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":e4965d3328cc444abe8c1f7adaedaf27}}},{"@type":"Apex.AI.PrioritySelector,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":8179e68f4d1d42fe877bd69436865c18}}},{"@type":"Apex.AI.PrioritySelector,
     ApexAI","_id":8179e68f4d1d42fe877bd69436865c18,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":true},"_scorers":[{"@type":"Kontiki.AI.Hunger,
-    Assembly-CSharp","threshold":0.60000002,"inverted":false,"score":0.5},{"@type":"Kontiki.AI.Energy,
-    Assembly-CSharp","threshold":0.60000002,"inverted":true,"score":0.5},{"@type":"Kontiki.AI.IsOnJob,
-    Assembly-CSharp","not":false,"score":0.40000001},{"@type":"Kontiki.AI.IsMoving,
-    Assembly-CSharp","not":false,"score":0.1},{"@type":"Kontiki.AI.HasSocialPartner,
-    Assembly-CSharp","not":false,"score":0.2},{"@type":"Kontiki.AI.RelatedToQuest,
-    Assembly-CSharp","questOriginMultiplier":1,"hasObjectiveMultiplier":1,"score":-1000}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI","score":0.5,"action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak,
-    Assembly-CSharp","val":false}}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":e4965d3328cc444abe8c1f7adaedaf27,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":false},"_scorers":[{"@type":"Kontiki.AI.Hunger,
+    Assembly-CSharp","threshold":0.40000001,"inverted":false,"score":1.5},{"@type":"Kontiki.AI.Energy,
+    Assembly-CSharp","threshold":0.40000001,"inverted":true,"score":1},{"@type":"Kontiki.AI.IsOnJob,
+    Assembly-CSharp","not":false,"score":1},{"@type":"Kontiki.AI.IsMoving, Assembly-CSharp","not":false,"score":0.5},{"@type":"Kontiki.AI.HasSocialPartner,
+    Assembly-CSharp","not":false,"score":1},{"@type":"Kontiki.AI.RelatedToQuest, Assembly-CSharp","questOriginMultiplier":1,"hasObjectiveMultiplier":1,"score":-1000}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","score":1.5,"action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak,
+    Assembly-CSharp","val":true}}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":e4965d3328cc444abe8c1f7adaedaf27,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":25,"action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak,
     Assembly-CSharp","val":true}}}]}'
-  editorConfiguration: '{"offset":{"@x":900,"@y":1030},"zoom":1,"SelectorView":{"ViewArea":{"@left":-280,"@top":850,"@width":200,"@height":340},"Name":"Root","QualifierView":{"Name":"Player
+  editorConfiguration: '{"offset":{"@x":900,"@y":1025},"zoom":1,"SelectorView":{"ViewArea":{"@left":-280,"@top":845,"@width":200,"@height":340},"Name":"Root","QualifierView":{"Name":"Player
     Is Speaking To Me"},"QualifierView":{"Name":"Player Wants to speak with me","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Go
-    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":900,"@top":1210,"@width":220,"@height":220},"Name":"is
+    On Job","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Awake?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Sleeping?","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":900,"@top":1205,"@width":220,"@height":220},"Name":"is
     Hungry","QualifierView":{"Name":"Has selected edible?","ActionView":{}},"QualifierView":{"Name":"Has
-    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":500,"@top":1030,"@width":200,"@height":280},"Name":"is
+    food in inventory?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":500,"@top":1025,"@width":200,"@height":280},"Name":"is
     Awake","QualifierView":{"Name":"Is Tired?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
     hungry?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    Lonely?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":900,"@top":1030,"@width":220,"@height":160},"Name":"is
-    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":500,"@top":1370,"@width":200,"@height":160},"Name":"is
+    Lonely?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":900,"@top":1025,"@width":220,"@height":160},"Name":"is
+    Tired","QualifierView":{"Name":"Is Home?","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":500,"@top":1365,"@width":200,"@height":160},"Name":"is
     Sleeping","QualifierView":{"Name":"Not Tired?","ActionView":{"Name":"Awake"}},"DefaultQualifier":{"Name":"Keep
-    Sleeping"}},"SelectorView":{"ViewArea":{"@left":1300,"@top":1230,"@width":200,"@height":160},"Name":"Get
-    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":520,"@top":690,"@width":220,"@height":280},"Name":"Go
+    Sleeping"}},"SelectorView":{"ViewArea":{"@left":1300,"@top":1225,"@width":200,"@height":160},"Name":"Get
+    Food","QualifierView":{"Name":"Is At Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":520,"@top":685,"@width":220,"@height":280},"Name":"Go
     To Job","QualifierView":{"Name":"Is Fisher","ActionView":{}},"QualifierView":{"Name":"Is
     Trader","Description":"Should not be possible...","ActionView":{}},"QualifierView":{"Name":"Is
-    DeliveryMan","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1300,"@top":1470,"@width":200,"@height":160},"QualifierView":{"Name":"Is
-    at plaza","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":900,"@top":1470,"@width":200,"@height":160},"Name":"Is
+    DeliveryMan","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1300,"@top":1465,"@width":200,"@height":160},"QualifierView":{"Name":"Is
+    at plaza","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":900,"@top":1465,"@width":200,"@height":160},"Name":"Is
     Talking","QualifierView":{"Name":"Is not talking","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Is
-    Talking","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":1300,"@top":1670,"@width":200,"@height":160},"QualifierView":{"Name":"Not
+    Talking","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":1300,"@top":1665,"@width":200,"@height":160},"QualifierView":{"Name":"Not
     lonely?","ActionView":{"Name":"Stop Talking"}},"DefaultQualifier":{"Name":"Keep
-    Talking"}},"SelectorView":{"ViewArea":{"@left":1700,"@top":1470,"@width":200,"@height":160},"QualifierView":{"Name":"Has
-    social partner","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":2100,"@top":1470,"@width":200,"@height":160},"QualifierView":{"Name":"Is
-    within range of partner","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":580,"@top":30,"@width":200,"@height":160},"Name":"High
+    Talking"}},"SelectorView":{"ViewArea":{"@left":1700,"@top":1465,"@width":200,"@height":160},"QualifierView":{"Name":"Has
+    social partner","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":2100,"@top":1465,"@width":200,"@height":160},"QualifierView":{"Name":"Is
+    within range of partner","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":580,"@top":25,"@width":200,"@height":160},"Name":"High
     Urgency","QualifierView":{"Name":"Evaluate Urgency","ActionView":{"Name":"Respond
-    Yes"}},"DefaultQualifier":{"ActionView":{"Name":"Respond No"}}},"SelectorView":{"ViewArea":{"@left":160,"@top":250,"@width":200,"@height":220},"QualifierView":{"Name":"Urgency
+    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":160,"@top":245,"@width":200,"@height":220},"QualifierView":{"Name":"Urgency
     High","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgency
     Medium","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Urgnecy
-    None","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":580,"@top":210,"@width":200,"@height":160},"Name":"Med
+    None","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":580,"@top":205,"@width":200,"@height":160},"Name":"Med
     Urgency","QualifierView":{"Name":"Evaluate Urgency","ActionView":{"Name":"Respond
-    Yes"}},"DefaultQualifier":{"ActionView":{"Name":"Respond No"}}},"SelectorView":{"ViewArea":{"@left":580,"@top":390,"@width":200,"@height":100},"Name":"No
+    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":580,"@top":385,"@width":200,"@height":100},"Name":"No
     Urgency","DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}}}'
