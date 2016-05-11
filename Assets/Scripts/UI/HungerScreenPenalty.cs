@@ -7,7 +7,7 @@ namespace Kontiki
 {	
 	public class HungerScreenPenalty : MonoBehaviour {
 
-		public Character player;
+		private Character player;
 		public Image hungerSliderBackground;
 		public Color hungerSliderFlashColor;
 
@@ -20,6 +20,7 @@ namespace Kontiki
 
 		// Use this for initialization
 		void Start () {
+			player = Settings.player;
 			blur = GetComponent<BlurOptimized>();
 			fisheye = GetComponent<Fisheye>();
 			originalColor = hungerSliderBackground.color;
