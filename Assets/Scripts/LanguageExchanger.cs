@@ -6,6 +6,7 @@ namespace Kontiki{
         
         public LanguageExchanger speakingTo;
         
+        public bool playerWantsToSpeakWithMe = false;
         
         [HideInInspector] public IconSystem iconSystem;
         [HideInInspector] public Character character;
@@ -44,9 +45,37 @@ namespace Kontiki{
             }
         }
         
+        public void RespondToPlayerWantingToSpeak(bool b){
+            
+            if(b){
+                 Delayer.Start(delegate() {  
+                    Language.DoYouWantToStartConversation(this, Settings.player.languageExchanger);
+                }, 0.5f);
+            }else
+                Language.DeclineConversation(this, Settings.player.languageExchanger);
+                    
+        }
+        
         public void React(LanguageExchanger sender, Language.Topic topic, params Information[] information){
             switch (topic)
             {
+                case Language.Topic.DoYouWantToStartConversation:{
+                    if(!isPlayer){
+                        playerWantsToSpeakWithMe = true;
+                    }else{
+                        //start conversation
+                        
+                        WindowsHandler.Instance.SetVisibility(true);
+                        sender.speakingTo = this;
+                        speakingTo = sender;
+                    }
+                }break;
+                case Language.Topic.DeclineConversation:{
+                    if(!isPlayer){
+                        //Notify Player
+                        Language.DeclineConversation(this, sender);
+                    }
+                }break;
                 case Language.Topic.DoYouHaveQuest:{
                     if (!isPlayer) { 
                         

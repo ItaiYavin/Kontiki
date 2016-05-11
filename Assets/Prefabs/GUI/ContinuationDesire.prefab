@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e50e711b0d0ab498857a554cf566ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntilContinuationDesire: 2
+  continuationDesireDelay: 480
   yesNoPanel: {fileID: 107738}
   whyPanel: {fileID: 119610}
   inputField: {fileID: 11407802}

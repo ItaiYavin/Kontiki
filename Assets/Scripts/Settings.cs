@@ -5,6 +5,8 @@ using Kontiki.AI;
 namespace Kontiki { 
     public static class Settings
     {
+        
+        public static UrgencyLevel urgencyLevel;
         /**
          * Debug Configuration
          **/

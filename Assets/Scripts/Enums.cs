@@ -20,7 +20,11 @@
         Beggar,
         Yes
     }
-
+    public enum UrgencyLevel{
+        High,
+        Med,
+        None
+    }
     public enum PlaceType
     {
         Home,
