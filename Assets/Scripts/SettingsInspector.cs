@@ -41,7 +41,7 @@ namespace Kontiki {
         [Range(1, 100)] public float pickupRange = 1;
         [Range(10, 500)] public int memoryCapacity = 100;
         [Range(100, 1000)] public int knownAreaSize = 200;
-        [Range(0.0001f, 0.5f)] public float hungerIncrementPerSec = 0.1f;
+        [Range(0.0001f, 10f)] public float hungerIncrementPerSec = 0.1f;
         [Range(0.0001f, 0.1f)] public float energyIncrementPerSec = 0.3f;
         [Range(0.0001f, 0.1f)] public float energyDecrementPerSec = 0.001f;
         [Range(0.0001f, 0.1f)] public float socialDecrementPerSec = 0.001f;
