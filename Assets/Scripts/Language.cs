@@ -56,8 +56,9 @@ namespace Kontiki{
             }, Settings.speechDelay);
         }
         
-        public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver){
-            sender.character.animationController.anim.SetTrigger("talk");
+        public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver)
+        {
+            sender.character.animationController.Talk();
             receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.No);
             
@@ -67,19 +68,11 @@ namespace Kontiki{
             
             sender.ExitConversation();
         }
-        
-        public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver){
-            sender.character.animationController.anim.SetTrigger("talk");
-            receiver.iconSystem.Clear();
-            sender.iconSystem.GenerateIcons(IconType.No);
-            
-            Delayer.Start(delegate() {  
-                receiver.React(sender, Topic.IHaveNoInfoAboutQuest);
-            }, Settings.speechDelay);
-            sender.ExitConversation();
-            
-        }
-        
+
+        public static void DoYouHaveQuest(LanguageExchanger sender, LanguageExchanger receiver)
+        {
+
+            sender.character.animationController.Talk();
             receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.Question);
             Delayer.Start(delegate() {
@@ -198,12 +191,25 @@ namespace Kontiki{
                 receiver.React(sender, Topic.RandomTalk);
             }, Settings.speechDelay);
         }
-        
-    /**
-    * Private
-    **/
-        
-        
+
+        public static void IHaveNoQuest(LanguageExchanger sender, LanguageExchanger receiver)
+        {
+            sender.character.animationController.Talk();
+            receiver.iconSystem.Clear();
+            sender.iconSystem.GenerateIcons(IconType.No);
+
+            Delayer.Start(delegate () {
+                receiver.React(sender, Topic.IHaveNoQuest);
+            }, Settings.speechDelay);
+
+            sender.ExitConversation();
+        }
+
+        /**
+        * Private
+        **/
+
+
         /*
          Quest Type Specific
          */
