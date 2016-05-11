@@ -27,7 +27,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 493304}
   - 33: {fileID: 3378196}
-  - 136: {fileID: 13668356}
   - 23: {fileID: 2326468}
   m_Layer: 0
   m_Name: Cylinder
@@ -147,19 +146,6 @@ MonoBehaviour:
   colorChanging: 0
   maxAlpha: 0.5
   cylinder: {fileID: 493304}
---- !u!136 &13668356
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188032}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

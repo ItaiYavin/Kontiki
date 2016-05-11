@@ -63,6 +63,7 @@ namespace Kontiki{
                 playerIsSpeakingToMe = true;
                 playerWantsToSpeakWithMe = false;
             }else{
+                iconSystem.GenerateIcons(IconType.No);
                 Language.DeclineConversation(this, Settings.player.languageExchanger);
                 playerWantsToSpeakWithMe = false;
                 playerIsSpeakingToMe = false;
@@ -72,15 +73,14 @@ namespace Kontiki{
        
         public void ExitConversation(){
             if(!character.isPlayer){
+                Settings.player.languageExchanger.speakingTo = null;
                 if(ai.pathfinder.enabled)
                     ai.pathfinder.agent.Resume();
                 playerWantsToSpeakWithMe = false;
                 playerIsSpeakingToMe = false;
-                Debug.Log(gameObject.name + "exit conversation");
+                speakingTo = null;
                 Delayer.Start(delegate() {  
-                    Debug.Log("stopping speaking to Player");
                     playerIsSpeakingToMe = false;
-                    speakingTo = null;
                 }, Settings.AIDelayAfterSpeakingToPlayer);
             }
         }
@@ -102,9 +102,14 @@ namespace Kontiki{
                     }
                 }break;
                 case Language.Topic.DeclineConversation:{
-                    if(!isPlayer){
+                    if(isPlayer){
                         //Notify Player
-                        Language.DeclineConversation(this, sender);
+                        speakingTo = null;
+                    }else{
+                        
+                        speakingTo = null;
+                        iconSystem.Clear();
+                        ExitConversation();
                     }
                 }break;
                 case Language.Topic.DoYouHaveQuest:{

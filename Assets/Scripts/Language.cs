@@ -34,6 +34,8 @@ namespace Kontiki{
             sender.iconSystem.GenerateIcons(IconType.No);
             receiver.iconSystem.Clear();
             receiver.playerIsSpeakingToMe = false;
+            receiver.playerWantsToSpeakWithMe = false;
+            receiver.speakingTo = null;
             
             Delayer.Start(delegate() {  
                 if(receiver != null)
