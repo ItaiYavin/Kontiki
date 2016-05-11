@@ -4,6 +4,8 @@ namespace Kontiki{
     public static class Language{
                 
         public enum Topic{
+            DoYouWantToStartConversation,
+            DeclineConversation,
             IHaveQuest,
             IHaveNoQuest,
             DoYouHaveQuest,
@@ -19,6 +21,22 @@ namespace Kontiki{
             Trade,
             GotItem,
             RandomTalk,
+        }
+        
+        public static void DoYouWantToStartConversation(LanguageExchanger sender, LanguageExchanger receiver){
+            sender.iconSystem.GenerateIcons(IconType.SomethingToSay);
+            receiver.iconSystem.Clear();
+            receiver.React(sender, Topic.DoYouWantToStartConversation);
+
+        }
+        public static void DeclineConversation(LanguageExchanger sender, LanguageExchanger receiver){
+            sender.iconSystem.GenerateIcons(IconType.No);
+            receiver.iconSystem.Clear();
+            
+            Delayer.Start(delegate() {  
+                if(receiver != null)
+                    receiver.React(sender, Topic.DeclineConversation);
+            }, Settings.speechDelay);
         }
         
         public static void IHaveQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){

@@ -78,8 +78,6 @@ namespace Kontiki{
                         {
                             //_lastTarget.Interact(_player); 
 							LanguageExchanger target = _lastTarget.GetComponent<LanguageExchanger>();
-							_player.languageExchanger.speakingTo = target;
-							target.speakingTo = _player.languageExchanger;
 							
 							bool hasQuest = false;	
 												
@@ -102,8 +100,9 @@ namespace Kontiki{
 								}
 							}
 							
-							if(!hasQuest)
-                            	windowsHandler.SetVisibility(true);
+							if(!hasQuest){
+								Language.DoYouWantToStartConversation(_player.languageExchanger, target);
+							}
                         }
 
 							
