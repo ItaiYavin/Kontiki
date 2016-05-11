@@ -256,7 +256,7 @@ if (isActive){
 		// hold shift to sprint
 		isWalking = false;
 		if (moveForward != 0.0 || moveSideways != 0.0) isWalking = true;
-		if (IC.inputKeySHIFTL){
+		if (true){
 			runButtonTime += Time.deltaTime;
 				if (runButtonTime > 0.2){
 					isSprinting = true;
@@ -275,7 +275,6 @@ if (isActive){
 			isSprinting = false;
 			runButtonTime = 0.0;
 		}
-
 
 		//SPACE
 		orbitView = IC.inputKeySPACE;
