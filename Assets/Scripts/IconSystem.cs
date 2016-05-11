@@ -119,6 +119,15 @@ namespace Kontiki {
 						else 
 							cols[i] = col2;
 					break;
+					
+					case IconType.No:
+						if(firstSymbol){
+							cols[i] = col;
+							firstSymbol = false;
+						}
+						else 
+							cols[i] = col2;
+					break;
 
 					case IconType.Person:
 						if(firstSymbol){
