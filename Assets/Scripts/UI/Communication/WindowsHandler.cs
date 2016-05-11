@@ -99,6 +99,11 @@ namespace Kontiki
                         }else
                             SetVisibility(false);
                         
+                    }else{
+                        
+                        Language.DeclineConversation(playerLang, playerLang.speakingTo);
+                        playerLang.speakingTo = null;
+                        SetVisibility(false);
                     }
                     
                 }break;
