@@ -535,7 +535,7 @@ if (isActive){
 		if (isInWater) wMod = 0.8;
 		if (isInWaterDeep) wMod = 0.6;
 		if (isUnderWater) wMod = 0.5;
-		moveSpeed *= wMod;
+		// moveSpeed *= wMod;
 
 		//slowmovement based on slope
 		if (gSlope > 0.0){
