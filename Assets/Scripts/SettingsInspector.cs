@@ -148,6 +148,8 @@ namespace Kontiki {
                 Debug.LogError("no Ports found in Settings");
             if(homes.Count == 0)
                 Debug.LogError("no Homes found in Settings");
+            if(traders.Count == 0)
+                Debug.LogError("no Trader found in Settings");
 
             Debug.LogWarning("Debugging is " + (debugging ? "enabled" : "disabled"));
             

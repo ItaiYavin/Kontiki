@@ -11,12 +11,6 @@ namespace Kontiki.AI{
         public float minTradingTime = 3f;
         public float maxTradingTime = 6f;
         
-        void Awake(){
-            if(Settings.traders.IndexOf(this) == -1){
-                Settings.traders.Add(this);
-            }
-        }
-        
         void Start(){
             if(ports.Length == 0 && port == null){
                 Debug.LogError("AI - Trader Must have at least one port");
