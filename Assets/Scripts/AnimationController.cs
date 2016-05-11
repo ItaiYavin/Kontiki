@@ -93,13 +93,12 @@ namespace Kontiki {
 		        anim.SetBool("isSwimming", b);
 		    }
 
-		public
-		    void Talk 
-		    (bool
-		    b)
-		    {
-		        anim.SetBool("talk", b);
-		    }
+	    public IEnumerator Talking()
+	    {
+	        anim.SetBool("talk", true);
+	        yield return null;
+            anim.SetBool("talk", false);
+	    }
 
 		public
 		    void Point 
@@ -116,5 +115,12 @@ namespace Kontiki {
 		    {
 		        anim.SetBool("isSitting", b);
 		    }
+
+	    public void Talk()
+	    {
+	        StartCoroutine(Talking());
+	    }
 		}
+
+
 	}
