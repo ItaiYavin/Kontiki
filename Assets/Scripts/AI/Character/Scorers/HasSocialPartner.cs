@@ -27,7 +27,7 @@ namespace Kontiki.AI
             b = not ? !b : b;
 
             if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
-                Debug.Log("Has Social Partner: " + b);
+                Debug.Log("Has Social Partner: " + b + " score: " + score);
                 
             return b ? score : 0f;
         }

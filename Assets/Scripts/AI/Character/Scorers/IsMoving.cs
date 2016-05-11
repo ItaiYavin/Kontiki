@@ -30,7 +30,7 @@ namespace Kontiki.AI
 			
 
             if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
-                Debug.Log("Is Moving: " + b);
+                Debug.Log("Is Moving: " + b + " score: " + score);
                 
         	return b ? score : 0f;
         }
