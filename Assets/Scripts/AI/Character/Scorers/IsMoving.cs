@@ -18,10 +18,13 @@ namespace Kontiki.AI
 			AIContext ai = (AIContext)context;
         	NavMeshAgent agent = ai.pathfinder.agent;
         	bool b = false;
-
-        	if(agent.remainingDistance > 0){
-        		b = true;
-        	}
+			
+			if(ai.job is Fisher || ai.job is Trader){
+					b = false;
+				
+			}else if(agent.remainingDistance > 0){
+					b = true;
+				}
 			
 			if(ai.debugAI_Character)
 				Debug.Log("Is Moving: " + b  + ", distance to target = " + agent.remainingDistance);
