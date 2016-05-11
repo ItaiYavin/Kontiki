@@ -102,6 +102,7 @@ namespace Kontiki{
 							
 							if(!hasQuest){
 								Language.DoYouWantToStartConversation(_player.languageExchanger, target);
+								_player.languageExchanger.speakingTo = target;
 							}
                         }
 
