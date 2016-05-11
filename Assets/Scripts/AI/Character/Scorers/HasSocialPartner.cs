@@ -22,9 +22,13 @@ namespace Kontiki.AI
         	if(character.socialPartner != null){
         		b = true;
         	}
+            
 
             b = not ? !b : b;
 
+            if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
+                Debug.Log("Has Social Partner: " + b);
+                
             return b ? score : 0f;
         }
 	}

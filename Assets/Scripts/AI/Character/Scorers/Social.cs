@@ -30,6 +30,11 @@ namespace Kontiki.AI
             if(ai.debugAI_Character){
                 Debug.Log("social: " + v);                
             }
+            
+            
+
+            if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
+                Debug.Log("Social: " + (v * score));
            
             //TODO Make this more flexible
             return v * score;

@@ -26,8 +26,12 @@ namespace Kontiki.AI
                 h =  1 - (ai.character.hunger / Settings.hungerRange.max);
             else
                 h =  ai.character.hunger / Settings.hungerRange.max;
+                
             
             float v = Mathf.Max((h - threshold), 0) / (1 - threshold);
+
+            if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
+                Debug.Log("Hunger: " + (v * score));
 
             return v * score;
         }
