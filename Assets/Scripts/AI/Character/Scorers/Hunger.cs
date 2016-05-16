@@ -30,7 +30,7 @@ namespace Kontiki.AI
             
             float v = Mathf.Max((h - threshold), 0) / (1 - threshold);
 
-            if(ai.character.languageExchanger.playerWantsToSpeakWithMe && Settings.debugging)
+            if(ai.debugAI_Character)
                 Debug.Log("Hunger: " + (v * score)+ " value " + ai.character.hunger);
 
             return v * score;

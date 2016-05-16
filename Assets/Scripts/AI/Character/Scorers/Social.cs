@@ -27,13 +27,8 @@ namespace Kontiki.AI
                 
             float v = Mathf.Max(e - threshold, 0) / (1 - threshold);
 
-            if(ai.debugAI_Character){
-                Debug.Log("social: " + v);                
-            }
-            
-            
 
-            if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
+            if(ai.debugAI_Character)
                 Debug.Log("Social: " + (v * score));
            
             //TODO Make this more flexible

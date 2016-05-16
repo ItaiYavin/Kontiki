@@ -30,6 +30,7 @@ namespace Kontiki {
 
         public bool PutItemIntoInventoryRegardlessOfDistance(ItemType itemType){
             EdibleItem item = (EdibleItem)Instantiate(applePrefab, transform.position, transform.rotation);
+
             Language.GotItem(_character.languageExchanger, itemType);
             return PutItemIntoInventory(item);
         }

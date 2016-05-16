@@ -30,7 +30,7 @@ namespace Kontiki.AI
             float v = Mathf.Max(e - threshold, 0) / (1 - threshold);
            
 
-            if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
+            if(ai.debugAI_Character)
                 Debug.Log("Energy: " + (v * score) + " value " + ai.character.energy);
            
             //TODO Make this more flexible

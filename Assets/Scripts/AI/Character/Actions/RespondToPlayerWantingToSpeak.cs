@@ -21,7 +21,7 @@ namespace Kontiki.AI
         {
             AIContext ai = ((AIContext)context);
             
-            Debug.Log("Responding to player " + val);
+//            Debug.Log("Responding to player " + val);
             ai.character.languageExchanger.RespondToPlayerWantingToSpeak(val);
         }
     }

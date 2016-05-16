@@ -122,14 +122,12 @@ namespace Kontiki{
 							indicator.gameObject.SetActive(false);
 							_freeIndicators.Add(indicator);
 							
-							_lastTarget.RemoveHighlight();
 							_lastTarget = null;
 						}
 						
 					}
 				}
 			}else if(_lastTarget != null){
-				_lastTarget.RemoveHighlight();
 				_lastTarget = null;
 			}
 			
@@ -217,26 +215,21 @@ namespace Kontiki{
 						_lastTarget = interactable;
 						Cursor.SetCursor(cursorIsPerson, Vector2.zero, CursorMode.Auto);
                         
-                        interactable.Highlight(new Color(0.5f,0,0,0.3f));
 						return;
 					}else if(_lastTarget == interactable){
 						float distance = Vector3.Distance(_lastTarget.transform.position , transform.position);
 						
 						if(distance < Settings.pickupRange){
 							Cursor.SetCursor(cursorCanReach, Vector2.zero, CursorMode.Auto);
-                       		interactable.Highlight(new Color(0,1f,0,0.3f));
 						}
 
                     }else if(_lastTarget != interactable){
-						_lastTarget.RemoveHighlight();
 						Cursor.SetCursor(cursorCannotReach, Vector2.zero, CursorMode.Auto);
-                        interactable.Highlight(new Color(0.5f,0,0,0.3f));
 						_lastTarget = interactable;
 					}
 				}
 				else{
-					if(_lastTarget != null){
-						_lastTarget.RemoveHighlight();
+					if(_lastTarget != null){	 
 						_lastTarget = null;
 					}
 					Cursor.SetCursor(cursorCannotReach, Vector2.zero, CursorMode.Auto);

@@ -34,7 +34,6 @@ namespace Kontiki
 				if(CM != null){
 					if (CM.currentControllerType == Sui_Demo_ControllerType.character){
 						CM.currentControllerType = Sui_Demo_ControllerType.boat;
-						RemoveHighlight();
 						
 					} else if (CM.currentControllerType == Sui_Demo_ControllerType.boat){
 						CM.currentControllerType = Sui_Demo_ControllerType.character;

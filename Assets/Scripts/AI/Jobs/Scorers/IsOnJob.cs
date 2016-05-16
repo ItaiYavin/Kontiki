@@ -25,7 +25,7 @@ namespace Kontiki.AI
 
             if(not) b = !b;   
 
-            if(ai.character.languageExchanger.playerWantsToSpeakWithMe)
+            if(ai.debugAI_Character)
                 Debug.Log("Is On Job: " + b + " score: " + score);
                 
             return b ? score : 0f;
