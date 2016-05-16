@@ -78,8 +78,6 @@ namespace Kontiki {
 
         void Awake () {
 			_context = new AIContext(this);
-            if(hightlightRenderer != null)
-                RemoveHighlight();
 		}
         void Start()
         {

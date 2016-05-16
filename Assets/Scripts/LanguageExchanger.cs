@@ -5,6 +5,9 @@ using Kontiki.AI;
 namespace Kontiki{
     public class LanguageExchanger : MonoBehaviour{
         
+        public bool debug = false;
+        private string debugPrint = "";
+        
         public LanguageExchanger speakingTo;
         
         public bool playerWantsToSpeakWithMe = false;
@@ -25,26 +28,26 @@ namespace Kontiki{
         }
         
         void FixedUpdate(){
-              if(speakingTo != null && !isPlayer){
-                float distance = Vector3.Distance(transform.position, speakingTo.transform.position);
-                
-                if(distance > Settings.stopInteractingDistance){
-                    speakingTo = null;
-                    iconSystem.Clear();
-                    ExitConversation();
-                }else{
-                    Vector3 lookDirection = speakingTo.transform.position;
-                    lookDirection.y = transform.position.y;
-                    transform.LookAt(lookDirection);
-                }
-            }else if(speakingTo != null && isPlayer){
-                float distance = Vector3.Distance(transform.position, speakingTo.transform.position);
-                
+            if(speakingTo == null)
+                return;
+            
+            
+            float distance = Vector3.Distance(transform.position, speakingTo.transform.position);
+
+            if(isPlayer){
                 if(distance > Settings.stopInteractingDistance){
                     speakingTo = null;
                     iconSystem.Clear();
                     WindowsHandler.Instance.SetVisibility(false);
                 }
+            }else{
+                if(distance > Settings.stopInteractingDistance){
+                    ExitConversation();
+                }else{
+                    Vector3 lookDirection = speakingTo.transform.position;
+                    lookDirection.y = transform.position.y;
+                    transform.LookAt(lookDirection);
+                } 
             }
         }
         
@@ -57,28 +60,35 @@ namespace Kontiki{
                 if(ai.pathfinder.enabled)
                     ai.pathfinder.agent.Stop();
                     
-                 Delayer.Start(delegate() {  
+                Delayer.Start(delegate() {  
                     Language.DoYouWantToStartConversation(this, Settings.player.languageExchanger);
                 }, 0.5f);
-                playerIsSpeakingToMe = true;
-                playerWantsToSpeakWithMe = false;
+                
             }else{
                 Language.DeclineConversation(this, Settings.player.languageExchanger);
-                playerWantsToSpeakWithMe = false;
-                playerIsSpeakingToMe = false;
             }
+            playerIsSpeakingToMe = b;            
+            playerWantsToSpeakWithMe = false;
                     
         } 
        
         public void ExitConversation(){
             if(!character.isPlayer){
-                Settings.player.languageExchanger.speakingTo = null;
-                        WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                        
+                if(ai.job is JobWithBoat){
+                    JobWithBoat boatJob = (JobWithBoat)ai.job;
+                    boatJob.boat.agent.Stop();
+                }
                 if(ai.pathfinder.enabled)
                     ai.pathfinder.agent.Resume();
+                    
                 playerWantsToSpeakWithMe = false;
                 playerIsSpeakingToMe = false;
+                
                 speakingTo = null;
+                Settings.player.languageExchanger.speakingTo = null;
+                
                 Delayer.Start(delegate() {  
                     playerIsSpeakingToMe = false;
                 }, Settings.AIDelayAfterSpeakingToPlayer);
@@ -86,8 +96,8 @@ namespace Kontiki{
         }
         
         public void React(LanguageExchanger sender, Language.Topic topic, params Information[] information){
-            switch (topic)
-            {
+            
+            switch (topic){
                 case Language.Topic.DoYouWantToStartConversation:{
                     if(!isPlayer){
                         if(sender.isPlayer)
@@ -95,20 +105,18 @@ namespace Kontiki{
                     }else{
                         //start conversation
                         WindowsHandler.Instance.SetVisibility(true);
-                        
                         WindowsHandler.Instance.interactionSystem.menuOpen = true;
-                        sender.speakingTo = this;
-                        sender.playerWantsToSpeakWithMe = false;
-                        sender.playerIsSpeakingToMe = true;
+                        
                         speakingTo = sender;
+                        sender.speakingTo = this;
+                        sender.playerIsSpeakingToMe = true;
+                        sender.playerWantsToSpeakWithMe = false;
                     }
                 }break;
                 case Language.Topic.DeclineConversation:{
                     if(isPlayer){
-                        //Notify Player
                         speakingTo = null;
                     }else{
-                        
                         speakingTo = null;
                         iconSystem.Clear();
                         ExitConversation();
@@ -296,6 +304,9 @@ namespace Kontiki{
                         ExitConversation();
                     }
                 }break;
+            }
+            if(debug || playerIsSpeakingToMe || playerWantsToSpeakWithMe || isPlayer){
+                Debug.Log(sender.name + " == " + topic + " => " + name);
             }
         }
     }
