@@ -1,0 +1,290 @@
+[0516/112252:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/112252:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/112252:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/112252:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/112252:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/112252:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/112252:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/112252:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/112252:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/112252:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/112252:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/112252:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/112253:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/112303:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/112303:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/112303:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/112303:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/112304:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/112304:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/112304:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/112304:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/112304:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/112304:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/112304:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/112304:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/112304:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/112323:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/112323:WARNING:channel.cc(358)] RawChannel write error
+[0516/112441:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112441:INFO:CONSOLE(11)] "[cycle] terminating; too few slides: 1", source: http://uwebkit.com/wp-content/themes/iblogpro/core/js/jquery.cycle.all.min.js?ver=1.0 (11)
+[0516/112441:INFO:CONSOLE(217)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/ (217)
+[0516/112446:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112446:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112447:INFO:CONSOLE(11)] "[cycle] terminating; too few slides: 1", source: http://uwebkit.com/wp-content/themes/iblogpro/core/js/jquery.cycle.all.min.js?ver=1.0 (11)
+[0516/112447:INFO:CONSOLE(217)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/ (217)
+[0516/112448:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112448:INFO:CONSOLE(11)] "[cycle] terminating; too few slides: 1", source: http://uwebkit.com/wp-content/themes/iblogpro/core/js/jquery.cycle.all.min.js?ver=1.0 (11)
+[0516/112448:INFO:CONSOLE(217)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/ (217)
+[0516/112458:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/112458:ERROR:ipc_channel_win.cc(216)] pipe error: 109
+[0516/112514:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112514:INFO:CONSOLE(11)] "[cycle] terminating; too few slides: 1", source: http://uwebkit.com/wp-content/themes/iblogpro/core/js/jquery.cycle.all.min.js?ver=1.0 (11)
+[0516/112514:INFO:CONSOLE(217)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/ (217)
+[0516/112538:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112538:INFO:CONSOLE(11)] "[cycle] terminating; too few slides: 1", source: http://uwebkit.com/wp-content/themes/iblogpro/core/js/jquery.cycle.all.min.js?ver=1.0 (11)
+[0516/112538:INFO:CONSOLE(217)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/ (217)
+[0516/112548:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112548:INFO:CONSOLE(193)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/features/ (193)
+[0516/112604:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112604:INFO:CONSOLE(189)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/clients/ (189)
+[0516/112608:ERROR:ipc_channel_win.cc(511)] pipe error: 232
+[0516/112921:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/112921:INFO:CONSOLE(11)] "[cycle] terminating; too few slides: 1", source: http://uwebkit.com/wp-content/themes/iblogpro/core/js/jquery.cycle.all.min.js?ver=1.0 (11)
+[0516/112921:INFO:CONSOLE(217)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/ (217)
+[0516/113404:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/113404:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/113404:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/113404:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/113404:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/113404:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/113404:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/113404:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/113404:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/113404:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/113404:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/113404:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/113405:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/113655:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/113655:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/113655:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/113655:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/113655:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/113655:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/113656:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/113656:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/113656:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/113656:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/113656:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/113656:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/113656:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/113822:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/113822:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/113823:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/113823:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/113823:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/113823:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/113823:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/113823:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/113823:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/113823:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/113823:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/113823:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/113824:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/115009:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/115009:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/115009:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/115009:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/115009:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/115009:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/115009:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/115009:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/115009:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/115009:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/115009:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/115009:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/115010:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/115038:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/115038:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/115038:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/115038:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/115038:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/115038:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/115038:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/115038:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/115038:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/115038:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/115038:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/115038:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/115039:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/115052:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/115052:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/115052:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/115052:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/115053:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/115053:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/115053:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/115053:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/115053:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/115053:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/115053:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/115053:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/115054:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/115144:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/115144:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/115144:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/115144:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/115144:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/115144:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/115144:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/115144:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/115144:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/115144:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/115144:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/115144:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/115145:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/115940:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/120040:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/120106:INFO:CONSOLE(0)] "'webkitMovementX' is deprecated. Please use 'movementX' instead.", source:  (0)
+[0516/120106:INFO:CONSOLE(0)] "'webkitMovementY' is deprecated. Please use 'movementY' instead.", source:  (0)
+[0516/120128:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/120128:WARNING:channel.cc(358)] RawChannel write error
+[0516/120317:INFO:CONSOLE(0)] "'webkitMovementX' is deprecated. Please use 'movementX' instead.", source:  (0)
+[0516/120317:INFO:CONSOLE(0)] "'webkitMovementY' is deprecated. Please use 'movementY' instead.", source:  (0)
+[0516/121215:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/121510:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/121511:INFO:CONSOLE(11)] "[cycle] terminating; too few slides: 1", source: http://uwebkit.com/wp-content/themes/iblogpro/core/js/jquery.cycle.all.min.js?ver=1.0 (11)
+[0516/121511:INFO:CONSOLE(217)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/ (217)
+[0516/121515:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/121515:INFO:CONSOLE(192)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/download/ (192)
+[0516/121518:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/121518:INFO:CONSOLE(193)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/features/ (193)
+[0516/121519:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 1.4.0", source: http://uwebkit.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0 (2)
+[0516/121519:INFO:CONSOLE(193)] "Uncaught TypeError: $j(...).accordion is not a function", source: http://uwebkit.com/features/ (193)
+[0516/121642:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/121642:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/121642:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/121642:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/121642:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/121642:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/121642:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/121642:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/121642:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/121642:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/121642:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/121642:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/121643:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/121652:INFO:CONSOLE(0)] "'window.webkitStorageInfo' is deprecated. Please use 'navigator.webkitTemporaryStorage' or 'navigator.webkitPersistentStorage' instead.", source:  (0)
+[0516/121652:INFO:CONSOLE(0)] "'webkitIndexedDB' is deprecated. Please use 'indexedDB' instead.", source:  (0)
+[0516/121659:INFO:CONSOLE(9)] "Facebook Pixel Warning: Multiple different pixels were detected on this page", source: https://connect.facebook.net/en_US/fbevents.js (9)
+[0516/121659:INFO:CONSOLE(0)] "Failed to execute 'write' on 'Document': It isn't possible to write into a document from an asynchronously-loaded external script unless it is explicitly opened.", source: https://certification.unity.com/ (0)
+[0516/121702:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/121723:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/121723:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/121723:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/121723:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/121723:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/121723:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/121723:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/121723:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/121723:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/121723:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/121723:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/121723:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/121724:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/121744:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/121744:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/121744:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/121744:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/121744:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/121744:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/121744:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/121744:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/121744:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/121744:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/121744:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/121744:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/121745:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/121804:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/121804:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/121804:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/121804:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/121804:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/121804:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/121804:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/121804:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/121804:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/121804:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/121804:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/121804:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/121805:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/121821:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/121821:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/121821:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/121821:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/121821:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/121821:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/121821:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/121821:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/121821:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/121821:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/121821:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/121821:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/121834:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/121834:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/121834:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/121834:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/121834:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/121834:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/121834:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/121834:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/121834:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/121834:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/121835:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/121835:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/121835:INFO:CONSOLE(0)] "'window.webkitStorageInfo' is deprecated. Please use 'navigator.webkitTemporaryStorage' or 'navigator.webkitPersistentStorage' instead.", source:  (0)
+[0516/121835:INFO:CONSOLE(0)] "'webkitIndexedDB' is deprecated. Please use 'indexedDB' instead.", source:  (0)
+[0516/121835:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/122251:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/122251:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/122251:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/122251:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/122251:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/122251:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/122251:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/122251:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/122251:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/122251:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/122251:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/122251:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/122252:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/122309:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: boadgeojelhgndaghljhdicfkmllpafd
+[0516/122309:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://boadgeojelhgndaghljhdicfkmllpafd/cast_sender.js
+[0516/122309:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: dliochdbjfkdbacpmhlcpmleaejidimm
+[0516/122309:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm/cast_sender.js
+[0516/122309:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: enhhojjnijigcajfphajepfemndkmdlo
+[0516/122309:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://enhhojjnijigcajfphajepfemndkmdlo/cast_sender.js
+[0516/122309:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fmfcbgogabcbclcofgocippekhfcmgfj
+[0516/122309:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fmfcbgogabcbclcofgocippekhfcmgfj/cast_sender.js
+[0516/122309:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: pkedcjkdefgpdelpbcmbmeomcjbeemfm
+[0516/122309:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://pkedcjkdefgpdelpbcmbmeomcjbeemfm/cast_sender.js
+[0516/122309:WARNING:extension_protocols.cc(426)] Failed to GetPathForExtension: fjhoaacokmgbjemoflkofnenfaiekifl
+[0516/122309:WARNING:url_request_job_manager.cc(89)] Failed to map: chrome-extension://fjhoaacokmgbjemoflkofnenfaiekifl/cast_sender.js
+[0516/122310:ERROR:gpu_video_decode_accelerator.cc(282)] HW video decode not available for profile 12
+[0516/122412:INFO:CONSOLE(0)] "'webkitMovementX' is deprecated. Please use 'movementX' instead.", source:  (0)
+[0516/122412:INFO:CONSOLE(0)] "'webkitMovementY' is deprecated. Please use 'movementY' instead.", source:  (0)
+[0516/122440:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/122440:WARNING:channel.cc(358)] RawChannel write error
+[0516/122459:INFO:CONSOLE(0)] "'webkitMovementX' is deprecated. Please use 'movementX' instead.", source:  (0)
+[0516/122459:INFO:CONSOLE(0)] "'webkitMovementY' is deprecated. Please use 'movementY' instead.", source:  (0)
+[0516/122506:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/125724:INFO:CONSOLE(0)] "'webkitMovementX' is deprecated. Please use 'movementX' instead.", source:  (0)
+[0516/125724:INFO:CONSOLE(0)] "'webkitMovementY' is deprecated. Please use 'movementY' instead.", source:  (0)
+[0516/125804:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/125804:ERROR:ipc_channel_win.cc(511)] pipe error: 232
+[0516/125804:WARNING:channel.cc(358)] RawChannel write error
+[0516/135735:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/135735:WARNING:channel.cc(358)] RawChannel write error
+[0516/144049:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/162959:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0516/162959:WARNING:channel.cc(358)] RawChannel write error

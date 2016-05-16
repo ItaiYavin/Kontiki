@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _allowAutomaticUpdateCheck: 1
   _updateCheckIntervalHours: 12
-  _lastUpdateCheck: 05/11/2016 08:41:14
+  _lastUpdateCheck: 05/16/2016 09:12:33
   _updateCheckBaseUrl: http://apexgametoolsproductservice.azurewebsites.net
   _knownPendingUpdates:
   - Apex Utility AI@1.0.2

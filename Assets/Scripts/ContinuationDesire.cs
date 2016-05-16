@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Collections;
 using Kontiki;
+using UnityEngine.SceneManagement;
 
 public class ContinuationDesire : MonoBehaviour {
 
@@ -22,6 +23,9 @@ public class ContinuationDesire : MonoBehaviour {
 	private string path;
 	private DateTime startDate;
 	private bool hasWrittenStart = false;
+
+    public int amountOfPrompts;
+    public int maxPromptsUntilExit;
 	
 	
 	private string urgencyString;
@@ -29,7 +33,7 @@ public class ContinuationDesire : MonoBehaviour {
 	
 	private string doYouWantToContinueString;
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
 		
 		int none = 0;
@@ -144,7 +148,7 @@ public class ContinuationDesire : MonoBehaviour {
 
 	public void ButtonNo(){
 		doYouWantToContinueString = "0";
-		StartWhyPanel(); 
+		StartWhyPanel();
 	}
 
 	public void ButtonSubmitText(){
@@ -166,7 +170,13 @@ public class ContinuationDesire : MonoBehaviour {
 		nextPrompt = Time.time + continuationDesireDelay;
 		
 		Settings.player.GetComponent<InteractionSystem>().menuOpen = false;
-	}
+
+        amountOfPrompts++;
+	    if (amountOfPrompts >= maxPromptsUntilExit || doYouWantToContinueString.Equals("0"))
+	    {
+	        SceneManager.LoadScene("Scenes/Post-Questionaire", LoadSceneMode.Single);
+	    }
+    }
 
 	public void StartWhyPanel(){
 		yesNoPanel.SetActive(false);

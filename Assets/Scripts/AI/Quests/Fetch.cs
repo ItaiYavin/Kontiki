@@ -18,7 +18,7 @@ namespace Kontiki
 		private float areaOfInterestSizeReductionPercent = 0.8f; // Needs to be between 0-1;
 
 		private int numberOfAskedPeople;
-		private int peakNumberOfPeople = 3;
+		private int peakNumberOfPeople = 2;
 		private int numberOfHints;
 		
 		
