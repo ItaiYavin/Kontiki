@@ -53,9 +53,7 @@ namespace Kontiki {
                 social = Random.Range(Settings.socialRange.min, Settings.socialRange.max);
                 name = NameGenerator.getName() + " - " + name;
             }
-            
-            Debug.Log("::::: " + Random.seed);
-            
+                        
             material = new Material(modelRenderer.material);
             modelRenderer.material = material;
             

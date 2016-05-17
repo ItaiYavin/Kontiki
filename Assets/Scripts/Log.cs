@@ -91,7 +91,6 @@ namespace Kontiki
             
             uint uid;
             if(questLog.ContainsKey(quest)){
-                Debug.Log("Contains key" ) ;
                 uid = questLog[quest];
                 
                 //find next entry that is empty
@@ -103,11 +102,9 @@ namespace Kontiki
                     }
                 }
             }else{
-                Debug.Log("first key" ) ;
                 uid = uidCount++ * uidOffset;
                 questLog[quest] = uid;
             }
-            Debug.Log("uid: " + uid);
             logData[uid] = data;  
         }
         
@@ -130,7 +127,6 @@ namespace Kontiki
                 uid = uidCount++ * uidOffset;
                 charLog[c] = uid;
             }
-            Debug.Log("uid: " + uid);
             logData[uid] = data;  
         }
         
@@ -156,7 +152,6 @@ namespace Kontiki
                 }
                 
             }
-            Debug.Log("uid " + uid + " " + data.jumpedIntoWater);
             lastWaterEntry = uid;
             logData[uid] = data;  
         }    
@@ -182,7 +177,6 @@ namespace Kontiki
                 }
                 
             }
-            Debug.Log("uid " + uid);
             cdLastEntry = uid;
             logData[uid] = data;  
         }
