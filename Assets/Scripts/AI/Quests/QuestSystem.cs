@@ -94,7 +94,7 @@ namespace Kontiki
 	
 	
 		public Quest[] GetAcceptedQuests(){
-//			Debug.Log("acceptedQuests " + acceptedQuests.Count);
+			Debug.Log("acceptedQuests " + acceptedQuests.Count);
 			return acceptedQuests.ToArray();
 		}
 		

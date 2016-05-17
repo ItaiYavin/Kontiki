@@ -191,7 +191,8 @@ namespace Kontiki
 
         public void SetVisibility(bool visible)
         {
-            
+            if(!visible)
+                playerLang.speakingTo = null;
             
             SwitchWindow(Window.Start);
             basePanel.SetActive(visible);

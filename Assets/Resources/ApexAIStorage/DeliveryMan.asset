@@ -16,9 +16,6 @@ MonoBehaviour:
   aiId: dd452b4e-e55b-4e1f-9b08-82f295808c81
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":96cc1c3c3e444344acaca2f0a13c7c8e,"_id":dd452b4ee55b4e1f9b0882f295808c81,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     ApexAI","_id":96cc1c3c3e444344acaca2f0a13c7c8e,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Apex.AI.AILinkAction, ApexAI","_aiId":5249e0f6619d4f73afac10ba51a67d6d},"_scorers":[{"@type":"Kontiki.AI.IsOnJob,
-    Assembly-CSharp","not":true,"score":2000},{"@type":"Kontiki.AI.PlayerWantsToSpeakWithMe,
-    Assembly-CSharp","not":false,"score":2000}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.SetIsOnJob, Assembly-CSharp","val":false},"_scorers":[{"@type":"Kontiki.AI.Hunger,
     Assembly-CSharp","threshold":0.69999999,"inverted":false,"score":100},{"@type":"Kontiki.AI.Energy,
     Assembly-CSharp","threshold":0.69999999,"inverted":true,"score":100},{"@type":"Kontiki.AI.Social,
@@ -40,12 +37,13 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Kontiki.AI.SetOnRoute, Assembly-CSharp","val":false},"_scorers":[{"@type":"Kontiki.AI.IsAtPosition,
     Assembly-CSharp","range":4,"nonZero":false,"usePathfindingDistance":false,"place":DeliveryDestination,"not":false,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToDeliveryPlace, Assembly-CSharp","towardsOrigin":false}}}]}'
-  editorConfiguration: '{"offset":{"@x":324,"@y":92},"zoom":0.85000002,"SelectorView":{"ViewArea":{"@left":171,"@top":177,"@width":187,"@height":289},"QualifierView":{"Name":"is
-    Not on Job","ActionView":{"@connectorType":"AILink"}},"QualifierView":{"Name":"Out
+  editorConfiguration: '{"offset":{"@x":7,"@y":-48},"zoom":0.69999999,"SelectorView":{"ViewArea":{"@left":-119,"@top":22,"@width":154,"@height":196},"QualifierView":{"Name":"Out
     of Resources","ActionView":{"Name":"Set isOnJob = false"}},"QualifierView":{"Name":"Has
     Route","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Has
-    No Route","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":443,"@top":262,"@width":170,"@height":187},"Name":"On
+    No Route","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":105,"@top":92,"@width":140,"@height":154},"Name":"On
     Route","QualifierView":{"Name":"Is On Route","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    Not On Route","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":664,"@top":381,"@width":170,"@height":136},"Name":"Is
-    Not On Route","QualifierView":{"Name":"Is At Origin","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":664,"@top":228,"@width":170,"@height":136},"Name":"Is
-    On Route","QualifierView":{"Name":"Is At Destination","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"AILinkView":{"@id":5249e0f6619d4f73afac10ba51a67d6d,"ViewArea":{"@left":443,"@top":41,"@width":136,"@height":64}}}'
+    Not On Route","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":287,"@top":190,"@width":140,"@height":112},"Name":"Is
+    Not On Route","QualifierView":{"Name":"Is At Origin","ActionView":{}},"DefaultQualifier":{"ActionView":{"Name":"Go
+    to Origin"}}},"SelectorView":{"ViewArea":{"@left":287,"@top":64,"@width":140,"@height":112},"Name":"Is
+    On Route","QualifierView":{"Name":"Is At Destination","ActionView":{}},"DefaultQualifier":{"ActionView":{"Name":"Go
+    To Destination"}}}}'

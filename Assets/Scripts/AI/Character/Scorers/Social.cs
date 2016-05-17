@@ -29,7 +29,7 @@ namespace Kontiki.AI
 
 
             if(ai.debugAI_Character)
-                Debug.Log("Social: " + (v * score));
+                Debug.Log("Social: " + (v * score)+ " value " + ai.character.social);
            
             //TODO Make this more flexible
             return v * score;

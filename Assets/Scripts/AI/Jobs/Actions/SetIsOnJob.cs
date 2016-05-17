@@ -21,6 +21,8 @@ namespace Kontiki.AI{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext) context;
             ai.isOnJob = val;
+            if(ai.debugAI_Character)
+                Debug.Log(" Is Now " + (val ? "On" : "Off") + " work" );
         }
     }
 }

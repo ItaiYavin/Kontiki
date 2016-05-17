@@ -15,9 +15,9 @@ namespace Kontiki
 		
 		[HideInInspector] public NavMeshAgent agent;
 		
-		[HideInInspector] public bool isDocked = true;
+		public bool isDocked = true;
 		
-		[HideInInspector] public Transform target;
+		public Transform target;
 		
 		
 		bool movingForward = false;
@@ -70,11 +70,13 @@ namespace Kontiki
 		public void GoTo(Transform target){
 			if(isDocked){
 				isDocked = false;
+				agent.Resume();
 			}
 			this.target = target;
 			
-			agent.SetDestination(target.position);
+			bool b = agent.SetDestination(target.position);
 			
+			Debug.Log("wants to go to " + target + " at " + target.position + " -> " + b);
 		}
 		
 		

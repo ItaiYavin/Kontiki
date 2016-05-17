@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1719459976, guid: 6012f3241c1c1f7409c44769fc0a1db7, type: 3}
+  m_Name: PlayerSpeakingToMe
+  m_EditorClassIdentifier: 
+  description: 
+  version: 16777472
+  aiId: c1d5d5ce-caed-4b71-bd1d-ce8a97dc97f8
+  configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":dfba65d4abe646c193b7615d5073b26e,"_id":c1d5d5cecaed4b71bd1dce8a97dc97f8,"_selectors":[{"@type":"Apex.AI.PrioritySelector,
+    ApexAI","_id":83d4f6a171c24c25b431db9dfb513056,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":false},"_scorers":[{"@type":"Kontiki.AI.Hunger,
+    Assembly-CSharp","threshold":0.40000001,"inverted":false,"score":1.5},{"@type":"Kontiki.AI.Energy,
+    Assembly-CSharp","threshold":0.40000001,"inverted":true,"score":1},{"@type":"Kontiki.AI.IsOnJob,
+    Assembly-CSharp","not":false,"score":1},{"@type":"Kontiki.AI.IsMoving, Assembly-CSharp","not":false,"score":0.5},{"@type":"Kontiki.AI.HasSocialPartner,
+    Assembly-CSharp","not":false,"score":1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","score":1.1,"action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak,
+    Assembly-CSharp","val":true}}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":dfba65d4abe646c193b7615d5073b26e,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":e3c3bb11b10343b783bdac10ab2d708f},"_scorers":[{"@type":"Kontiki.AI.RelatedToQuest,
+    Assembly-CSharp","questOriginMultiplier":1,"hasObjectiveMultiplier":1,"score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":f66ebcd6107e4da98e968dc252c82391},"_scorers":[{"@type":"Kontiki.AI.UrgencyLevel,
+    Assembly-CSharp","level":High,"score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":e18ecd3e8ae9461dab12fa1f1d73df34},"_scorers":[{"@type":"Kontiki.AI.UrgencyLevel,
+    Assembly-CSharp","level":Med,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":e3c3bb11b10343b783bdac10ab2d708f}}},{"@type":"Apex.AI.PrioritySelector,
+    ApexAI","_id":e18ecd3e8ae9461dab12fa1f1d73df34,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":false},"_scorers":[{"@type":"Kontiki.AI.Hunger,
+    Assembly-CSharp","threshold":0.40000001,"inverted":false,"score":1.5},{"@type":"Kontiki.AI.Energy,
+    Assembly-CSharp","threshold":0.40000001,"inverted":true,"score":1},{"@type":"Kontiki.AI.IsOnJob,
+    Assembly-CSharp","not":false,"score":1},{"@type":"Kontiki.AI.IsMoving, Assembly-CSharp","not":false,"score":0.5},{"@type":"Kontiki.AI.HasSocialPartner,
+    Assembly-CSharp","not":false,"score":1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","score":1.5,"action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak,
+    Assembly-CSharp","val":true}}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":e3c3bb11b10343b783bdac10ab2d708f,"_qualifiers":[],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","score":25,"action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak,
+    Assembly-CSharp","val":true}}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":f66ebcd6107e4da98e968dc252c82391,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak, Assembly-CSharp","val":false},"_scorers":[{"@type":"Kontiki.AI.Hunger,
+    Assembly-CSharp","threshold":0.40000001,"inverted":false,"score":1.5},{"@type":"Kontiki.AI.Energy,
+    Assembly-CSharp","threshold":0.40000001,"inverted":true,"score":1},{"@type":"Kontiki.AI.IsOnJob,
+    Assembly-CSharp","not":false,"score":1},{"@type":"Kontiki.AI.IsMoving, Assembly-CSharp","not":false,"score":0.5},{"@type":"Kontiki.AI.HasSocialPartner,
+    Assembly-CSharp","not":false,"score":1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","score":1.2,"action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak,
+    Assembly-CSharp","val":true}}}]}'
+  editorConfiguration: '{"offset":{"@x":-2067,"@y":71},"zoom":0.75,"SelectorView":{"ViewArea":{"@left":-42,"@top":-724,"@width":750,"@height":120},"Name":"High
+    Urgency","QualifierView":{"Name":"Evaluate Urgency","ActionView":{"Name":"Respond
+    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":18,"@top":161,"@width":150,"@height":210},"QualifierView":{"Name":"Is
+    Related To A Quest","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgency
+    High","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgency
+    Medium","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Urgnecy
+    None","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":288,"@top":191,"@width":135,"@height":120},"Name":"Med
+    Urgency","QualifierView":{"Name":"Evaluate Urgency","ActionView":{"Name":"Respond
+    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":288,"@top":326,"@width":135,"@height":75},"Name":"No
+    Urgency","DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":288,"@top":56,"@width":135,"@height":120},"Name":"High
+    Urgency","QualifierView":{"Name":"Evaluate Urgency","ActionView":{"Name":"Respond
+    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}}}'

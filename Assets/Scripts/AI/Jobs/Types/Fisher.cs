@@ -36,12 +36,18 @@ namespace Kontiki.AI{
             boat.name = gameObject.name + "'s Boat";
         }
         
-        public void GoToRandomFishingSpot(){
+        public void SelectRandomFishingSpot(){
             if(fishingSpots.Length != 0){
                 int index = Random.Range(0,fishingSpots.Length);
                 selectedFishingSpot = fishingSpots[index];
-                boat.GoTo(selectedFishingSpot);
             }
+        }
+        
+        public void GoToSelectedFishingSpot(){
+            if(selectedFishingSpot != null)
+                boat.GoTo(selectedFishingSpot);
+            else
+                Debug.Log(gameObject.name + " is trying to go to selectedFishingSpot but is null");
         }
         
         public void StartFishing(){

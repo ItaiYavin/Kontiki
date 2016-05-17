@@ -31,7 +31,6 @@ namespace Kontiki{
             if(speakingTo == null)
                 return;
             
-            
             float distance = Vector3.Distance(transform.position, speakingTo.transform.position);
 
             if(isPlayer){
@@ -87,7 +86,8 @@ namespace Kontiki{
                 playerIsSpeakingToMe = false;
                 
                 speakingTo = null;
-                Settings.player.languageExchanger.speakingTo = null;
+                //Settings.player.languageExchanger.speakingTo = null;
+                Debug.Log("Exiting Conversation");
                 
                 Delayer.Start(delegate() {  
                     playerIsSpeakingToMe = false;
@@ -129,7 +129,7 @@ namespace Kontiki{
                             Debug.Log("NPC" + (ai.baseRoutine.hasQuestToOffer ? " has " : " does not have ") + "quest to offer");
                             
                         if(ai.baseRoutine.questOffer == null && ai.baseRoutine.hasQuestToOffer){
-                            //if NPC react to DoYouHaveQuest from player
+                            //if NPC react to DoYouHaveQuest from player and has not generated one
                             
                             Quest quest = QuestSystem.Instance.GenerateQuest(sender.character, character);
                            
@@ -139,11 +139,13 @@ namespace Kontiki{
                         }else if(ai.baseRoutine.questOffer != null && ai.baseRoutine.hasQuestToOffer){
                             if (QuestSystem.Instance.acceptedQuests.IndexOf(ai.baseRoutine.questOffer) != -1)
                             {
+                                //has already accepted quest
                                 Language.IHaveQuest(this, null, ai.baseRoutine.questOffer);
                                 ExitConversation();
                             }
                             else
                             {
+                                //has generated quest but is not accepted yet
                                 Language.IHaveQuest(this, sender, ai.baseRoutine.questOffer);
                                 character.ChangeColor(ai.baseRoutine.questOffer.colorOrigin, 0.5f);
                             }

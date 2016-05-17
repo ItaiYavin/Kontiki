@@ -616,8 +616,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.6793385, y: -0.27, z: -0.21349521}
+  m_LocalScale: {x: 0.01, y: 1, z: 0.01}
   m_Children:
   - {fileID: 22436266}
   - {fileID: 403706}
@@ -845,7 +845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiConfigs:
-  - aiId: d2213d02-f316-47c0-9c25-761303e1b758
+  - aiId: 5249e0f6-619d-4f73-afac-10ba51a67d6d
     intervalMin: 0.25
     intervalMax: 0.25
     startDelayMin: 0
@@ -907,7 +907,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae1ddda42acaf0428debd8ca6267d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   speakingTo: {fileID: 0}
+  playerWantsToSpeakWithMe: 0
+  playerIsSpeakingToMe: 0
   iconSystem: {fileID: 0}
   character: {fileID: 0}
   ai: {fileID: 0}
@@ -944,6 +947,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   languageExchanger: {fileID: 0}
   modelRenderer: {fileID: 13732512}
+  material: {fileID: 0}
   isTalking: 0
   socialPartner: {fileID: 0}
   animationController: {fileID: 0}
@@ -975,7 +979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3e600537bc534caa274017d36c26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hightlightRenderer: {fileID: 0}
   indicator: {fileID: 0}
   sprite: {fileID: 0}
   isOnJob: 1
@@ -1010,6 +1013,7 @@ MonoBehaviour:
   canvasParent: {fileID: 22325014}
   iconDuration: 0
   iconsDestroyTime: 0
+  character: {fileID: 0}
 --- !u!114 &11496226
 MonoBehaviour:
   m_ObjectHideFlags: 1

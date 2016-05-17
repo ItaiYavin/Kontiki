@@ -60,6 +60,7 @@ namespace Kontiki.AI
 {
     public enum JobType{
        Fisher,
-       Trader            
+       Trader,
+       DeliveryMan            
     }
 }

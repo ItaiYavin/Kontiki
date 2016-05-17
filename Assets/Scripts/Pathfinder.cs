@@ -31,12 +31,12 @@ namespace Kontiki {
         }
 
 		public void GoToTarget(){
-			agent.destination = target.transform.position;
+            agent.SetDestination(target.position);
 		}
 
         public void GoTo(Transform destination)
         {
-            agent.destination = destination.position;
+            agent.SetDestination(destination.position);
         }
 
 		public void StopMoving(){

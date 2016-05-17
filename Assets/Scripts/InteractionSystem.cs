@@ -99,7 +99,7 @@ namespace Kontiki{
 								if(quest.origin == target.character){
 									//is talking to the quest origin 
 									if(playerHasObjective && _player.inventory.RemoveItem(quest.objective)){
-									//Player has objective and player has given objective
+										//Player has objective and player has given objective
 										QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
 										target.character.ChangeColor(Color.white,10f);
 										quest.FinishQuest(_player.inventory);
