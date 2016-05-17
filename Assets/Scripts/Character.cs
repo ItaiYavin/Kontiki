@@ -50,7 +50,11 @@ namespace Kontiki {
             if(!isPlayer){
                 hunger = Random.Range(Settings.hungerRange.min, Settings.hungerRange.max);
                 energy = Random.Range(Settings.energyRange.min, Settings.energyRange.max);
+                social = Random.Range(Settings.socialRange.min, Settings.socialRange.max);
+                name = NameGenerator.getName() + " - " + name;
             }
+            
+            Debug.Log("::::: " + Random.seed);
             
             material = new Material(modelRenderer.material);
             modelRenderer.material = material;

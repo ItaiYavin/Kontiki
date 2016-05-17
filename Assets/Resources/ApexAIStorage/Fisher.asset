@@ -61,20 +61,20 @@ MonoBehaviour:
     ApexAI","action":{"@type":"Kontiki.AI.GoToTrader, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.IsMoving,
     Assembly-CSharp","not":true,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToTrader, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":-317,"@y":-510},"zoom":1,"SelectorView":{"ViewArea":{"@left":-497,"@top":-310,"@width":200,"@height":280},"QualifierView":{"Name":"Out
+  editorConfiguration: '{"offset":{"@x":70,"@y":79},"zoom":0.40000001,"SelectorView":{"ViewArea":{"@left":-2,"@top":159,"@width":80,"@height":112},"QualifierView":{"Name":"Out
     of Resources","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
     not in the boat?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    in Boat","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":83,"@top":-90,"@width":320,"@height":220},"Name":"Not
+    in Boat","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":230,"@top":247,"@width":128,"@height":88},"Name":"Not
     in boat","QualifierView":{"Name":"Close enought to interact and boat is docked","ActionView":{"Name":"Enter
-    Boat"}},"QualifierView":{"Name":"Is not Moving","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":83,"@top":150,"@width":240,"@height":280},"Name":"In
+    Boat"}},"QualifierView":{"Name":"Is not Moving","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":230,"@top":343,"@width":96,"@height":112},"Name":"In
     The Boat","QualifierView":{"Name":"Is Fishing","ActionView":{"Name":"Wait Until
     Finished"}},"QualifierView":{"Name":"Close enough to start fishing","ActionView":{}},"QualifierView":{"Name":"Has
-    Selected Fishing Spot","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":483,"@top":-510,"@width":320,"@height":220},"Name":"Return
+    Selected Fishing Spot","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":390,"@top":79,"@width":128,"@height":88},"Name":"Return
     to Port","QualifierView":{"Name":"Close enough to Dock","ActionView":{}},"QualifierView":{"Name":"Undocked
-    Boat is not Returning to Port","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":83,"@top":-510,"@width":280,"@height":340},"Name":"Out
+    Boat is not Returning to Port","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":230,"@top":79,"@width":112,"@height":136},"Name":"Out
     of Resources","QualifierView":{"Name":"Boat is not Docked","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
     in Docked Boat","ActionView":{"Name":"Exit Boat"}},"QualifierView":{"Name":"Character
     has Sellable Items","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Has
-    no Sellable Items","ActionView":{"Name":"Go Off Job"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":483,"@top":-270,"@width":260,"@height":220},"Name":"Go
+    no Sellable Items","ActionView":{"Name":"Go Off Job"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":390,"@top":175,"@width":104,"@height":88},"Name":"Go
     Trader","QualifierView":{"Name":"Close to Trader","ActionView":{}},"QualifierView":{"Name":"Is
     not Moving","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'

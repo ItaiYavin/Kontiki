@@ -32,13 +32,15 @@ namespace Kontiki
 		public void FinishQuest(Inventory characterInventory){
 			characterInventory.PutItemIntoInventoryRegardlessOfDistance(rewardType); // Give reward
 			QuestSystem.Instance.RemoveQuest(this);
+			
+			Log.Quest_Completed(this);
 		}
 
 		public void CreateAreaOfInterestInWorld(Transform target){
 			GameObject g = Object.Instantiate(areaOfInterestPrefab, target.position, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at target.position
 			areaOfInterest = g.GetComponent<AreaOfInterest>();
 			areaOfInterest.target = target;	
-			Debug.Log(areaOfInterest + " " + colorOrigin);
+			
 			areaOfInterest.ChangeColor(colorOrigin);
 			areaOfInterest.ChangePosition(target.position); //Randomly move areaOfInterest so that position is still within areaOfInterest
 		}

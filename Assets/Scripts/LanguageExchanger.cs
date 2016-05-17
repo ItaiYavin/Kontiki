@@ -133,6 +133,7 @@ namespace Kontiki{
                             
                             Quest quest = QuestSystem.Instance.GenerateQuest(sender.character, character);
                            
+                           
                             Language.IHaveQuest(this, sender, quest); 
                             character.ChangeColor(quest.colorOrigin, 0.5f); 
                             ai.baseRoutine.questOffer = quest;  
@@ -241,6 +242,7 @@ namespace Kontiki{
                         // asked person has objective and has given it to the player
                         quest.RemoveAreaOfInterest();
                         Language.IHaveQuestObjective(this, sender, quest);
+                        Log.Quest_Objective(quest);
                                     
                         ExitConversation();
                         
@@ -258,12 +260,14 @@ namespace Kontiki{
                             if(Settings.debugQuestInfo)
                                 Debug.Log("Character has Information");
                             Language.IHaveInfoAboutQuest(this, sender, quest);
+                            Log.Quest_Information(quest, true);
                             
                         }else{
                             //has no information
                             if(Settings.debugQuestInfo)
                                 Debug.Log("Character has no Information");
                             Language.IHaveNoInfoAboutQuest(this, sender, quest);
+                            Log.Quest_Information(quest, false);
                             ExitConversation();
                         }
                     }
@@ -277,7 +281,7 @@ namespace Kontiki{
                         bool b = false;     
                         for (int i = 0; i < acceptedQuest.Length; i++)
                         {
-                            if(!acceptedQuest[i].HasCharacterBeenAsked(sender.speakingTo.character)){
+                            if(!acceptedQuest[i].HasCharacterBeenAsked(speakingTo.character)){
                                 b = true;
                                 break;
                             }
@@ -288,7 +292,6 @@ namespace Kontiki{
                             WindowsHandler.Instance.SetVisibility(false);
                             WindowsHandler.Instance.interactionSystem.menuOpen = false;
                         }
-
                     }
                 }break;
                 case Language.Topic.IHaveNoInfoAboutQuest:{
@@ -307,8 +310,13 @@ namespace Kontiki{
                     }
                 }break;
             }
-            if(debug || playerIsSpeakingToMe || playerWantsToSpeakWithMe || isPlayer){
+            if(debug || sender.character.isPlayer || isPlayer){
                 Debug.Log(sender.name + " == " + topic + " => " + name);
+            }
+            if(isPlayer){
+                Log.Interaction_PlayerGotReaction(topic, sender.character);
+            }else if(sender.character.isPlayer){
+                Log.Interaction_PlayerAsking(topic, character);
             }
         }
     }

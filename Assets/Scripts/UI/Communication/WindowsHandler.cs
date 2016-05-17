@@ -79,7 +79,7 @@ namespace Kontiki
                             SwitchWindow(Window.Info);
                         }break;                     
                         case 2:{
-                           //Trade Button
+                           //Decline Button
                            
                             Language.DeclineConversation(playerLang, playerLang.speakingTo);
                             playerLang.speakingTo = null;

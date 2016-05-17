@@ -20,7 +20,7 @@ namespace Kontiki
 
 		// Use this for initialization
 		void Start () {
-			charactersWithoutQuestObjects = new List<Character>(); // TODO fill list
+			charactersWithoutQuestObjects = new List<Character>();
 			Character[] tempChar = FindObjectsOfType(typeof (Character)) as Character[];
 			foreach(Character character in tempChar){
 				charactersWithoutQuestObjects.Add(character);
@@ -46,15 +46,15 @@ namespace Kontiki
             DontDestroyOnLoad(gameObject);
 		}
  
-		public Quest GenerateQuest(Character questGetter, Character questGiver){
+		public Quest GenerateQuest(Character questGetter, Character questOrigin){
 			//@TODO(KasperHdL) make generic, fetch quest specific currently..
 			GameObject g = Instantiate(objectivePrefab, transform.position, transform.rotation) as GameObject;
 			
 			QuestItem objective = g.GetComponent<QuestItem>();
-			charactersWithoutQuestObjects.Add(questGiver);
+			charactersWithoutQuestObjects.Remove(questOrigin);
 			int i = Random.Range(0, charactersWithoutQuestObjects.Count);
 
-            Fetch fetch = new Fetch(questGetter, questGiver);
+            Fetch fetch = new Fetch(questGetter, questOrigin);
 			fetch.objective = objective;
 
 			if(!charactersWithoutQuestObjects[i].inventory.IsInventoryFull()){
@@ -66,7 +66,7 @@ namespace Kontiki
 
 			fetch.objectiveHolder = charactersWithoutQuestObjects[i];
 			fetch.rewardType = rewardType;
-			fetch.origin = questGiver;
+			fetch.origin = questOrigin;
 			fetch.areaOfInterestPrefab = areaOfInterestPrefab;
 			
 			fetch.colorOrigin = GetUnusedPersonColor();
@@ -89,6 +89,8 @@ namespace Kontiki
                 Debug.Log("Player accepted quest from " + quest.origin);
 
             acceptedQuests.Add(quest);
+			
+			Log.Quest_Accepted(quest);
         }
 		
 	

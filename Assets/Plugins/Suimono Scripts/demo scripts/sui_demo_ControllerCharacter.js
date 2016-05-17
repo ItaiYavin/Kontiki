@@ -4,6 +4,8 @@
 
 //PUBLIC VARIABLES
 
+
+
 var isActive : boolean = false;
 var isControllable : boolean = true;
 //var isTargeting : boolean = false;
