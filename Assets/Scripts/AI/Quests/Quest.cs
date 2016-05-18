@@ -11,7 +11,7 @@ namespace Kontiki
 
 		public bool accepted = false;
 
-		protected List<Character> askedPeople;
+		public List<Character> askedPeople;
         public Character player;
         public Character origin;
 		public ItemType rewardType;
