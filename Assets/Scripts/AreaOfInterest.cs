@@ -26,14 +26,14 @@ namespace Kontiki
 		// Use this for initialization
 		void Awake () {
 			if(material == null){
-				material = new Material(GetComponent<MeshRenderer>().material);
-				GetComponent<MeshRenderer>().material = material;
+				material = new Material(transform.GetChild(0).GetComponent<MeshRenderer>().material);
+				transform.GetChild(0).GetComponent<MeshRenderer>().material = material;
 				material.color = new Color(1,1,1,0);
 			}
 			cylinderRenderer = cylinder.GetComponent<MeshRenderer>();
 			cylinderRenderer.material = material;
 			
-			transform.localScale = new Vector3(areaOfInterestMaxSize, areaOfInterestMaxSize, areaOfInterestMaxSize);
+			transform.localScale = new Vector3(0, 0, 0);
 		}
 		
 		

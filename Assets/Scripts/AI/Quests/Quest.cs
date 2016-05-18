@@ -39,11 +39,15 @@ namespace Kontiki
 		public void CreateAreaOfInterestInWorld(Transform target){
 			GameObject g = Object.Instantiate(areaOfInterestPrefab, target.position, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at target.position
 			areaOfInterest = g.GetComponent<AreaOfInterest>();
-			areaOfInterest.target = target;	
-			
-			areaOfInterest.ChangeColor(colorOrigin);
-			areaOfInterest.ChangePosition(target.position); //Randomly move areaOfInterest so that position is still within areaOfInterest
-		}
+			areaOfInterest.target = target;
+
+            areaOfInterest.transform.position = origin.transform.position;
+            areaOfInterest.transform.localScale = Vector3.zero;
+
+		    areaOfInterest.ChangeColor(colorOrigin);
+            areaOfInterest.ChangeScale(areaOfInterest.areaOfInterestMaxSize);
+            areaOfInterest.ChangePosition(target.position);
+        }
 		
 		public void RemoveAreaOfInterest(){
 			Object.Destroy(areaOfInterest.gameObject);
