@@ -11,7 +11,7 @@ namespace Kontiki
 
 		public bool accepted = false;
 
-		protected List<Character> askedPeople;
+		public List<Character> askedPeople;
         public Character player;
         public Character origin;
 		public ItemType rewardType;
@@ -39,11 +39,15 @@ namespace Kontiki
 		public void CreateAreaOfInterestInWorld(Transform target){
 			GameObject g = Object.Instantiate(areaOfInterestPrefab, target.position, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at target.position
 			areaOfInterest = g.GetComponent<AreaOfInterest>();
-			areaOfInterest.target = target;	
-			
-			areaOfInterest.ChangeColor(colorOrigin);
-			areaOfInterest.ChangePosition(target.position); //Randomly move areaOfInterest so that position is still within areaOfInterest
-		}
+			areaOfInterest.target = target;
+
+            areaOfInterest.transform.position = origin.transform.position;
+            areaOfInterest.transform.localScale = Vector3.zero;
+
+		    areaOfInterest.ChangeColor(colorOrigin);
+            areaOfInterest.ChangeScale(areaOfInterest.areaOfInterestMaxSize);
+            areaOfInterest.ChangePosition(target.position);
+        }
 		
 		public void RemoveAreaOfInterest(){
 			Object.Destroy(areaOfInterest.gameObject);
@@ -59,11 +63,9 @@ namespace Kontiki
 					list.RemoveAt(i);
 					return;
 				}
-
-				// Character was not found on list!
-				return;
 			}
-		}
+            // Character was not found on list!
+        }
 
 		public bool CheckListForCharacter(Character character, List<Character> list){
 			for(int i = 0; i < list.Count; i++){

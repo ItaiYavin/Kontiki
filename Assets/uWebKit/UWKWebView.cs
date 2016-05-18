@@ -625,13 +625,14 @@ public class UWKWebView : MonoBehaviour
     public int Width
     {
         get { return width; }
+        set { width = value; }
     }
 
     public int Height
     {
         get { return height; }
+        set { height = value; }
     }
-
 
     #region Default delegate handlers
 

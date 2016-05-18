@@ -28,8 +28,6 @@ public class StatImage : MonoBehaviour {
 	private RectTransform _rt;
 
 	private Rect _rect;
-	private Vector2 _position;
-	private Vector2 _originalSize;
 	
 	public enum Type 
 	{
@@ -44,9 +42,6 @@ public class StatImage : MonoBehaviour {
 		_image = GetComponent<Image>();
 		_imageCol = _image.color;
 		_rt = _image.GetComponent<RectTransform>();
-
-		_position = _rect.position;
-		_originalSize = _rect.size;
 
 	}
 	

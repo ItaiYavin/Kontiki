@@ -99,7 +99,6 @@ namespace Kontiki {
 			Collider[] colliders = Physics.OverlapSphere(transform.position, Settings.knownAreaSize/2);
 
 			// Look through all colliders and Look for EdibleItem and put them in a list
-			List<Item> itemsInRange = new List<Item>();
 			foreach (Collider c in colliders) {
 				Item foundItem = c.GetComponent<Item>();
 				if (foundItem != null)

@@ -18,7 +18,6 @@ public class ContinuationDesire : MonoBehaviour {
 	public GameObject[] OtherCanvases;
 
 	private bool notCurrentlyAsking;
-	private DateTime startDate;
 
     public int amountOfPrompts;
     public int maxPromptsUntilExit;
@@ -46,7 +45,6 @@ public class ContinuationDesire : MonoBehaviour {
 		Log.UrgencyLevel(chosen);
 		
 		nextPrompt = Time.time + continuationDesireDelay;
-		startDate = DateTime.Now;
 	}
 	
 	// Update is called once per frame
