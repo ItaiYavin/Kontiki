@@ -10,6 +10,8 @@ namespace Kontiki {
 	    private sui_demo_animCharacter animController;
 	    private bool isPlayer;
 
+		private bool lastWaterFrame = false;
+
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
 		    anim = transform.FindChild("Character Model").GetComponent<Animator>();
@@ -90,7 +92,16 @@ namespace Kontiki {
 		    (bool
 		    b)
 		    {
-		        anim.SetBool("isSwimming", b);
+		        if(lastWaterFrame != b){
+					if(b)
+						Log.Player_IntoWater();
+					else
+						Log.Player_OutOfWater();
+					
+					lastWaterFrame = b;
+				}
+				anim.SetBool("isSwimming", b);
+				
 		    }
 
 	    public IEnumerator Talking()

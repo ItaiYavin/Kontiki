@@ -12,40 +12,110 @@ namespace Kontiki
         private static Dictionary<Quest, uint> questLog     = new Dictionary<Quest, uint>();
         private static Dictionary<Character, uint> charLog  = new Dictionary<Character, uint>();
         
-        private static uint waterBaseEntry = 0;
-        private static uint lastWaterEntry = 0;
+        
+        private static List<WaterData> waterLog             = new List<WaterData>();
+        private static List<CDData> cdLog             = new List<CDData>();
+        
+        
+        private static uint uidCount = 0;
+        private static uint uidOffset = 256;
+        
         
         private static int randomSeed;
         private static UrgencyLevel urgencyLevel;
-        
-        private static uint uidCount = 0;
-        private static uint uidOffset = 8;
-        
-        private static uint cdBaseEntry = 0;
-        private static uint cdLastEntry = 0;
-        
+
         //Game Methods
         public static void Game_Started(){
             //date?
         }
         
+        public static void SendLog(){
+            Debug.Log("Started Sending Log");
+            string[] values;
+            
+            foreach(var data in logData){
+                values = new string[20];
+                values[1] = DataDistributor.id.ToString();
+                values[2] = data.Value.gameTime.ToString();
+                values[3] = data.Value.realTime.ToString();
+                values[4] = data.Key.ToString();
+                values[5] = data.Value.type.ToString();
+                
+                if(data.Value is QuestData){
+                    values[6] = (data.Key / uidOffset * uidOffset).ToString();
+                    values[7] = ((QuestData)data.Value).quest.origin.name;
+                    values[8] = ((QuestData)data.Value).topic.ToString();
+                                        
+                }
+                if(data.Value is InteractionData){
+                    InteractionData iData = (InteractionData)data.Value;
+                    values[9] = iData.interactee.name;
+                    values[10] = iData.languageTopic.ToString();
+                    values[11] = iData.playerIsAsking.ToString();
+                    values[12] = iData.energy.ToString();
+                    values[13] = iData.hunger.ToString();
+                    values[14] = iData.social.ToString();
+                }
+                
+                UnityDataConnector.Instance.SendLogData(values);
+            }
+            
+            for (int i = 0; i < waterLog.Count; i++)
+            {
+                values = new string[20];
+                values[1] = DataDistributor.id.ToString();
+                values[2] = waterLog[i].gameTime.ToString();
+                values[3] = waterLog[i].realTime.ToString();
+                values[5] = waterLog[i].type.ToString();
+                
+                values[15] = waterLog[i].jumpedIntoWater.ToString();
+                UnityDataConnector.Instance.SendLogData(values);
+            }
+            
+            for (int i = 0; i < cdLog.Count; i++)
+            {
+                values = new string[20];
+                values[1] = DataDistributor.id.ToString();
+                values[2] = cdLog[i].gameTime.ToString();
+                values[3] = cdLog[i].realTime.ToString();
+                values[5] = cdLog[i].type.ToString();
+                
+                values[16] = cdLog[i].wantToContinue.ToString();
+                values[17] = cdLog[i].explaination;
+                UnityDataConnector.Instance.SendLogData(values);
+            }
+            values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[5] = "Log Check Sum";
+            values[18] = (UnityDataConnector.Instance.logsSend + 1).ToString();
+            
+            UnityDataConnector.Instance.SendLogData(values);
+        }
+        
         public static void CD(bool wantToContinue, string explaination){
             CDData data = new CDData(wantToContinue, explaination);
-            PlaceCDIntoDictionary(data);
+            cdLog.Add(data);
         }
         
         public static void UrgencyLevel(UrgencyLevel level){
             urgencyLevel = level;
         }
         
+        public static void Tutorial(bool tutorialStarted){
+            uint uid = uidCount++ * uidOffset;
+            Data d = new Data();
+            d.type = (tutorialStarted ? Data.Type.Tutorial_Started : Data.Type.Tutorial_Ended);
+            logData[uid] = d;
+        }
+        
         //Player methods
         public static void Player_IntoWater(){
             WaterData data = new WaterData(true);
-            PlaceWaterIntoDictionary(data);
+            waterLog.Add(data);
         }
         public static void Player_OutOfWater(){
             WaterData data = new WaterData(false);
-            PlaceWaterIntoDictionary(data);
+            waterLog.Add(data);
         }
        
         //Interaction Methods
@@ -83,7 +153,7 @@ namespace Kontiki
         }
         
         public static void Quest_Information(Quest quest, bool hadInfo){
-            Log.QuestData data = new QuestData(quest, QuestData.Topic.GotInformation);
+            Log.QuestData data = new QuestData(quest, (hadInfo ? QuestData.Topic.GotInformation : QuestData.Topic.GotNoInformation));
             
             PlaceQuestIntoDictionary(data);
         }
@@ -134,59 +204,7 @@ namespace Kontiki
             }
             logData[uid] = data;  
         }
-        
-        private static void PlaceWaterIntoDictionary(Log.WaterData data){
-            
-            uint uid = 1 + lastWaterEntry;
-            bool found = false;
-            
-             if(logData.ContainsKey(waterBaseEntry) && !(logData[waterBaseEntry] is WaterData)){
-                    uid = uidCount++ * uidOffset;
-                    waterBaseEntry = uid;
-            }
-            
-            while(!found){
-                if(uid - waterBaseEntry >= uidOffset){
-                    //find next baseOffset
-                    uid = uidCount++ * uidOffset;
-                    waterBaseEntry = uid;
-                }else if(!logData.ContainsKey(uid)){
-                    found = true;
-                }else{
-                    uid++;
-                }
-                
-            }
-            lastWaterEntry = uid;
-            logData[uid] = data;  
-        }    
-        private static void PlaceCDIntoDictionary(Log.CDData data){
-            
-            uint uid = 1 + cdLastEntry;
-            bool found = false;
-            
-            if(logData.ContainsKey(cdBaseEntry) && !(logData[cdBaseEntry] is CDData)){
-                    uid = uidCount++ * uidOffset;
-                    cdBaseEntry = uid;
-            }
-            
-            while(!found){
-                if(uid - cdBaseEntry >= uidOffset){
-                    //find next baseOffset
-                    uid = uidCount++ * uidOffset;
-                    cdBaseEntry = uid;
-                }else if(!logData.ContainsKey(uid)){
-                    found = true;
-                }else{
-                    uid++;
-                }
-                
-            }
-            cdLastEntry = uid;
-            logData[uid] = data;  
-        }
-        
-        
+     
         
         public static string ConvertToBase64(uint i)
         {
@@ -207,10 +225,21 @@ namespace Kontiki
             public float gameTime;
             public float realTime;
             
+            public Type type;
+            
             
             public Data(){
                 gameTime = Time.time;
                 realTime = Time.unscaledTime;
+            }
+            
+            public enum Type{
+                CD,
+                Water,
+                Quest,
+                Interaction,
+                Tutorial_Started,
+                Tutorial_Ended
             }
         }
         
@@ -219,6 +248,7 @@ namespace Kontiki
             public string explaination;
             
             public CDData(bool wantToContinue, string explaination){
+                type = Data.Type.CD;
                 this.wantToContinue = wantToContinue;
                 this.explaination = explaination;
             }
@@ -231,6 +261,7 @@ namespace Kontiki
             public QuestData(Quest quest, Topic topic)
                 :base(){
                     
+                type = Data.Type.Quest;
                 this.quest = quest;
                 this.topic = topic;
             }
@@ -238,6 +269,7 @@ namespace Kontiki
             public enum Topic{
                 Accepted,
                 GotInformation,
+                GotNoInformation,
                 Completed,
                 GotObjective
             }
@@ -254,6 +286,7 @@ namespace Kontiki
             
             public InteractionData(Language.Topic languageTopic, Character interactee, bool playerIsAsking)
                 :base(){
+                type = Data.Type.Interaction;
                 this.interactee = interactee;
                 this.playerIsAsking = playerIsAsking;
                 this.languageTopic = languageTopic;
@@ -266,6 +299,7 @@ namespace Kontiki
             public bool jumpedIntoWater = false;
             
             public WaterData(bool jumpedIntoWater){
+                type = Data.Type.Water;
                 this.jumpedIntoWater = jumpedIntoWater;
             }
         }
