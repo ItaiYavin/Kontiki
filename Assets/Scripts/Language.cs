@@ -152,12 +152,17 @@ namespace Kontiki{
             }, Settings.speechDelay);
         }
         public static void IHaveInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){
-            sender.character.animationController.Talk();
+            sender.character.animationController.Point();
             receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(IconType.Find, IconType.Yes);
-            Delayer.Start(delegate() {
+            Delayer.Start(delegate () {
                 receiver.React(sender, Language.Topic.IHaveInfoAboutQuest, quest);
             }, Settings.speechDelay);
+
+            //TODO(frans) PLEASE HELP
+
+            sender.speakingTo = null;
+            sender.character.gameObject.transform.LookAt(quest.areaOfInterest.transform, Vector3.up);
         }
         
         public static void IHaveNoInfoAboutQuest(LanguageExchanger sender, LanguageExchanger receiver, Quest quest){

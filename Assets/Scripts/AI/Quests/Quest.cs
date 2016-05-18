@@ -7,7 +7,7 @@ namespace Kontiki
 	public abstract class Quest : Information {
 		// areaOfInterest Variables
 		public GameObject areaOfInterestPrefab;
-		protected AreaOfInterest areaOfInterest;
+		public AreaOfInterest areaOfInterest;
 
 		public bool accepted = false;
 

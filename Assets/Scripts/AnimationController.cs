@@ -9,8 +9,6 @@ namespace Kontiki {
 
 	    private sui_demo_animCharacter animController;
 	    private bool isPlayer;
-		
-		private bool wasInWaterLastFrame = false;
 
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();
@@ -92,13 +90,6 @@ namespace Kontiki {
 		    (bool
 		    b)
 		    {
-				if(wasInWaterLastFrame != b){
-					if(b)
-						Log.Player_IntoWater();
-					else
-						Log.Player_OutOfWater();
-					wasInWaterLastFrame = b;
-				}
 		        anim.SetBool("isSwimming", b);
 		    }
 
@@ -111,11 +102,10 @@ namespace Kontiki {
 
 		public
 		    void Point 
-		    (bool
-		    b)
+		    ()
 		    {
-		        anim.SetBool("point", b);
-		    }
+            StartCoroutine(Pointing());
+        }
 
 		public
 		    void Sit 
@@ -129,7 +119,14 @@ namespace Kontiki {
 	    {
 	        StartCoroutine(Talking());
 	    }
-		}
 
+	    public IEnumerator Pointing()
+	    {
+            anim.SetBool("point", true);
+            yield return null;
+            anim.SetBool("point", false);
+        }
+		}
+        
 
 	}
