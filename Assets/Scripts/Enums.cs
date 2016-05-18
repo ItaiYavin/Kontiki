@@ -6,7 +6,8 @@
         Talk,
         Response,
         Quest,
-        Information
+        Information,
+        QuestDescription
     }
 
     public enum IconType

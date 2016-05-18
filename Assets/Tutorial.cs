@@ -106,7 +106,7 @@ namespace Kontiki
 					{
 						tutorialImages[(int)step].SetActive(true);
 
-						if(QuestSystem.Instance.acceptedQuests.Count > 0 || Input.GetKey(skipKey))
+						if(QuestSystem.Instance.acceptedQuests[0] != null || Input.GetKey(skipKey))
 						{
 							tutorialImages[(int)step].SetActive(false);
 							newStep = false;
@@ -135,6 +135,19 @@ namespace Kontiki
 						tutorialImages[(int)step].SetActive(true);
 
 						if(QuestSystem.Instance.acceptedQuests[0].askedPeople.Count > 0 || Input.GetKey(skipKey))
+						{
+							tutorialImages[(int)step].SetActive(false);
+							step = TutorialSteps.QuestDescription;
+							newStep = false;
+						}
+					}
+					break;
+
+					case TutorialSteps.QuestDescription: // EXPLAIN QUEST MARKERS
+					{
+						tutorialImages[(int)step].SetActive(true);
+
+						if(Input.GetKey(skipKey))
 						{
 							tutorialImages[(int)step].SetActive(false);
 							newStep = false;
