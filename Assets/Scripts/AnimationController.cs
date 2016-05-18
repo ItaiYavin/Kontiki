@@ -102,11 +102,10 @@ namespace Kontiki {
 
 		public
 		    void Point 
-		    (bool
-		    b)
+		    ()
 		    {
-		        anim.SetBool("point", b);
-		    }
+            StartCoroutine(Pointing());
+        }
 
 		public
 		    void Sit 
@@ -120,7 +119,14 @@ namespace Kontiki {
 	    {
 	        StartCoroutine(Talking());
 	    }
-		}
 
+	    public IEnumerator Pointing()
+	    {
+            anim.SetBool("point", true);
+            yield return null;
+            anim.SetBool("point", false);
+        }
+		}
+        
 
 	}
