@@ -25,6 +25,9 @@ namespace Kontiki
 
         public GameObject questInfoPrefab;
         private List<ButtonInfo> questInfoBoxes;
+        
+        
+        public Image questButtonImage;
 
         // Private Variables & references
         [HideInInspector] public LanguageExchanger playerLang;
@@ -69,17 +72,35 @@ namespace Kontiki
                     {
                         case 0:{
                             //Quest Button
-                            Language.DoYouHaveQuest(playerLang, playerLang.speakingTo);
+                            if (playerLang.speakingTo.ai.baseRoutine.questOffer != null && QuestSystem.Instance.acceptedQuests.IndexOf(playerLang.speakingTo.ai.baseRoutine.questOffer) != -1){
+                                
+                                Fetch quest = (Fetch)playerLang.speakingTo.ai.baseRoutine.questOffer;
+                                
+                                bool playerHasObjective = Settings.player.inventory.CheckInventoryForSpecificItem(quest.objective);	
+                                if(playerHasObjective && Settings.player.inventory.RemoveItem(quest.objective)){
+                                
+                                    //Player has objective and player has given objective
+                                    QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
+                                    playerLang.speakingTo.character.ChangeColor(Color.white,10f);
+                                    quest.FinishQuest(Settings.player.inventory);
+                                    Language.QuestFinished(playerLang.speakingTo, playerLang, quest);
+                                    
+                                }
+                                                            
+                            }else{
+                                Language.DoYouHaveQuest(playerLang, playerLang.speakingTo);
+                                
+                            }
                             
                         }break;                     
                         case 1:{
                             //Info Button
-                            Debug.Log("entering info");
+//                            Debug.Log("entering info");
                             GenerateQuestButtons();
                             SwitchWindow(Window.Info);
                         }break;                     
                         case 2:{
-                           //Trade Button
+                           //Decline Button
                            
                             Language.DeclineConversation(playerLang, playerLang.speakingTo);
                             playerLang.speakingTo = null;
@@ -152,6 +173,12 @@ namespace Kontiki
             }
         }
 
+        public void ShowFinishQuest(Color color){
+            Debug.Log( " setting up to finish quest" );
+            questButtonImage.sprite = Settings.iconSprites[Settings.iconTypes.IndexOf(IconType.QuestObjective)];
+            questButtonImage.color = color;
+        }
+
         public void SwitchWindow(int i)
         {
             SwitchWindow((Window)i);
@@ -191,8 +218,11 @@ namespace Kontiki
 
         public void SetVisibility(bool visible)
         {
-            if(!visible)
+            if(!visible){
                 playerLang.speakingTo = null;
+                questButtonImage.sprite = Settings.iconSprites[Settings.iconTypes.IndexOf(IconType.Question)];
+                questButtonImage.color = Color.white;
+            }
             
             SwitchWindow(Window.Start);
             basePanel.SetActive(visible);
@@ -225,7 +255,6 @@ namespace Kontiki
                 
                 b.index = i;
                 
-                Debug.Log(q.HasCharacterBeenAsked(playerLang.speakingTo.character));
                 b.button.interactable = !q.HasCharacterBeenAsked(playerLang.speakingTo.character);
                 
                 float x = (i % 6) * 100 - 250;

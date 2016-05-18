@@ -21,15 +21,12 @@ MonoBehaviour:
     Assembly-CSharp","threshold":0.69999999,"inverted":true,"score":100},{"@type":"Kontiki.AI.Social,
     Assembly-CSharp","threshold":0.89999998,"inverted":true,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":543fc56c4d9b45af850ff83ba2d5b267},"_scorers":[{"@type":"Kontiki.AI.IsInBoat,
-    Assembly-CSharp","not":true,"score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":4dbb71ece37d4155938f14df5a9cf8c3},"_scorers":[{"@type":"Kontiki.AI.IsInBoat,
-    Assembly-CSharp","not":false,"score":50}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":543fc56c4d9b45af850ff83ba2d5b267,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    Assembly-CSharp","not":true,"score":51}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","score":50,"action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":4dbb71ece37d4155938f14df5a9cf8c3}}},{"@type":"Apex.AI.PrioritySelector,
+    ApexAI","_id":543fc56c4d9b45af850ff83ba2d5b267,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"Kontiki.AI.SelectBoat,
     Assembly-CSharp"},{"@type":"Kontiki.AI.InteractWithSelected, Assembly-CSharp"}]},"_scorers":[{"@type":"Kontiki.AI.IsBoatDocked,
-    Assembly-CSharp","not":false,"score":100},{"@type":"Kontiki.AI.IsAtPosition, Assembly-CSharp","range":2.5,"nonZero":true,"usePathfindingDistance":true,"place":Home,"not":false,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.GoToBoat, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.IsMoving,
-    Assembly-CSharp","not":true,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","not":false,"score":100},{"@type":"Kontiki.AI.IsAtPosition, Assembly-CSharp","range":2.5,"nonZero":true,"usePathfindingDistance":true,"place":Home,"not":false,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToBoat, Assembly-CSharp"}}},{"@type":"Apex.AI.PrioritySelector,
     ApexAI","_id":4dbb71ece37d4155938f14df5a9cf8c3,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[]},"_scorers":[{"@type":"Kontiki.AI.IsFishing,
@@ -42,39 +39,33 @@ MonoBehaviour:
     ApexAI","_id":b501dea72339446fa7451c6abfe18657,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.DockBoat, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.CanDockInPort,
     Assembly-CSharp","not":false,"score":50},{"@type":"Kontiki.AI.IsReturningToPort,
-    Assembly-CSharp","not":false,"score":50}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.SailToPort, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.IsReturningToPort,
-    Assembly-CSharp","not":true,"score":50},{"@type":"Kontiki.AI.IsBoatDocked, Assembly-CSharp","not":true,"score":50}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":88a8038743ce409b808dc19346790762,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    Assembly-CSharp","not":false,"score":50}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.SailToPort, Assembly-CSharp"}}},{"@type":"Apex.AI.PrioritySelector,
+    ApexAI","_id":88a8038743ce409b808dc19346790762,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":b501dea72339446fa7451c6abfe18657},"_scorers":[{"@type":"Kontiki.AI.IsBoatDocked,
     Assembly-CSharp","not":true,"score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"Kontiki.AI.SelectBoat,
     Assembly-CSharp"},{"@type":"Kontiki.AI.InteractWithSelected, Assembly-CSharp"}]},"_scorers":[{"@type":"Kontiki.AI.IsBoatDocked,
     Assembly-CSharp","not":false,"score":50},{"@type":"Kontiki.AI.IsInBoat, Assembly-CSharp","not":false,"score":50}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.SelectorAction, ApexAI","_selectorId":73bd216989844c2e9d2cb7749130ea91},"_scorers":[{"@type":"Kontiki.AI.HasItemsToSell,
-    Assembly-CSharp","not":false,"score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.SetIsOnJob, Assembly-CSharp","val":false},"_scorers":[{"@type":"Kontiki.AI.HasItemsToSell,
-    Assembly-CSharp","not":true,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    ApexAI"}},{"@type":"Apex.AI.PrioritySelector, ApexAI","_id":73bd216989844c2e9d2cb7749130ea91,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    Assembly-CSharp","not":false,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    ApexAI","action":{"@type":"Kontiki.AI.SetIsOnJob, Assembly-CSharp","val":false}}},{"@type":"Apex.AI.PrioritySelector,
+    ApexAI","_id":73bd216989844c2e9d2cb7749130ea91,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.Trade, Assembly-CSharp","tradeItem":Edible,"gainedItem":Edible},"_scorers":[{"@type":"Kontiki.AI.IsAtPosition,
-    Assembly-CSharp","range":2,"nonZero":true,"usePathfindingDistance":true,"place":Trader,"not":false,"score":100}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
-    ApexAI","action":{"@type":"Kontiki.AI.GoToTrader, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.IsMoving,
-    Assembly-CSharp","not":true,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","range":2,"nonZero":true,"usePathfindingDistance":true,"place":Trader,"not":false,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.GoToTrader, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":-317,"@y":-510},"zoom":1,"SelectorView":{"ViewArea":{"@left":-497,"@top":-310,"@width":200,"@height":280},"QualifierView":{"Name":"Out
+  editorConfiguration: '{"offset":{"@x":126,"@y":-96},"zoom":1,"SelectorView":{"ViewArea":{"@left":-54,"@top":104,"@width":200,"@height":220},"QualifierView":{"Name":"Out
     of Resources","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    not in the boat?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
-    in Boat","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":83,"@top":-90,"@width":320,"@height":220},"Name":"Not
+    not in the boat?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Is
+    in Boat","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":526,"@top":324,"@width":320,"@height":160},"Name":"Not
     in boat","QualifierView":{"Name":"Close enought to interact and boat is docked","ActionView":{"Name":"Enter
-    Boat"}},"QualifierView":{"Name":"Is not Moving","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":83,"@top":150,"@width":240,"@height":280},"Name":"In
+    Boat"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":526,"@top":564,"@width":240,"@height":280},"Name":"In
     The Boat","QualifierView":{"Name":"Is Fishing","ActionView":{"Name":"Wait Until
     Finished"}},"QualifierView":{"Name":"Close enough to start fishing","ActionView":{}},"QualifierView":{"Name":"Has
-    Selected Fishing Spot","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":483,"@top":-510,"@width":320,"@height":220},"Name":"Return
-    to Port","QualifierView":{"Name":"Close enough to Dock","ActionView":{}},"QualifierView":{"Name":"Undocked
-    Boat is not Returning to Port","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":83,"@top":-510,"@width":280,"@height":340},"Name":"Out
+    Selected Fishing Spot","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":926,"@top":-96,"@width":320,"@height":160},"Name":"Return
+    to Port","QualifierView":{"Name":"Close enough to Dock","ActionView":{}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":526,"@top":-96,"@width":280,"@height":280},"Name":"Out
     of Resources","QualifierView":{"Name":"Boat is not Docked","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Is
     in Docked Boat","ActionView":{"Name":"Exit Boat"}},"QualifierView":{"Name":"Character
-    has Sellable Items","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Has
-    no Sellable Items","ActionView":{"Name":"Go Off Job"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":483,"@top":-270,"@width":260,"@height":220},"Name":"Go
-    Trader","QualifierView":{"Name":"Close to Trader","ActionView":{}},"QualifierView":{"Name":"Is
-    not Moving","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
+    has Sellable Items","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Has
+    no Sellable Items","ActionView":{"Name":"Go Off Job"}}},"SelectorView":{"ViewArea":{"@left":926,"@top":144,"@width":260,"@height":160},"Name":"Go
+    Trader","QualifierView":{"Name":"Close to Trader","ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'

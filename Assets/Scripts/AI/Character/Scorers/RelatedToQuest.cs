@@ -13,9 +13,9 @@ namespace Kontiki.AI
     public sealed class RelatedToQuest : ContextualScorerBase {
         
         [ApexSerialization, FriendlyName("questOriginMultiplier", "score mutliplier")]
-        public float questOriginMultiplier = 1f;
+        public bool isQuestOrigin = true;
         [ApexSerialization, FriendlyName("hasObjectiveMultiplier", "score mutliplier")]
-        public float hasObjectiveMultiplier = 1f;
+        public bool hasObjective = true;
         
 
 
@@ -30,15 +30,13 @@ namespace Kontiki.AI
             for (int i = 0; i < acceptedQuest.Length; i++)
             {
                 Fetch quest = (Fetch) acceptedQuest[i];
-                if(quest.origin == ai.character){
-                    
-                    score = questOriginMultiplier;
+                if(isQuestOrigin && quest.origin == ai.character){
                     foundNothing = false;
+                    break;
                 }
-                if(quest.objectiveHolder == ai.character){
-                    
-                    score *= hasObjectiveMultiplier;
+                if(hasObjective && quest.objectiveHolder == ai.character){
                     foundNothing = false;
+                    break;
                 }
             }
             

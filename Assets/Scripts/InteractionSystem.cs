@@ -88,31 +88,9 @@ namespace Kontiki{
                             //_lastTarget.Interact(_player); 
 							LanguageExchanger target = _lastTarget.GetComponent<LanguageExchanger>();
 							
-							bool hasQuest = false;	
-												
-							Quest[] acceptedQuests = QuestSystem.Instance.acceptedQuests.ToArray();
-							for (int i = 0; i < acceptedQuests.Length; i++)
-							{
-								Fetch quest = (Fetch)acceptedQuests[i];
-								bool playerHasObjective = _player.inventory.CheckInventoryForSpecificItem(quest.objective);
-
-								if(quest.origin == target.character){
-									//is talking to the quest origin 
-									if(playerHasObjective && _player.inventory.RemoveItem(quest.objective)){
-										//Player has objective and player has given objective
-										QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
-										target.character.ChangeColor(Color.white,10f);
-										quest.FinishQuest(_player.inventory);
-										Language.QuestFinished(target.character.languageExchanger, _player.languageExchanger, quest);
-										hasQuest = true;
-									}
-								}
-							}
-							
-							if(!hasQuest){
-								Language.DoYouWantToStartConversation(_player.languageExchanger, target);
-								_player.languageExchanger.speakingTo = target;
-							}
+							Language.DoYouWantToStartConversation(_player.languageExchanger, target);
+							_player.languageExchanger.speakingTo = target;
+						
                         }
 
 							

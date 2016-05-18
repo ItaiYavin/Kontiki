@@ -77,7 +77,7 @@ namespace Kontiki{
                         
                 if(ai.job is JobWithBoat){
                     JobWithBoat boatJob = (JobWithBoat)ai.job;
-                    boatJob.boat.agent.Stop();
+                    boatJob.boat.agent.Resume();
                 }
                 if(ai.pathfinder.enabled)
                     ai.pathfinder.agent.Resume();
@@ -88,6 +88,11 @@ namespace Kontiki{
                 speakingTo = null;
                 //Settings.player.languageExchanger.speakingTo = null;
                 Debug.Log("Exiting Conversation");
+                
+                if(ai.baseRoutine.questOffer != null && QuestSystem.Instance.acceptedQuests.IndexOf(ai.baseRoutine.questOffer) == -1){
+                    //has generated quest but has not been accepted
+                    character.ChangeColor(Color.white, 0.5f); 
+                }
                 
                 Delayer.Start(delegate() {  
                     playerIsSpeakingToMe = false;
@@ -107,6 +112,19 @@ namespace Kontiki{
                         WindowsHandler.Instance.SetVisibility(true);
                         WindowsHandler.Instance.interactionSystem.menuOpen = true;
                         
+                            
+                        Fetch quest = (Fetch)sender.ai.baseRoutine.questOffer;
+                        if(sender.ai.debugAI_Job)
+                                Debug.Log("checking quest" + (quest != null) + " " + QuestSystem.Instance.acceptedQuests.Contains(quest) + " " + (quest.origin == sender.character) + " " + character.inventory.CheckInventoryForSpecificItem(quest.objective));
+                        
+                        if(quest != null && 
+                                QuestSystem.Instance.acceptedQuests.Contains(quest) && 
+                                quest.origin == sender.character && 
+                                character.inventory.CheckInventoryForSpecificItem(quest.objective)
+                            ){
+                            WindowsHandler.Instance.ShowFinishQuest(quest.colorOrigin);
+                        }
+                           
                         speakingTo = sender;
                         sender.speakingTo = this;
                         sender.playerIsSpeakingToMe = true;
@@ -117,7 +135,6 @@ namespace Kontiki{
                     if(isPlayer){
                         speakingTo = null;
                     }else{
-                        speakingTo = null;
                         iconSystem.Clear();
                         ExitConversation();
                     }
@@ -132,6 +149,7 @@ namespace Kontiki{
                             //if NPC react to DoYouHaveQuest from player and has not generated one
                             
                             Quest quest = QuestSystem.Instance.GenerateQuest(sender.character, character);
+                           
                            
                             Language.IHaveQuest(this, sender, quest); 
                             character.ChangeColor(quest.colorOrigin, 0.5f); 
@@ -151,6 +169,7 @@ namespace Kontiki{
                             }
                         }else{
                             Language.IHaveNoQuest(this, sender);
+                            sender.speakingTo = null;
                             ExitConversation();
                         }
                     }
@@ -190,15 +209,17 @@ namespace Kontiki{
                         //just to show player the quest an extra time.. receiver set to null ie. player will not receive it..
                         Language.IHaveQuest(this, null, quest); 
                         WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                        sender.speakingTo = null;
                         ExitConversation();
                     }
                 }break;
                 case Language.Topic.DeclineQuest:{
                     if (!isPlayer){
-                        speakingTo = null;
                         character.ChangeColor(Color.white, 0.5f); 
                         Fetch quest = (Fetch) information[0];
                         QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
+                        sender.speakingTo = null;
+                        
                         iconSystem.Clear();
                         ExitConversation();
                     }
@@ -208,13 +229,19 @@ namespace Kontiki{
                         
                         if(Settings.debugQuestInfo)
                             Debug.Log("Quest Objective item");
+                        speakingTo = null;
                     }
                 }break;
                 case Language.Topic.QuestFinished:{
                     if(isPlayer){
-                        
                         if(Settings.debugQuestInfo)
                             Debug.Log("Quest Finsihed");
+                            
+                        sender.ai.baseRoutine.questOffer = null;
+                        sender.ai.baseRoutine.hasQuestToOffer = Random.Range(0f, 1f) <= 0.90f;
+                        speakingTo = null;
+                        sender.ExitConversation();
+                        WindowsHandler.Instance.SetVisibility(false);
                     }
                 }break;
                 case Language.Topic.DoYouHaveInfoAboutQuest:{
@@ -241,6 +268,7 @@ namespace Kontiki{
                         // asked person has objective and has given it to the player
                         quest.RemoveAreaOfInterest();
                         Language.IHaveQuestObjective(this, sender, quest);
+                        Log.Quest_Objective(quest);
                                     
                         ExitConversation();
                         
@@ -258,12 +286,14 @@ namespace Kontiki{
                             if(Settings.debugQuestInfo)
                                 Debug.Log("Character has Information");
                             Language.IHaveInfoAboutQuest(this, sender, quest);
+                            Log.Quest_Information(quest, true);
                             
                         }else{
                             //has no information
                             if(Settings.debugQuestInfo)
                                 Debug.Log("Character has no Information");
                             Language.IHaveNoInfoAboutQuest(this, sender, quest);
+                            Log.Quest_Information(quest, false);
                             ExitConversation();
                         }
                     }
@@ -277,7 +307,7 @@ namespace Kontiki{
                         bool b = false;     
                         for (int i = 0; i < acceptedQuest.Length; i++)
                         {
-                            if(!acceptedQuest[i].HasCharacterBeenAsked(sender.speakingTo.character)){
+                            if(!acceptedQuest[i].HasCharacterBeenAsked(speakingTo.character)){
                                 b = true;
                                 break;
                             }
@@ -286,17 +316,33 @@ namespace Kontiki{
                             WindowsHandler.Instance.SwitchWindow(Window.Info);
                         else{
                             WindowsHandler.Instance.SetVisibility(false);
+                            sender.ExitConversation();
                             WindowsHandler.Instance.interactionSystem.menuOpen = false;
                         }
-
                     }
                 }break;
                 case Language.Topic.IHaveNoInfoAboutQuest:{
                     if(isPlayer){
-                        //received that npc has info.
+                        //received that npc has no info.
                         iconSystem.Clear();
-                        WindowsHandler.Instance.SetVisibility(false);
-                        WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                        Quest[] acceptedQuest = QuestSystem.Instance.GetAcceptedQuests();
+                        bool b = false;     
+                        for (int i = 0; i < acceptedQuest.Length; i++)
+                        {
+                            if(!acceptedQuest[i].HasCharacterBeenAsked(speakingTo.character)){
+                                b = true;
+                                break;
+                            }
+                        }
+                        
+                        Debug.Log(speakingTo.name + " knows more? " + b);
+                        if(b)
+                            WindowsHandler.Instance.SwitchWindow(Window.Info);
+                        else{
+                            WindowsHandler.Instance.SetVisibility(false);
+                            sender.ExitConversation();
+                            WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                        }
                     }
                 }break;
                 case Language.Topic.DeclineInfo:{
@@ -307,8 +353,13 @@ namespace Kontiki{
                     }
                 }break;
             }
-            if(debug || playerIsSpeakingToMe || playerWantsToSpeakWithMe || isPlayer){
+            if(debug || sender.character.isPlayer || isPlayer){
                 Debug.Log(sender.name + " == " + topic + " => " + name);
+            }
+            if(isPlayer){
+                Log.Interaction_PlayerGotReaction(topic, sender.character);
+            }else if(sender.character.isPlayer){
+                Log.Interaction_PlayerAsking(topic, character);
             }
         }
     }

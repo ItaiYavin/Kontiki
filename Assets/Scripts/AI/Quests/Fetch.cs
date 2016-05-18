@@ -18,7 +18,7 @@ namespace Kontiki
 		private float areaOfInterestSizeReductionPercent = 0.8f; // Needs to be between 0-1;
 
 		private int numberOfAskedPeople;
-		private int peakNumberOfPeople = 2;
+		private int peakNumberOfPeople = 3;
 		private int numberOfHints;
 		
 		
@@ -63,18 +63,20 @@ namespace Kontiki
 			if(!HasCharacterBeenAsked(askedCharacter))
 			{
 				bool isAskedCharacterInArea = true;
+				numberOfAskedPeople++;
 
 				if(areaOfInterest != null) //check if person is within AreaOfInterest
 					isAskedCharacterInArea = CheckCharacterIsInAreaOfInterest(askedCharacter);
 				
 				float chanceForKnowledge;
+				
 				if(isAskedCharacterInArea){
-					chanceForKnowledge = Random.Range(0f, 1f);
+					chanceForKnowledge = Random.Range(0.7f, 1f);
 				}else{
-					chanceForKnowledge = Random.Range(0f, 0.5f);
+					chanceForKnowledge = Random.Range(0f, .7f);
 				}
-
-				if(chanceForKnowledge > (chanceForKnowledge - ((float)numberOfAskedPeople / peakNumberOfPeople)))
+				Debug.Log("% " + chanceForKnowledge + " > " + (1 - (float)numberOfAskedPeople / peakNumberOfPeople));
+				if(chanceForKnowledge > (1 - (float)numberOfAskedPeople / peakNumberOfPeople))
 				{
 					if(areaOfInterest == null)
 						CreateAreaOfInterestInWorld(objectiveHolder.transform); //create AreaOfInterest
@@ -85,7 +87,6 @@ namespace Kontiki
 					askedPeople.Add(askedCharacter); //Add AI to list of characters that has been asked.
 					return true;
 				}else{
-					numberOfAskedPeople++;
 					Debug.Log("n People: " + numberOfAskedPeople);
 					askedPeople.Add(askedCharacter); //Add AI to list of characters that has been asked.
 					return false;

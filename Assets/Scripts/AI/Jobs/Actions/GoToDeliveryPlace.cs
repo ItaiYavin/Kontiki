@@ -19,6 +19,9 @@ namespace Kontiki.AI{
         public override void Execute(IAIContext context){
             AIContext ai = (AIContext)context;
             DeliveryMan job = (DeliveryMan) ai.job;
+            if(ai.debugAI_Job)
+                Debug.Log(" delivery r distance: " + ai.pathfinder.agent.remainingDistance);
+           
             ai.pathfinder.GoTo((towardsOrigin ? job.origin.transform : job.destination.transform));
         }
     }

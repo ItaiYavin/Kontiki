@@ -76,7 +76,6 @@ namespace Kontiki
 			
 			bool b = agent.SetDestination(target.position);
 			
-			Debug.Log("wants to go to " + target + " at " + target.position + " -> " + b);
 		}
 		
 		

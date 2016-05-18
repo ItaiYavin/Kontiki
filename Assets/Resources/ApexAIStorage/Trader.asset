@@ -16,17 +16,17 @@ MonoBehaviour:
   aiId: 085dc00f-decb-4c3b-bb01-3dd9687b6943
   configuration: '{"@type":"Apex.AI.UtilityAI, ApexAI","_rootSelectorId":0f9413bb9059482b94fa1bb6475a30f4,"_id":085dc00fdecb4c3bbb013dd9687b6943,"_selectors":[{"@type":"Apex.AI.PrioritySelector,
     ApexAI","_id":0f9413bb9059482b94fa1bb6475a30f4,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
-    ApexAI","_scorers":[{"@type":"Kontiki.AI.PlayerIsSpeakingToMe, Assembly-CSharp","not":false}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    ApexAI","_scorers":[{"@type":"Kontiki.AI.PlayerIsSpeakingToMe, Assembly-CSharp","not":false,"score":1000}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.AILinkAction, ApexAI","_aiId":c1d5d5cecaed4b71bd1dce8a97dc97f8},"_scorers":[{"@type":"Kontiki.AI.PlayerWantsToSpeakWithMe,
     Assembly-CSharp","not":false,"score":1000},{"@type":"Kontiki.AI.PlayerIsSpeakingToMe,
-    Assembly-CSharp","not":true}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    Assembly-CSharp","not":true,"score":1000}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Apex.AI.CompositeAction, ApexAI","_actions":[{"@type":"Kontiki.AI.SailToPort,
     Assembly-CSharp"}]},"_scorers":[{"@type":"Kontiki.AI.IsTrading, Assembly-CSharp","not":true,"score":50},{"@type":"Kontiki.AI.IsBoatDocked,
     Assembly-CSharp","not":false,"score":50}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
     ApexAI","action":{"@type":"Kontiki.AI.DockBoat, Assembly-CSharp"},"_scorers":[{"@type":"Kontiki.AI.CanDockInPort,
     Assembly-CSharp","not":false,"score":50},{"@type":"Kontiki.AI.IsBoatDocked, Assembly-CSharp","not":true,"score":50}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI"}}]}'
-  editorConfiguration: '{"offset":{"@x":102,"@y":168},"zoom":1,"SelectorView":{"ViewArea":{"@left":182,"@top":148,"@width":280,"@height":340},"QualifierView":{"Name":"Player
+  editorConfiguration: '{"offset":{"@x":-40,"@y":143},"zoom":0.75,"SelectorView":{"ViewArea":{"@left":20,"@top":128,"@width":210,"@height":255},"QualifierView":{"Name":"Player
     is speaking to me"},"QualifierView":{"Name":"Player wants to ","ActionView":{"@connectorType":"AILink"}},"QualifierView":{"Name":"Is
     not Trading And boat is docked","ActionView":{"Name":"Sail To next Port"}},"QualifierView":{"Name":"Close
-    Enough To Dock","ActionView":{}},"DefaultQualifier":{}},"AILinkView":{"@id":c1d5d5cecaed4b71bd1dce8a97dc97f8,"ViewArea":{"@left":582,"@top":208,"@width":200,"@height":75}}}'
+    Enough To Dock","ActionView":{}},"DefaultQualifier":{}},"AILinkView":{"@id":c1d5d5cecaed4b71bd1dce8a97dc97f8,"ViewArea":{"@left":320,"@top":173,"@width":150,"@height":56}}}'
