@@ -16,6 +16,7 @@ namespace Kontiki
         private static uint lastWaterEntry = 0;
         
         private static int randomSeed;
+        private static UrgencyLevel urgencyLevel;
         
         private static uint uidCount = 0;
         private static uint uidOffset = 8;
@@ -25,12 +26,16 @@ namespace Kontiki
         
         //Game Methods
         public static void Game_Started(){
-            randomSeed = Random.seed;
+            //date?
         }
         
         public static void CD(bool wantToContinue, string explaination){
             CDData data = new CDData(wantToContinue, explaination);
             PlaceCDIntoDictionary(data);
+        }
+        
+        public static void UrgencyLevel(UrgencyLevel level){
+            urgencyLevel = level;
         }
         
         //Player methods
@@ -243,11 +248,18 @@ namespace Kontiki
             public bool playerIsAsking = false;
             public Character interactee;
             
+            public float hunger;
+            public float social;
+            public float energy;
+            
             public InteractionData(Language.Topic languageTopic, Character interactee, bool playerIsAsking)
                 :base(){
                 this.interactee = interactee;
                 this.playerIsAsking = playerIsAsking;
                 this.languageTopic = languageTopic;
+                this.hunger = interactee.hunger;
+                this.social = interactee.social;
+                this.energy = interactee.energy;
             }
         }
         public class WaterData:Data{

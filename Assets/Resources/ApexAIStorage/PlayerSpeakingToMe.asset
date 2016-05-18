@@ -47,15 +47,15 @@ MonoBehaviour:
     Assembly-CSharp","not":false,"score":1}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     ApexAI","score":1.2,"action":{"@type":"Kontiki.AI.RespondToPlayerWantingToSpeak,
     Assembly-CSharp","val":true}}}]}'
-  editorConfiguration: '{"offset":{"@x":-1942,"@y":78},"zoom":0.69999999,"SelectorView":{"ViewArea":{"@left":-52,"@top":-664,"@width":700,"@height":112},"Name":"High
+  editorConfiguration: '{"offset":{"@x":-1314,"@y":114},"zoom":0.5,"SelectorView":{"ViewArea":{"@left":36,"@top":-416,"@width":500,"@height":80},"Name":"High
     Urgency","QualifierView":{"Name":"Evaluate Urgency","ActionView":{"Name":"Respond
-    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":4,"@top":162,"@width":140,"@height":196},"QualifierView":{"Name":"Is
+    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":76,"@top":174,"@width":100,"@height":140},"QualifierView":{"Name":"Is
     Related To A Quest","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgency
     High","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgency
     Medium","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Urgnecy
-    None","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":256,"@top":190,"@width":126,"@height":112},"Name":"Med
+    None","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":256,"@top":194,"@width":90,"@height":80},"Name":"Med
     Urgency","QualifierView":{"Name":"Evaluate Urgency","ActionView":{"Name":"Respond
-    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":256,"@top":316,"@width":126,"@height":70},"Name":"No
-    Urgency","DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":256,"@top":64,"@width":126,"@height":112},"Name":"High
+    No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":256,"@top":284,"@width":90,"@height":50},"Name":"No
+    Urgency","DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}},"SelectorView":{"ViewArea":{"@left":256,"@top":104,"@width":90,"@height":80},"Name":"High
     Urgency","QualifierView":{"Name":"Evaluate Urgency","ActionView":{"Name":"Respond
     No"}},"DefaultQualifier":{"ActionView":{"Name":"Respond Yes"}}}}'

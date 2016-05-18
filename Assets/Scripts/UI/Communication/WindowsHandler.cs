@@ -74,7 +74,7 @@ namespace Kontiki
                         }break;                     
                         case 1:{
                             //Info Button
-                            Debug.Log("entering info");
+//                            Debug.Log("entering info");
                             GenerateQuestButtons();
                             SwitchWindow(Window.Info);
                         }break;                     
@@ -225,7 +225,6 @@ namespace Kontiki
                 
                 b.index = i;
                 
-                Debug.Log(q.HasCharacterBeenAsked(playerLang.speakingTo.character));
                 b.button.interactable = !q.HasCharacterBeenAsked(playerLang.speakingTo.character);
                 
                 float x = (i % 6) * 100 - 250;

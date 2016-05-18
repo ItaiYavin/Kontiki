@@ -26,11 +26,11 @@ namespace Kontiki.AI{
                 
                 if(c != null && !c.isPlayer && c != character){
                     Job job = c.GetComponent<Job>();
-                    if(job == null || (job is DeliveryMan) || (job is JobWithBoat && ((JobWithBoat)job).boat.isDocked))
+                    if(job == null || !(job is JobWithBoat))
                         characters.Add(c);
                 }
             }
-            int index = Random.Range(0,characters.Count);
+            int index = Random.Range(0, characters.Count);
             origin = characters[index];
             characters.RemoveAt(index);
             
@@ -44,7 +44,7 @@ namespace Kontiki.AI{
             }
             
             
-            index = Random.Range(0,characters.Count);
+            index = Random.Range(0, characters.Count);
             destination = characters[index];
             characters.RemoveAt(index);
             

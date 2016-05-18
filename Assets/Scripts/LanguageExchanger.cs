@@ -77,7 +77,7 @@ namespace Kontiki{
                         
                 if(ai.job is JobWithBoat){
                     JobWithBoat boatJob = (JobWithBoat)ai.job;
-                    boatJob.boat.agent.Stop();
+                    boatJob.boat.agent.Resume();
                 }
                 if(ai.pathfinder.enabled)
                     ai.pathfinder.agent.Resume();
@@ -88,6 +88,11 @@ namespace Kontiki{
                 speakingTo = null;
                 //Settings.player.languageExchanger.speakingTo = null;
                 Debug.Log("Exiting Conversation");
+                
+                if(ai.baseRoutine.questOffer != null && QuestSystem.Instance.acceptedQuests.IndexOf(ai.baseRoutine.questOffer) == -1){
+                    //has generated quest but has not been accepted
+                    character.ChangeColor(Color.white, 0.5f); 
+                }
                 
                 Delayer.Start(delegate() {  
                     playerIsSpeakingToMe = false;
@@ -290,16 +295,33 @@ namespace Kontiki{
                             WindowsHandler.Instance.SwitchWindow(Window.Info);
                         else{
                             WindowsHandler.Instance.SetVisibility(false);
+                            sender.ExitConversation();
                             WindowsHandler.Instance.interactionSystem.menuOpen = false;
                         }
                     }
                 }break;
                 case Language.Topic.IHaveNoInfoAboutQuest:{
                     if(isPlayer){
-                        //received that npc has info.
+                        //received that npc has no info.
                         iconSystem.Clear();
-                        WindowsHandler.Instance.SetVisibility(false);
-                        WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                        Quest[] acceptedQuest = QuestSystem.Instance.GetAcceptedQuests();
+                        bool b = false;     
+                        for (int i = 0; i < acceptedQuest.Length; i++)
+                        {
+                            if(!acceptedQuest[i].HasCharacterBeenAsked(speakingTo.character)){
+                                b = true;
+                                break;
+                            }
+                        }
+                        
+                        Debug.Log(speakingTo.name + " knows more? " + b);
+                        if(b)
+                            WindowsHandler.Instance.SwitchWindow(Window.Info);
+                        else{
+                            WindowsHandler.Instance.SetVisibility(false);
+                            sender.ExitConversation();
+                            WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                        }
                     }
                 }break;
                 case Language.Topic.DeclineInfo:{
