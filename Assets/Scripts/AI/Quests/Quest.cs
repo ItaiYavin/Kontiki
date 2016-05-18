@@ -63,11 +63,9 @@ namespace Kontiki
 					list.RemoveAt(i);
 					return;
 				}
-
-				// Character was not found on list!
-				return;
 			}
-		}
+            // Character was not found on list!
+        }
 
 		public bool CheckListForCharacter(Character character, List<Character> list){
 			for(int i = 0; i < list.Count; i++){

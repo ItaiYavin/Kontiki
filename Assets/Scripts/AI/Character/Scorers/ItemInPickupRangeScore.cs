@@ -58,7 +58,6 @@ namespace Kontiki.AI
 
                 case ItemType.fuel:
                     throw new NotImplementedException();
-                break;
 
                 default:
                     if(ai.debugAI_Character) 
