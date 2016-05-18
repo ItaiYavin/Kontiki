@@ -112,6 +112,19 @@ namespace Kontiki{
                         WindowsHandler.Instance.SetVisibility(true);
                         WindowsHandler.Instance.interactionSystem.menuOpen = true;
                         
+                            
+                        Fetch quest = (Fetch)sender.ai.baseRoutine.questOffer;
+                        if(sender.ai.debugAI_Job)
+                                Debug.Log("checking quest" + (quest != null) + " " + QuestSystem.Instance.acceptedQuests.Contains(quest) + " " + (quest.origin == sender.character) + " " + character.inventory.CheckInventoryForSpecificItem(quest.objective));
+                        
+                        if(quest != null && 
+                                QuestSystem.Instance.acceptedQuests.Contains(quest) && 
+                                quest.origin == sender.character && 
+                                character.inventory.CheckInventoryForSpecificItem(quest.objective)
+                            ){
+                            WindowsHandler.Instance.ShowFinishQuest(quest.colorOrigin);
+                        }
+                           
                         speakingTo = sender;
                         sender.speakingTo = this;
                         sender.playerIsSpeakingToMe = true;
@@ -122,7 +135,6 @@ namespace Kontiki{
                     if(isPlayer){
                         speakingTo = null;
                     }else{
-                        speakingTo = null;
                         iconSystem.Clear();
                         ExitConversation();
                     }
@@ -157,6 +169,7 @@ namespace Kontiki{
                             }
                         }else{
                             Language.IHaveNoQuest(this, sender);
+                            sender.speakingTo = null;
                             ExitConversation();
                         }
                     }
@@ -196,15 +209,17 @@ namespace Kontiki{
                         //just to show player the quest an extra time.. receiver set to null ie. player will not receive it..
                         Language.IHaveQuest(this, null, quest); 
                         WindowsHandler.Instance.interactionSystem.menuOpen = false;
+                        sender.speakingTo = null;
                         ExitConversation();
                     }
                 }break;
                 case Language.Topic.DeclineQuest:{
                     if (!isPlayer){
-                        speakingTo = null;
                         character.ChangeColor(Color.white, 0.5f); 
                         Fetch quest = (Fetch) information[0];
                         QuestSystem.Instance.FreeUsedPersonColor(quest.colorOrigin);
+                        sender.speakingTo = null;
+                        
                         iconSystem.Clear();
                         ExitConversation();
                     }
@@ -214,13 +229,19 @@ namespace Kontiki{
                         
                         if(Settings.debugQuestInfo)
                             Debug.Log("Quest Objective item");
+                        speakingTo = null;
                     }
                 }break;
                 case Language.Topic.QuestFinished:{
                     if(isPlayer){
-                        
                         if(Settings.debugQuestInfo)
                             Debug.Log("Quest Finsihed");
+                            
+                        sender.ai.baseRoutine.questOffer = null;
+                        sender.ai.baseRoutine.hasQuestToOffer = Random.Range(0f, 1f) <= 0.90f;
+                        speakingTo = null;
+                        sender.ExitConversation();
+                        WindowsHandler.Instance.SetVisibility(false);
                     }
                 }break;
                 case Language.Topic.DoYouHaveInfoAboutQuest:{
