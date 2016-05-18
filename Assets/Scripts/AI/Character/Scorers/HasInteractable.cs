@@ -31,16 +31,6 @@ namespace Kontiki.AI
             Inventory inventory = ai.inventory;
             bool b = false;
             
-            Type type;
-            
-            switch (itemType)
-            {
-                case ItemType.Interactable: type = typeof(Interactable); break;
-                case ItemType.Item: type = typeof(Item); break;
-                case ItemType.Edible: type = typeof(EdibleItem); break;
-                
-            }
-            
 
             if(inInventory && !inventory.IsInventoryEmpty()){
                 for(int i = 0; i < inventory.inventorySize; i++){

@@ -74,8 +74,7 @@ namespace Kontiki
 			}
 			this.target = target;
 			
-			bool b = agent.SetDestination(target.position);
-			
+			agent.SetDestination(target.position);
 		}
 		
 		
