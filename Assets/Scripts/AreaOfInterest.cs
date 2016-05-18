@@ -12,7 +12,7 @@ namespace Kontiki
 		
 		public float areaOfInterestMaxSize = 50f;
 		public float areaOfInterestMinSize = 5f;
-		public float animationDuration = 2f;
+		public float animationDuration = 10f;
 		
 		public float AOIDistanceToPlayer = 1.25f;
 		public bool colorChanging = false;
@@ -32,8 +32,8 @@ namespace Kontiki
 			}
 			cylinderRenderer = cylinder.GetComponent<MeshRenderer>();
 			cylinderRenderer.material = material;
-			
-			transform.localScale = new Vector3(0, 0, 0);
+
+		    transform.localScale = Vector3.zero;
 		}
 		
 		

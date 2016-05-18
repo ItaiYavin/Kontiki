@@ -11,6 +11,10 @@ namespace Kontiki {
 	    void Start ()
 	    {
 	        GetComponent<UWKWebView>().URLChanged += SwitchWhenWebsiteChange;
+	        GetComponent<UWKWebView>().InitialHeight = Screen.height;
+	        GetComponent<UWKWebView>().InitialWidth = Screen.width;
+	        GetComponent<UWKWebView>().MaxHeight = Screen.height;
+	        GetComponent<UWKWebView>().MaxWidth = Screen.width;
 
 	        numOfNewUrl = 0;
 	    }
