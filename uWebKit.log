@@ -1,7 +1,9 @@
-[Wed May 18 18:35:01 2016] INFO: Opened log file uWebKit.log
-[Wed May 18 18:35:01 2016] INFO: Created 1 worker thread
-[Wed May 18 18:35:01 2016] INFO: Initialized engine
-[Wed May 18 18:35:01 2016] INFO: uWebKit Plugin Initializing
-[Wed May 18 18:35:01 2016] INFO: Launching Broker C:/Users/Jalict/Desktop/this_Data/UWKProcess/UWKProcess.exe 
-[Wed May 18 18:35:01 2016] INFO: Graphics Device Version: Direct3D 11.0 [level 11.0]
-[Wed May 18 18:35:01 2016] INFO: IPCWorkerStarted
+[Wed May 18 19:17:55 2016] INFO: Opened log file uWebKit.log
+[Wed May 18 19:17:55 2016] INFO: Created 1 worker thread
+[Wed May 18 19:17:55 2016] INFO: Initialized engine
+[Wed May 18 19:17:55 2016] INFO: uWebKit Plugin Initializing
+[Wed May 18 19:17:55 2016] INFO: Launching Broker C:/Users/Jalict/Desktop/this_Data/UWKProcess/UWKProcess.exe 
+[Wed May 18 19:17:55 2016] INFO: Graphics Device Version: Direct3D 11.0 [level 11.0]
+[Wed May 18 19:17:55 2016] INFO: IPCWorkerStarted
+[Wed May 18 19:18:16 2016] INFO: IPC INFO(1) : [Wed May 18 19:18:16 2016] INFO: WebViewJS: 'webkitMovementX' is deprecated. Please use 'movementX' instead. (:0)
+[Wed May 18 19:18:16 2016] INFO: IPC INFO(1) : [Wed May 18 19:18:16 2016] INFO: WebViewJS: 'webkitMovementY' is deprecated. Please use 'movementY' instead. (:0)
