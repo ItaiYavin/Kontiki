@@ -10,6 +10,7 @@ namespace Kontiki
 		private bool endTutorial = false;
 
 		public KeyCode skipKey;
+		public Text skipKeyText;
 		public float delay;
 		private float timeStamp;
 
@@ -25,6 +26,7 @@ namespace Kontiki
 
 		// Use this for initialization
 		void Start () {
+			skipKeyText.text = skipKey.ToString();
 			step = TutorialSteps.Movement;
 			timeStamp = delay + Time.time;
 		}
@@ -62,7 +64,7 @@ namespace Kontiki
 					{
 						tutorialImages[(int)step].SetActive(true);
 
-						if(Input.GetAxis("Mouse X") < -deadZone || Input.GetAxis("Mouse X") > deadZone || Input.GetAxis("Mouse Y") < -deadZone || Input.GetAxis("Mouse y") > deadZone || Input.GetKey(skipKey))
+						if(Input.GetAxis("Mouse X") < -deadZone || Input.GetAxis("Mouse X") > deadZone || Input.GetAxis("Mouse Y") < -deadZone || Input.GetAxis("Mouse Y") > deadZone || Input.GetKey(skipKey))
 						{
 							tutorialImages[(int)step].SetActive(false);
 							newStep = false;

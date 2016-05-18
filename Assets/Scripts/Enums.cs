@@ -1,4 +1,14 @@
 ﻿namespace Kontiki {
+    public enum TutorialSteps{
+        Movement,
+        CameraControl,
+        Interact,
+        Talk,
+        Response,
+        Quest,
+        Information
+    }
+
     public enum IconType
     {
         Bring,
