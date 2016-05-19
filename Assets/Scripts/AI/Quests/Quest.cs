@@ -48,7 +48,7 @@ namespace Kontiki
 			areaOfInterest.startUpdateTime = Time.time + 8f;
 			areaOfInterest.ChangeColor(c, 2f);
 			areaOfInterest.ChangeScale(areaOfInterest.areaOfInterestMaxSize, 8f);
-			areaOfInterest.ChangePosition(target, 4f);
+			areaOfInterest.ChangePosition(target, 8f);
         }
 
 		public bool CheckCharacterIsInAreaOfInterest(Character character){

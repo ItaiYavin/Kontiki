@@ -276,7 +276,7 @@ namespace Kontiki{
                         aoi.startUpdateTime = Time.time + 8f;
                         aoi.ChangeColor(c, 2f);
                         aoi.ChangeScale(aoi.areaOfInterestMaxSize, 8f);
-                        aoi.ChangePosition(quest.origin.transform, 4f);
+                        aoi.ChangePosition(quest.origin.transform, 8f);
                         
                     }else if(quest.CheckIfCharacterHasObjective(character)){
                         // asked person has objective and has given it to the player
