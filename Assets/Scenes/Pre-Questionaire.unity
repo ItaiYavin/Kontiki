@@ -128,6 +128,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 11432676, guid: 7f8e12149a68ba04ea88b40f3bde35b0, type: 2}
+      propertyPath: ignorePlayerPrefs
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f8e12149a68ba04ea88b40f3bde35b0, type: 2}
   m_IsPrefabParent: 0
@@ -245,8 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5b6b4fe56d67b4a8ca8118d436ada6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://docs.google.com/forms/d/1llQYSjTyL32qwjEj1ZCYrQY-jPczHfcopZz4gF-HC8o/viewform
-  entry: ?entry.1642091577=
+  url: https://docs.google.com/forms/d/1DT9plbr9OCOn50y2lVyPVCNAyzdBgCliI4y6kC6dvWY/viewform
+  entry: ?entry.1473058620=
 --- !u!4 &1968353489
 Transform:
   m_ObjectHideFlags: 0

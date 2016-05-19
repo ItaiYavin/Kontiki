@@ -7,7 +7,9 @@
         Response,
         Quest,
         Information,
-        QuestDescription
+        QuestDescription,
+        QuestCylinder,
+        Swimming
     }
 
     public enum IconType
