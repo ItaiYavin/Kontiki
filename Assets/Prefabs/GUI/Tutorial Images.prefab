@@ -234,6 +234,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22484338}
+  - 114: {fileID: 11424082}
   m_Layer: 5
   m_Name: Tutorial Images
   m_TagString: Untagged
@@ -325,6 +326,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11424082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da1c8c2c350eae4da90d1a09f373879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipKey: 9
+  skipKeyText: {fileID: 0}
+  delay: 2
+  tutorialImages:
+  - {fileID: 106034}
+  - {fileID: 192782}
+  - {fileID: 183156}
+  - {fileID: 149480}
+  - {fileID: 199098}
+  - {fileID: 126954}
+  - {fileID: 133608}
+  - {fileID: 166816}
+  player: {fileID: 0}
+  deadZone: 0.5
 --- !u!114 &11440088
 MonoBehaviour:
   m_ObjectHideFlags: 1
