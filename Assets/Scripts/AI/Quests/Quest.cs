@@ -32,6 +32,7 @@ namespace Kontiki
 		public void FinishQuest(Inventory characterInventory){
 			characterInventory.PutItemIntoInventoryRegardlessOfDistance(rewardType); // Give reward
 			QuestSystem.Instance.RemoveQuest(this);
+            Object.Destroy(areaOfInterest);
 			
 			Log.Quest_Completed(this);
 		}
