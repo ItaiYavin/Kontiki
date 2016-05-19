@@ -197,8 +197,6 @@ namespace Kontiki{
             sender.character.animationController.Talk();
             receiver.iconSystem.Clear();
             sender.iconSystem.GenerateIcons(
-                Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)],
-                Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)],
                 Settings.iconTypes[Random.Range(0, Settings.iconTypes.Count)]
             );
             Delayer.Start(delegate() {
