@@ -44,11 +44,23 @@ namespace Kontiki
 
             areaOfInterest.transform.localScale = Vector3.zero;
 			Color c = colorOrigin;
+			
+			float size =areaOfInterest.areaOfInterestMaxSize;
+			float lerpTime = (from - target.transform.position).magnitude;
+			Debug.Log(lerpTime);
+			if(lerpTime < 50f) {
+				lerpTime = 6f;
+				if(lerpTime < 25f)
+					size = 15f;
+			}else{
+				lerpTime /= 5f;
+			}
+			
 			c.a = areaOfInterest.maxAlpha + 0.25f;
-			areaOfInterest.startUpdateTime = Time.time + 8f;
+			areaOfInterest.startUpdateTime = Time.time + lerpTime;
 			areaOfInterest.ChangeColor(c, 2f);
-			areaOfInterest.ChangeScale(areaOfInterest.areaOfInterestMaxSize, 8f);
-			areaOfInterest.ChangePosition(target, 8f);
+			areaOfInterest.ChangeScale(size, 10f);
+			areaOfInterest.ChangePosition(target, lerpTime);
         }
 
 		public bool CheckCharacterIsInAreaOfInterest(Character character){

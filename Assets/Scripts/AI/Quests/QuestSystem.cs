@@ -52,6 +52,7 @@ namespace Kontiki
 			
 			QuestItem objective = g.GetComponent<QuestItem>();
 			charactersWithoutQuestObjects.Remove(questOrigin);
+			
 			int i = Random.Range(0, charactersWithoutQuestObjects.Count);
 
             Fetch fetch = new Fetch(questGetter, questOrigin);
