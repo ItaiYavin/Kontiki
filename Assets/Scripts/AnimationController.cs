@@ -10,7 +10,7 @@ namespace Kontiki {
 	    private sui_demo_animCharacter animController;
 	    private bool isPlayer;
 
-		private bool lastWaterFrame = false;
+		public bool lastWaterFrame = false;
 
 		void Start(){
 			agent = GetComponent<NavMeshAgent>();

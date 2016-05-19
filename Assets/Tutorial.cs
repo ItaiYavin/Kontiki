@@ -22,7 +22,7 @@ namespace Kontiki
 		public float deadZone = 0.2f;
 
 		// Tutorial Bools //
-		private bool W,A,S,D = false;
+		private bool W,A,S,D,Q,E = false;
 
 		// Use this for initialization
 		void Start () {
@@ -114,7 +114,7 @@ namespace Kontiki
                             timeStamp = delay + Time.time;
                         }
 
-						if(QuestSystem.Instance.acceptedQuests[0] != null || Input.GetKey(skipKey))
+						if(QuestSystem.Instance.acceptedQuests[0] != null)
 						{
 							tutorialImages[(int)step].SetActive(false);
 							newStep = false;
@@ -141,12 +141,21 @@ namespace Kontiki
 					case TutorialSteps.Information: // ASK PLAYER TO GET INFORMATION
 					{
 						tutorialImages[(int)step].SetActive(true);
+						
+					    if (Input.GetKey(skipKey))
+                        {
+							tutorialImages[(int)step].SetActive(false);
+							step = TutorialSteps.QuestDescription;
+							newStep = false;
+                            timeStamp = delay + Time.time;
+                        }
 
-						if(QuestSystem.Instance.acceptedQuests[0].askedPeople.Count > 0 || Input.GetKey(skipKey))
+						if(QuestSystem.Instance.acceptedQuests[0].askedPeople.Count > 0)
 						{
 							tutorialImages[(int)step].SetActive(false);
 							step = TutorialSteps.QuestDescription;
 							newStep = false;
+                            timeStamp = delay + Time.time;
 						}
 					}
 					break;
@@ -156,6 +165,46 @@ namespace Kontiki
 						tutorialImages[(int)step].SetActive(true);
 
 						if(Input.GetKey(skipKey))
+						{
+							tutorialImages[(int)step].SetActive(false);
+							newStep = false;
+							step = TutorialSteps.QuestCylinder;
+							timeStamp = delay + Time.time;
+						}
+					}
+					break;
+
+					case TutorialSteps.QuestCylinder: // Explain AOI
+					{
+						tutorialImages[(int)step].SetActive(true);
+
+						if(Input.GetKey(skipKey))
+						{
+							tutorialImages[(int)step].SetActive(false);
+							newStep = false;
+							step = TutorialSteps.Swimming;
+							timeStamp = delay + Time.time;
+						}
+					}
+					break;
+
+					case TutorialSteps.Swimming: // EXPLAIN SWIMMING
+					{
+						tutorialImages[(int)step].SetActive(true);
+
+						if(player.animationController.lastWaterFrame && Input.GetKey(KeyCode.Q)) Q = true;
+						if(player.animationController.lastWaterFrame && Input.GetKey(KeyCode.E)) E = true;
+						
+					    if (Input.GetKey(skipKey))
+                        {
+							tutorialImages[(int)step].SetActive(false);
+							newStep = false;
+							endTutorial = true;
+							
+							Log.Tutorial(false);
+                        }
+
+						if(E && Q)
 						{
 							tutorialImages[(int)step].SetActive(false);
 							newStep = false;
