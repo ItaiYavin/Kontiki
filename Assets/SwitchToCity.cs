@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 namespace Kontiki { 
     public class SwitchToCity : MonoBehaviour
     {
+        public string url;
+        public string entry;+
+
         private int numOfNewUrl;
 
 	    // Use this for initialization
@@ -17,6 +20,7 @@ namespace Kontiki {
             GetComponent<UWKWebView>().InitialWidth = Screen.width;
 	        GetComponent<UWKWebView>().Width = Screen.width;
 	        GetComponent<UWKWebView>().Height = Screen.height;
+            GetComponent<UWKWebView>().ConnectToUrl(url+entry+DataDestr);
 
             numOfNewUrl = 0;
 	    }
