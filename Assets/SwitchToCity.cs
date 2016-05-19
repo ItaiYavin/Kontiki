@@ -29,8 +29,11 @@ namespace Kontiki {
         {
             numOfNewUrl++;
 
-            if(numOfNewUrl >= 5) // Magic number of amount of new url for the response to be submittet
+            if(numOfNewUrl >= 5){ // Magic number of amount of new url for the response to be submittet
                 SceneManager.LoadScene("Scenes/City", LoadSceneMode.Single);
+                
+                Log.properExit = true;
+            }
         }
     }
 }

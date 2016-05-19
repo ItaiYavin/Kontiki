@@ -18,10 +18,13 @@ namespace Kontiki
 		public bool colorChanging = false;
 		
 		public float maxAlpha = 0.5f;
+		public bool isVisible = true;
 		
 		private MeshRenderer cylinderRenderer;
 		private bool stopNextColorChange = false;
 		public Transform cylinder;
+		
+		public float startUpdateTime = 0f;
 		
 		// Use this for initialization
 		void Awake () {
@@ -38,70 +41,64 @@ namespace Kontiki
 		
 		
 		void FixedUpdate(){
-			float distance = (Settings.player.transform.position - target.position).magnitude;
-			float limit = AOIDistanceToPlayer * transform.localScale.x;
-			if(distance > limit){
+			if(startUpdateTime < Time.time){
+				float distance = (Settings.player.transform.position - target.position).magnitude;
+				float limit = AOIDistanceToPlayer * transform.localScale.x;
 				AdjustAreaOfInterestInWorld(0f, target.position);
-				if(!colorChanging && material.color.a != maxAlpha){
-					
-					Color c = material.color;
-					c.a = maxAlpha;
-					
-					ChangeColor(c);
+			
+				if(isVisible){
+					if(distance < limit && !colorChanging && material.color.a != 0f){
+						Color c = material.color;
+						c.a = 0f;
+						
+						ChangeColor(c);
+					}
+				}else{
+					if(distance > limit && !colorChanging && material.color.a != maxAlpha){
+						Color c = material.color;
+						c.a = maxAlpha;
+						
+						ChangeColor(c);
+					}
 				}
-			}else if(!colorChanging && material.color.a != 0){
-				Color c = material.color;
-				c.a = 0f;
-				
-				ChangeColor(c);
 			}
 		}
 		
-		public void RandomlyMoveGameObjectWithinRange(float scale, Vector3 position){
-			//float ranX = Random.Range(-scale/4, scale/4);
-			//float ranZ = Random.Range(-scale/4, scale/4);
-			// / + new Vector3(ranX, 0, ranZ)
-			ChangePosition(position);
-		}
 
 		
 
 		public void AdjustAreaOfInterestInWorld(float reduction, Vector3 position){
 			float newScale = transform.localScale.x * (1 - reduction); //Resize areaOfInterest
+			
 			if(newScale < areaOfInterestMinSize)
 				newScale = areaOfInterestMinSize;
 			
 			if(reduction != 0)
 				ChangeScale(newScale);
-			else{
-				if(colorChanging)
-					stopNextColorChange = true;
-				Color c = material.color;
-				c.a = maxAlpha;
-				
-				ChangeColor(c);
-			}
-				
+							
 			transform.position = position;
 			//RandomlyMoveGameObjectWithinRange(newScale, position); //Move areaOfInterest so that position is still wihtin areaOfInterest
 		}
 		
-		public void ChangeColor(Color color){
+		public void ChangeColor(Color color){ChangeColor(color, animationDuration);}
+		public void ChangeColor(Color color, float duration){
 			if(material == null){
 				material = new Material(GetComponent<MeshRenderer>().material);
 				GetComponent<MeshRenderer>().material = material;
 				material.color = new Color(1,1,1,0);
 			}
-			StartCoroutine(Routine_ChangeColor(color, animationDuration));
+			StartCoroutine(Routine_ChangeColor(color, duration));
 			
 		}
 		
-		public void ChangeScale(float scale){
-			StartCoroutine(Routine_ChangeScale(new Vector3(scale,scale,scale), animationDuration));
+		public void ChangeScale(float scale){ChangeScale(scale, animationDuration);}
+		public void ChangeScale(float scale, float duration){
+			StartCoroutine(Routine_ChangeScale(new Vector3(scale,scale,scale), duration));
 		}
 		
-		public void ChangePosition(Vector3 position){
-			StartCoroutine(Routine_ChangePosition(position, animationDuration));
+		public void ChangePosition(Transform target){ChangePosition(target, animationDuration);}
+		public void ChangePosition(Transform target, float duration){
+			StartCoroutine(Routine_ChangePosition(target, duration));
 		}
 		
         
@@ -118,14 +115,16 @@ namespace Kontiki
             }
             colorChanging = false;
             material.color = endColor;
+			
+			isVisible = material.color.a != 0f;
         }
         
         IEnumerator Routine_ChangeScale(Vector3 endScale, float duration){
             Vector3 startScale = transform.localScale;
             
             float startTime = Time.time;
-			cylinder.localScale = new Vector3(1,100 / endScale.y,1);
-			cylinder.localPosition = new Vector3(0,cylinder.localScale.y,0);
+			cylinder.localScale = new Vector3(1,500 / endScale.y,1);
+			cylinder.localPosition = new Vector3(0,-cylinder.localScale.y / 2,0);
             float endTime = startTime + duration;
             
             while(endTime > Time.time){
@@ -137,7 +136,7 @@ namespace Kontiki
                 transform.localScale = endScale;
         }
         
-        IEnumerator Routine_ChangePosition(Vector3 endPosition, float duration){
+        IEnumerator Routine_ChangePosition(Transform endTarget, float duration){
 			Vector3 startPosition = transform.position;            
             float startTime = Time.time;
             float endTime = startTime + duration;
@@ -145,11 +144,11 @@ namespace Kontiki
             while(endTime > Time.time){
 				if(stopNextColorChange) endTime = Time.time;
                 float t = (Time.time - startTime)/duration;
-                transform.position = Vector3.Lerp(startPosition, endPosition, t);
+                transform.position = Vector3.Lerp(startPosition, endTarget.position, t);
                 yield return null;
             }
             
-            transform.position = endPosition;
+            transform.position = endTarget.position;
         }
     }
 }

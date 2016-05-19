@@ -23,6 +23,8 @@ public class ContinuationDesire : MonoBehaviour {
     public int maxPromptsUntilExit;
 	
 	private bool wantsToContinue;
+	
+	private bool properExit = false;
 
     // Use this for initialization
 	void Start () {
@@ -90,6 +92,8 @@ public class ContinuationDesire : MonoBehaviour {
         amountOfPrompts++;
 	    if (amountOfPrompts >= maxPromptsUntilExit || !wantsToContinue)
 	    {
+			Log.SendLog();
+			
 	        SceneManager.LoadScene("Scenes/Post-Questionaire", LoadSceneMode.Single);
 	    }
     }

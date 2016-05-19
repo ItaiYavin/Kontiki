@@ -29,6 +29,7 @@ namespace Kontiki
 			skipKeyText.text = skipKey.ToString();
 			step = TutorialSteps.Movement;
 			timeStamp = delay + Time.time;
+			Log.Tutorial(true);
 		}
 		
 		// Update is called once per frame
@@ -152,6 +153,8 @@ namespace Kontiki
 							tutorialImages[(int)step].SetActive(false);
 							newStep = false;
 							endTutorial = true;
+							
+							Log.Tutorial(false);
 						}
 					}
 					break;

@@ -36,17 +36,18 @@ namespace Kontiki
 			Log.Quest_Completed(this);
 		}
 
-		public void CreateAreaOfInterestInWorld(Transform target){
-			GameObject g = Object.Instantiate(areaOfInterestPrefab, target.position, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at target.position
+		public void CreateAreaOfInterestInWorld(Vector3 from, Transform target){
+			GameObject g = Object.Instantiate(areaOfInterestPrefab, from, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at target.position
 			areaOfInterest = g.GetComponent<AreaOfInterest>();
 			areaOfInterest.target = target;
 
-            areaOfInterest.transform.position = origin.transform.position;
             areaOfInterest.transform.localScale = Vector3.zero;
-
-		    areaOfInterest.ChangeColor(colorOrigin);
-            areaOfInterest.ChangeScale(areaOfInterest.areaOfInterestMaxSize);
-            areaOfInterest.ChangePosition(target.position);
+			Color c = colorOrigin;
+			c.a = areaOfInterest.maxAlpha + 0.25f;
+		    areaOfInterest.ChangeColor(c, 2f);
+            areaOfInterest.ChangeScale(areaOfInterest.areaOfInterestMaxSize, 5f);
+            areaOfInterest.ChangePosition(target, 5f);
+			areaOfInterest.startUpdateTime = Time.time + 5f;
         }
 		
 		public void RemoveAreaOfInterest(){

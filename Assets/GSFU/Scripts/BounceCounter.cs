@@ -8,7 +8,7 @@ public class BounceCounter : MonoBehaviour
 	
 	void OnCollisionEnter(Collision c)
 	{
-		if (trackBounces)
-			conn.SaveDataOnTheCloud(gameObject.name, c.relativeVelocity.magnitude);
+	//	if (trackBounces)
+//1			conn.SaveDataOnTheCloud(gameObject.name, c.relativeVelocity.magnitude);
 	}
 }

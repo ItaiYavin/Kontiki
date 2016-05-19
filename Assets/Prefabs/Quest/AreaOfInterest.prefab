@@ -65,8 +65,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188032}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: dc75791cfb8020d4f900a415ef0b450d, type: 2}
   m_SubsetIndices: 
@@ -110,7 +110,9 @@ MonoBehaviour:
   AOIDistanceToPlayer: 1.25
   colorChanging: 0
   maxAlpha: 0.5
+  isVisible: 0
   cylinder: {fileID: 493304}
+  startUpdateTime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
