@@ -116,6 +116,7 @@ namespace Kontiki
             
             UnityDataConnector.Instance.SendLogData(values);
             
+		    UnityDataConnector.Instance.SaveID(DataDistributor.id, Settings.urgencyLevel);
         }
         
         public static void CD(bool wantToContinue, string explaination){
