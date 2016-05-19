@@ -23,6 +23,7 @@ namespace Kontiki.AI {
 	        	Language.RandomTalk(languageExchanger, languageExchanger.speakingTo);
 	        	self.isTalking = true;
 	        	partner.isTalking = true;
+	        	ai.pathfinder.agent.SetDestination(self.transform.position);
 
 		        if(ai.debugAI_Character){
 					Debug.Log("Started talking");		        	
