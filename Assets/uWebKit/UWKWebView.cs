@@ -187,7 +187,6 @@ public class UWKWebView : MonoBehaviour
     void Awake()
     {
 
-
     }
 
     public void ConnectToUrl(string url)

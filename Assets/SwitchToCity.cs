@@ -6,24 +6,42 @@ namespace Kontiki {
     public class SwitchToCity : MonoBehaviour
     {
         public string url;
-        public string entry;+
+        public string entry;
 
+        private int foundId;
         private int numOfNewUrl;
 
 	    // Use this for initialization
-	    void Awake ()
+	    void Start ()
 	    {
-	        GetComponent<UWKWebView>().URLChanged += SwitchWhenWebsiteChange;
-	        GetComponent<UWKWebView>().MaxHeight = Screen.height;
-	        GetComponent<UWKWebView>().MaxWidth = Screen.width;
-            GetComponent<UWKWebView>().InitialHeight = Screen.height;
-            GetComponent<UWKWebView>().InitialWidth = Screen.width;
-	        GetComponent<UWKWebView>().Width = Screen.width;
-	        GetComponent<UWKWebView>().Height = Screen.height;
-            GetComponent<UWKWebView>().ConnectToUrl(url+entry+DataDestr);
-
             numOfNewUrl = 0;
+
+	        StartCoroutine(LookForID());
 	    }
+
+        IEnumerator LookForID()
+        {
+            while (foundId == 0)
+            {
+                foundId = DataDistributor.id;
+                yield return new WaitForEndOfFrame();
+            }
+
+            UWKWebView view = gameObject.AddComponent<UWKWebView>();
+            string parsedUrl = url + entry + foundId;
+            view.URL = parsedUrl;
+
+            view.URLChanged += SwitchWhenWebsiteChange;
+
+            view.MaxHeight = Screen.height;
+            view.MaxWidth = Screen.width;
+            view.InitialHeight = Screen.height;
+            view.InitialWidth = Screen.width;
+            view.Width = Screen.width;
+            view.Height = Screen.height;
+            view.ConnectToUrl(parsedUrl);
+        }
+
 
         void SwitchWhenWebsiteChange(UWKWebView view, string url)
         {

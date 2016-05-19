@@ -4,18 +4,27 @@ using UnityEngine.SceneManagement;
 using Kontiki;
 public class FinishedGame : MonoBehaviour
 {
+    public string url;
+    public string entry;
+
     private int numOfNewUrl;
 
 	// Use this for initialization
 	void Start ()
 	{
-        GetComponent<UWKWebView>().URLChanged += SwitchWhenWebsiteChange;
-        GetComponent<UWKWebView>().MaxHeight = Screen.height;
-        GetComponent<UWKWebView>().MaxWidth = Screen.width;
-        GetComponent<UWKWebView>().InitialHeight = Screen.height;
-        GetComponent<UWKWebView>().InitialWidth = Screen.width;
-        GetComponent<UWKWebView>().Width = Screen.width;
-        GetComponent<UWKWebView>().Height = Screen.height;
+        UWKWebView view = gameObject.AddComponent<UWKWebView>();
+        string parsedUrl = url + entry + DataDistributor.id;
+        view.URL = parsedUrl;
+
+        view.URLChanged += SwitchWhenWebsiteChange;
+
+        view.MaxHeight = Screen.height;
+        view.MaxWidth = Screen.width;
+        view.InitialHeight = Screen.height;
+        view.InitialWidth = Screen.width;
+        view.Width = Screen.width;
+        view.Height = Screen.height;
+        view.ConnectToUrl(parsedUrl);
 
         numOfNewUrl = 0;
     }
