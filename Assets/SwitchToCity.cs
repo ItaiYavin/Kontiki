@@ -49,6 +49,7 @@ namespace Kontiki {
         void SwitchWhenWebsiteChange(UWKWebView view, string url)
         {
             numOfNewUrl++;
+            Debug.Log(numOfNewUrl + url);
 
             if(numOfNewUrl >= 5){ // Magic number of amount of new url for the response to be submittet
                 SceneManager.LoadScene("Scenes/City", LoadSceneMode.Single);
