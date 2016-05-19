@@ -12,6 +12,9 @@ public class FinishedGame : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
         UWKWebView view = gameObject.AddComponent<UWKWebView>();
         string parsedUrl = url + entry + DataDistributor.id;
         view.URL = parsedUrl;

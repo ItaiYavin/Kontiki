@@ -17,7 +17,10 @@ namespace Kontiki {
             numOfNewUrl = 0;
 
 	        StartCoroutine(LookForID());
-	    }
+
+            if (!Log.shouldSubmit)
+                SceneManager.LoadScene("Scenes/City", LoadSceneMode.Single);
+        }
 
         IEnumerator LookForID()
         {

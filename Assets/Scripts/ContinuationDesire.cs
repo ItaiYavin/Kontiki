@@ -47,7 +47,10 @@ public class ContinuationDesire : MonoBehaviour {
 		Log.UrgencyLevel(chosen);
 		
 		nextPrompt = Time.time + continuationDesireDelay;
-	}
+
+        if (!Log.shouldSubmit)
+            gameObject.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
