@@ -61,11 +61,11 @@ namespace Kontiki{
 			Cursor.SetCursor(cursorCannotReach, Vector2.zero, CursorMode.Auto);
 		}
 		void Update () {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            /*if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Application.Quit();
                 return;
-            }
+            }*/
 
             if (menuOpen)
 				Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
