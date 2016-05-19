@@ -57,8 +57,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logsSend: 0
-  webServiceUrl: https://script.google.com/macros/s/AKfycbw17ZFNPAg0gXuI_nn0p7_eUkfpS2Hb_Mvu6vz6wCf9TOPo5fLP/exec
-  spreadsheetId: 1c7Jt1N0u79aES4-tk9-uXF7siKdII8MVgbioKNRBVSA
+  webServiceUrl: https://script.google.com/macros/s/AKfycbxkvwruZR6IQ-_nnCjzC3QJMj4mQHK0_XzJk2FVtmAJiKq9_ZkL/exec
+  spreadsheetId: 1X43rjBvocLlt5H939nXsiY9L68eY05Jt1iELIdXFkCc
   worksheetName: ID
   password: passcodehere
   maxWaitTime: 10
@@ -66,6 +66,7 @@ MonoBehaviour:
   logWorksheet: Log
   urgencyWorksheet: Urgency
   debugMode: 0
+  ignorePlayerPrefs: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
