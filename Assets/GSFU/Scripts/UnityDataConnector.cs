@@ -161,12 +161,11 @@ public class UnityDataConnector : MonoBehaviour
 		Time.timeScale = 1f;
 	}
 
+	
+
 	public void SaveID(int id, UrgencyLevel level){
-		StartCoroutine(SendID(id, level)); 
+		StartCoroutine(SendID(id,level));
 	}
-
-
-
 	IEnumerator SendID(int id, UrgencyLevel level)
 	{
 		

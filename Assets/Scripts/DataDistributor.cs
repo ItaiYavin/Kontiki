@@ -35,7 +35,6 @@ public class DataDistributor : MonoBehaviour
 		}	
 		pickCD();
 		Debug.Log(chosen);
-		unityConnector.SaveID(id, chosen);
 	}
 	
 	private void pickCD(){
