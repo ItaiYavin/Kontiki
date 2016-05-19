@@ -266,7 +266,7 @@ namespace Kontiki{
                         }, Settings.AIDelayAfterSpeakingToPlayer);
                     }else if(quest.CheckIfCharacterHasObjective(character)){
                         // asked person has objective and has given it to the player
-                        quest.areaOfInterest.ChangePosition(quest.origin.transform, 4f);
+                        quest.areaOfInterest.ChangePosition(quest.origin.transform);
                         Language.IHaveQuestObjective(this, sender, quest);
                         Log.Quest_Objective(quest);
                                     
