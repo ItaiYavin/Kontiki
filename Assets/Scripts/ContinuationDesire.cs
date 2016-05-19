@@ -90,6 +90,8 @@ public class ContinuationDesire : MonoBehaviour {
         amountOfPrompts++;
 	    if (amountOfPrompts >= maxPromptsUntilExit || !wantsToContinue)
 	    {
+			Log.SendLog();
+
 	        SceneManager.LoadScene("Scenes/Post-Questionaire", LoadSceneMode.Single);
 	    }
     }
