@@ -264,9 +264,23 @@ namespace Kontiki{
                         Delayer.Start(delegate() {  
                             playerIsSpeakingToMe = false;
                         }, Settings.AIDelayAfterSpeakingToPlayer);
+                    }else if(playerHasObjective){
+                        
+                        AreaOfInterest aoi = quest.areaOfInterest;
+                        
+			            aoi.target = quest.origin.transform;
+                        aoi.transform.localScale = Vector3.zero;
+                        aoi.transform.position = character.transform.position;
+                        Color c = quest.colorOrigin;
+                        c.a = aoi.maxAlpha + 0.25f;
+                        aoi.startUpdateTime = Time.time + 8f;
+                        aoi.ChangeColor(c, 2f);
+                        aoi.ChangeScale(aoi.areaOfInterestMaxSize, 8f);
+                        aoi.ChangePosition(quest.origin.transform, 4f);
+                        
                     }else if(quest.CheckIfCharacterHasObjective(character)){
                         // asked person has objective and has given it to the player
-                        quest.areaOfInterest.ChangePosition(quest.origin.transform);
+                        
                         Language.IHaveQuestObjective(this, sender, quest);
                         Log.Quest_Objective(quest);
                                     

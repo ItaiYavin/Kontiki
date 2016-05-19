@@ -45,15 +45,11 @@ namespace Kontiki
             areaOfInterest.transform.localScale = Vector3.zero;
 			Color c = colorOrigin;
 			c.a = areaOfInterest.maxAlpha + 0.25f;
-		    areaOfInterest.ChangeColor(c, 2f);
-            areaOfInterest.ChangeScale(areaOfInterest.areaOfInterestMaxSize, 5f);
-            areaOfInterest.ChangePosition(target, 5f);
-			areaOfInterest.startUpdateTime = Time.time + 5f;
+			areaOfInterest.startUpdateTime = Time.time + 8f;
+			areaOfInterest.ChangeColor(c, 2f);
+			areaOfInterest.ChangeScale(areaOfInterest.areaOfInterestMaxSize, 8f);
+			areaOfInterest.ChangePosition(target, 4f);
         }
-		
-		public void RemoveAreaOfInterest(){
-			Object.Destroy(areaOfInterest.gameObject);
-		}
 
 		public bool CheckCharacterIsInAreaOfInterest(Character character){
 			return Vector3.Distance(character.transform.position, areaOfInterest.transform.position) < areaOfInterest.transform.localScale.x/2;
