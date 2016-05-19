@@ -41,12 +41,17 @@ public class UnityDataConnector : MonoBehaviour
 	bool saveToGS; 
 	
 	bool isSendingLog = false;
+	
+	public bool ignorePlayerPrefs = false;
 	List<String[]> futureLogs = new List<String[]>();
 	
 	void Start ()
 	{
 		Time.timeScale = 0f;
 		Connect();
+		
+		if(!ignorePlayerPrefs && PlayerPrefs.GetInt("hasSubmitted") == 1)
+			Log.shouldSubmit = false;
 	}
 	
 	
