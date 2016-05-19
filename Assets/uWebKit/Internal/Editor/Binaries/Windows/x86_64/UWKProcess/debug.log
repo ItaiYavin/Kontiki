@@ -304,3 +304,10 @@
 [0519/114902:WARNING:channel.cc(358)] RawChannel write error
 [0519/114933:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
 [0519/114933:WARNING:channel.cc(358)] RawChannel write error
+[0519/122246:INFO:CONSOLE(0)] "'webkitMovementX' is deprecated. Please use 'movementX' instead.", source:  (0)
+[0519/122246:INFO:CONSOLE(0)] "'webkitMovementY' is deprecated. Please use 'movementY' instead.", source:  (0)
+[0519/123206:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0519/123249:INFO:CONSOLE(0)] "'webkitMovementX' is deprecated. Please use 'movementX' instead.", source:  (0)
+[0519/123249:INFO:CONSOLE(0)] "'webkitMovementY' is deprecated. Please use 'movementY' instead.", source:  (0)
+[0519/123505:WARNING:raw_channel_win.cc(532)] WriteFile: The pipe is being closed. (0xE8)
+[0519/123505:WARNING:channel.cc(358)] RawChannel write error
