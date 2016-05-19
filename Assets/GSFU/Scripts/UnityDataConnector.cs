@@ -10,7 +10,9 @@ public class UnityDataConnector : MonoBehaviour
 {
 
     static public UnityDataConnector Instance;
-
+	
+	private float startTime;
+	
     void Awake(){
         // First we check if there are any other instances conflicting
         if (Instance != null && Instance != this)
@@ -178,7 +180,8 @@ public class UnityDataConnector : MonoBehaviour
 		if (!www.isDone || !string.IsNullOrEmpty(www.error))
 		{
 			// Error handling here.
-			Debug.Log("error " + www.error);
+			
+		if (debugMode)Debug.Log("error " + www.error);
 			yield break;
 		}
 		
@@ -187,14 +190,16 @@ public class UnityDataConnector : MonoBehaviour
 		if (response.Contains("Incorrect Password"))
 		{
 			// Error handling here.
-			Debug.Log("incorrect password");
+			
+		if (debugMode)Debug.Log("incorrect password");
 			yield break;
 		}
 
 		if (response.Contains("RCVD OK"))
 		{
 			// Data correctly sent!
-			Debug.Log("correctly sent");
+			
+		if (debugMode)Debug.Log("correctly sent");
 			yield break;
 		}
 	}
@@ -209,8 +214,9 @@ public class UnityDataConnector : MonoBehaviour
 	
 	public void StartSendingLogs(){
 		if(!isSendingLog){
-			Time.timeScale = 0f;
+			//Time.timeScale = 0f;
 			StartCoroutine(SendData());
+			startTime = Time.realtimeSinceStartup;
 		}
 		isSendingLog = true;
 	}
@@ -257,7 +263,8 @@ public class UnityDataConnector : MonoBehaviour
 		if (!www.isDone || !string.IsNullOrEmpty(www.error))
 		{
 			// Error handling here.
-			Debug.Log("error " + data[4] + " - " + www.error);
+			
+		if (debugMode)Debug.Log("error " + data[4] + " - " + www.error);
 			yield break;
 		}
 		
@@ -266,14 +273,16 @@ public class UnityDataConnector : MonoBehaviour
 		if (response.Contains("Incorrect Password"))
 		{
 			// Error handling here.
-			Debug.Log("incorrect password");
+			
+		if (debugMode)Debug.Log("incorrect password");
 			yield break;
 		}
 
 		if (response.Contains("RCVD OK"))
 		{
 			// Data correctly sent!
-			Debug.Log("correctly sent");
+			
+		if (debugMode)Debug.Log("correctly sent");
 			SendNextLog();
 			yield break;
 		}
@@ -283,8 +292,12 @@ public class UnityDataConnector : MonoBehaviour
 	void SendNextLog(){
 		if(futureLogs.Count > 0)
 			StartCoroutine(SendData());
-		else
-			Time.timeScale = 1f;
+		else{
+			isSendingLog = false;
+			//Time.timeScale = 1f;
+			
+		if (debugMode)Debug.Log("Took " + (Time.realtimeSinceStartup - startTime) + " seconds to send log");
+		}
 	}
 }
 	

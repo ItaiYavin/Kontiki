@@ -7,7 +7,7 @@ public class DataDistributor : MonoBehaviour
 {
 	public static int id;
 	
-	public int none, med, high;
+	public int none, med, high, lead;
 	private UrgencyLevel chosen;
 	
 	public UnityDataConnector unityConnector;
@@ -28,6 +28,9 @@ public class DataDistributor : MonoBehaviour
 
 			if (ssObjects[i].Keys.Contains("High"))
 				high = int.Parse(ssObjects[i]["High"].ToString());
+				
+			if (ssObjects[i].Keys.Contains("Lead"))
+				lead = int.Parse(ssObjects[i]["Lead"].ToString());
 
 		}	
 		pickCD();
@@ -36,8 +39,7 @@ public class DataDistributor : MonoBehaviour
 	}
 	
 	private void pickCD(){
-	
-		int lead = 2;
+		
 		//pick at random if no one has a two point lead
 		if(high - lead >= med || high - lead >= none){
 			if(med == none)

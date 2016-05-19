@@ -16,6 +16,8 @@ namespace Kontiki
         private static List<WaterData> waterLog             = new List<WaterData>();
         private static List<CDData> cdLog             = new List<CDData>();
         
+        public static float inWaterTime = 0;
+        public static float lastInTime = 0;
         
         private static uint uidCount = 0;
         private static uint uidOffset = 256;
@@ -32,7 +34,8 @@ namespace Kontiki
         public static void SendLog(){
             Debug.Log("Started Sending Log");
             string[] values;
-            
+            /*
+            //Quest and Interaction
             foreach(var data in logData){
                 values = new string[20];
                 values[1] = DataDistributor.id.ToString();
@@ -60,6 +63,10 @@ namespace Kontiki
                 UnityDataConnector.Instance.SendLogData(values);
             }
             
+            //Water
+            float inWaterTime = 0;
+            float lastInTime = 0;
+            
             for (int i = 0; i < waterLog.Count; i++)
             {
                 values = new string[20];
@@ -68,10 +75,25 @@ namespace Kontiki
                 values[3] = waterLog[i].realTime.ToString();
                 values[5] = waterLog[i].type.ToString();
                 
+                if(waterLog[i].jumpedIntoWater){
+                    lastInTime = waterLog[i].gameTime;
+                }else{
+                    inWaterTime += waterLog[i].gameTime - lastInTime;
+                }
+                
                 values[15] = waterLog[i].jumpedIntoWater.ToString();
                 UnityDataConnector.Instance.SendLogData(values);
             }
             
+            */
+            //Water Sum
+            values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[5] = "Water Sum";
+            values[15] = inWaterTime.ToString();
+            UnityDataConnector.Instance.SendLogData(values);
+            /*
+            //CD
             for (int i = 0; i < cdLog.Count; i++)
             {
                 values = new string[20];
@@ -84,17 +106,30 @@ namespace Kontiki
                 values[17] = cdLog[i].explaination;
                 UnityDataConnector.Instance.SendLogData(values);
             }
+            */
+            //Log Check Sum
             values = new string[20];
             values[1] = DataDistributor.id.ToString();
             values[5] = "Log Check Sum";
             values[18] = (UnityDataConnector.Instance.logsSend + 1).ToString();
             
             UnityDataConnector.Instance.SendLogData(values);
+            
         }
         
         public static void CD(bool wantToContinue, string explaination){
             CDData data = new CDData(wantToContinue, explaination);
             cdLog.Add(data);
+            
+            string[] values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[2] = data.gameTime.ToString();
+            values[3] = data.realTime.ToString();
+            values[5] = data.type.ToString();
+            
+            values[16] = data.wantToContinue.ToString();
+            values[17] = data.explaination;
+            UnityDataConnector.Instance.SendLogData(values);
         }
         
         public static void UrgencyLevel(UrgencyLevel level){
@@ -106,16 +141,56 @@ namespace Kontiki
             Data d = new Data();
             d.type = (tutorialStarted ? Data.Type.Tutorial_Started : Data.Type.Tutorial_Ended);
             logData[uid] = d;
+            
+            
+            
+            string[] values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[2] = d.gameTime.ToString();
+            values[3] = d.realTime.ToString();
+            values[5] = d.type.ToString();
+            
+            UnityDataConnector.Instance.SendLogData(values);
         }
         
         //Player methods
         public static void Player_IntoWater(){
             WaterData data = new WaterData(true);
             waterLog.Add(data);
+            
+            string[] values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[2] = data.gameTime.ToString();
+            values[3] = data.realTime.ToString();
+            values[5] = data.type.ToString();
+            
+            if(data.jumpedIntoWater){
+                lastInTime = data.gameTime;
+            }else{
+                inWaterTime += data.gameTime - lastInTime;
+            }
+            
+            values[15] = data.jumpedIntoWater.ToString();
+            UnityDataConnector.Instance.SendLogData(values);
         }
         public static void Player_OutOfWater(){
             WaterData data = new WaterData(false);
             waterLog.Add(data);
+            
+            string[] values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[2] = data.gameTime.ToString();
+            values[3] = data.realTime.ToString();
+            values[5] = data.type.ToString();
+            
+            if(data.jumpedIntoWater){
+                lastInTime = data.gameTime;
+            }else{
+                inWaterTime += data.gameTime - lastInTime;
+            }
+            
+            values[15] = data.jumpedIntoWater.ToString();
+            UnityDataConnector.Instance.SendLogData(values);
         }
        
         //Interaction Methods
@@ -180,7 +255,21 @@ namespace Kontiki
                 uid = uidCount++ * uidOffset;
                 questLog[quest] = uid;
             }
-            logData[uid] = data;  
+            logData[uid] = data; 
+            
+            string[] values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[2] = data.gameTime.ToString();
+            values[3] = data.realTime.ToString();
+            values[4] = uid.ToString();
+            values[5] = data.type.ToString();
+            
+            values[6] = (uid / uidOffset * uidOffset).ToString();
+            values[7] = ((QuestData)data).quest.origin.name;
+            values[8] = ((QuestData)data).topic.ToString();
+                                
+          
+            UnityDataConnector.Instance.SendLogData(values); 
         }
         
         private static void PlaceInteractionIntoDictionary(Log.InteractionData data){
@@ -203,6 +292,24 @@ namespace Kontiki
                 charLog[c] = uid;
             }
             logData[uid] = data;  
+            
+             
+            string[] values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[2] = data.gameTime.ToString();
+            values[3] = data.realTime.ToString();
+            values[4] = uid.ToString();
+            values[5] = data.type.ToString();
+            
+            InteractionData iData = (InteractionData)data;
+            values[9] = iData.interactee.name;
+            values[10] = iData.languageTopic.ToString();
+            values[11] = iData.playerIsAsking.ToString();
+            values[12] = iData.energy.ToString();
+            values[13] = iData.hunger.ToString();
+            values[14] = iData.social.ToString();
+           
+            UnityDataConnector.Instance.SendLogData(values); 
         }
      
         
