@@ -32,10 +32,10 @@ namespace Kontiki
 		public void FinishQuest(Inventory characterInventory){
 			characterInventory.PutItemIntoInventoryRegardlessOfDistance(rewardType); // Give reward
 			QuestSystem.Instance.RemoveQuest(this);
-            Object.Destroy(areaOfInterest);
 			
 			Log.Quest_Completed(this);
-		}
+            Object.Destroy(areaOfInterest.gameObject);
+        }
 
 		public void CreateAreaOfInterestInWorld(Vector3 from, Transform target){
 			GameObject g = Object.Instantiate(areaOfInterestPrefab, from, Quaternion.identity) as GameObject; //Instantiate areaOfInterest of radius at target.position
