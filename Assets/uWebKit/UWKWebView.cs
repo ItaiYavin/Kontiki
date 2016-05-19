@@ -186,6 +186,14 @@ public class UWKWebView : MonoBehaviour
 
     void Awake()
     {
+
+
+    }
+
+    public void ConnectToUrl(string url)
+    {
+        createURL = url;
+
         // ensure core is up
         if (!UWKCore.Init())
         {
@@ -251,7 +259,6 @@ public class UWKWebView : MonoBehaviour
         PopupRequested += popupRequested;
 
         WebQuery += webQuery;
-
     }
 
     public void DrawTexture(Rect position, bool alphaBlend = true)
