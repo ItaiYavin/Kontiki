@@ -22,7 +22,7 @@ namespace Kontiki
         private static uint uidCount = 0;
         private static uint uidOffset = 256;
         
-        
+        public static bool properExit = false;
         private static int randomSeed;
         private static UrgencyLevel urgencyLevel;
 

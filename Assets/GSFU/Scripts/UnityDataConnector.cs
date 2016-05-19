@@ -50,6 +50,38 @@ public class UnityDataConnector : MonoBehaviour
 	}
 	
 	
+	void OnApplicationQuit(){
+		if(!Log.properExit){
+			Debug.Log("inproperExit");
+			string[] data = new string[20];
+            data[1] = DataDistributor.id.ToString();
+			data[2] = Time.time.ToString();
+			data[3] = Time.realtimeSinceStartup.ToString();
+            data[5] = "Did NOT Finish Correctly";
+				
+			string connectionString = 	webServiceUrl +
+										"?ssid=" + spreadsheetId +
+										"&sheet=" + logWorksheet +
+										"&pass=" + password;
+			
+			for (int i = 1; i < data.Length; i++)
+			{
+				connectionString += "&val" + i + "=" + (data[i] == null ? "" : data[i]);
+			}
+			
+			for (int i = data.Length; i < 20; i++)
+			{
+				connectionString += "&val" + i + "=" + "";
+			}
+										
+			connectionString += "&action=SetData";
+			
+			connectionString = connectionString.Replace(" ", "%20");
+			
+			WWW www = new WWW(connectionString);
+		}
+	}
+	
 	void Connect()
 	{
 		if (updating)
