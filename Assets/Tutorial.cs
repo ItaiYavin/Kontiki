@@ -26,7 +26,6 @@ namespace Kontiki
 
 		// Use this for initialization
 		void Start () {
-			skipKeyText.text = skipKey.ToString();
 			step = TutorialSteps.Movement;
 			timeStamp = delay + Time.time;
 			Log.Tutorial(true);
@@ -106,6 +105,14 @@ namespace Kontiki
 					case TutorialSteps.Quest: // ASK PLAYER TO GET A QUEST
 					{
 						tutorialImages[(int)step].SetActive(true);
+
+					    if (Input.GetKey(skipKey))
+                        {
+                            tutorialImages[(int)step].SetActive(false);
+                            newStep = false;
+                            step = TutorialSteps.Response;
+                            timeStamp = delay + Time.time;
+                        }
 
 						if(QuestSystem.Instance.acceptedQuests[0] != null || Input.GetKey(skipKey))
 						{
