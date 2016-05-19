@@ -25,13 +25,14 @@ namespace Kontiki
         public static bool properExit = false;
         private static int randomSeed;
         private static UrgencyLevel urgencyLevel;
+        
+        public static bool shouldSubmit = true;
 
         //Game Methods
-        public static void Game_Started(){
-            //date?
-        }
+       
         
         public static void SendLog(){
+            if(!shouldSubmit)return;
             Debug.Log("Started Sending Log");
             string[] values;
             /*
@@ -118,6 +119,7 @@ namespace Kontiki
         }
         
         public static void CD(bool wantToContinue, string explaination){
+            if(!shouldSubmit)return;
             CDData data = new CDData(wantToContinue, explaination);
             cdLog.Add(data);
             
@@ -137,6 +139,7 @@ namespace Kontiki
         }
         
         public static void Tutorial(bool tutorialStarted){
+            if(!shouldSubmit)return;
             uint uid = uidCount++ * uidOffset;
             Data d = new Data();
             d.type = (tutorialStarted ? Data.Type.Tutorial_Started : Data.Type.Tutorial_Ended);
@@ -155,6 +158,7 @@ namespace Kontiki
         
         //Player methods
         public static void Player_IntoWater(){
+            if(!shouldSubmit)return;
             WaterData data = new WaterData(true);
             waterLog.Add(data);
             
@@ -174,6 +178,7 @@ namespace Kontiki
             UnityDataConnector.Instance.SendLogData(values);
         }
         public static void Player_OutOfWater(){
+            if(!shouldSubmit)return;
             WaterData data = new WaterData(false);
             waterLog.Add(data);
             
@@ -196,6 +201,7 @@ namespace Kontiki
         //Interaction Methods
         
         public static void Interaction_PlayerAsking(Language.Topic topic, Character interactee){
+            if(!shouldSubmit)return;
             Log.InteractionData data = new InteractionData(topic, interactee, true);
             
             PlaceInteractionIntoDictionary(data);
@@ -210,24 +216,28 @@ namespace Kontiki
         
         //Quest methods
         public static void Quest_Accepted(Quest quest){
+            if(!shouldSubmit)return;
             Log.QuestData data = new QuestData(quest, QuestData.Topic.Accepted);
             
             PlaceQuestIntoDictionary(data);
         }
         
         public static void Quest_Completed(Quest quest){
+            if(!shouldSubmit)return;
             Log.QuestData data = new QuestData(quest, QuestData.Topic.Completed);
             
             PlaceQuestIntoDictionary(data);
         }
         
         public static void Quest_Objective(Quest quest){
+            if(!shouldSubmit)return;
             Log.QuestData data = new QuestData(quest, QuestData.Topic.GotObjective);
             
             PlaceQuestIntoDictionary(data);
         }
         
         public static void Quest_Information(Quest quest, bool hadInfo){
+            if(!shouldSubmit)return;
             Log.QuestData data = new QuestData(quest, (hadInfo ? QuestData.Topic.GotInformation : QuestData.Topic.GotNoInformation));
             
             PlaceQuestIntoDictionary(data);
@@ -237,6 +247,7 @@ namespace Kontiki
         //Helpers
         
         private static void PlaceQuestIntoDictionary(Log.QuestData data){
+            if(!shouldSubmit)return;
             Quest quest = data.quest;   
             
             uint uid;
@@ -273,6 +284,7 @@ namespace Kontiki
         }
         
         private static void PlaceInteractionIntoDictionary(Log.InteractionData data){
+            if(!shouldSubmit)return;
             Character c = data.interactee;   
             
             uint uid;

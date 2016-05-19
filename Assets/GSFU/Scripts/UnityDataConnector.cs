@@ -47,6 +47,9 @@ public class UnityDataConnector : MonoBehaviour
 	{
 		Time.timeScale = 0f;
 		Connect();
+		
+		if(PlayerPrefs.GetInt("hasSubmitted") == 1)
+			Log.shouldSubmit = false;
 	}
 	
 	
