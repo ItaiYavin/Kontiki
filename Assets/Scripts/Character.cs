@@ -26,7 +26,7 @@ namespace Kontiki {
         
         public bool isTalking;
 
-        [HideInInspector]
+        //[HideInInspector]
         public Character socialPartner;
         
         [HideInInspector] public AnimationController animationController;
