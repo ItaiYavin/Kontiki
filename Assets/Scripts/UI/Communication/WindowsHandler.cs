@@ -234,10 +234,10 @@ namespace Kontiki
             
             Vector3 position = Vector3.zero;
             ButtonInfo b;
-            Quest q;
+            Fetch q;
             
             for (int i = 0; i < quests.Length; i++){
-                q = quests[i];
+                q = (Fetch)quests[i];
                 if(questInfoBoxes.Count <= i){
                     GameObject g = Instantiate(questInfoPrefab, Vector3.zero, Quaternion.identity) as GameObject;
                     
@@ -255,19 +255,20 @@ namespace Kontiki
                 
                 b.index = i;
                 
-                b.button.interactable = !q.HasCharacterBeenAsked(playerLang.speakingTo.character);
-                
                 float x = (i % 6) * 100 - 250;
                 float y = Mathf.Floor((float)i / 6) * -100;
                 position = new Vector3(x, y, 0);
                 b.GetComponent<RectTransform>().anchoredPosition = position;
-                
-                
-                if(q is Fetch){
+            
+                bool playerHasObjective = playerLang.character.inventory.CheckInventoryForSpecificItem(q.objective);
+                if(playerHasObjective){
+                    b.icon.sprite = Settings.iconSprites[Settings.iconTypes.IndexOf(IconType.Person)];
+                }else{
                     b.icon.sprite = Settings.iconSprites[Settings.iconTypes.IndexOf(IconType.QuestObjective)];
-                    b.icon.color = ((Fetch)q).colorObjective;     
-                    
-                }               
+                }
+                b.icon.color = q.colorObjective;  
+                b.button.interactable = playerHasObjective || !q.HasCharacterBeenAsked(playerLang.speakingTo.character);             
+             
             }
             
             for (int i = quests.Length; i < questInfoBoxes.Count; i++)

@@ -114,7 +114,7 @@ namespace Kontiki
                             timeStamp = delay + Time.time;
                         }
 
-						if(QuestSystem.Instance.acceptedQuests[0] != null)
+						if(QuestSystem.Instance.acceptedQuests.Count != 0 && QuestSystem.Instance.acceptedQuests[0] != null)
 						{
 							tutorialImages[(int)step].SetActive(false);
 							newStep = false;
@@ -149,8 +149,8 @@ namespace Kontiki
 							newStep = false;
                             timeStamp = delay + Time.time;
                         }
-
-						if(QuestSystem.Instance.acceptedQuests[0].askedPeople.Count > 0)
+                        
+						if(QuestSystem.Instance.acceptedQuests.Count != 0 && QuestSystem.Instance.acceptedQuests[0].askedPeople.Count > 0)
 						{
 							tutorialImages[(int)step].SetActive(false);
 							step = TutorialSteps.QuestDescription;

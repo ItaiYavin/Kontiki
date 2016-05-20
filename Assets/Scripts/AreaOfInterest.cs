@@ -10,11 +10,11 @@ namespace Kontiki
 		
 		public Transform target;
 		
-		public float areaOfInterestMaxSize = 50f;
+		public float areaOfInterestMaxSize = 35f;
 		public float areaOfInterestMinSize = 5f;
 		public float animationDuration = 10f;
 		
-		public float AOIDistanceToPlayer = 1.25f;
+		public float AOIDistanceToPlayer = 1f;
 		public bool colorChanging = false;
 		
 		public float maxAlpha = 0.5f;
