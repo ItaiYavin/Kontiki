@@ -130,7 +130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432676, guid: 7f8e12149a68ba04ea88b40f3bde35b0, type: 2}
       propertyPath: ignorePlayerPrefs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f8e12149a68ba04ea88b40f3bde35b0, type: 2}
