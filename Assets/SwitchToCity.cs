@@ -31,7 +31,7 @@ namespace Kontiki {
             }
 
             UWKWebView view = gameObject.AddComponent<UWKWebView>();
-            string parsedUrl = url + entry + foundId;
+            string parsedUrl = url + entry + foundId + "_" + Log.pcID;
             view.URL = parsedUrl;
 
             view.URLChanged += SwitchWhenWebsiteChange;

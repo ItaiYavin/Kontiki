@@ -221,8 +221,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1968353487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9357b7ccb535ccc4e98d94a7cc6af3ad, type: 3}
+  m_Script: {fileID: 11500000, guid: b5f8c08d414744981a4c027fad0047d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 0, y: 0}
-  HasFocus: 1
+  URL: 
+  InitialWidth: 1024
+  InitialHeight: 1024
+  MaxWidth: 1024
+  MaxHeight: 1024
+  ScrollSensitivity: 1
+  CanGoForward: 0
+  CanGoBack: 0
+  Loading: 0
+  Title: 
+  WebTexture: {fileID: 0}
+  ID: 0
+  Width: 0
+  Height: 0

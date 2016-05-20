@@ -16,7 +16,7 @@ public class FinishedGame : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
         UWKWebView view = gameObject.AddComponent<UWKWebView>();
-        string parsedUrl = url + entry + DataDistributor.id;
+        string parsedUrl = url + entry + DataDistributor.id + "_" + Log.pcID;
         view.URL = parsedUrl;
 
         view.URLChanged += SwitchWhenWebsiteChange;
