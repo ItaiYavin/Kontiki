@@ -398,75 +398,6 @@ public class UWKWebView : MonoBehaviour
     public void ProcessKeyboard(Event keyEvent)
     {
 
-        if (inputDisabled)
-            return;
-
-        UnityKeyEvent uevent = new UnityKeyEvent();
-
-        uevent.Type = keyEvent.type == EventType.KeyDown ? 1u : 0u;
-        uevent.KeyCode = (uint)keyEvent.keyCode;
-        uevent.Character = (uint)keyEvent.character;
-
-        // Do not forward newline
-        if (uevent.Character == 10)
-            return;
-
-        // Fix mac deployment Unity key handling bug
-#if !UNITY_EDITOR
-#if UNITY_STANDALONE_OSX
-			if (keyEvent.command && (keyEvent.keyCode == KeyCode.V || keyEvent.keyCode == KeyCode.A || keyEvent.keyCode == KeyCode.C))
-			{
-					if (keyEvent.type != EventType.KeyDown)
-							return;
-
-					uevent.Type = 1u;
-					uevent.KeyCode = (uint) keyEvent.keyCode;
-					uevent.Modifiers |= (uint) UnityKeyModifiers.CommandWin;
-
-					if (keyEvent.keyCode == KeyCode.V)
-							uevent.Character = (uint) 'v';
-					if (keyEvent.keyCode == KeyCode.A)
-							uevent.Character = (uint) 'a';
-					if (keyEvent.keyCode == KeyCode.C)
-							uevent.Character = (uint) 'c';
-
-
-					UWKPlugin.UWK_PostUnityKeyEvent(ID, ref uevent);
-
-					uevent.Type = 0u;
-					UWKPlugin.UWK_PostUnityKeyEvent(ID, ref uevent);
-
-					return;
-
-			}
-#endif
-#endif
-
-        // encode modifiers
-        uevent.Modifiers = 0;
-
-        if (keyEvent.command)
-            uevent.Modifiers |= (uint)UnityKeyModifiers.CommandWin;
-
-        if (keyEvent.alt)
-            uevent.Modifiers |= (uint)UnityKeyModifiers.Alt;
-
-        if (keyEvent.control)
-            uevent.Modifiers |= (uint)UnityKeyModifiers.Control;
-
-        if (keyEvent.shift)
-            uevent.Modifiers |= (uint)UnityKeyModifiers.Shift;
-
-        if (keyEvent.numeric)
-            uevent.Modifiers |= (uint)UnityKeyModifiers.Numeric;
-
-        if (keyEvent.functionKey)
-            uevent.Modifiers |= (uint)UnityKeyModifiers.FunctionKey;
-
-        if (keyEvent.capsLock)
-            uevent.Modifiers |= (uint)UnityKeyModifiers.CapsLock;
-
-        UWKPlugin.UWK_PostUnityKeyEvent(ID, ref uevent);
 
     }
 
@@ -501,6 +432,19 @@ public class UWKWebView : MonoBehaviour
     {
         UWKPlugin.UWK_MsgSetZoomLevel(ID, zoom);
     }
+
+    #region Cookie Management
+
+    /// <summary>
+    /// Clear cookies for specified url domain and/or cookie name.  If neither is specified all cookies will be deleted
+    /// </summary>
+    public static void ClearCookies(string url = "", string cookieName = "")
+    {
+        UWKPlugin.UWK_ClearCookies(url, cookieName);
+    }
+
+
+    #endregion
 
     public static void SetGlobalProperty(string globalVarName, string propertyName, object value)
     {
@@ -628,17 +572,10 @@ public class UWKWebView : MonoBehaviour
 #endif
     }
 
-    public int Width
-    {
-        get { return width; }
-        set { width = value; }
-    }
+    public int Width;
 
-    public int Height
-    {
-        get { return height; }
-        set { height = value; }
-    }
+    public int Height;
+
 
     #region Default delegate handlers
 
