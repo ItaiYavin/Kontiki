@@ -27,9 +27,18 @@ namespace Kontiki
         private static UrgencyLevel urgencyLevel;
         
         public static bool shouldSubmit = true;
+        
+        public static int pcID;
 
         //Game Methods
-       
+       public static void SendID(){
+            pcID = Random.Range(int.MinValue,int.MaxValue);
+
+            string[] values = new string[20];
+            values[1] = DataDistributor.id.ToString();
+            values[5] = "New Participant";
+            UnityDataConnector.Instance.SendLogData(values);
+       }
         
         public static void SendLog(){
             if(!shouldSubmit)return;
@@ -112,10 +121,8 @@ namespace Kontiki
             values = new string[20];
             values[1] = DataDistributor.id.ToString();
             values[5] = "Log Check Sum";
-            values[18] = (UnityDataConnector.Instance.logsSend + 1).ToString();
             
             UnityDataConnector.Instance.SendLogData(values);
-            
 		    UnityDataConnector.Instance.SaveID(DataDistributor.id, Settings.urgencyLevel);
         }
         

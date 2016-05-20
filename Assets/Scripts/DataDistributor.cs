@@ -33,6 +33,7 @@ public class DataDistributor : MonoBehaviour
 				lead = int.Parse(ssObjects[i]["Lead"].ToString());
 
 		}	
+		Log.SendID();
 		pickCD();
 		Debug.Log(chosen);
 	}
