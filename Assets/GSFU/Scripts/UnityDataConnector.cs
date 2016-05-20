@@ -64,6 +64,9 @@ public class UnityDataConnector : MonoBehaviour
 			data[3] = Time.realtimeSinceStartup.ToString();
             data[5] = "Did NOT Finish Correctly";
 				
+			data[18] = Log.pcID.ToString();
+			data[19] = (++logsSend).ToString();
+				
 			string connectionString = 	webServiceUrl +
 										"?ssid=" + spreadsheetId +
 										"&sheet=" + logWorksheet +
@@ -243,6 +246,7 @@ public class UnityDataConnector : MonoBehaviour
 
 	public void SendLogData(String[] data){
 		logsSend++;
+		data[18] = Log.pcID.ToString();
 		data[19] = logsSend.ToString();
 		futureLogs.Add(data);
 		StartSendingLogs();
