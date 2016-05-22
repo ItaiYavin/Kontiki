@@ -1,7 +1,7 @@
-[Fri May 20 11:58:10 2016] INFO: Opened log file uWebKit.log
-[Fri May 20 11:58:10 2016] INFO: Created 1 worker thread
-[Fri May 20 11:58:10 2016] INFO: Initialized engine
-[Fri May 20 11:58:10 2016] INFO: uWebKit Plugin Initializing
-[Fri May 20 11:58:10 2016] INFO: Launching Broker C:/Users/Jalict/Projects/Kontiki/Assets/uWebKit/Internal/Editor/Binaries/Windows/x86_64/UWKProcess/UWKProcess.exe 
-[Fri May 20 11:58:10 2016] INFO: Graphics Device Version: Direct3D 11.0 [level 11.0]
-[Fri May 20 11:58:10 2016] INFO: IPCWorkerStarted
+[Sun May 22 13:50:39 2016] INFO: Opened log file uWebKit.log
+[Sun May 22 13:50:39 2016] INFO: Created 1 worker thread
+[Sun May 22 13:50:39 2016] INFO: Initialized engine
+[Sun May 22 13:50:39 2016] INFO: uWebKit Plugin Initializing
+[Sun May 22 13:50:39 2016] INFO: Launching Broker C:/Users/Jalict/Projects/Kontiki/Assets/uWebKit/Internal/Editor/Binaries/Windows/x86_64/UWKProcess/UWKProcess.exe 
+[Sun May 22 13:50:39 2016] INFO: Graphics Device Version: Direct3D 11.0 [level 11.0]
+[Sun May 22 13:50:39 2016] INFO: IPCWorkerStarted

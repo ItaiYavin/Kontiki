@@ -250,6 +250,9 @@ public class UWKWebView : MonoBehaviour
 
         ID = UWKCore.CreateView(this, InitialWidth, InitialHeight, MaxWidth, MaxHeight, URL, WebTexture.GetNativeTexturePtr());
 
+        // default set the last created view to have focus
+        FocusView();
+
         // default delegate handlers
         LoadFinished += loadFinished;
         URLChanged += urlChanged;
@@ -359,7 +362,7 @@ public class UWKWebView : MonoBehaviour
         if (scroll != 0.0f)
         {
 #if UNITY_STANDALONE_WIN
-            scroll *= 15.0f;
+            scroll *= -15.0f;
 #else
 			scroll *= 1.2f;
 #endif
@@ -432,6 +435,26 @@ public class UWKWebView : MonoBehaviour
     {
         UWKPlugin.UWK_MsgSetZoomLevel(ID, zoom);
     }
+
+    #region Keyboard
+
+    /// <summary>
+    /// Enable or disable keyboard input globally
+    /// </summary>
+    public static void EnableKeyboard(bool enabled = true)
+    {
+        UWKPlugin.UWK_EnableKeyboard(enabled);
+    }
+
+    /// <summary>
+    /// Set the keyboard focus to this view
+    /// </summary>
+    public void FocusView()
+    {
+        UWKPlugin.UWK_FocusView(ID);
+    }
+
+    #endregion
 
     #region Cookie Management
 

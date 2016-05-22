@@ -220,6 +220,14 @@ public class UWKPlugin
     [DllImport("UWKPlugin")]
     public static extern void UWK_SetGlobalStringProperty([MarshalAs(UnmanagedType.LPStr)]String globalVarName, [MarshalAs(UnmanagedType.LPStr)]String propertyName, [MarshalAs(UnmanagedType.LPStr)]String value);
 
+    // Keyboard
+
+    [DllImport("UWKPlugin")]
+    public static extern void UWK_FocusView(uint browserID);
+
+    [DllImport("UWKPlugin")]
+    public static extern void UWK_EnableKeyboard(bool enabled);
+
     // Variant Maps
 
     [DllImport("UWKPlugin")]
