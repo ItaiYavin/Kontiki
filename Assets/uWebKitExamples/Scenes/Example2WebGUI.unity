@@ -248,3 +248,5 @@ MonoBehaviour:
   Title: 
   WebTexture: {fileID: 0}
   ID: 0
+  Width: 0
+  Height: 0

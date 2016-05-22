@@ -197,6 +197,8 @@ MonoBehaviour:
   Title: 
   WebTexture: {fileID: 0}
   ID: 0
+  Width: 0
+  Height: 0
 --- !u!114 &185525029
 MonoBehaviour:
   m_ObjectHideFlags: 0

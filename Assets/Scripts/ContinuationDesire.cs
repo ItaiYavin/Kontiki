@@ -16,6 +16,7 @@ public class ContinuationDesire : MonoBehaviour {
 	public InputField inputField;
 
 	public GameObject[] OtherCanvases;
+    public Button submitButton;
 
 	private bool notCurrentlyAsking;
 
@@ -52,6 +53,11 @@ public class ContinuationDesire : MonoBehaviour {
 			Time.timeScale = 0;
 			
 		}
+
+	    if (!notCurrentlyAsking)
+	    {
+	        submitButton.interactable = inputField.text.Length != 0;
+	    }
 	}
 
 	public void ButtonYes(){

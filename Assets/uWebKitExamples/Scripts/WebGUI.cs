@@ -6,7 +6,6 @@
 *******************************************/
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class WebGUI : MonoBehaviour
 {
@@ -15,23 +14,6 @@ public class WebGUI : MonoBehaviour
 
     // Whether the GUI accepts mouse/keyboard input
     public bool HasFocus = true;
-
-    void Awake()
-    {
-        if (!PlayerPrefs.HasKey("hasSubmitted"))
-        {
-            if (PlayerPrefs.GetInt("hasSubmitted").Equals(1))
-                SceneManager.LoadScene("Scenes/City", LoadSceneMode.Single);
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-    }
 
     void OnGUI()
     {

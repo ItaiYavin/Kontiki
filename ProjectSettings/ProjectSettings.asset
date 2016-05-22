@@ -465,7 +465,7 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: 42760e34-bbe2-44dc-a256-a8a6b61ed6fe
+  projectName: Kontiki
+  organizationId: frans-peter-larsen
   cloudEnabled: 0

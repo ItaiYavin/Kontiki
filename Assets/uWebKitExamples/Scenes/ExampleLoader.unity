@@ -148,6 +148,8 @@ MonoBehaviour:
   Title: 
   WebTexture: {fileID: 0}
   ID: 0
+  Width: 0
+  Height: 0
 --- !u!1 &152131595
 GameObject:
   m_ObjectHideFlags: 0
