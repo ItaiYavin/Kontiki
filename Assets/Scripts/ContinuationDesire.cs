@@ -28,23 +28,10 @@ public class ContinuationDesire : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-		
-		UrgencyLevel chosen;
-		
-		float r = UnityEngine.Random.Range(0f,3f);
-		if(r < 1f)
-			chosen = UrgencyLevel.None;
-		else if(r < 2f)
-			chosen = UrgencyLevel.Med;
-		else
-			chosen = UrgencyLevel.High;
 	
-		Settings.urgencyLevel = chosen;
 		notCurrentlyAsking = true;
 		whyPanel.SetActive(false);
 		yesNoPanel.SetActive(false);
-		
-		Log.UrgencyLevel(chosen);
 		
 		nextPrompt = Time.time + continuationDesireDelay;
 

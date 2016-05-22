@@ -39,9 +39,9 @@ public class DataDistributor : MonoBehaviour
 	}
 	
 	private void pickCD(){
-		
 		//pick at random if no one has a two point lead
 		if(high - lead >= med || high - lead >= none){
+		Debug.Log("h");
 			if(med == none)
 				chosen = UnityEngine.Random.Range(0f,1f) > .5f ? UrgencyLevel.None : UrgencyLevel.Med;
 			else if(med > none)
@@ -49,6 +49,7 @@ public class DataDistributor : MonoBehaviour
 			else
 				chosen = UrgencyLevel.Med;
 		}else if(none - lead >= med || none - lead >= high){
+		Debug.Log("n");
 			if(med == high)
 				chosen = UnityEngine.Random.Range(0f,1f) > .5f ? UrgencyLevel.High : UrgencyLevel.Med;
 			else if(med > high)
@@ -56,6 +57,7 @@ public class DataDistributor : MonoBehaviour
 			else
 				chosen = UrgencyLevel.Med;
 		}else if(med - lead >= high || med - lead >= none){
+		Debug.Log("m");
 			if(high == none)
 				chosen = UnityEngine.Random.Range(0f,1f) > .5f ? UrgencyLevel.None : UrgencyLevel.High;
 			else if(high > none)
@@ -64,6 +66,7 @@ public class DataDistributor : MonoBehaviour
 				chosen = UrgencyLevel.High;
 		}else{
 			float r = UnityEngine.Random.Range(0f,3f);
+		Debug.Log("r");
 			if(r < 1f)
 				chosen = UrgencyLevel.None;
 			else if(r < 2f)

@@ -142,10 +142,6 @@ namespace Kontiki
             UnityDataConnector.Instance.SendLogData(values);
         }
         
-        public static void UrgencyLevel(UrgencyLevel level){
-            urgencyLevel = level;
-        }
-        
         public static void Tutorial(bool tutorialStarted){
             if(!shouldSubmit)return;
             uint uid = uidCount++ * uidOffset;
