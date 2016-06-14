@@ -44,79 +44,14 @@ namespace Kontiki
             if(!shouldSubmit)return;
             Debug.Log("Started Sending Log");
             string[] values;
-            /*
-            //Quest and Interaction
-            foreach(var data in logData){
-                values = new string[20];
-                values[1] = DataDistributor.id.ToString();
-                values[2] = data.Value.gameTime.ToString();
-                values[3] = data.Value.realTime.ToString();
-                values[4] = data.Key.ToString();
-                values[5] = data.Value.type.ToString();
-                
-                if(data.Value is QuestData){
-                    values[6] = (data.Key / uidOffset * uidOffset).ToString();
-                    values[7] = ((QuestData)data.Value).quest.origin.name;
-                    values[8] = ((QuestData)data.Value).topic.ToString();
-                                        
-                }
-                if(data.Value is InteractionData){
-                    InteractionData iData = (InteractionData)data.Value;
-                    values[9] = iData.interactee.name;
-                    values[10] = iData.languageTopic.ToString();
-                    values[11] = iData.playerIsAsking.ToString();
-                    values[12] = iData.energy.ToString();
-                    values[13] = iData.hunger.ToString();
-                    values[14] = iData.social.ToString();
-                }
-                
-                UnityDataConnector.Instance.SendLogData(values);
-            }
             
-            //Water
-            float inWaterTime = 0;
-            float lastInTime = 0;
-            
-            for (int i = 0; i < waterLog.Count; i++)
-            {
-                values = new string[20];
-                values[1] = DataDistributor.id.ToString();
-                values[2] = waterLog[i].gameTime.ToString();
-                values[3] = waterLog[i].realTime.ToString();
-                values[5] = waterLog[i].type.ToString();
-                
-                if(waterLog[i].jumpedIntoWater){
-                    lastInTime = waterLog[i].gameTime;
-                }else{
-                    inWaterTime += waterLog[i].gameTime - lastInTime;
-                }
-                
-                values[15] = waterLog[i].jumpedIntoWater.ToString();
-                UnityDataConnector.Instance.SendLogData(values);
-            }
-            
-            */
             //Water Sum
             values = new string[20];
             values[1] = DataDistributor.id.ToString();
             values[5] = "Water Sum";
             values[15] = inWaterTime.ToString();
             UnityDataConnector.Instance.SendLogData(values);
-            /*
-            //CD
-            for (int i = 0; i < cdLog.Count; i++)
-            {
-                values = new string[20];
-                values[1] = DataDistributor.id.ToString();
-                values[2] = cdLog[i].gameTime.ToString();
-                values[3] = cdLog[i].realTime.ToString();
-                values[5] = cdLog[i].type.ToString();
-                
-                values[16] = cdLog[i].wantToContinue.ToString();
-                values[17] = cdLog[i].explaination;
-                UnityDataConnector.Instance.SendLogData(values);
-            }
-            */
+           
             //Log Check Sum
             values = new string[20];
             values[1] = DataDistributor.id.ToString();

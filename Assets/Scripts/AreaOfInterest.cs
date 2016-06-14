@@ -26,6 +26,10 @@ namespace Kontiki
 		
 		public float startUpdateTime = 0f;
 		
+		private Coroutine colorRoutine;
+		private Coroutine positionRoutine;
+		private Coroutine scaleRoutine;
+		
 		// Use this for initialization
 		void Awake () {
 			if(material == null){
@@ -87,18 +91,24 @@ namespace Kontiki
 				GetComponent<MeshRenderer>().material = material;
 				material.color = new Color(1,1,1,0);
 			}
-			StartCoroutine(Routine_ChangeColor(color, duration));
+			if(colorRoutine != null)
+				StopCoroutine(colorRoutine);
+			colorRoutine = StartCoroutine(Routine_ChangeColor(color, duration));
 			
 		}
 		
 		public void ChangeScale(float scale){ChangeScale(scale, animationDuration);}
 		public void ChangeScale(float scale, float duration){
-			StartCoroutine(Routine_ChangeScale(new Vector3(scale,scale,scale), duration));
+			if(scaleRoutine != null)
+				StopCoroutine(scaleRoutine);
+			scaleRoutine = StartCoroutine(Routine_ChangeScale(new Vector3(scale,scale,scale), duration));
 		}
 		
 		public void ChangePosition(Transform target){ChangePosition(target, animationDuration);}
 		public void ChangePosition(Transform target, float duration){
-			StartCoroutine(Routine_ChangePosition(target, duration));
+			if(positionRoutine != null)
+				StopCoroutine(positionRoutine);
+			positionRoutine = StartCoroutine(Routine_ChangePosition(target, duration));
 		}
 		
         

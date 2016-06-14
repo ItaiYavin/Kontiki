@@ -11,7 +11,24 @@ public class DataDistributor : MonoBehaviour
 	private UrgencyLevel chosen;
 	
 	public UnityDataConnector unityConnector;
-
+	
+	
+	void Update(){
+		if(!Input.GetKey(KeyCode.F8))
+			return;
+			
+		if(Input.GetKey(KeyCode.F10))
+			chosen = Settings.urgencyLevel = UrgencyLevel.None;
+		
+		if(Input.GetKey(KeyCode.F11))
+			chosen = Settings.urgencyLevel = UrgencyLevel.Med;
+		
+		if(Input.GetKey(KeyCode.F12))
+			chosen = Settings.urgencyLevel = UrgencyLevel.High;
+		
+		Debug.Log(chosen);
+	}
+	
 	public void DoSomethingWithTheData(JsonData[] ssObjects)
 	{
 		
